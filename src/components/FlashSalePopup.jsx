@@ -20,6 +20,11 @@ export default function FlashSalePopup() {
     return () => window.clearTimeout(id)
   }, [pathname])
 
+  // The crypto-wallet page has its own scroll-triggered consultation
+  // popup (CryptoWalletLeadPopup) -- showing this generic flash-sale
+  // overlay too would stack two competing popups on one page.
+  if (pathname === '/crypto-wallet') return null
+
   const isOpen = visiblePath === pathname && dismissedPath !== pathname
   if (!isOpen) return null
 

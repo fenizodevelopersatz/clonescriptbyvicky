@@ -4,7 +4,7 @@ import { walletTypes } from '../../data/cryptoWallet/cryptoWalletData.js'
 export default function WalletTypesShowcase() {
   return (
     <section className="cw-wallet-types vc_row wpb_row vc_row-fluid">
-      <div className="ld-container container">
+      <div className="ld-container container-fluid">
         <div className="cw-wallet-types__panel">
           <div className="ld-fancy-heading text-center">
             <h2 className="cw-wallet-types__heading">Every Kind of Wallet — We Build All Four</h2>

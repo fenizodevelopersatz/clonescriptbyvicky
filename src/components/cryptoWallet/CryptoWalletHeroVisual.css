@@ -1,0 +1,281 @@
+/* Wallet hero visual: fanned card stack + token list + incoming-tx pill.
+   Sits inside .cw-hero__visual (CryptoWalletPage.css), which already
+   supplies the ambient halo glow and the gentle wrapper-level float --
+   this file only styles the wallet composition itself. */
+
+/* The halo in CryptoWalletPage.css is centred for a single centred image;
+   this composition is right-aligned (flex-end), so nudge the glow to sit
+   behind the card cluster instead of off to its left. */
+.cw-hero__visual--fx::before {
+  left: 68%;
+  top: 44%;
+}
+
+.cwhv {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+  width: 100%;
+}
+
+/* ---- Card stack ---- */
+.cwhv-stack {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 260 / 158;
+}
+
+.cwhv-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.cwhv-card--3 {
+  top: 14px;
+  left: -10px;
+  z-index: 1;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.24), rgba(168, 85, 247, 0.08));
+  animation: cwhv-float-c 7s ease-in-out infinite 1s;
+}
+
+.cwhv-card--2 {
+  top: 7px;
+  left: -5px;
+  z-index: 2;
+  background: linear-gradient(135deg, rgba(79, 110, 247, 0.22), rgba(79, 110, 247, 0.08));
+  animation: cwhv-float-b 6s ease-in-out infinite 0.5s;
+}
+
+.cwhv-card--1 {
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px 20px;
+  background: linear-gradient(135deg, rgba(108, 59, 255, 0.42) 0%, rgba(232, 62, 188, 0.3) 100%);
+  box-shadow: 0 16px 48px rgba(6, 8, 24, 0.55);
+  animation: cwhv-float-a 5s ease-in-out infinite;
+}
+
+.cwhv-card-glow {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 62, 188, 0.4) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cwhv-card-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cwhv-card-chip {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 1.1rem;
+}
+
+.cwhv-card-logo {
+  font-family: 'Space Grotesk', 'Poppins', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.cwhv-card-bal {
+  position: relative;
+  font-family: 'Space Grotesk', 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.cwhv-card-bal span {
+  font-size: 1rem;
+  opacity: 0.65;
+}
+
+.cwhv-card-bottom {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cwhv-card-addr {
+  font-size: 0.64rem;
+  font-family: 'Courier New', monospace;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.cwhv-card-bottom i {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1rem;
+}
+
+@keyframes cwhv-float-a {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  50%      { transform: rotate(2deg) translateY(-10px); }
+}
+
+@keyframes cwhv-float-b {
+  0%, 100% { transform: rotate(-3deg) translateY(0); }
+  50%      { transform: rotate(1deg) translateY(-8px); }
+}
+
+@keyframes cwhv-float-c {
+  0%, 100% { transform: rotate(-6deg) translateY(0); }
+  50%      { transform: rotate(-2deg) translateY(-6px); }
+}
+
+/* ---- Token list ---- */
+.cwhv-tokens {
+  width: 100%;
+  max-width: 280px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.cwhv-token {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 13px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  animation: cwhv-token-in 0.45s ease both;
+}
+
+.cwhv-token:last-child {
+  border-bottom: none;
+}
+
+.cwhv-token:nth-child(1) { animation-delay: 0.3s; }
+.cwhv-token:nth-child(2) { animation-delay: 0.5s; }
+.cwhv-token:nth-child(3) { animation-delay: 0.7s; }
+
+@keyframes cwhv-token-in {
+  from { opacity: 0; transform: translateX(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.cwhv-token-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.cwhv-token-icon--btc { background: rgba(247, 147, 26, 0.2); color: #f7931a; }
+.cwhv-token-icon--eth { background: rgba(98, 126, 234, 0.2); color: #627eea; }
+.cwhv-token-icon--sol { background: rgba(153, 69, 255, 0.2); color: #9945ff; }
+
+.cwhv-token-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cwhv-token-info strong {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.cwhv-token-info small {
+  font-size: 0.62rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.cwhv-token-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.cwhv-token-price strong {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.cwhv-up   { font-size: 0.62rem; font-weight: 700; color: #4ade80; }
+.cwhv-down { font-size: 0.62rem; font-weight: 700; color: #f87171; }
+
+/* ---- Incoming-tx pill ---- */
+.cwhv-tx {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.28);
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.66rem;
+  font-weight: 600;
+  animation: cwhv-float-badge 3s ease-in-out infinite;
+}
+
+.cwhv-tx i {
+  color: #4ade80;
+  font-size: 0.68rem;
+}
+
+.cwhv-tx-time {
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 400;
+}
+
+@keyframes cwhv-float-badge {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+@media (max-width: 767px) {
+  .cwhv {
+    align-items: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cwhv-card--1,
+  .cwhv-card--2,
+  .cwhv-card--3,
+  .cwhv-token,
+  .cwhv-tx {
+    animation: none;
+  }
+
+  .cwhv-token {
+    opacity: 1;
+  }
+}

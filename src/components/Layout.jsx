@@ -2,6 +2,7 @@ import { Suspense, useInsertionEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Header from './Header.jsx'
 import Footer from './footer/Footer.jsx'
+import ScrollProgressBar from './ScrollProgressBar.jsx'
 import FloatingWhatsAppButton from './FloatingWhatsAppButton.jsx'
 import FlashSalePopup from './FlashSalePopup.jsx'
 import RouteFallback from './RouteFallback.jsx'
@@ -26,6 +27,7 @@ export default function Layout() {
 
   return (
     <div id="wrap" className={`clonescript-site clonescript-route-${routeClass}`}>
+      <ScrollProgressBar />
       <DecorativeBackground />
       <Header />
       <Suspense fallback={<RouteFallback />}>

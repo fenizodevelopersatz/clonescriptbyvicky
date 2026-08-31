@@ -2,7 +2,6 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useContactForm } from '../../hooks/useContactForm.js'
 import { useCart } from '../../hooks/useCart.js'
 import { demoProducts } from '../../data/demoProducts.js'
-import { siteContact } from '../../data/siteContact.js'
 import { clearCart, getCart, getCartTotal } from '../../lib/cart.js'
 import { formatMoney, getCurrency, parsePrice } from '../../lib/currency.js'
 
@@ -62,49 +61,17 @@ export default function DemoForm() {
               padding: '32px',
             }}
           >
-            <div className="vc_row wpb_row vc_inner vc_row-fluid vc_custom_1740121483577 vc_row-has-fill vc_row-o-content-middle vc_row-flex">
-              <div className="wpb_column vc_column_container vc_col-sm-6 vc_col-md-8 text-left text-sm-left text-xs-center">
-                <div className="vc_column-inner">
-                  <div className="wpb_wrapper">
-                    <div className="wpb_wrapper-inner">
-                      <button
-                        type="button"
-                        onClick={goBack}
-                        className="btn btn-naked btn-icon-left"
-                        style={{ paddingLeft: 0 }}
-                      >
-                        <span>
-                          <span className="btn-txt">Back</span>
-                          <span className="btn-icon"><i className="fas fa-arrow-left"></i></span>
-                        </span>
-                      </button>
-                      <header className="fancy-title vc_custom_1739606732549">
-                        <h3>Pick A Time That Suits You!</h3>
-                        <div className="st-desc">
-                          <p style={{ textAlign: 'left', margin: 0 }}>Select A Convenient Time for A One-On-One Meeting With Our Expert, or use Back if you&rsquo;d like to tour more products first.</p>
-                        </div>
-                      </header>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="wpb_column vc_column_container vc_col-sm-6 vc_col-md-4 text-center text-xs-center">
-                <div className="vc_column-inner">
-                  <div className="wpb_wrapper vc_custom_1739607427981">
-                    <div className="wpb_wrapper-inner">
-                      <div className="header-module">
-                        <a href={siteContact.calendlyUrl} target="_blank" rel="noreferrer" className="btn btn-solid text-capitalize btn-xsm circle btn-bordered border-thick btn-bordered-gradient btn-icon-left btn-icon-circle pulse-btn">
-                          <span>
-                            <span className="btn-txt">Pick A Time</span>
-                            <span className="btn-icon"><i className="fas fa-calendar-alt"></i></span>
-                          </span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <button
+              type="button"
+              onClick={goBack}
+              className="btn btn-naked btn-icon-left"
+              style={{ paddingLeft: 0 }}
+            >
+              <span>
+                <span className="btn-txt">Back</span>
+                <span className="btn-icon"><i className="fas fa-arrow-left"></i></span>
+              </span>
+            </button>
 
             {cartItems.length > 0 && (
               <div
@@ -149,12 +116,6 @@ export default function DemoForm() {
             <div className="ld-empty-space">
               <span className="liquid_empty_space_inner"></span>
             </div>
-
-            <header className="fancy-title text-center vc_custom_1739963917506">
-              <h2 className="lined-alt">
-                <i className="line-alt"></i> OR <i className="line-alt"></i>
-              </h2>
-            </header>
 
             <div className="vc_row wpb_row vc_inner vc_row-fluid liquid-row-shadowbox-6a665a450be70">
               <div className="wpb_column vc_column_container vc_col-sm-12 vc_col-has-fill">

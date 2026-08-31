@@ -1,6 +1,6 @@
 import { siteContact } from '../../data/siteContact.js'
 import GradientButton from '../GradientButton.jsx'
-import { heroStats } from '../../data/cryptoWallet/cryptoWalletData.js'
+import CryptoWalletHeroVisual from './CryptoWalletHeroVisual.jsx'
 
 const whatsappHref = `https://api.whatsapp.com/send?phone=${siteContact.whatsappApiNumber}&text=${encodeURIComponent('Hello, I am interested in Crypto Wallet Development')}`
 
@@ -18,16 +18,17 @@ export default function CryptoWalletHero() {
                     <span className="cw-hero__eyebrow cw-hero__reveal">Crypto Wallet Development</span>
                     <div className="ld-fancy-heading text-left cw-hero__reveal" style={{ animationDelay: '0.1s' }}>
                       <h1 className="cw-hero__heading lqd-highlight-underline lqd-highlight-grow-left">
-                        <span className="ld-fh-txt">Crypto Wallet Development Services</span>
+                        <span className="ld-fh-txt"><span className="cw-hero__accent-word">Crypto</span> Wallet Development Services</span>
                       </h1>
                     </div>
                     <div className="wpb_text_column wpb_content_element cw-hero__reveal" style={{ animationDelay: '0.22s' }}>
                       <div className="wpb_wrapper">
                         <p className="cw-hero__desc" style={{ textAlign: 'left' }}>
                           <span>
-                            Unlock digital finance for your business with a robust crypto wallet — engineered to be
-                            secure, seamless, and scalable, enabling frictionless transactions and unbreakable trust
-                            for your clients.
+                            We provide secure, scalable crypto wallet development services tailored to your business
+                            needs. Our solutions include multi-currency support, advanced encryption, and seamless
+                            transactions. Built for performance and usability, our wallets deliver a reliable and
+                            smooth user experience.
                           </span>
                         </p>
                       </div>
@@ -48,31 +49,13 @@ export default function CryptoWalletHero() {
               <div className="vc_column-inner">
                 <div className="wpb_wrapper">
                   <div className="wpb_wrapper-inner">
-                    <div className="cw-hero__visual">
-                      <img
-                        src="/wp-content/uploads/2026/08/crypto-wallet-hero-graphic.webp"
-                        alt="CloneScript crypto wallet development, Ethereum growth graphic"
-                        width="1672"
-                        height="941"
-                        style={{ width: '100%', height: 'auto', display: 'block' }}
-                        loading="eager"
-                        decoding="async"
-                      />
+                    <div className="cw-hero__visual cw-hero__visual--fx">
+                      <CryptoWalletHeroVisual />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="cw-hero__stats">
-            {heroStats.map((stat) => (
-              <div className="cw-hero__stat" key={stat.label}>
-                <i className={stat.icon} aria-hidden="true"></i>
-                <strong>{stat.value}</strong>
-                <span>{stat.label}</span>
-              </div>
-            ))}
           </div>
         </div>
       </div>

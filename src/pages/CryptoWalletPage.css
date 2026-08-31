@@ -10,11 +10,13 @@
    external request is blocked. Must stay at the top: @import precedes rules. */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
 
-/* Drop the theme's 15px side padding on the hero's section wrapper so the
-   full-width band has no residual inset. */
+/* Drop the theme's side padding on the hero's section wrapper so the
+   full-width band has no residual inset, and its top/bottom padding too --
+   .vc_section's own 24px top padding was transparent, showing a white gap
+   between the header and the hero's black background instead of the two
+   meeting directly. */
 .cw-hero-wrap {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  padding: 0 !important;
 }
 
 /* Full-width dark background band (edge to edge); the content stays centred
@@ -31,7 +33,7 @@
   margin-left: calc(50% - 50vw) !important;
   margin-right: calc(50% - 50vw) !important;
   padding: clamp(44px, 6vw, 92px) 0;
-  background: linear-gradient(135deg, #0d1440 0%, #172554 45%, #2a1a6b 100%);
+  background: #06060f;
 }
 
 /* The panel is now just a transparent content wrapper -- no card. */
@@ -126,7 +128,7 @@
   border-radius: 999px;
   background: rgba(139, 124, 246, 0.14);
   color: #d7ddff;
-  font-family: 'Space Grotesk', 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -166,10 +168,11 @@
 
 .cw-hero__heading {
   color: #fff;
-  font-family: 'Space Grotesk', 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
   font-size: clamp(30px, 4.4vw, 48px);
+  font-weight: 800;
   line-height: 1.16;
-  letter-spacing: -0.01em;
+  letter-spacing: normal;
 }
 
 /* Light sheen sweeping across the heading text. */
@@ -186,10 +189,21 @@
   to { background-position: -240% center; }
 }
 
+/* "Crypto" accent word -- static brand-gradient fill, overriding the
+   heading's animated white sheen for just this word (same gradient as
+   .cw-whatis__accent / .cw-concept-card__icon elsewhere on this page). */
+.cw-hero__accent-word {
+  background: linear-gradient(120deg, #6c3bff, #e83ebc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
 .cw-hero__desc,
 .cw-hero__desc span {
   max-width: 520px;
-  color: rgba(255, 255, 255, 0.78) !important;
+  color: rgba(255, 255, 255, 0.88) !important;
 }
 
 .cw-hero__actions {
@@ -303,58 +317,6 @@
   }
 }
 
-.cw-hero__stats {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 18px;
-  margin-top: clamp(32px, 4vw, 52px);
-  padding-top: clamp(24px, 3vw, 36px);
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-.cw-hero__stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  text-align: center;
-  color: #fff;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.cw-hero__stat:hover {
-  transform: translateY(-5px);
-}
-
-.cw-hero__stat i {
-  margin-bottom: 4px;
-  font-size: 20px;
-  color: #9fb0ff;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s ease, filter 0.3s ease;
-}
-
-.cw-hero__stat:hover i {
-  color: #c9b6ff;
-  transform: scale(1.18);
-  filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.7));
-}
-
-.cw-hero__stat strong {
-  color: #fff;
-  font-family: 'Space Grotesk', 'Poppins', sans-serif;
-  font-size: clamp(18px, 2vw, 24px);
-  font-weight: 800;
-  font-variant-numeric: tabular-nums;
-}
-
-.cw-hero__stat span {
-  color: rgba(255, 255, 255, 0.68);
-  font-size: 12.5px;
-  line-height: 1.35;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .cw-hero::before,
   .cw-hero::after,
@@ -374,11 +336,6 @@
   .cw-hero__heading .ld-fh-txt {
     color: #fff;
     -webkit-text-fill-color: #fff;
-  }
-
-  .cw-hero__stat,
-  .cw-hero__stat i {
-    transition: none;
   }
 }
 
@@ -1108,10 +1065,6 @@
 }
 
 @media (max-width: 991px) {
-  .cw-hero__stats {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .cw-wallet-types__grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1121,11 +1074,6 @@
   .cw-hero__panel,
   .cw-wallet-types__panel {
     border-radius: 22px;
-  }
-
-  .cw-hero__stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px 14px;
   }
 
   .cw-wallet-types__grid {
@@ -1156,5 +1104,118 @@
   .cw-hero__visual:hover img {
     transform: none;
     filter: none;
+  }
+}
+
+/* ===== FAQ accordion -- modern card style (crypto only) =====
+   FaqAccordion is shared across ~6 other pages and still renders the
+   theme's old .vc_toggle markup -- reskinned here via CSS only (same
+   approach as money-back-panel / wcc-section above) rather than touching
+   the shared component. .vc_toggle is unique to this component on the
+   page, so scoping directly to it is safe; the section wrapper itself
+   reuses a generic liquid-row-shadowbox class shared with unrelated
+   sections, so :has() targets only the one that actually contains it. */
+.clonescript-route-crypto-wallet section:has(> .ld-container .vc_toggle) {
+  position: relative;
+  overflow: hidden;
+  background: #f8f8f5;
+}
+
+.clonescript-route-crypto-wallet section:has(> .ld-container .vc_toggle)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #c4cad6 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.4;
+}
+
+.clonescript-route-crypto-wallet section:has(> .ld-container .vc_toggle) > * {
+  position: relative;
+  z-index: 1;
+}
+
+.clonescript-route-crypto-wallet .vc_toggle {
+  max-width: 780px;
+  margin: 0 auto 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 14px;
+  background: #fff;
+  transition: box-shadow 0.25s, border-color 0.25s;
+}
+
+.clonescript-route-crypto-wallet .vc_toggle:hover {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+}
+
+.clonescript-route-crypto-wallet .vc_toggle.vc_toggle_active {
+  border-color: rgba(108, 59, 255, 0.3);
+  box-shadow: 0 4px 24px rgba(108, 59, 255, 0.1);
+}
+
+.clonescript-route-crypto-wallet .vc_toggle_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 28px !important;
+}
+
+.clonescript-route-crypto-wallet .vc_toggle_title h5 {
+  font-size: 0.96rem !important;
+  font-weight: 700 !important;
+  transition: color 0.2s;
+}
+
+.clonescript-route-crypto-wallet .vc_toggle_title:hover h5 {
+  color: #6c3bff !important;
+}
+
+/* The theme's own toggle icon is a legacy plus/minus square built from
+   ~150 color/size-variant rules on .vc_toggle_icon and its ::before/::after
+   -- fighting all of that (including a background-position:absolute layout
+   at odds with the flex row above) isn't worth it. Hide it and draw a
+   fresh chevron on .vc_toggle_title::after instead, which the theme never
+   touches. Because .vc_toggle_title is display:flex, this pseudo-element
+   is itself a flex item, so justify-content:space-between alone pins it
+   to the right edge -- no manual positioning needed. */
+.clonescript-route-crypto-wallet .vc_toggle_icon {
+  display: none !important;
+}
+
+.clonescript-route-crypto-wallet .vc_toggle_title::after {
+  content: '';
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #6c3bff;
+  border-bottom: 2px solid #6c3bff;
+  transform: rotate(45deg);
+  transition: transform 0.3s;
+}
+
+.clonescript-route-crypto-wallet .vc_toggle_active .vc_toggle_title::after {
+  transform: rotate(225deg);
+}
+
+.clonescript-route-crypto-wallet .vc_toggle_content {
+  padding: 0 28px 22px;
+}
+
+.clonescript-route-crypto-wallet .vc_toggle_content p {
+  margin: 0;
+  font-size: 0.89rem;
+  color: #52525b;
+  line-height: 1.75;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clonescript-route-crypto-wallet .vc_toggle,
+  .clonescript-route-crypto-wallet .vc_toggle_title h5,
+  .clonescript-route-crypto-wallet .vc_toggle_title::after {
+    transition: none;
   }
 }

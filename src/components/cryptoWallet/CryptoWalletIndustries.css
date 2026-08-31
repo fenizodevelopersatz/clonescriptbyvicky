@@ -1,0 +1,292 @@
+/* Industries marquee: two rows of pills drifting in opposite directions
+   over a dark band, plus a bottom stat strip. Re-themed to CloneScript's
+   violet/pink accent instead of the reference's single cyan hue. */
+
+.cwi-section {
+  position: relative;
+  overflow: hidden;
+  padding: 90px 0 70px;
+  background: #06060f;
+}
+
+.cwi-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cwi-orb {
+  position: absolute;
+  border-radius: 50%;
+  animation: cwi-drift 16s ease-in-out infinite;
+}
+
+.cwi-orb--1 {
+  top: -200px;
+  left: -100px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(108, 59, 255, 0.1), transparent 65%);
+}
+
+.cwi-orb--2 {
+  bottom: -150px;
+  right: -80px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(232, 62, 188, 0.08), transparent 65%);
+  animation-direction: reverse;
+  animation-duration: 20s;
+}
+
+@keyframes cwi-drift {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(30px, -20px); }
+}
+
+.cwi-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black, transparent 70%);
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black, transparent 70%);
+}
+
+.cwi-head {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.cwi-eyebrow {
+  display: inline-flex;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b794ff;
+}
+
+.cwi-title {
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.04em;
+  margin: 12px 0 16px;
+  line-height: 1.1;
+}
+
+.cwi-count {
+  background: linear-gradient(135deg, #6c3bff, #10b981);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.cwi-sub {
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.cwi-track-wrap {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  margin-bottom: 16px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.cwi-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  will-change: transform;
+}
+
+.cwi-track--left  { animation: cwi-scroll-l 30s linear infinite; }
+.cwi-track--right { animation: cwi-scroll-r 28s linear infinite; }
+.cwi-track-wrap:hover .cwi-track { animation-play-state: paused; }
+
+@keyframes cwi-scroll-l {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes cwi-scroll-r {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.cwi-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 12px 22px 12px 14px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: default;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+
+.cwi-pill:hover {
+  background: rgba(108, 59, 255, 0.14);
+  border-color: rgba(108, 59, 255, 0.4);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 28px rgba(108, 59, 255, 0.2);
+}
+
+.cwi-pill-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(108, 59, 255, 0.16);
+  border: 1px solid rgba(108, 59, 255, 0.28);
+  color: #b794ff;
+  font-size: 0.92rem;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+
+.cwi-pill:hover .cwi-pill-icon {
+  box-shadow: 0 0 16px rgba(108, 59, 255, 0.55);
+  transform: scale(1.1) rotate(-8deg);
+}
+
+.cwi-pill-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: 0.01em;
+}
+
+.cwi-pill:hover .cwi-pill-name {
+  color: #fff;
+}
+
+.cwi-strip {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 56px;
+  padding: 28px 40px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.cwi-strip-stat {
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.cwi-strip-num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.cwi-strip-lbl {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.cwi-strip-sep {
+  width: 1px;
+  height: 48px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.cwi-strip-cta {
+  flex: 1;
+  min-width: 160px;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.cwi-strip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 12px;
+  background: #6c3bff;
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(108, 59, 255, 0.45);
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.cwi-strip-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.cwi-strip-btn i {
+  transition: transform 0.2s;
+}
+
+.cwi-strip-btn:hover i {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .cwi-strip {
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+  }
+
+  .cwi-strip-sep {
+    width: 60px;
+    height: 1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cwi-orb,
+  .cwi-track--left,
+  .cwi-track--right {
+    animation: none;
+  }
+
+  .cwi-pill,
+  .cwi-pill-icon,
+  .cwi-pill-name,
+  .cwi-strip-btn,
+  .cwi-strip-btn i {
+    transition: none;
+  }
+}

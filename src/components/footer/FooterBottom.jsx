@@ -259,11 +259,12 @@ export default function FooterBottom() {
                       <div className="wpb_wrapper">
                         <p style={{ textAlign: 'left' }}>
                           <span style={{ color: '#3d3d3d', fontSize: 14 }}>
-                            <strong>Disclaimer:</strong> The names &quot;Airbnb, Amazon, Aliexpress, Alibaba, Themeforest,
-                            Ebay, Etsy, Handy, Taskrabbit, Uber Clone, Ola Clone, Cabify Clone, Zomato Clone, Swiggy Clone,
-                            Udemy Clone&quot; are used only for descriptive marketing purposes. We are not associated with those
-                            companies, in any form. The source code and design of our products are fully owned by us. Our
-                            main aim is to help the customer understand the nature of our services.
+                            <strong>Disclaimer:</strong> &quot;Airbnb, Alibaba, Amazon, Fiverr, Gojek, OLX, Swiggy, TikTok,
+                            Tinder, Turo, Uber, Udemy, Vinted, WhatsApp, YouTube, Zillow&quot; and other brand names referenced
+                            on this site are trademarks of their respective owners, used only for descriptive purposes to
+                            explain the type of platform each script replicates. {siteBrand.name} is not affiliated with,
+                            sponsored by, or endorsed by any of these companies. All source code, design, and branding of{' '}
+                            {siteBrand.name} products are independently developed and fully owned by {siteBrand.name}.
                           </span>
                         </p>
                       </div>

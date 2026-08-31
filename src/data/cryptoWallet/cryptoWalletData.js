@@ -2,11 +2,44 @@
 // reuses the exact figure/label already established in components/home/AchievementBanner.jsx
 // instead of inventing a new experience number for this one page.
 export const heroStats = [
-  { icon: 'fa-solid fa-wallet', value: '300+', label: 'Wallets Delivered' },
-  { icon: 'fa-solid fa-link', value: '10+', label: 'Blockchains Supported' },
-  { icon: 'fa-solid fa-shield-halved', value: '24/7', label: 'Security Monitoring' },
-  { icon: 'fa-solid fa-bolt', value: '99.5%', label: 'Uptime' },
-  { icon: 'fa-solid fa-award', value: '13+', label: 'Year Experience' },
+  { icon: 'fa-solid fa-wallet', value: '300+', label: 'Wallets Delivered', desc: 'Custodial and non-custodial, built to spec.' },
+  { icon: 'fa-solid fa-link', value: '10+', label: 'Blockchains Supported', desc: 'Bitcoin, Ethereum, and every major chain.' },
+  { icon: 'fa-solid fa-shield-halved', value: '24/7', label: 'Security Monitoring', desc: 'Round-the-clock watch on every wallet.' },
+  { icon: 'fa-solid fa-bolt', value: '99.5%', label: 'Uptime', desc: "Reliability a wallet can't compromise on." },
+  { icon: 'fa-solid fa-award', value: '13+', label: 'Year Experience', desc: 'Engineering experience behind every build.' },
+]
+
+export const comprehensiveServices = [
+  { icon: 'fa-solid fa-coins', title: 'DeFi Wallets', desc: 'Build wallets with staking, lending, and yield farming features to boost user engagement.' },
+  { icon: 'fa-solid fa-user-shield', title: 'Multi-Sig Wallets', desc: 'Enable secure transactions with multi-signature authorization to prevent unauthorized access.' },
+  { icon: 'fa-solid fa-snowflake', title: 'Cold Storage', desc: 'Develop wallets with offline storage and hardware integration for maximum security.' },
+  { icon: 'fa-solid fa-credit-card', title: 'Payments Integration', desc: 'Enable seamless crypto payments through wallet and gateway integration.' },
+  { icon: 'fa-solid fa-circle-nodes', title: 'Token Wallets', desc: 'Create wallets that support custom tokens across multiple blockchain ecosystems.' },
+  { icon: 'fa-solid fa-link', title: 'Cross-Chain Wallets', desc: 'Build wallets that allow smooth asset transfers across different blockchain networks.' },
+  { icon: 'fa-solid fa-image', title: 'NFT Wallets', desc: 'Support NFT storage, management, and trading across multiple networks.' },
+  { icon: 'fa-solid fa-rocket', title: 'MVP Development', desc: 'Quickly launch a minimum viable product to validate your idea and enter the market faster.' },
+]
+
+export const walletBenefits = [
+  { icon: 'fa-solid fa-shield-halved', title: 'Enhanced Security', desc: 'Protect digital assets with strong encryption, secure key storage, and authentication layers.' },
+  { icon: 'fa-solid fa-user-lock', title: 'Full Asset Control', desc: 'Give users complete control over private keys and funds without third-party dependency.' },
+  { icon: 'fa-solid fa-coins', title: 'Multi-Currency Support', desc: 'Manage multiple cryptocurrencies and tokens within a single wallet.' },
+  { icon: 'fa-solid fa-bolt', title: 'Seamless Transactions', desc: 'Enable fast, reliable, and real-time crypto transfers.' },
+  { icon: 'fa-solid fa-arrow-trend-up', title: 'Scalability', desc: 'Easily expand features and support additional blockchain networks as your business grows.' },
+  { icon: 'fa-solid fa-face-smile', title: 'User-Friendly Experience', desc: 'Provide intuitive design and smooth navigation for all user levels.' },
+  { icon: 'fa-solid fa-globe', title: 'Global Accessibility', desc: 'Allow users to access and manage assets anytime, anywhere.' },
+  { icon: 'fa-solid fa-sack-dollar', title: 'Revenue Generation', desc: 'Create monetization opportunities through transaction fees and premium features.' },
+]
+
+export const secureWalletFeatures = [
+  { icon: 'fa-solid fa-lock', title: 'End-to-End Encryption', desc: 'Secures data using Advanced Encryption Standard for high confidentiality.' },
+  { icon: 'fa-solid fa-wallet', title: 'Custodial & Non-Custodial Models', desc: 'Flexible architecture aligned with blockchain technology principles.' },
+  { icon: 'fa-solid fa-key', title: 'Multi-Factor Authentication (2FA)', desc: 'Adds secure access through OTP and device verification.' },
+  { icon: 'fa-solid fa-vault', title: 'Secure Key Management', desc: 'Uses HD wallets based on BIP-32 with cold storage support.' },
+  { icon: 'fa-solid fa-coins', title: 'Multi-Currency Support', desc: 'Compatible with Ethereum and BNB Smart Chain, including ERC-20 and BEP-20 tokens.' },
+  { icon: 'fa-solid fa-bolt', title: 'Real-Time Transactions', desc: 'Enables fast and accurate transaction processing.' },
+  { icon: 'fa-solid fa-rotate-left', title: 'Backup & Recovery', desc: 'Secure seed phrases using the BIP-39 standard.' },
+  { icon: 'fa-solid fa-desktop', title: 'Cross-Platform Compatibility', desc: 'Works across web, mobile, and desktop.' },
 ]
 
 export const walletFeatures = [
