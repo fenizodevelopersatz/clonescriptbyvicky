@@ -14,9 +14,17 @@
    full-width band has no residual inset, and its top/bottom padding too --
    .vc_section's own 24px top padding was transparent, showing a white gap
    between the header and the hero's black background instead of the two
-   meeting directly. */
+   meeting directly. The 24px still showed up one level further out though:
+   .wpb-content-wrapper (the single outer wrapper every page's <main> uses)
+   carries the theme's own 24px top padding too. It's shared sitewide, so
+   scope the override to this route only -- zeroing it globally would pull
+   every OTHER page's content up under its header as well. */
 .cw-hero-wrap {
   padding: 0 !important;
+}
+
+.clonescript-route-crypto-wallet .wpb-content-wrapper {
+  padding-top: 0 !important;
 }
 
 /* Full-width dark background band (edge to edge); the content stays centred

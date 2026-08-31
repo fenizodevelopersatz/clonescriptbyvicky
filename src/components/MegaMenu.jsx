@@ -7,13 +7,12 @@ function MegaMenuItem({ item, onNavigate }) {
 
   return (
     <div
-      className={`iconbox iconbox-side text-left iconbox-circle iconbox-filled iconbox-filled-hover${item.isNew ? ' newtag' : ''}${isDisabled ? ' menu-item-disabled' : ''} ${item.id}`}
+      className={`iconbox iconbox-side text-left iconbox-circle iconbox-filled iconbox-filled-hover${isDisabled ? ' menu-item-disabled' : ''} ${item.id}`}
       id={item.id}
       data-plugin-options='{"color":"rgb(14, 14, 14)","hoverColor":"rgb(0, 0, 0)"}'
       data-shape-border="1"
       style={{ marginTop: 10, paddingTop: 5, paddingBottom: 5, borderRadius: 10 }}
     >
-      {item.isNew && <span className="iconbox-label">new</span>}
       <div className="iconbox-icon-wrap">
         <span className="iconbox-icon-container" style={{ background: item.gradient, color: 'rgb(14, 14, 14)', width: 50, height: 50, fontSize: 20 }}>
           <i className={item.icon}></i>

@@ -9,7 +9,7 @@
 // not linked from the Products menu; flip this flag back to re-list it.
 export const megaMenuColumns = [
   [
-    { id: 'ld_icon_box_6a665a4092c40', icon: 'fa fa-solid fa-wallet', title: 'Crypto Wallet', subtitle: 'Wallet Development Services', link: '/crypto-wallet', enabled: true, isNew: true, featured: true, gradient: 'radial-gradient(circle at 50%, rgb(222,229,255) 0.66%, rgb(214,196,255) 99.01%)' },
+    { id: 'ld_icon_box_6a665a4092c40', icon: 'fa fa-solid fa-wallet', title: 'Crypto Wallet', subtitle: 'Wallet Development Services', link: '/crypto-wallet', enabled: true, featured: true, gradient: 'radial-gradient(circle at 50%, rgb(222,229,255) 0.66%, rgb(214,196,255) 99.01%)' },
     { id: 'ld_icon_box_6a665a40920b9', icon: 'fa fa-solid fa-graduation-cap', title: 'School CRM', subtitle: 'School Management System', link: '/school-crm', enabled: true, isNew: false, featured: true, gradient: 'radial-gradient(circle at 50%, rgb(236,236,255) 0.66%, rgb(207,223,255) 99.01%)' },
     { id: 'ld_icon_box_6a665a409028a', icon: 'fa fa-solid fa-store', title: 'Fashion Resale Script', subtitle: 'Vinted Clone', link: '/vinted-clone', enabled: true, isNew: false, featured: false, gradient: 'radial-gradient(circle at 50%, rgb(255,234,212) 0.66%, rgb(254,221,156) 99.34%)' },
     { id: 'ld_icon_box_6a665a4090a06', icon: 'fa fa-solid fa-car-side', title: 'Car Rental Script', subtitle: 'Peer-to-Peer Car Sharing', link: '/turo-clone', enabled: true, isNew: false, featured: false, gradient: 'radial-gradient(circle at 50%, rgb(242,255,253) 0.66%, rgb(149,254,238) 98.68%)' },

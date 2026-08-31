@@ -39,12 +39,7 @@ const sitemapColumnGroups = [
 ].map((titles) => titles.map((title) => styledSitemapByTitle.get(title)).filter(Boolean))
 
 function SitemapLink({ href, label, isNew }) {
-  const content = (
-    <>
-      {label}
-      {isNew && <span className="clonescript-sitemap-newtag">New</span>}
-    </>
-  )
+  const content = label
   if (href === '#') {
     return <a href={href}>{content}</a>
   }

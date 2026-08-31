@@ -1,6 +1,5 @@
 import { Suspense, useInsertionEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
-import FlashSalePopup from './FlashSalePopup.jsx'
 import RouteFallback from './RouteFallback.jsx'
 import DecorativeBackground from './DecorativeBackground.jsx'
 import { expectPageStyles } from '../hooks/usePageStylesheets.js'
@@ -21,7 +20,6 @@ export default function MinimalLayout() {
       <Suspense fallback={<RouteFallback />}>
         <Outlet />
       </Suspense>
-      <FlashSalePopup />
     </div>
   )
 }

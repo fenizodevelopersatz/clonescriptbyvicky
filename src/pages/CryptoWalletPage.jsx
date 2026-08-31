@@ -3,7 +3,7 @@ import { useJsonLd } from '../hooks/useJsonLd.js'
 import { usePageStylesheets } from '../hooks/usePageStylesheets.js'
 import { pageStylesheets } from '../data/pageStylesheets.js'
 import {
-  walletFeatures, techStackItems, faqs, customerReviews,
+  walletFeatures, comprehensiveServices, walletBenefits, secureWalletFeatures, techStackItems, faqs, customerReviews,
 } from '../data/cryptoWallet/cryptoWalletData.js'
 
 // Structured data for this landing page (module-level = stable reference for
@@ -44,7 +44,9 @@ const cryptoStructuredData = [
 import CryptoWalletHero from '../components/cryptoWallet/CryptoWalletHero.jsx'
 import CryptoWalletStats from '../components/cryptoWallet/CryptoWalletStats.jsx'
 import CryptoWalletOverview from '../components/cryptoWallet/CryptoWalletOverview.jsx'
-import CryptoWalletLeadPopup from '../components/cryptoWallet/CryptoWalletLeadPopup.jsx'
+import CryptoWalletIndustries from '../components/cryptoWallet/CryptoWalletIndustries.jsx'
+import CryptoWalletTechStack from '../components/cryptoWallet/CryptoWalletTechStack.jsx'
+import CryptoWalletWhyChoose from '../components/cryptoWallet/CryptoWalletWhyChoose.jsx'
 import WhatIsCryptoWallet from '../components/cryptoWallet/WhatIsCryptoWallet.jsx'
 import WalletTypesShowcase from '../components/cryptoWallet/WalletTypesShowcase.jsx'
 import CryptoWalletServicePanels from '../components/cryptoWallet/CryptoWalletServicePanels.jsx'
@@ -77,6 +79,20 @@ export default function CryptoWalletPage() {
         <CryptoWalletOverview />
 
         <StandOutFeaturesGrid
+          heading="Our Comprehensive Crypto Wallet Development Services"
+          subheading="Our cryptocurrency wallet development process covers everything from custom wallet creation to advanced blockchain integration."
+          items={comprehensiveServices}
+          color="#6c3bff"
+        />
+
+        <StandOutFeaturesGrid
+          heading="Benefits of Cryptocurrency Wallet Development"
+          subheading="What a wallet built right actually gets your business."
+          items={walletBenefits}
+          color="#8b5cf6"
+        />
+
+        <StandOutFeaturesGrid
           heading="Features of Every CloneScript Wallet"
           subheading="Everything you need to manage, move, and grow digital assets, built into one connected wallet."
           items={walletFeatures}
@@ -87,9 +103,20 @@ export default function CryptoWalletPage() {
           <WhatIsCryptoWallet />
         </section>
 
+        <StandOutFeaturesGrid
+          heading="Core Features of Secure Crypto Wallet Software"
+          subheading="Secure crypto wallet software combines strong protection with a smooth, dependable experience."
+          items={secureWalletFeatures}
+          color="#e83ebc"
+        />
+
         <section className="vc_section">
           <WalletTypesShowcase />
         </section>
+
+        <CryptoWalletIndustries />
+
+        <CryptoWalletTechStack />
 
         <MoneyBackGuarantee />
 
@@ -97,14 +124,14 @@ export default function CryptoWalletPage() {
 
         <TechStackRow items={techStackItems} heading="Coins & Networks Your Wallet Can Speak" />
 
-        <FaqAccordion          
+        <CryptoWalletWhyChoose />
+
+        <FaqAccordion
           subheading="Answers to what founders and product teams ask most before starting a wallet build."
           faqs={faqs}
         />
         <TestimonialRotatorSection content={<ReviewCards reviews={customerReviews} />} />
       </div>
-
-      <CryptoWalletLeadPopup />
     </main>
   )
 }

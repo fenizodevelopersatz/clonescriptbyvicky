@@ -1,14 +1,14 @@
 {
   "summary": {
-    "generatedAt": "2026-08-31T13:36:10.610Z",
+    "generatedAt": "2026-08-31T14:42:23.305Z",
     "routesDiscovered": 30,
-    "jsxFilesScanned": 269,
+    "jsxFilesScanned": 268,
     "dataFilesScanned": 41,
     "wpContentImagesOnDisk": 546,
     "uniqueAssetsTracked": 558,
     "staticImageRefs": 143,
     "dataDrivenImageRefs": 432,
-    "dynamicUnresolvedRefs": 64,
+    "dynamicUnresolvedRefs": 63,
     "usedCount": 450,
     "unusedCount": 79,
     "protectedCount": 18,
@@ -14658,14 +14658,6 @@
       "pages": [
         "/fiverr-clone"
       ],
-      "note": "dynamic JS expression -- not statically resolvable; check the matching src/data/*.js export above"
-    },
-    {
-      "expr": "FLASH_SALE_IMAGE",
-      "alt": "Flash Sale — 50% off limited-time offer",
-      "topic": "Flash Sale Popup",
-      "sourceFile": "src/components/FlashSalePopup.jsx",
-      "pages": [],
       "note": "dynamic JS expression -- not statically resolvable; check the matching src/data/*.js export above"
     },
     {
