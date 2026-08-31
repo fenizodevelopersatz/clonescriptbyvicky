@@ -1,0 +1,30 @@
+.youtube-clone-page {
+  --youtube-top-gap: 34px;
+  --youtube-bottom-gap: 30px;
+}
+
+.youtube-clone-page__content {
+  padding-top: var(--youtube-top-gap);
+}
+
+.youtube-clone-page .vc_section:first-child {
+  margin-top: 0;
+}
+
+.youtube-clone-page .main-footer {
+  margin-top: var(--youtube-bottom-gap);
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .youtube-clone-page {
+    --youtube-top-gap: 28px;
+    --youtube-bottom-gap: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .youtube-clone-page {
+    --youtube-top-gap: 22px;
+    --youtube-bottom-gap: 20px;
+  }
+}

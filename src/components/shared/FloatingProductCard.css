@@ -1,0 +1,32 @@
+.cs-floating-card {
+  margin: 0;
+  transition: transform 260ms ease;
+}
+
+.cs-floating-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* drop-shadow rather than box-shadow: these renders are transparent PNG/WebP
+     device mockups, so a box-shadow would outline the empty bounding box. It
+     also doesn't expand the element's box, so a tilted card can't overflow its
+     grid cell. */
+  filter: drop-shadow(0 20px 30px rgba(16, 27, 72, 0.22));
+}
+
+.cs-floating-card--left { transform: rotate(-2deg); }
+.cs-floating-card--right { transform: rotate(2deg); }
+
+.cs-floating-card--left:hover,
+.cs-floating-card--right:hover {
+  transform: rotate(0deg) translateY(-6px);
+}
+
+@media (max-width: 767px) {
+  /* Columns get narrow enough here that a resting tilt reads as misalignment
+     rather than depth. */
+  .cs-floating-card--left,
+  .cs-floating-card--right {
+    transform: rotate(0deg);
+  }
+}

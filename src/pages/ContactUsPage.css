@@ -1,0 +1,21 @@
+/* .vc_custom_1726577788907 (ContactTabs.jsx) is a WPBakery-generated
+   full-bleed white card treatment: margin:-100px + padding:50px on all
+   sides, meant to let the card overflow past its column on desktop where
+   the surrounding page has room to absorb it. Below 768px that column is
+   nowhere near 200px wider than the card, so the negative margin pushes
+   the entire tabs/form block (tab labels included) off the left edge of
+   the viewport -- confirmed via getBoundingClientRect (left:-80,
+   width:505 on the wrapper, cascading to left:-30 on every input/tab
+   link inside it). body's sitewide `overflow-x:hidden` (index.css) hides
+   the resulting scrollbar but not the real symptom: form fields render
+   flush against the screen edge with almost no left padding. */
+@media (max-width: 767px) {
+  /* `body` ancestor bumps specificity above the vendored rule (both are
+     otherwise a single class + !important, so it's a coin flip on load
+     order otherwise -- confirmed the vendored contact-us-11-*.css link
+     was winning that tie via a document.styleSheets scan). */
+  body .vc_custom_1726577788907 {
+    margin: 0 !important;
+    padding: 24px 20px !important;
+  }
+}

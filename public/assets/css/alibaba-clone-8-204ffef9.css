@@ -1,0 +1,38 @@
+.iconbox-benefit{border-color: #8F60BC !important;}
+
+.sv_custom_price1 ul,.sv_custom_price2 ul,.sv_custom_price3 ul {list-style: none !important; margin: 0 !important;padding: 0 !important;display: grid !important;grid-template-rows: repeat(8, 64px) !important;}
+.sv_custom_price1 ul li,.sv_custom_price2 ul li,.sv_custom_price3 ul li {border-bottom: 1px solid #e5e5e5 !important;display: flex !important;align-items: center !important;padding: 0 10px !important;}
+.sv_custom_price1 ul li:last-child,.sv_custom_price2 ul li:last-child,.sv_custom_price3 ul li:last-child {border-bottom: none !important;}
+@media (max-width: 768px) {.sv_custom_price1 ul,.sv_custom_price2 ul,.sv_custom_price3 ul {display: block !important;}
+.sv_custom_price1 ul li,.sv_custom_price2 ul li,.sv_custom_price3 ul li {min-height: auto !important;padding: 12px 10px !important;align-items: flex-start !important;}}
+
+.premium-icon-box i{transition:all .3s ease}.premium-icon-box:hover i{transform:translateY(-5px) scale(1.15) rotate(5deg);color:#002692}
+.hover-flash-card:hover>.vc_column-inner{transform:translateY(-12px);}
+.hover-flash-card > .vc_column-inner {transition: transform .4s cubic-bezier(.25,1,.5,1);}
+
+.avatar-fix figure.avatar {left: -7px !important; top: -24px; transform: none !important;}
+
+.page-whatsapp-light > a {background: #efffe7 !important; border-radius: 40px !important; padding: 14px 20px !important; display: inline-flex !important;align-items: center; justify-content: center; gap: 10px; width: 50% !important; max-width: 320px; text-decoration: none !important; transition: all 0.3s ease;}
+
+.footer-whatsapp > a > .fa-whatsapp {background: none !important;}
+
+.page-whatsapp-light > a:hover {background: #EFFFE7 !important; color: black !important;}
+
+@media (max-width: 992px) {.page-whatsapp-light > a {width: 75% !important;}}
+
+@media (max-width: 576px) {.page-whatsapp-light > a {width: 90% !important;}}
+
+.page-whatsapp-light > a > span {font-size: 16px !important;}
+
+.orange_border{background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(90deg, #FF6950, #002692) border-box !important; border: 2px solid transparent !important; border-radius: 20px;}
+
+.wpb_single_image img {border-radius: 20px !important;}
+
+
+.hero-heading{font-size:35px;}
+
+@media (max-width:768px){
+    .hero-heading{font-size:22px;}}
+
+@media (max-width:480px){
+  .hero-heading{font-size:17px;}}

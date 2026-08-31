@@ -1,0 +1,107 @@
+/* Shared prose layout for standalone policy pages (Terms of Service, Refund
+   Policy, Privacy Policy, ...). Legal text reads better narrower than the
+   site's usual wide marketing columns, so this constrains just the text
+   block rather than reusing a full-width section. */
+.legal-page .legal-hero {
+  padding: 64px 0 24px;
+}
+
+.legal-page .legal-hero h1 {
+  font-size: 40px;
+  line-height: 1.2;
+}
+
+.legal-page .legal-updated {
+  margin-bottom: 18px;
+  color: #767676;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.legal-section {
+  padding: 8px 0 90px;
+}
+
+.legal-page .wpb_wrapper-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.legal-page h2 {
+  margin-top: 52px;
+  margin-bottom: 14px;
+  font-size: 26px;
+  line-height: 1.3;
+  scroll-margin-top: 110px;
+}
+
+.legal-page h2:first-child {
+  margin-top: 0;
+}
+
+.legal-page h3 {
+  margin-top: 26px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #101b48;
+}
+
+.policy-list {
+  margin: 0 0 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.policy-list li {
+  position: relative;
+  margin-bottom: 12px;
+  padding-left: 26px;
+  color: #333;
+  font-size: 15.5px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.policy-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--clonescript-blue, #0030b8);
+}
+
+.legal-page .legal-contact-note {
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(16, 27, 72, 0.1);
+  color: #333;
+  font-size: 15.5px;
+}
+
+@media (max-width: 767px) {
+  .legal-page .legal-hero {
+    padding: 40px 0 16px;
+  }
+
+  .legal-page .legal-hero h1 {
+    font-size: 28px;
+  }
+
+  .legal-section {
+    padding: 4px 0 64px;
+  }
+
+  .legal-page h2 {
+    margin-top: 40px;
+    font-size: 22px;
+  }
+
+  .policy-list li {
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,101 @@
+.tk-phones {
+  position: relative;
+  z-index: 1;
+  perspective: 1400px;
+  perspective-origin: 50% 45%;
+  /* The arc pushes screens toward the camera; give it room so the nearest one
+     never collides with the heading above it. */
+  padding: clamp(24px, 4vw, 56px) 0 clamp(32px, 5vw, 72px);
+  --tk-p: 0.5;
+  --tk-pc: 0;
+}
+
+.tk-phones__arc {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(4px, 1vw, 18px);
+  transform-style: preserve-3d;
+  /* Scroll-linked yaw: the shelf turns ~7deg as the section passes through the
+     viewport, which is what makes the arc read as an object rather than a
+     static fan of rotated images. */
+  transform: rotateY(calc(var(--tk-pc) * 7deg)) rotateX(calc(var(--tk-pc) * -2deg));
+  will-change: transform;
+}
+
+.tk-phones__item {
+  flex: 0 1 clamp(120px, 17vw, 208px);
+  margin: 0;
+  transform-style: preserve-3d;
+  transform:
+    rotateY(var(--tk-yaw, 0deg))
+    translate3d(0, var(--tk-drop, 0px), var(--tk-depth, 0px));
+  transition: transform 420ms var(--clonescript-ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.tk-phones__item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* These renders are transparent-background device mockups, so drop-shadow
+     (alpha-aware) rather than box-shadow, matching FloatingProductCard. */
+  filter: drop-shadow(0 26px 38px rgba(3, 24, 51, 0.28));
+  transition: filter 420ms var(--clonescript-ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+/* Hovering one screen brings it out of the arc and squares it to the camera,
+   so it can actually be looked at. */
+.tk-phones__item:hover {
+  transform: rotateY(0deg) translate3d(0, -14px, 110px);
+}
+
+.tk-phones__item:hover img {
+  filter: drop-shadow(0 34px 52px rgba(3, 24, 51, 0.36));
+}
+
+@media (hover: none) {
+  .tk-phones__item:hover {
+    transform:
+      rotateY(var(--tk-yaw, 0deg))
+      translate3d(0, var(--tk-drop, 0px), var(--tk-depth, 0px));
+  }
+}
+
+@media (max-width: 767px) {
+  .tk-phones {
+    perspective: none;
+    padding: 16px 0 24px;
+  }
+
+  .tk-phones__arc {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    transform: none;
+    will-change: auto;
+  }
+
+  .tk-phones__item {
+    transform: none;
+  }
+
+  .tk-phones__item img {
+    filter: drop-shadow(0 14px 22px rgba(3, 24, 51, 0.22));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tk-phones__arc,
+  .tk-phones__item,
+  .tk-phones__item:hover {
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+
+  .tk-phones__arc {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 18px;
+  }
+}

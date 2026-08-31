@@ -1,0 +1,41 @@
+.iconbox.iconbox-square {
+  padding: 18px 20px;
+  background: #fff;
+  border: 1px solid rgba(16, 27, 72, 0.08);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(16, 27, 72, 0.06);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.iconbox.iconbox-square:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(16, 27, 72, 0.1);
+}
+
+.iconbox.iconbox-square .iconbox-icon-container {
+  width: 56px !important;
+  height: 56px !important;
+  font-size: 24px !important;
+  border-radius: 10px !important;
+}
+
+.iconbox.iconbox-square h3 {
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+/* The column count comes in as an inline style (per-page prop), so an inline
+   style always wins the cascade over a plain class rule -- !important is
+   required here to let narrow viewports collapse it regardless of the
+   requested column count. */
+@media (max-width: 991px) {
+  .simple-icon-grid__row {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .simple-icon-grid__row {
+    grid-template-columns: 1fr !important;
+  }
+}

@@ -1,0 +1,96 @@
+/* Scoped to #blog (the section wrapping both the heading and the
+   .journal-teaser grid below it), not .journal-teaser itself -- that class
+   lives on a sibling div in a separate branch of the tree, never an
+   ancestor of these headings, so a ".journal-teaser …" selector here could
+   never have matched them in either BlogTeaser.jsx or ErpBlogTeaser.jsx. */
+#blog .ld-fancy-heading h2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  line-height: 1.1;
+}
+
+#blog .ld-fancy-heading p {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.journal-teaser__grid {
+  align-items: start;
+  gap: 34px 30px;
+}
+
+/* The vendored .col-md-4 sizes itself off its content (flex-basis: auto),
+   which doesn't reserve room for this grid's own `gap` -- three ~1/3-width
+   cards plus 2 gaps of 30px add up to more than the row's width, so the
+   third card wraps onto its own line instead of sitting beside the other
+   two. Forcing equal flex thirds (matching Bootstrap's own >=768px
+   three-up behavior) makes the browser divide the row's width for real,
+   gap included. Scoped to md+ to leave the existing mobile stacking alone. */
+@media (min-width: 768px) {
+  .journal-teaser__grid > [class*="col-"] {
+    flex: 1 1 0;
+    max-width: 100%;
+  }
+}
+
+.journal-teaser__card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.journal-teaser__media {
+  margin-bottom: 18px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #f3f5fb;
+  box-shadow: 0 12px 32px rgba(16, 27, 72, 0.08);
+}
+
+.journal-teaser__media a {
+  display: block;
+}
+
+.journal-teaser__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 740 / 500;
+  height: auto;
+  object-fit: cover;
+}
+
+.journal-teaser__header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.journal-teaser__header .entry-title,
+.journal-teaser__header .liquid-lp-title {
+  margin-bottom: 0;
+}
+
+.journal-teaser__header .liquid-lp-date {
+  margin-top: 0;
+}
+
+@media (max-width: 767px) {
+  .journal-teaser__grid {
+    gap: 24px;
+  }
+}
+
+/* Kept single-line (nowrap, set above) at every width instead of wrapping on
+   mobile -- the subtitle's natural width already fits its column at 375px+
+   (346px content in a 365px column), but narrower phones (~320-360px) need
+   a smaller font to avoid overflowing their column at a fixed 16px. */
+@media (max-width: 380px) {
+  #blog .ld-fancy-heading p {
+    font-size: 13px !important;
+  }
+}

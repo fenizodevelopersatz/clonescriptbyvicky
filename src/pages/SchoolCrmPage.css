@@ -1,0 +1,99 @@
+/* SchoolCrmPage has no original WPBakery/HTML export to reverse-engineer exact per-section
+   spacing from (it's a brand-new page built for the React rebuild) — unlike sibling pages
+   (e.g. VintedClonePage.css), which hardcode bespoke pixel heights matched to their original
+   HTML. Without that source of truth, this applies the design system's own generic vertical
+   rhythm (--clonescript-section-y / --clonescript-section-y-compact, from CloneScriptDesignSystem.css)
+   uniformly to every top-level section instead of fabricating fake "original" measurements. */
+/* !important is required here: the base litespeed bundle has two same-specificity (0,3,0)
+   rules that both match ".vc_section.vc_section-has-fill + .vc_section" (one sets
+   padding-top:35px, another sets padding-top:0 — a pre-existing contradiction in the legacy
+   CSS itself, resolved only by source order), both of which otherwise beat this rule's
+   (0,1,1) specificity regardless of which of the two wins their own tie. */
+.schoolcrm-motion-page > section {
+  padding-top: var(--clonescript-section-y-compact) !important;
+  padding-bottom: var(--clonescript-section-y-compact) !important;
+}
+
+.schoolcrm-motion-page > section:first-child {
+  padding-top: var(--clonescript-section-y-compact) !important;
+  padding-bottom: var(--clonescript-section-y) !important;
+}
+
+@media (min-width: 992px) {
+  .schoolcrm-motion-page > section {
+    padding-top: var(--clonescript-section-y) !important;
+    padding-bottom: var(--clonescript-section-y-compact) !important;
+  }
+
+  .schoolcrm-motion-page > section:first-child {
+    padding-top: var(--clonescript-section-y) !important;
+    padding-bottom: var(--clonescript-section-y) !important;
+  }
+}
+
+/* Pricing (#prices, 14th section) already gets a correct 100px bottom padding from an
+   existing ID-specific rule elsewhere -- only its missing top padding needed adding, so the
+   blanket rule above must not touch bottom for this one section. */
+.schoolcrm-motion-page > section:nth-child(14) {
+  padding-bottom: 100px !important;
+}
+
+/* BlogTeaser (last section) already has correct 70px/90px padding from its own
+   vc_custom_1540648603831 rule -- exclude it from the blanket rhythm entirely. */
+.schoolcrm-motion-page > section:last-child {
+  padding-top: 70px !important;
+  padding-bottom: 90px !important;
+}
+
+/* Swirling pink/blue ribbon accents behind the PDF download CTA -- CSS-only
+   (elongated blurred gradient bands, not SVG) so PdfDownloadCta itself, a
+   shared component used on other pages, stays untouched and no extra DOM
+   wrapper disturbs the > section:nth-child spacing rules above. */
+.schoolcrm-motion-page .clonescript-pdf-cta {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.schoolcrm-motion-page .clonescript-pdf-cta::before,
+.schoolcrm-motion-page .clonescript-pdf-cta::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 999px;
+  filter: blur(26px);
+}
+
+.schoolcrm-motion-page .clonescript-pdf-cta::before {
+  top: -55%;
+  left: -15%;
+  width: 140%;
+  height: 90px;
+  background: linear-gradient(90deg, #e72ad4, #7135e8 55%, #2457f5);
+  transform: rotate(-12deg);
+  opacity: 0.4;
+}
+
+.schoolcrm-motion-page .clonescript-pdf-cta::after {
+  bottom: -50%;
+  right: -15%;
+  width: 130%;
+  height: 70px;
+  background: linear-gradient(90deg, #2457f5, #e72ad4 60%, #ff8ad8);
+  transform: rotate(10deg);
+  opacity: 0.35;
+}
+
+.schoolcrm-motion-page .clonescript-pdf-cta .clonescript-pdf-cta__panel {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 767px) {
+  .schoolcrm-motion-page .clonescript-pdf-cta::before,
+  .schoolcrm-motion-page .clonescript-pdf-cta::after {
+    height: 50px;
+    filter: blur(18px);
+  }
+}

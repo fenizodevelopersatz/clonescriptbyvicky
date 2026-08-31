@@ -1,0 +1,1 @@
+function testCSSVariables(){var e="rgb(255, 198, 0)",o=document.createElement("span");o.style.setProperty("--color",e),o.style.setProperty("background","var(--color)"),document.body.appendChild(o);var r=getComputedStyle(o).backgroundColor===e;return document.body.removeChild(o),r}

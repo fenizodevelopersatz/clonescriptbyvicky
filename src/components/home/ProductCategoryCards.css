@@ -1,0 +1,117 @@
+.cs-category-cards {
+  padding-top: var(--clonescript-compact-space, 48px);
+}
+
+.cs-category-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+  margin-top: 40px;
+}
+
+.cs-category-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--clonescript-radius-md, 18px);
+  background: var(--clonescript-surface, #fff);
+  border: 1px solid var(--clonescript-line, #dfe4f2);
+  box-shadow: var(--clonescript-shadow-sm, 0 8px 24px rgb(16 27 72 / 8%));
+  text-decoration: none;
+  color: inherit;
+  transition: transform 220ms var(--clonescript-ease, ease), box-shadow 220ms var(--clonescript-ease, ease), border-color 220ms ease;
+}
+
+/* Entrance uses `animation` (independent of the hover `transition` above)
+   so a per-card animation-delay never leaks into hover responsiveness. */
+.cs-category-cards__grid:not([data-in-view='true']) .cs-category-card {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.cs-category-card--reveal {
+  animation: cs-fade-up-in 0.7s var(--clonescript-ease) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-category-cards__grid:not([data-in-view='true']) .cs-category-card {
+    opacity: 1;
+    transform: none;
+  }
+
+  .cs-category-card--reveal {
+    animation: none;
+  }
+}
+
+.cs-category-card:hover,
+.cs-category-card:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -16px rgba(16, 27, 72, 0.22);
+  border-color: rgba(67, 56, 240, 0.3);
+}
+
+.cs-category-card__media {
+  display: block;
+  aspect-ratio: 16 / 11;
+  background: var(--clonescript-surface-soft, #f5f7ff);
+  overflow: hidden;
+}
+
+.cs-category-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.cs-category-card__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px 20px;
+  border-top: 1px solid var(--clonescript-line, #dfe4f2);
+}
+
+.cs-category-card__title {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--clonescript-ink, #101b48);
+  line-height: 1.35;
+}
+
+.cs-category-card__cta {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--clonescript-blue, #0038c9);
+  white-space: nowrap;
+}
+
+.cs-category-card__cta i {
+  transition: transform 200ms ease;
+}
+
+.cs-category-card:hover .cs-category-card__cta i {
+  transform: translateX(3px);
+}
+
+@media (max-width: 767px) {
+  .cs-category-cards__grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin-top: 28px;
+  }
+
+  .cs-category-card__body {
+    padding: 14px 16px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

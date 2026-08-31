@@ -1,0 +1,92 @@
+.clonescript-flash-popup {
+  position: fixed;
+  right: 10px;
+  bottom: 90px;
+  z-index: 1999999999;
+  width: 250px;
+  max-width: calc(100vw - 20px);
+  pointer-events: none;
+  animation: clonescript-flash-popup-enter 350ms ease-out both;
+}
+
+.clonescript-flash-popup__card {
+  position: relative;
+  overflow: visible;
+  padding-bottom: 15px;
+  border-radius: 0 0 17px 17px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgb(23 31 68 / 22%);
+  pointer-events: auto;
+}
+
+.clonescript-flash-popup__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.clonescript-flash-popup__close {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  position: absolute;
+  top: -11px;
+  right: -11px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #e3262e;
+  color: #fff;
+  font: 400 25px/1 Arial, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 3px 9px rgb(0 0 0 / 22%);
+}
+
+.clonescript-flash-popup__close:hover,
+.clonescript-flash-popup__close:focus-visible {
+  background: #bd1520;
+  transform: scale(1.06);
+}
+
+.clonescript-flash-popup__close:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+@keyframes clonescript-flash-popup-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(calc(100% + 10px), 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 767px) {
+  .clonescript-flash-popup {
+    width: 112px;
+  }
+
+  .clonescript-flash-popup__card {
+    padding-bottom: 8px;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .clonescript-flash-popup__close {
+    width: 25px;
+    height: 25px;
+    top: -8px;
+    right: -8px;
+    font-size: 19px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clonescript-flash-popup {
+    animation: none;
+  }
+}

@@ -1,0 +1,1 @@
+(function(){if(!testCSSVariables()){var script=document.createElement("script"),body=document.querySelector("body");script.onreadystatechange=function(){if(this.readyState=='complete'||this.readyState=='loaded'){cssVars()}};script.onload=function(){cssVars()};script.src="assets/vendors/css-vars-ponyfill.min.js",body.insertBefore(script,body.lastChild)}}())

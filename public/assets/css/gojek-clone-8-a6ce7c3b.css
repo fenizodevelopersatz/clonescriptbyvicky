@@ -1,0 +1,36 @@
+.custom-tab-mshop >ul >li >a {
+    padding: 7px 14px 7px 14px !important;
+    align-items: center !important;
+}
+.custom-tab-mshop >ul >li {
+    width: 70% !important;
+}
+.custom-tab-mshop >ul >li {
+    margin: 5px 0px !important;
+    box-shadow: unset !important;
+    border: 2px solid #101B48 !important;
+}
+@media screen and (max-width: 1272px) {
+    #fixed-menu ul {
+        flex-flow: unset !important;
+        justify-content: start !important;
+        overflow-x: auto;
+        scrollbar-color: #101b48 #ffffff00;
+        width: 100%;
+        display:flex;
+        background: #fffffff;
+    }
+}
+@media screen and (max-width: 1272px) {
+     #fixed-menu >.inline-nav>li {
+        display: inline-block;
+        margin: 0px 5px !important;
+        min-width: 57% !important;
+    }
+    #fixed-menu{
+    padding:1em;
+    }
+}
+#fixed-menu ul, #fixed-menu2 ul {
+    background: #ffffff;
+}

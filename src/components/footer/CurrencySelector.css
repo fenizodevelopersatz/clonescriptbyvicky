@@ -1,0 +1,101 @@
+.footer-currency-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  border: 1px solid #e5e8f0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(16 27 72 / 8%);
+  padding: 6px;
+  margin-bottom: 20px;
+}
+
+.footer-currency-selector__option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 150ms ease;
+}
+
+.footer-currency-selector__option:hover {
+  background: #f5f7ff;
+}
+
+.footer-currency-selector__option.is-selected {
+  background: #eef2fb;
+}
+
+/* Drawn with CSS instead of Unicode regional-indicator emoji (🇺🇸/🇮🇳) --
+   those fail to render as flags on a lot of Windows browser/font
+   combinations, showing as blank boxes or literal "US"/"IN" text instead. */
+.footer-currency-selector__flag {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  width: 24px;
+  height: 17px;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(16, 27, 72, 0.14);
+}
+
+.footer-currency-selector__flag--us {
+  background: repeating-linear-gradient(
+    to bottom,
+    #b22234 0,
+    #b22234 1.3077px,
+    #fff 1.3077px,
+    #fff 2.6154px
+  );
+}
+
+.footer-currency-selector__flag--us::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 53.8%;
+  background: #3c3b6e;
+}
+
+.footer-currency-selector__flag--in {
+  background: linear-gradient(180deg, #ff9933 0 33.3%, #fff 33.3% 66.6%, #128807 66.6% 100%);
+}
+
+.footer-currency-selector__flag--in::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border: 1px solid #000088;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.footer-currency-selector__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.footer-currency-selector__code {
+  font-weight: 700;
+  font-size: 14px;
+  color: #101b48;
+}
+
+.footer-currency-selector__label {
+  font-size: 12px;
+  color: #8a8a8a;
+}

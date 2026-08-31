@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /resource-usage
+
+Sitemap: https://theclonescript.com/sitemap.xml

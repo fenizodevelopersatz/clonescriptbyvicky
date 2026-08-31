@@ -1,0 +1,72 @@
+/* The original theme's ".vc_col-sm-1/5" is a float-based "column" with no matching-height
+   guarantee. When items had slightly different rendered heights (icon glyph vs <img>), floats
+   wrapped into visually wrong positions instead of a clean grid — a card would land at the far
+   right of a new row instead of the left, and later items appeared out of source order. Grid
+   sidesteps both problems: equal-height rows and always-correct source order regardless of each
+   card's content. Card backgrounds replicate the original's per-item tint, driven by JS
+   (data-plugin-options color) that isn't ported here — same fix pattern as the mega-menu hover. */
+.tech-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin: 0;
+}
+
+.tech-stack-grid__cell {
+  height: 100%;
+}
+
+.tech-stack-grid__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  height: 100%;
+  min-height: 150px;
+  padding: 24px 16px;
+  border: 1px solid color-mix(in srgb, var(--tech-color) 35%, transparent);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--tech-color) 15%, white);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), 0 4px 14px rgba(16, 27, 72, 0.05);
+  text-align: center;
+}
+
+.tech-stack-grid__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+}
+
+.tech-stack-grid__icon i {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.tech-stack-grid__icon img {
+  max-width: 60px;
+  max-height: 44px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.tech-stack-grid__card h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #101b48;
+}
+
+@media (max-width: 991px) {
+  .tech-stack-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .tech-stack-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

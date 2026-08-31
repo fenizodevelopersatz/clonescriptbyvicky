@@ -1,0 +1,1 @@
+var kk_star_ratings={"action":"kk-star-ratings","endpoint":"wp-admin/admin-ajax.php","nonce":"966a04e41c"}

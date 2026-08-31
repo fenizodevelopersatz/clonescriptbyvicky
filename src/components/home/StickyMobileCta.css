@@ -1,0 +1,47 @@
+.cs-sticky-cta {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .cs-sticky-cta {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--clonescript-line, #dfe4f2);
+    box-shadow: 0 -8px 24px rgba(16, 27, 72, 0.1);
+  }
+
+  .cs-sticky-cta__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 13px 16px;
+    border-radius: 999px;
+    background: var(--clonescript-btn-primary, #4f46e5);
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    box-shadow: 0 12px 24px -8px rgba(18, 57, 255, 0.45);
+  }
+
+  /* Keep the WhatsApp bubble and the page's last content clear of this bar
+     -- scoped to the home route only, since that's the only page that
+     renders StickyMobileCta. */
+  .clonescript-route-home .float_social {
+    bottom: 78px;
+  }
+
+  .clonescript-route-home main.content {
+    padding-bottom: 76px;
+  }
+}

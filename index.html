@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="google-site-verification" content="Wcgjcs9RTiPT8ytFxkqlH8JDtFPr95hLqY6N5V5vVP0" />
+
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "y9aq9llu2z");
+    </script>
+
+        <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MDBZ56X2');</script>
+    <!-- End Google Tag Manager -->
+
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/wp-content/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <style>
+      /* Pre-React loading indicator: same design as src/components/CloneLoader.jsx
+         (used by RouteFallback.jsx for lazy route chunks), reimplemented here as
+         plain HTML/CSS/SVG since this must render before React or any JS bundle has
+         loaded. Prefixed cs-shell-* (distinct from CloneLoader's cl-loader-*
+         classes) to keep the two implementations independent -- this element is
+         never touched by React, only ever shown/hidden via the body class below.
+         Asset-free by design (inline SVG mark, no <img>) so it never waits on a
+         network request before it can render.
+
+         Opaque background is deliberate: this must be the ONLY thing on screen
+         while anything is still loading (JS bundle, the first route's lazy
+         chunk, that page's own CSS + fonts) -- not the header/footer with an
+         invisible content gap behind it. See the closing <script> below for how
+         its hide is timed to the same "fully ready" signal that reveals
+         .content, instead of React's first paint. */
+      #cs-shell-loader {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 2147483646;
+        background: #fff;
+        align-items: center;
+        justify-content: center;
+      }
+
+      body.clonescript-page-styles-loading #cs-shell-loader,
+      #cs-shell-loader.cs-shell-loader--exiting {
+        display: flex;
+      }
+
+      /* Exit transition: the core zooms outward past the edges of the
+         screen while everything fades, reading as the brand color opening
+         up into the page rather than the loader just vanishing. Triggered
+         by adding this class (see the closing <script> below) BEFORE the
+         loader is actually hidden with display:none, so the animation has
+         time to play -- the body class this whole shell keys off of is
+         already gone by that point, hence needing the class-based display
+         override above to keep it painted throughout. */
+      .cs-shell-loader--exiting {
+        animation: cs-shell-exit-fade 0.7s ease forwards;
+        pointer-events: none;
+      }
+
+      .cs-shell-loader--exiting .cs-shell-loader-inner {
+        animation: cs-shell-exit-zoom 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      @keyframes cs-shell-exit-zoom {
+        0%   { transform: scale(1); opacity: 1; }
+        45%  { transform: scale(2.6); opacity: 1; }
+        100% { transform: scale(7); opacity: 0; }
+      }
+
+      @keyframes cs-shell-exit-fade {
+        0%, 55% { opacity: 1; }
+        100%    { opacity: 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .cs-shell-loader--exiting,
+        .cs-shell-loader--exiting .cs-shell-loader-inner {
+          animation: cs-shell-exit-fade-reduced 0.3s ease forwards;
+        }
+
+        @keyframes cs-shell-exit-fade-reduced {
+          from { opacity: 1; }
+          to   { opacity: 0; }
+        }
+      }
+
+      .cs-shell-loader-inner {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 22px;
+        animation: cs-shell-enter 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      }
+
+      @keyframes cs-shell-enter {
+        from { opacity: 0; transform: scale(0.82); }
+        to   { opacity: 1; transform: scale(1); }
+      }
+
+      .cs-shell-glow {
+        position: absolute;
+        top: 44%;
+        left: 50%;
+        width: 240px;
+        height: 240px;
+        transform: translate(-50%, -50%);
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.38), rgba(232, 62, 188, 0.2) 45%, transparent 72%);
+        border-radius: 50%;
+        animation: cs-shell-breathe 3s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      @keyframes cs-shell-breathe {
+        0%, 100% { transform: translate(-50%, -50%) scale(0.88); opacity: 0.55; }
+        50%      { transform: translate(-50%, -50%) scale(1.18); opacity: 1; }
+      }
+
+      .cs-shell-ring-wrap {
+        position: relative;
+        width: 112px;
+        height: 112px;
+        z-index: 1;
+      }
+
+      .cs-shell-sparks {
+        position: absolute;
+        inset: -16px;
+        animation: cs-shell-spin 2.8s linear infinite;
+      }
+
+      .cs-shell-spark {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 6px;
+        height: 6px;
+        margin-left: -3px;
+        border-radius: 50%;
+        background: linear-gradient(160deg, #8b5cf6, #e83ebc);
+        box-shadow: 0 0 6px rgba(139, 92, 246, 0.7);
+        animation: cs-shell-spark-fade 2.8s ease-in-out infinite;
+      }
+
+      .cs-shell-spark--2 { top: auto; bottom: 6%; left: auto; right: 2%; animation-delay: -0.93s; }
+      .cs-shell-spark--3 { top: auto; bottom: 6%; left: 2%; animation-delay: -1.86s; }
+
+      @keyframes cs-shell-spark-fade {
+        0%, 100% { opacity: 0; transform: scale(0.3); }
+        50%      { opacity: 1; transform: scale(1); }
+      }
+
+      .cs-shell-ring {
+        position: absolute;
+        border-radius: 50%;
+      }
+
+      .cs-shell-ring--outer {
+        inset: 0;
+        background: conic-gradient(from 0deg, rgba(139, 92, 246, 0) 0deg, #8b5cf6 100deg, #e83ebc 220deg, rgba(232, 62, 188, 0) 320deg);
+        -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 5px));
+        mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 5px));
+        animation: cs-shell-spin 1.6s linear infinite;
+      }
+
+      .cs-shell-ring--inner {
+        inset: 15px;
+        opacity: 0.85;
+        background: conic-gradient(from 180deg, rgba(255, 159, 64, 0) 0deg, #e83ebc 140deg, #8b5cf6 260deg, rgba(139, 92, 246, 0) 340deg);
+        -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 4px));
+        mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 4px));
+        animation: cs-shell-spin-rev 2.3s linear infinite;
+      }
+
+      @keyframes cs-shell-spin { to { transform: rotate(360deg); } }
+      @keyframes cs-shell-spin-rev { to { transform: rotate(-360deg); } }
+
+      .cs-shell-core {
+        position: absolute;
+        inset: 28px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 34% 30%, #a78bfa, #8b5cf6 45%, #e83ebc 100%);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: cs-shell-pulse 1.8s ease-in-out infinite;
+      }
+
+      .cs-shell-mark {
+        width: 58%;
+        height: 58%;
+        display: block;
+      }
+
+      @keyframes cs-shell-pulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0 1px rgba(16, 27, 72, 0.04), 0 6px 20px -4px rgba(139, 92, 246, 0.45); }
+        50%      { transform: scale(1.07); box-shadow: 0 0 0 1px rgba(16, 27, 72, 0.04), 0 10px 28px -4px rgba(232, 62, 188, 0.55); }
+      }
+
+      .cs-shell-loader-label {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: baseline;
+        gap: 3px;
+        font: 600 14.5px/1.4 system-ui, -apple-system, sans-serif;
+      }
+
+      .cs-shell-label-text {
+        background: linear-gradient(90deg, #101b48 0%, #101b48 20%, #8b5cf6 40%, #e83ebc 55%, #101b48 75%, #101b48 100%);
+        background-size: 220% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: cs-shell-shimmer 2.6s linear infinite;
+      }
+
+      @keyframes cs-shell-shimmer { to { background-position: -220% center; } }
+
+      .cs-shell-dots { display: inline-flex; gap: 3px; margin-left: 1px; }
+
+      .cs-shell-dots span {
+        display: inline-block;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #8b5cf6;
+        animation: cs-shell-dot-fade 1.4s ease-in-out infinite;
+      }
+
+      .cs-shell-dots span:nth-child(2) { animation-delay: 0.2s; background: #c85ad0; }
+      .cs-shell-dots span:nth-child(3) { animation-delay: 0.4s; background: #e83ebc; }
+
+      @keyframes cs-shell-dot-fade {
+        0%, 80%, 100% { opacity: 0.2; transform: translateY(0); }
+        40%           { opacity: 1; transform: translateY(-2px); }
+      }
+
+      @media (max-width: 767px) {
+        .cs-shell-ring-wrap { width: 92px; height: 92px; }
+        .cs-shell-ring--inner { inset: 12px; }
+        .cs-shell-core { inset: 23px; }
+        .cs-shell-glow { width: 190px; height: 190px; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .cs-shell-loader-inner,
+        .cs-shell-glow,
+        .cs-shell-ring--outer,
+        .cs-shell-ring--inner,
+        .cs-shell-core,
+        .cs-shell-sparks,
+        .cs-shell-spark,
+        .cs-shell-label-text,
+        .cs-shell-dots span {
+          animation: none !important;
+        }
+      }
+    </style>
+    <title>CloneScript | Web, Mobile App &amp; Software Development Company</title>
+    <meta name="description" content="CloneScript builds websites, mobile apps, SaaS products and ready-to-launch clone scripts for growing businesses. Get in touch to start your project." />
+    <link rel="canonical" href="https://theclonescript.com/" />
+
+    <!-- OG/Twitter defaults for first paint — src/hooks/useSeo.js overwrites title/description/
+         canonical/url per route once React mounts, since this is a client-routed SPA. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CloneScript" />
+    <meta property="og:title" content="CloneScript | Web, Mobile App &amp; Software Development Company" />
+    <meta property="og:description" content="CloneScript builds websites, mobile apps, SaaS products and ready-to-launch clone scripts for growing businesses." />
+    <meta property="og:url" content="https://theclonescript.com/" />
+    <meta property="og:image" content="https://theclonescript.com/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CloneScript | Web, Mobile App &amp; Software Development Company" />
+    <meta name="twitter:description" content="CloneScript builds websites, mobile apps, SaaS products and ready-to-launch clone scripts for growing businesses." />
+
+    <!-- email/telephone/address/sameAs are intentionally omitted until real
+         business details are supplied -- placeholder values (example.com,
+         "123 Example Street") were removed because inaccurate NAP data in
+         structured data hurts local SEO trust signals more than omitting it. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "CloneScript",
+        "url": "https://theclonescript.com/",
+        "logo": "https://theclonescript.com/logo.png"
+      }
+    </script>
+
+    <!-- Truly global CSS only — verified byte-identical across index.html/contact-us.html/schedule-free-demo.html.
+         Per-page bundles (litespeed combined CSS + the page's own -8-/-11-/-12- files) are loaded
+         dynamically per route via usePageStylesheets, since those differ page to page.
+
+         shared-eacbef1f.css and shared-713aa8f4.css are ALSO byte-identical across pages, but in the
+         original site they load AFTER the per-page litespeed-combined bundle (position varies, but always
+         after it) — shared-713aa8f4.css carries the site's real Poppins typography override, cascading
+         over the theme's Roboto defaults that live in the litespeed-combined bundle. They must stay out of
+         this static head and load at the END of each page's dynamic stylesheet list (see pageStylesheets.js)
+         or the theme default (Roboto) wins instead of the intended Poppins everywhere. -->
+    <link rel="stylesheet" href="/assets/css/shared-2316490e.css" />
+    <link rel="stylesheet" href="/assets/css/shared-174a7427.css" />
+    <link rel="stylesheet" href="/assets/css/shared-2477cd65.css" />
+    <link rel="stylesheet" href="/assets/css/shared-9d10c24f.css" />
+    <link rel="stylesheet" href="/assets/css/shared-09542fd1.css" />
+    <link rel="stylesheet" href="/assets/css/shared-a72d889e.css" />
+    <link rel="stylesheet" href="/assets/css/shared-1c764d5c.css" />
+    <link rel="stylesheet" href="/assets/vendor/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/fonts/google-fonts.css" />
+  </head>
+  <body class="home wp-singular page-template-default page wp-embed-responsive wp-theme-ave theme-ave woocommerce-no-js site-wide-layout wpb-js-composer js-comp-ver-8.7.2 vc_responsive currency-usd clonescript-page-styles-loading" dir="ltr">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MDBZ56X2"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="cs-shell-loader" aria-hidden="true">
+      <div class="cs-shell-loader-inner">
+        <div class="cs-shell-glow"></div>
+        <div class="cs-shell-ring-wrap">
+          <div class="cs-shell-sparks">
+            <span class="cs-shell-spark cs-shell-spark--1"></span>
+            <span class="cs-shell-spark cs-shell-spark--2"></span>
+            <span class="cs-shell-spark cs-shell-spark--3"></span>
+          </div>
+          <div class="cs-shell-ring cs-shell-ring--outer"></div>
+          <div class="cs-shell-ring cs-shell-ring--inner"></div>
+          <div class="cs-shell-core">
+            <!-- Flat vector take on the favicon mark (C wrapping "</>"), not the
+                 raster PNG -- keeps this shell asset-free so it never waits on
+                 an image request before it can render. -->
+            <svg class="cs-shell-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <path d="M68,22 A32,32 0 1 0 68,78" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" />
+              <path d="M44,38 L34,50 L44,62" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
+              <path d="M56,38 L66,50 L56,62" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
+              <path d="M53,34 L47,66" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.9" />
+            </svg>
+          </div>
+        </div>
+        <div class="cs-shell-loader-label">
+          <span class="cs-shell-label-text">Cloning your experience</span>
+          <span class="cs-shell-dots"><span></span><span></span><span></span></span>
+        </div>
+      </div>
+    </div>
+    <div id="root"></div>
+    <script>
+      // The rocket above must stay up as the ONLY thing on screen for the
+      // *entire* first load -- not just until React mounts something. React
+      // committing its first paint only means the JS bundle executed; it says
+      // nothing about whether the matched route's lazy chunk has arrived or
+      // whether that page's own CSS + fonts (usePageStylesheets.js) have
+      // loaded. Hiding this early used to leave a gap where the header/footer
+      // were visible around a blank, invisible .content placeholder with no
+      // rocket at all until those finished.
+      //
+      // usePageStylesheets.js already tracks exactly that "is anything still
+      // loading" state via the `clonescript-page-styles-loading` body class --
+      // the same class this file sets by default below, and the same class
+      // whose removal is what reveals each page's .content. So this just
+      // waits for that class to be removed for the first time, then hides the
+      // shell rocket for good, so the CSS rule above and this script always
+      // agree on when it's safe to reveal what's underneath.
+      //
+      // Deliberately one-shot: later in-app route changes re-add this class
+      // (see Layout.jsx/expectPageStyles) so the page can be re-hidden while
+      // its new stylesheet loads, but that transition already has its own
+      // lighter treatment (.content fades in once ready) -- it should not
+      // bring back a full-screen loader every time.
+      //
+      // Two timing guarantees on top of the base "wait for loading to end"
+      // logic, both requested so the loader reads as an intentional moment
+      // instead of a flash: MIN_VISIBLE_MS holds it on screen a little even
+      // when the page loads instantly (otherwise a fast connection never
+      // sees the animation at all), then EXIT_MS is how long the zoom-out
+      // reveal (see .cs-shell-loader--exiting above) gets to play before the
+      // element is actually removed with display:none.
+      (function () {
+        var loader = document.getElementById('cs-shell-loader')
+        if (!loader) return
+        var MIN_VISIBLE_MS = 600
+        var EXIT_MS = 700
+        var shownAt = performance.now()
+        function hide() { loader.style.display = 'none' }
+        function startExit() {
+          loader.classList.add('cs-shell-loader--exiting')
+          window.setTimeout(hide, EXIT_MS)
+        }
+        function stillLoading() { return document.body.classList.contains('clonescript-page-styles-loading') }
+        if (!stillLoading()) { hide(); return }
+        new MutationObserver(function (_, observer) {
+          if (stillLoading()) return
+          observer.disconnect()
+          var wait = Math.max(0, MIN_VISIBLE_MS - (performance.now() - shownAt))
+          window.setTimeout(startExit, wait)
+        }).observe(document.body, { attributes: true, attributeFilter: ['class'] })
+      })()
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

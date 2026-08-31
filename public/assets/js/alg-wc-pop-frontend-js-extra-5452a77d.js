@@ -1,0 +1,1 @@
+var alg_wc_pop_data_object={"force_decimals":"","force_decimal_width":"2"}

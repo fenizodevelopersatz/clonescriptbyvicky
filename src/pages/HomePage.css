@@ -1,0 +1,697 @@
+.wpb-content-wrapper > .vc_section,
+.wpb-content-wrapper > .vc_row,
+.wpb-content-wrapper > .vc_section > .vc_row,
+.clonescript-process-section > .vc_row,
+.clonescript-services-section > .vc_row,
+.clonescript-ready-made > .vc_row,
+.main-footer > .vc_section,
+.main-footer > .vc_section > .vc_row,
+.main-footer .ld-container > .ld-row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+#root:has(.clonescript-homepage) {
+  --clonescript-section-space: clamp(82px, 8vw, 112px);
+  --clonescript-panel-space: clamp(56px, 5vw, 72px);
+  --clonescript-compact-space: clamp(40px, 4vw, 56px);
+  --clonescript-intro-space: clamp(56px, 6vw, 84px);
+  --clonescript-showcase-gap: 32px;
+  --clonescript-contact-bottom: 32px;
+  --clonescript-footer-heading-space: 28px;
+}
+
+#root:has(.clonescript-homepage) .mainbar-row {
+  min-height: 75px;
+}
+
+.clonescript-intro-section {
+  padding-bottom: var(--clonescript-panel-space);
+}
+
+.clonescript-hero {
+  margin-top: 44px;
+  margin-bottom: var(--clonescript-section-space);
+}
+
+.clonescript-why-section {
+  padding-bottom: var(--clonescript-panel-space);
+}
+
+.clonescript-why-section > .clonescript-section-intro {
+  padding-top: var(--clonescript-intro-space);
+}
+
+.clonescript-milestones-section {
+  padding-top: var(--clonescript-section-space) !important;
+}
+
+/* Stats now sit right below Hero, which already contributes its own
+   margin-bottom spacer -- drop this section's own top padding so the two
+   don't stack into a double gap. */
+.clonescript-milestones-section--after-hero {
+  padding-top: 0 !important;
+}
+
+.clonescript-showcase-section {
+  padding-top: var(--clonescript-panel-space) !important;
+  padding-bottom: var(--clonescript-panel-space) !important;
+}
+
+.clonescript-showcase-content > .wpb_wrapper-inner {
+  position: relative;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--clonescript-showcase-gap);
+}
+
+.clonescript-showcase-content .vc_btn3-container,
+.clonescript-showcase-content .wpb_single_image,
+.clonescript-showcase-content .ld-fancy-heading {
+  align-self: center;
+}
+
+.clonescript-connect-section .iconbox-icon-container {
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.clonescript-connect-section .vc_inner > .wpb_column:nth-child(1) .iconbox-icon-container {
+  background-color: #ff3c3c !important;
+}
+
+.clonescript-connect-section .vc_inner > .wpb_column:nth-child(2) .iconbox-icon-container {
+  background-color: #1da400 !important;
+}
+
+.clonescript-connect-section .vc_inner > .wpb_column:nth-child(-n + 2) .iconbox {
+  margin-bottom: 10px;
+}
+
+.clonescript-services-section {
+  padding-top: var(--clonescript-compact-space);
+  padding-bottom: var(--clonescript-panel-space);
+}
+
+.clonescript-services-section .iconbox-icon-container {
+  width: 36px !important;
+  height: 40px !important;
+  color: #006fff !important;
+}
+
+.clonescript-service-card {
+  padding: 22px 24px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid var(--clonescript-line, #dfe4f2);
+}
+
+.clonescript-service-card:hover,
+.clonescript-service-card:focus-within {
+  border-color: rgba(139, 92, 246, 0.35);
+}
+
+.clonescript-service-card__icon {
+  transition: transform 0.35s var(--clonescript-ease);
+}
+
+.clonescript-service-card:hover .clonescript-service-card__icon {
+  transform: scale(1.15) rotate(-6deg);
+}
+
+.clonescript-service-desc {
+  margin: 6px 0 0;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.clonescript-process-section .iconbox-icon-container {
+  width: 60px !important;
+  height: 60px !important;
+  background-color: #fff !important;
+  color: #333 !important;
+}
+
+/* ---- Development-process steps: entrance + line draw-in + hover ----
+   All rules are scoped under .clonescript-process-section so they out-
+   specify the theme's own .iconbox / .iconbox-icon-container transitions
+   (which otherwise clobber the entrance transition on these elements). */
+
+/* Each step fades/rises in, staggered via the inline --cs-step-delay. */
+.clonescript-process-section .cs-proc-step {
+  transition: opacity 0.7s var(--clonescript-ease), transform 0.7s var(--clonescript-ease);
+  transition-delay: var(--cs-step-delay, 0s);
+}
+
+.clonescript-process-section .cs-proc-step[data-in-view='false'] {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* The connecting line (theme's .iconbox-icon-wrap:after):
+   - draws down from the circle on reveal (scaleY, --cs-step-delay in sync)
+   - ALSO runs an always-on brand-coloured pulse that flows top->bottom; the
+     per-step negative --cs-line-delay (offset by the global 0-5 index) makes
+     the glow read as one continuous 1 -> 6 wave down the column, no hover
+     needed. The line itself is mostly the theme grey, with a soft violet->
+     pink band travelling through it. */
+.clonescript-process-section .cs-proc-step .iconbox-icon-wrap:after {
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    #e9e9e9 0%,
+    #e9e9e9 38%,
+    #8b5cf6 47%,
+    #e83ebc 53%,
+    #e9e9e9 62%,
+    #e9e9e9 100%
+  );
+  background-size: 100% 240%;
+  transform-origin: top center;
+  transition: transform 0.6s var(--clonescript-ease);
+  transition-delay: var(--cs-step-delay, 0s);
+  animation: cs-line-flow 2.4s linear infinite;
+  animation-delay: var(--cs-line-delay, 0s);
+}
+
+@keyframes cs-line-flow {
+  0%   { background-position: 0 100%; }
+  100% { background-position: 0 -140%; }
+}
+
+.clonescript-process-section .cs-proc-step[data-in-view='false'] .iconbox-icon-wrap:after {
+  transform: scaleY(0);
+}
+
+/* Neat, decent hover: circle fills with the brand gradient and lifts, the
+   number turns white, the heading picks up the brand colour, and the line
+   segment tints. */
+.clonescript-process-section .cs-proc-step .iconbox-icon-container,
+.clonescript-process-section .cs-proc-step .iconbox-icon-container i {
+  transition: transform 0.3s var(--clonescript-ease), background 0.3s ease,
+    color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clonescript-process-section .cs-proc-step .contents h3 {
+  transition: color 0.3s ease;
+}
+
+.clonescript-process-section .cs-proc-step:hover .iconbox-icon-container,
+.clonescript-process-section .cs-proc-step:focus-within .iconbox-icon-container {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #8b5cf6, #e83ebc) !important;
+  color: #fff !important;
+  box-shadow: 0 12px 26px -8px rgba(139, 92, 246, 0.5);
+}
+
+.clonescript-process-section .cs-proc-step:hover .iconbox-icon-container i,
+.clonescript-process-section .cs-proc-step:focus-within .iconbox-icon-container i {
+  color: #fff !important;
+}
+
+.clonescript-process-section .cs-proc-step:hover .contents h3,
+.clonescript-process-section .cs-proc-step:focus-within .contents h3 {
+  color: #6c3bff;
+}
+
+/* On hover the whole segment goes solid brand (flow paused) for a crisp look. */
+.clonescript-process-section .cs-proc-step:hover .iconbox-icon-wrap:after {
+  background: linear-gradient(180deg, #8b5cf6, #e83ebc);
+  background-size: 100% 100%;
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clonescript-process-section .cs-proc-step {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none;
+  }
+
+  .clonescript-process-section .cs-proc-step .iconbox-icon-wrap:after {
+    transform: none !important;
+    transition: none;
+    /* No travelling pulse -- a static, calm grey line. */
+    animation: none;
+    background: #e9e9e9;
+    background-size: auto;
+  }
+
+  .clonescript-process-section .cs-proc-step:hover .iconbox-icon-container {
+    transform: none;
+  }
+}
+
+.clonescript-solutions-section {
+  padding-top: var(--clonescript-section-space);
+  padding-bottom: var(--clonescript-section-space);
+}
+
+.clonescript-ready-made {
+  scroll-margin-top: 96px;
+}
+
+.clonescript-solutions-section > .clonescript-process-section {
+  margin-top: var(--clonescript-compact-space);
+}
+
+.clonescript-connect-section {
+  padding-top: var(--clonescript-panel-space) !important;
+  padding-bottom: var(--clonescript-compact-space);
+}
+
+.clonescript-contact-section {
+  padding-top: var(--clonescript-panel-space) !important;
+  padding-bottom: var(--clonescript-contact-bottom);
+}
+
+.clonescript-business-solutions > .vc_row:first-child {
+  padding-top: var(--clonescript-footer-heading-space);
+}
+
+.clonescript-sitemap-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.clonescript-reveal-x-row,
+.clonescript-ready-made,
+.clonescript-solution-carousel {
+  overflow: clip;
+}
+
+.clonescript-solution-carousel .carousel-items {
+  width: 100%;
+  min-width: 0;
+  margin-right: 0;
+  margin-left: 0;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}
+
+.clonescript-solution-carousel .carousel-item {
+  width: 100%;
+  min-width: 0;
+}
+
+.clonescript-solution-carousel .st-desc p {
+  text-align: left;
+}
+
+.clonescript-solution-carousel .vc_inner {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.clonescript-solution-carousel__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 34px;
+  margin-top: 20px;
+}
+
+.clonescript-solution-carousel__dots .dot {
+  appearance: none;
+  display: block;
+  width: 18px;
+  height: 7px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #cbd4ec;
+  box-shadow: none;
+  cursor: pointer;
+  transition: width 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.clonescript-solution-carousel__dots .dot:hover {
+  background: #7890cf;
+  transform: translateY(-1px);
+}
+
+.clonescript-solution-carousel__dots .dot.is-selected {
+  width: 32px;
+  background: #0030b8;
+}
+
+.clonescript-solution-carousel__dots .dot:focus-visible {
+  outline: 3px solid rgba(0, 48, 184, 0.28);
+  outline-offset: 4px;
+}
+
+.clonescript-products-cta {
+  min-height: 52px;
+  margin: 0;
+  border-color: #0030b8 !important;
+  border-radius: 999px !important;
+  background: #0030b8 !important;
+  box-shadow: 0 12px 26px rgba(0, 48, 184, 0.2);
+  color: #fff !important;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.clonescript-products-cta:hover {
+  transform: translateY(-2px);
+  background: #00248a !important;
+  box-shadow: 0 16px 32px rgba(0, 48, 184, 0.26);
+}
+
+.clonescript-tech-stack {
+  margin-top: var(--clonescript-compact-space);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.clonescript-tech-stack > .container > .ld-row > .wpb_column > .vc_column-inner > .wpb_wrapper {
+  overflow: hidden;
+  padding: 70px 20px 55px !important;
+  border: 1px solid rgba(0, 48, 184, 0.08);
+  border-radius: 24px;
+  background: linear-gradient(118deg, #fff8fd 0%, #f1fbff 48%, #f7f4ff 100%) !important;
+  box-shadow: 0 18px 50px rgba(16, 27, 72, 0.08);
+}
+
+.clonescript-tech-stack .fancy-title {
+  margin-bottom: 90px;
+}
+
+.clonescript-tech-stack .fancy-title h3 {
+  margin-bottom: 0;
+}
+
+/* Compact, centered wrapper -- also carries the scroll-in entrance
+   (opacity + rise/scale toggled by the data-in-view attribute). */
+.clonescript-tech-stack__reveal {
+  max-width: 760px;
+  margin: 0 auto;
+  transition: opacity 0.8s var(--clonescript-ease), transform 0.8s var(--clonescript-ease);
+}
+
+.clonescript-tech-stack__reveal[data-in-view='false'] {
+  opacity: 0;
+  transform: translateY(30px) scale(0.97);
+}
+
+.clonescript-tech-stack__media {
+  display: block;
+  width: 100%;
+  border-radius: 20px;
+  /* cs-hover-zoom already applies display:block + overflow:hidden.
+     Two independent loops: a gentle vertical float and a purple->pink
+     glow pulse (box-shadow renders outside overflow:hidden, so it shows). */
+  animation: cs-tech-float 5s ease-in-out infinite, cs-tech-glow 4.2s ease-in-out infinite;
+}
+
+@keyframes cs-tech-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+@keyframes cs-tech-glow {
+  0%, 100% { box-shadow: 0 16px 42px -14px rgba(139, 92, 246, 0.4); }
+  50%      { box-shadow: 0 22px 56px -12px rgba(232, 62, 188, 0.5); }
+}
+
+.clonescript-tech-stack__art {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clonescript-tech-stack__reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none;
+  }
+
+  .clonescript-tech-stack__media {
+    animation: none;
+    box-shadow: 0 16px 42px -14px rgba(139, 92, 246, 0.35);
+  }
+}
+
+.clonescript-meeting-visual img {
+  display: block;
+  width: min(400px, 100%);
+  height: auto;
+  margin: 0 auto;
+}
+
+.main-footer .vc_custom_1773139863014 img {
+  display: block;
+  width: 180px;
+  height: auto;
+}
+
+@media (min-width: 992px) {
+  .clonescript-why-section > .clonescript-section-intro .fancy-title h2,
+  .clonescript-services-section > .clonescript-section-intro .fancy-title h2,
+  .clonescript-ready-made > .vc_row:first-child .fancy-title h2,
+  .clonescript-connect-section .fancy-title h2 {
+    font-size: 34px;
+    line-height: 1.2;
+  }
+
+  .clonescript-milestones-section .fancy-title h3,
+  .clonescript-tech-stack .fancy-title h3,
+  .clonescript-process-section > .vc_row:first-child .fancy-title h3 {
+    font-size: 34px;
+    line-height: 1.5;
+  }
+
+  .clonescript-showcase-section .ld-fancy-heading h3 {
+    font-size: 36px;
+    line-height: 1.5;
+    font-weight: 700;
+  }
+
+  .clonescript-business-solutions > .vc_row:first-child .fancy-title h3 {
+    font-size: 30px;
+    line-height: 1.5;
+  }
+
+  .clonescript-why-section > .clonescript-reveal-x-row:last-of-type .vc_single_image-img {
+    max-width: 458px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  #root:has(.clonescript-homepage) {
+    --clonescript-section-space: 88px;
+    --clonescript-panel-space: 56px;
+    --clonescript-compact-space: 52px;
+    --clonescript-intro-space: 60px;
+    --clonescript-showcase-gap: 32px;
+    --clonescript-contact-bottom: 32px;
+    --clonescript-footer-heading-space: 24px;
+  }
+
+  .clonescript-hero {
+    margin-top: 36px;
+  }
+
+  #root:has(.clonescript-homepage) .mainbar-row {
+    min-height: 82px;
+  }
+
+  .clonescript-why-section > .clonescript-section-intro .fancy-title h2,
+  .clonescript-services-section > .clonescript-section-intro .fancy-title h2,
+  .clonescript-ready-made > .vc_row:first-child .fancy-title h2,
+  .clonescript-connect-section .fancy-title h2,
+  .clonescript-milestones-section .fancy-title h3,
+  .clonescript-tech-stack .fancy-title h3,
+  .clonescript-process-section > .vc_row:first-child .fancy-title h3,
+  .clonescript-showcase-section .ld-fancy-heading h3 {
+    font-size: 32px;
+    line-height: 1.35;
+  }
+
+  .clonescript-business-solutions > .vc_row:first-child .fancy-title h3 {
+    font-size: 26px;
+    line-height: 1.4;
+  }
+
+  .clonescript-tech-stack > .container > .ld-row > .wpb_column > .vc_column-inner > .wpb_wrapper {
+    padding: 70px 20px 55px !important;
+  }
+
+  .clonescript-tech-stack .fancy-title {
+    margin-bottom: 40px;
+  }
+
+  .clonescript-tech-stack .fancy-title h3 {
+    font-size: 34px;
+    line-height: 1.5;
+  }
+
+  .clonescript-tech-stack__reveal {
+    max-width: 460px;
+  }
+}
+
+@supports not (overflow: clip) {
+  .clonescript-reveal-x-row,
+  .clonescript-ready-made,
+  .clonescript-solution-carousel {
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 767px) {
+  #root:has(.clonescript-homepage) {
+    --clonescript-section-space: 56px;
+    --clonescript-panel-space: 36px;
+    --clonescript-compact-space: 40px;
+    --clonescript-intro-space: 48px;
+    --clonescript-showcase-gap: 20px;
+    --clonescript-contact-bottom: 24px;
+    --clonescript-footer-heading-space: 20px;
+  }
+
+  .clonescript-hero {
+    margin-top: 28px;
+  }
+
+  #root:has(.clonescript-homepage) .mainbar-row {
+    min-height: 72px;
+  }
+
+  .clonescript-showcase-content > .wpb_wrapper-inner {
+    top: 0;
+  }
+
+  .clonescript-business-solutions > .vc_row:first-child .fancy-title h3 {
+    font-size: 24px;
+    line-height: 1.4;
+  }
+
+  .clonescript-tech-stack > .container > .ld-row > .wpb_column > .vc_column-inner > .wpb_wrapper {
+    padding: 70px 7px 55px !important;
+    border-radius: 18px;
+  }
+
+  .clonescript-tech-stack .fancy-title {
+    margin-bottom: 40px;
+  }
+
+  .clonescript-tech-stack .fancy-title h3 {
+    font-size: 34px;
+    line-height: 1.5;
+  }
+
+  .clonescript-tech-stack__reveal {
+    max-width: 460px;
+  }
+
+  .main-footer .vc_custom_1773139863014 img {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .clonescript-sitemap-column {
+    gap: 20px;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Home page motion & hover system
+   Shared entrance-animation and hover utilities used across Hero,
+   AchievementBanner, ProductCategoryCards, OurServices and TechStackBanner.
+   Defined here (rather than per-component) since HomePage.css already
+   loads once for the whole route and every user of these classes is a
+   HomePage-only child component -- see e.g. .clonescript-hero above for
+   the same page-level-stylesheet-for-child-components convention.
+   ------------------------------------------------------------------- */
+
+@keyframes cs-fade-up-in {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cs-focus-reveal {
+  from { opacity: 0; transform: scale(1.08); filter: blur(14px) saturate(0.6); }
+  to   { opacity: 1; transform: scale(1); filter: blur(0) saturate(1); }
+}
+
+.cs-anim-fade-up {
+  opacity: 0;
+  animation: cs-fade-up-in 0.8s var(--clonescript-ease) both;
+}
+
+.cs-anim-focus-reveal {
+  opacity: 0;
+  animation: cs-focus-reveal 1.1s var(--clonescript-ease) both;
+}
+
+/* Zoom + sharpen an image on hover -- "clarity focus": a light contrast/
+   saturation lift on top of the scale reads as the image snapping into
+   focus, not just enlarging. Wrap the <img> in an element carrying this
+   class with overflow:hidden. */
+.cs-hover-zoom {
+  display: block;
+  overflow: hidden;
+}
+
+.cs-hover-zoom img,
+.cs-hover-zoom picture img {
+  transition: transform 0.55s var(--clonescript-ease), filter 0.55s var(--clonescript-ease);
+  filter: saturate(1) contrast(1);
+}
+
+.cs-hover-zoom:hover img,
+.cs-hover-zoom:focus-visible img {
+  transform: scale(1.06);
+  filter: saturate(1.18) contrast(1.06);
+}
+
+.cs-hover-lift {
+  transition: transform 0.3s var(--clonescript-ease), box-shadow 0.3s var(--clonescript-ease);
+}
+
+.cs-hover-lift:hover,
+.cs-hover-lift:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -16px rgba(16, 27, 72, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clonescript-solution-carousel__dots .dot,
+  .clonescript-products-cta {
+    transition: none;
+  }
+
+  .cs-anim-fade-up,
+  .cs-anim-focus-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .cs-hover-zoom img,
+  .cs-hover-lift {
+    transition: none !important;
+  }
+
+  .cs-hover-zoom:hover img {
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .cs-hover-lift:hover {
+    transform: none !important;
+  }
+}

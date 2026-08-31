@@ -1,0 +1,30 @@
+.clonescript-image-brand {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+
+.clonescript-image-brand > img {
+  display: block;
+}
+
+.clonescript-image-brand__label {
+  position: absolute;
+  top: 4%;
+  left: 5%;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.9em;
+  padding: 0.18em 0.65em;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 18%);
+  color: #6d962c;
+  font-family: Arial, sans-serif;
+  font-size: clamp(9px, 1.1vw, 15px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+}

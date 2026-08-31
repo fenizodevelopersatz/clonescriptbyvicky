@@ -1,0 +1,247 @@
+export const mainFeaturesRoles = {
+  customer: {
+    label: 'Customer',
+    icon: 'fas fa-user',
+    image: '/wp-content/uploads/2026/01/user-features-1-250x450.webp',
+    imageAlt: 'user-features',
+    items: [
+      { icon: 'fa fa-solid fa-list', title: 'Browse Rental Listings' },
+      { icon: 'fa fa-solid fa-magnifying-glass', title: 'Advanced Rental Search' },
+      { icon: 'fa fa-solid fa-filter', title: 'Rental Filters' },
+      { icon: 'fa fa-solid fa-file-lines', title: 'Listing Details' },
+      { icon: 'fa fa-solid fa-calendar-days', title: 'Real-Time Availability' },
+      { icon: 'fa fa-solid fa-credit-card', title: 'Instant Checkout' },
+      { icon: 'fa fa-solid fa-calendar-check', title: 'Flexible Booking' },
+      { icon: 'fa fa-solid fa-receipt', title: 'Booking Summary' },
+      { icon: 'fa fa-solid fa-lock', title: 'Secure Payments' },
+      { icon: 'fa fa-regular fa-heart', title: 'Wishlist' },
+      { icon: 'fa fa-solid fa-clipboard-list', title: 'Booking History' },
+      { icon: 'fa fa-solid fa-pen-to-square', title: 'Modify or Cancel' },
+      { icon: 'fa fa-solid fa-bell', title: 'Real-Time Notifications' },
+      { icon: 'fa fa-solid fa-comment-dots', title: 'Host Communication' },
+      { icon: 'fa fa-solid fa-star', title: 'Ratings & Reviews' },
+      { icon: 'fa fa-solid fa-headset', title: 'Support Requests' },
+    ],
+  },
+  host: {
+    label: 'Host',
+    icon: 'fas fa-user-tie',
+    image: '/wp-content/uploads/2026/01/host-feature.webp',
+    imageAlt: 'host-feature',
+    items: [
+      { icon: 'fa fa-solid fa-square-plus', title: 'Create Rental Listings' },
+      { icon: 'fa fa-solid fa-layer-group', title: 'Manage Listings' },
+      { icon: 'fa fa-solid fa-tags', title: 'Pricing Control' },
+      { icon: 'fa fa-solid fa-calendar-check', title: 'Availability Calendar' },
+      { icon: 'fa fa-solid fa-clipboard-check', title: 'Booking Management' },
+      { icon: 'fa fa-solid fa-circle-check', title: 'Accept or Reject Bookings' },
+      { icon: 'fa fa-solid fa-bolt', title: 'Instant Booking Settings' },
+      { icon: 'fa fa-solid fa-comment', title: 'Customer Communication' },
+      { icon: 'fa fa-solid fa-percent', title: 'Discount Management' },
+      { icon: 'fa fa-solid fa-file-contract', title: 'Rental Policies' },
+      { icon: 'fa fa-solid fa-wallet', title: 'Earnings Overview' },
+      { icon: 'fa fa-solid fa-hand-holding-dollar', title: 'Payout Requests' },
+      { icon: 'fa fa-solid fa-clipboard', title: 'Rental History' },
+      { icon: 'fa fa-solid fa-user-check', title: 'Profile Verification' },
+      { icon: 'fa fa-solid fa-star', title: 'Ratings & Reviews' },
+    ],
+  },
+  admin: {
+    label: 'Administrator',
+    icon: 'fas fa-user-shield',
+    image: '/wp-content/uploads/2026/01/admin-feature-2.webp',
+    imageAlt: 'admin-feature',
+    items: [
+      { icon: 'fa fa-solid fa-user-large', title: 'User Management' },
+      { icon: 'fa fa-solid fa-id-card-clip', title: 'Host Verification' },
+      { icon: 'fa fa-solid fa-list-check', title: 'Listing Management' },
+      { icon: 'fa fa-regular fa-calendar-check', title: 'Booking Control' },
+      { icon: 'fa fa-solid fa-percent', title: 'Commission Settings' },
+      { icon: 'fa fa-solid fa-user-gear', title: 'Vendor Management' },
+      { icon: 'fa fa-solid fa-money-bill-wave', title: 'Payment Management' },
+      { icon: 'fa fa-solid fa-money-check-dollar', title: 'Payout Management' },
+      { icon: 'fa fa-solid fa-scale-balanced', title: 'Dispute Handling' },
+      { icon: 'fa fa-solid fa-user-shield', title: 'Access Roles' },
+      { icon: 'fa fa-solid fa-tags', title: 'Category Management' },
+      { icon: 'fa fa-solid fa-map-location-dot', title: 'Location Management' },
+      { icon: 'fa fa-solid fa-chart-column', title: 'Reports & Analytics' },
+      { icon: 'fa fa-solid fa-gear', title: 'System Settings' },
+      { icon: 'fa fa-solid fa-sliders', title: 'Platform Configuration' },
+    ],
+  },
+}
+
+export const standOutFeatures = [
+  { icon: 'fa fa-solid fa-hand-pointer', title: 'User-Friendly Interface', desc: 'Provide a clear and responsive experience that helps customers, hosts, and administrators access important features easily.' },
+  { icon: 'fa fa-solid fa-bolt', title: 'Fast Booking Process', desc: 'Allow users to search, select dates, review prices, enter information, and complete reservations through a streamlined workflow.' },
+  { icon: 'fa fa-regular fa-calendar-days', title: 'Live Availability Management', desc: 'Keep rental calendars updated to reduce overlapping reservations and scheduling conflicts.' },
+  { icon: 'fa fa-solid fa-sliders', title: 'Flexible Pricing Control', desc: 'Set prices according to booking duration, demand, season, weekends, special dates, or other configured conditions.' },
+  { icon: 'fa fa-solid fa-star', title: 'Ratings and Feedback', desc: 'Allow customers and hosts to submit reviews after eligible completed bookings.' },
+  { icon: 'fa fa-solid fa-globe', title: 'Multiple Currency Support', desc: 'Display and process eligible transactions using supported currencies.' },
+  { icon: 'fa fa-solid fa-calculator', title: 'Automated Fee Calculation', desc: 'Calculate rental prices, service charges, taxes, commissions, deposits, discounts, and other configured fees.' },
+  { icon: 'fa fa-solid fa-location-dot', title: 'Location-Based Service Control', desc: 'Manage rental availability according to countries, cities, regions, service zones, or distance.' },
+  { icon: 'fa fa-solid fa-lock', title: 'Secure Payment Processing', desc: 'Integrate suitable payment gateways to process rental payments, refunds, and provider payouts.' },
+  { icon: 'fa fa-solid fa-language', title: 'Multiple Language Support', desc: 'Translate interface content into supported languages for different markets.' },
+  { icon: 'fa fa-solid fa-display', title: 'Responsive Web Access', desc: 'Provide a consistent rental-booking experience across desktops, laptops, tablets, and mobile devices.' },
+  { icon: 'fa fa-solid fa-bell', title: 'Push Notifications', desc: 'Send updates related to booking requests, confirmations, payments, reminders, messages, and cancellations.' },
+  { icon: 'fa fa-solid fa-envelope-open-text', title: 'Email and SMS Alerts', desc: 'Communicate important reservation information through configured email and SMS services.' },
+]
+
+export const addOnFeatures = [
+  { icon: 'fa fa-solid fa-magnifying-glass', title: 'Advanced Search' },
+  { icon: 'fa fa-solid fa-language', title: 'Language Support' },
+  { icon: 'fa fa-solid fa-circle-plus', title: 'Additional Rental Options' },
+  { icon: 'fa fa-solid fa-layer-group', title: 'Multiple Rental Management' },
+  { icon: 'fa fa-solid fa-chart-line', title: 'Administrative Insights' },
+  { icon: 'fa fa-solid fa-headset', title: 'Customer Assistance' },
+  { icon: 'fa fa-solid fa-id-card', title: 'Identity Verification' },
+  { icon: 'fa fa-solid fa-comments', title: 'Built-In Chat' },
+  { icon: 'fa fa-solid fa-wallet', title: 'Digital Wallet' },
+  { icon: 'fa fa-solid fa-credit-card', title: 'Multiple Payment Options' },
+  { icon: 'fa fa-solid fa-eye', title: 'Visual Preview' },
+  { icon: 'fa fa-solid fa-briefcase', title: 'Vendor Subscription Plans' },
+  { icon: 'fa fa-solid fa-sliders', title: 'Custom Rental Rules' },
+  { icon: 'fa fa-regular fa-bell', title: 'Instant Alerts' },
+  { icon: 'fa fa-regular fa-clock', title: 'Booking Reminders' },
+  { icon: 'fa fa-solid fa-shield-halved', title: 'Security Deposit Management' },
+  { icon: 'fa fa-solid fa-calendar-week', title: 'Seasonal Rate Management' },
+  { icon: 'fa fa-solid fa-ticket', title: 'Coupon Management' },
+]
+
+export const revenueBenefits = [
+  { icon: 'fa fa-solid fa-percent', title: 'Booking Commissions', desc: 'Charge a percentage or fixed fee for every reservation completed through the platform.' },
+  { icon: 'fa fa-solid fa-file-invoice-dollar', title: 'Service Charges', desc: 'Apply transparent platform charges to eligible rental transactions.' },
+  { icon: 'fa fa-solid fa-calendar-check', title: 'Host Subscription Plans', desc: 'Offer recurring packages that provide hosts with additional listings, premium tools, or reduced commission rates.' },
+  { icon: 'fa fa-solid fa-star', title: 'Featured Listings', desc: 'Rental providers can pay to display selected listings in prominent homepage, category, or search positions.' },
+  { icon: 'fa fa-solid fa-bullhorn', title: 'Advertising Revenue', desc: 'Approved businesses can purchase advertising space within suitable areas of the marketplace.' },
+  { icon: 'fa fa-solid fa-calendar-xmark', title: 'Cancellation Charges', desc: 'A configurable charge can be applied when reservations are cancelled outside the permitted cancellation period.' },
+  { icon: 'fa fa-solid fa-tags', title: 'Listing Fees', desc: 'Hosts can be charged for publishing additional rental listings beyond a free allowance.' },
+  { icon: 'fa fa-solid fa-credit-card', title: 'Payment Processing Fees', desc: 'A clearly disclosed processing charge can be applied to eligible online transactions.' },
+  { icon: 'fa fa-solid fa-user-shield', title: 'Provider Verification Fees', desc: 'The platform can offer optional premium verification services when appropriate for the business model.' },
+  { icon: 'fa fa-solid fa-thumbtack', title: 'Promotional Placement Fees', desc: 'Providers can pay to promote offers, discounts, or seasonal rental packages.' },
+]
+
+export const pricingPlans = [
+  {
+    name: 'Corporate', price: '$2499', featured: true,
+    features: [['Single-Domain Licence', true], ['One-Time Payment', true], ['Source-Code Access', true], ['3 Months Technical Support', true], ['Product Updates', true], ['Installation Assistance', true], ['Android Application', true], ['iOS Application', true], ['Mobile App Submission', true], ['Administration Panel', true]],
+  },
+  {
+    name: 'Startup', price: '$1499', featured: false,
+    features: [['Single-Domain Licence', true], ['One-Time Payment', true], ['Source-Code Access', true], ['3 Months Technical Support', true], ['Product Updates', true], ['Installation Assistance', true], ['Android Application', false], ['iOS Application', false], ['Mobile App Submission', false], ['Core Booking Features', true]],
+  },
+]
+
+export const faqs = [
+  { q: 'What Is a Rental Booking Script?', a: 'A Rental Booking Script is a ready-made software solution for building a website and mobile application where customers can discover, compare, and reserve rentable assets.' },
+  { q: 'Which Rental Businesses Can Use the Platform?', a: 'It can support vacation homes, houses, cars, boats, workspaces, event venues, equipment, furniture, and other suitable rental categories.' },
+  { q: 'Can the Platform Support Multiple Rental Categories?', a: 'Yes. Different rental categories can be managed through one platform, depending on the selected modules and booking workflows.' },
+  { q: 'Does the System Support Hourly and Daily Rentals?', a: 'The platform can be configured for hourly, daily, weekly, monthly, or other suitable rental durations.' },
+  { q: 'Can Hosts Manage Their Own Listings?', a: 'Yes. Providers can create listings, upload images, set prices, update availability, review bookings, communicate with customers, and monitor earnings.' },
+  { q: 'Does the Platform Prevent Double Bookings?', a: 'Real-time availability calendars and reservation controls can help prevent the same rental from being booked for overlapping periods.' },
+  { q: 'Can the Rental Booking Script Be Customized?', a: 'Yes. The design, categories, booking flow, pricing rules, payment methods, commissions, languages, and other functionality can be customized.' },
+  { q: 'How Much Does Rental Platform Development Cost?', a: 'The cost depends on the required rental categories, mobile applications, design changes, third-party integrations, payment gateways, and customization scope.' },
+  { q: 'How Long Does It Take to Launch?', a: 'The timeline depends on the selected package, customization, integrations, testing, deployment, and mobile-app review requirements.' },
+  { q: 'Will I Receive Source-Code Access?', a: 'Source-code access depends on the selected package and licence. The agreement should explain the included access, usage, modification, and ownership rights.' },
+  { q: 'How Can the Platform Generate Revenue?', a: 'The platform can generate income through commissions, subscriptions, listing charges, featured placements, service fees, cancellation fees, and advertisements.' },
+  { q: 'Are Android and iOS Applications Available?', a: 'Android and iOS applications can be included according to the selected package and project requirements.' },
+  { q: 'Is Technical Support Available After Launch?', a: 'Technical assistance can be provided for installation, configuration, eligible updates, troubleshooting, and platform maintenance.' },
+]
+
+export const rentalCategories = [
+  { title: 'Boat Rental', subtitle: 'Water Adventure Booking', desc: 'Reserve boats for leisure trips, fishing, tours, and events.', image: '/wp-content/uploads/2026/02/Boat-Rental.webp' },
+  { title: 'Vacation Rental', subtitle: 'Short-Term Stays', desc: 'Find apartments, villas, and homestays for your next trip.', image: '/wp-content/uploads/2026/02/vacation-rental.webp' },
+  { title: 'Space Rental', subtitle: 'Flexible Space Solutions', desc: 'Book offices, studios, and venues by the hour or day.', image: '/wp-content/uploads/2026/02/space-rental.webp' },
+  { title: 'Party Rental', subtitle: 'Celebration Essentials', desc: 'Reserve event spaces, furniture, and decorations for celebrations.', image: '/wp-content/uploads/2026/02/party.webp' },
+  { title: 'House Rental', subtitle: 'Flexible Home Leasing', desc: 'Discover houses and apartments for short or long-term stays.', image: '/wp-content/uploads/2026/02/house-rental.webp' },
+  { title: 'Hotel Booking', subtitle: 'Easy Reservations', desc: 'Search hotels, compare rooms, and confirm your stay instantly.', image: '/wp-content/uploads/2026/02/Hotel.webp' },
+  { title: 'Flight Booking', subtitle: 'Quick Air Ticketing', desc: 'Search flights and book tickets through integrated travel APIs.', image: '/wp-content/uploads/2026/02/Flight.webp' },
+  { title: 'Car Rental', subtitle: 'Easy Vehicle Hire', desc: 'Reserve vehicles by location, dates, price, and vehicle type.', image: '/wp-content/uploads/2026/02/car-rental.webp' },
+]
+
+export const appScreens = [
+  { src: '/wp-content/uploads/2026/01/search-option.webp', alt: 'Search and filters screen for browsing rental listings' },
+  { src: '/wp-content/uploads/2026/01/payment-2.webp', alt: 'Secure checkout and payment screen for a rental booking' },
+  { src: '/wp-content/uploads/2026/01/booking-confirmation.webp', alt: 'Booking confirmation screen after a completed reservation' },
+  { src: '/wp-content/uploads/2026/01/booking.webp', alt: 'Booking summary screen showing rental dates and pricing' },
+  { src: '/wp-content/uploads/2026/01/details.webp', alt: 'Rental listing details screen with images and pricing' },
+]
+
+// Server-side environment copy for the plain-prose "Server Requirements" section
+// (rendered via the shared SimpleListSection component, the same one already used
+// identically for this purpose on the Logistics and School CRM pages).
+export const serverRequirements = {
+  intro: 'A rental marketplace requires a secure VPS, cloud server, or compatible hosting environment with sufficient processing power, memory, storage, bandwidth, and backup capacity. The technical environment may include:',
+  items: [
+    'Compatible backend runtime',
+    'Supported web server',
+    'Secure relational database',
+    'Valid HTTPS certificate',
+    'Payment gateway credentials',
+    'Mapping and location API credentials',
+    'Email or SMS service configuration',
+    'Push-notification services',
+    'Media and document storage',
+    'Automated backup system',
+    'Server monitoring',
+    'Security configuration',
+    'Scalable storage and bandwidth',
+  ],
+  outro: 'The final server configuration should be selected according to expected users, rental listings, booking volume, operating locations, integrations, mobile applications, and future growth.',
+}
+
+/* Five customer reviews with real per-card markup, replacing any shared placeholder
+   testimonial content on this page. Avatars are circular-cropped AI-generated (StyleGAN2,
+   no real person) portraits, unique to this page across the whole site. */
+export const customerReviews = [
+  {
+    name: 'Holly Marsh',
+    role: 'Equipment Rental Owner',
+    rating: 5,
+    quote: 'Instant checkout means customers book and pay without calling us first. Bookings doubled in two months.',
+    avatar: '/wp-content/reviews/rentalBooking/review-holly-marsh.webp',
+    bg: '#e0fbf5',
+    accent: '#0eaa88',
+    dot: '#5ae2c5',
+  },
+  {
+    name: 'Petr Novak',
+    role: 'Rental Fleet Manager',
+    rating: 4.5,
+    quote: 'Flexible booking windows fit how our customers actually rent, by the hour or by the week.',
+    avatar: '/wp-content/reviews/rentalBooking/review-petr-novak.webp',
+    bg: '#e0f5fb',
+    accent: '#0e8baa',
+    dot: '#5ac7e2',
+  },
+  {
+    name: 'Amara Johnson',
+    role: 'Booking Platform Founder',
+    rating: 4.5,
+    quote: 'Wishlist and notifications bring people back before their next trip even starts.',
+    avatar: '/wp-content/reviews/rentalBooking/review-amara-johnson.webp',
+    bg: '#e0ecfb',
+    accent: '#0e57aa',
+    dot: '#5a9ae2',
+  },
+  {
+    name: 'Tobias Richter',
+    role: 'Operations Lead',
+    rating: 4.5,
+    quote: 'Booking history gives our support team the full picture in seconds instead of digging through email.',
+    avatar: '/wp-content/reviews/rentalBooking/review-tobias-richter.webp',
+    bg: '#e0e2fb',
+    accent: '#0e1daa',
+    dot: '#5a68e2',
+  },
+  {
+    name: 'Leila Haddad',
+    role: 'Small Business Owner',
+    rating: 5,
+    quote: 'Browsing rentals feels as smooth as any big travel site, our customers noticed the difference immediately.',
+    avatar: '/wp-content/reviews/rentalBooking/review-leila-haddad.webp',
+    bg: '#e9e0fb',
+    accent: '#420eaa',
+    dot: '#875ae2',
+  },
+]

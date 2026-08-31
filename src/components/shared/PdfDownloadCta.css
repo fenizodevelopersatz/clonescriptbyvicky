@@ -1,0 +1,14 @@
+/* The illustrated panel (bordered/shadowed media + text card) had no section-
+   level padding at all, so it touched whatever section came directly before
+   and after it -- same missing-breathing-room issue as ComparisonTable and
+   alibaba-live-demo-cta. Plain (non-illustrated) callers still get the same
+   padding; it just has less visual box to separate from neighbors. */
+.clonescript-pdf-cta {
+  padding: 48px 0;
+}
+
+@media (max-width: 767px) {
+  .clonescript-pdf-cta {
+    padding: 32px 0;
+  }
+}

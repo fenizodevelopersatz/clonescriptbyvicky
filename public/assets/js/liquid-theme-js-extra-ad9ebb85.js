@@ -1,0 +1,1 @@
+var liquidTheme={"uris":{"ajax":"/wp-admin/admin-ajax.php"}}

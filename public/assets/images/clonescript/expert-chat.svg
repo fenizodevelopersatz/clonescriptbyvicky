@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 520" width="480" height="520" role="img" aria-label="Chat with a CloneScript development expert">
+  <defs>
+    <linearGradient id="fz-blob" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0030b8"/>
+      <stop offset="100%" stop-color="#00366d"/>
+    </linearGradient>
+    <linearGradient id="fz-card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#eef2fb"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M240 40c88 0 176 46 196 148 16 82-24 168-98 208-70 38-160 34-222-18-58-48-84-128-64-206C74 92 152 40 240 40z" fill="url(#fz-blob)" opacity="0.08"/>
+
+  <circle cx="240" cy="230" r="150" fill="url(#fz-blob)" opacity="0.12"/>
+
+  <g transform="translate(120,120)">
+    <rect x="0" y="0" width="240" height="240" rx="24" fill="url(#fz-card)" stroke="#dbe3f5" stroke-width="1.5"/>
+    <circle cx="120" cy="92" r="42" fill="#0030b8" opacity="0.9"/>
+    <path d="M78 190c6-34 34-56 42-56s36 22 42 56" fill="none" stroke="#0030b8" stroke-width="10" stroke-linecap="round" opacity="0.9"/>
+    <rect x="24" y="24" width="60" height="8" rx="4" fill="#0030b8" opacity="0.25"/>
+    <rect x="156" y="24" width="60" height="8" rx="4" fill="#0030b8" opacity="0.15"/>
+  </g>
+
+  <g transform="translate(300,90)">
+    <rect x="0" y="0" width="140" height="86" rx="18" fill="#ffffff" stroke="#dbe3f5" stroke-width="1.5"/>
+    <path d="M18 86 L18 106 L42 86 Z" fill="#ffffff" stroke="#dbe3f5" stroke-width="1.5"/>
+    <circle cx="34" cy="43" r="7" fill="#0030b8"/>
+    <circle cx="70" cy="43" r="7" fill="#0030b8" opacity="0.55"/>
+    <circle cx="106" cy="43" r="7" fill="#0030b8" opacity="0.3"/>
+  </g>
+
+  <g transform="translate(52,300)">
+    <rect x="0" y="0" width="150" height="150" rx="20" fill="#ffffff" stroke="#dbe3f5" stroke-width="1.5"/>
+    <path d="M28 96 L60 62 L86 84 L124 40" fill="none" stroke="#0030b8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="124" cy="40" r="8" fill="#0030b8"/>
+    <rect x="28" y="112" width="94" height="8" rx="4" fill="#0030b8" opacity="0.2"/>
+  </g>
+
+  <circle cx="410" cy="360" r="10" fill="#0030b8" opacity="0.4"/>
+  <circle cx="60" cy="120" r="7" fill="#0030b8" opacity="0.3"/>
+  <circle cx="430" cy="230" r="6" fill="#0030b8" opacity="0.35"/>
+</svg>

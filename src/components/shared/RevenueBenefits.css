@@ -1,0 +1,154 @@
+.revenue-benefits {
+  --revenue-benefits-gap: clamp(18px, 2vw, 28px);
+  --revenue-benefits-card-radius: 18px;
+  --revenue-benefits-card-padding: clamp(18px, 2vw, 26px);
+  padding-top: var(--clonescript-section-y-compact);
+  padding-bottom: var(--clonescript-section-y-compact);
+}
+
+.revenue-benefits__heading {
+  margin-bottom: clamp(14px, 2vw, 24px);
+}
+
+.revenue-benefits__layout {
+  display: grid;
+  grid-template-columns: minmax(190px, 1fr) auto minmax(280px, 1.25fr) auto minmax(190px, 1fr);
+  gap: var(--revenue-benefits-gap);
+  align-items: center;
+  justify-items: center;
+}
+
+/* This element also carries the Bootstrap-style .row class, whose ::before/::after
+   clearfix (content:" "; display:table) becomes two extra grid items once the
+   parent is display:grid -- 5 items competing for 3 declared columns pushed the
+   real 3 into a staggered second row instead of one clean row. Same failure mode
+   fixed elsewhere this session (footer nav columns, testimonial grid). */
+.revenue-benefits__layout::before,
+.revenue-benefits__layout::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* !important needed: this div still carries the legacy .vc_col-sm-3 class
+   (width:25%) from the old Bootstrap-float grid it used to belong to, which
+   ties this rule at equal specificity -- left unbeaten, the column shrinks to
+   25% of its actual CSS-grid cell width, forcing severe text-wrap and
+   ballooning each card's height well past its 170px min-height. */
+.revenue-benefits__column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100% !important;
+}
+
+.revenue-benefits__card {
+  background: #fff;
+  border-radius: var(--revenue-benefits-card-radius);
+  padding: var(--revenue-benefits-card-padding);
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(19, 47, 103, 0.08);
+}
+
+.revenue-benefits__card .iconbox-icon-wrap {
+  margin-bottom: 10px;
+}
+
+.revenue-benefits__content h3 {
+  margin: 0 0 10px;
+  line-height: 1.15;
+}
+
+.revenue-benefits__content p {
+  margin: 0;
+  line-height: 1.8;
+}
+
+.revenue-benefits__content span {
+  font-size: 12px;
+}
+
+/* Same legacy .vc_col-sm-6 (width:50%) conflict as .revenue-benefits__column
+   above -- without !important the image column shrinks to half its grid
+   cell's width, and the image inside shrinks with it. */
+.revenue-benefits__media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100% !important;
+}
+
+.revenue-benefits__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--revenue-benefits-arrow-color, #f0a500);
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1;
+  filter: drop-shadow(0 8px 12px rgba(19, 47, 103, 0.12));
+  pointer-events: none;
+}
+
+.revenue-benefits__arrow--left {
+  grid-column: 2;
+}
+
+.revenue-benefits__arrow--right {
+  grid-column: 4;
+}
+
+.revenue-benefits__image-wrap {
+  width: min(100%, 560px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.revenue-benefits__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+@media (max-width: 1199px) {
+  .revenue-benefits__layout {
+    grid-template-columns: minmax(220px, 1fr) minmax(240px, 1fr);
+  }
+
+  .revenue-benefits__media {
+    grid-column: 1 / -1;
+    order: 1;
+  }
+
+  .revenue-benefits__arrow {
+    display: none;
+  }
+
+  .revenue-benefits__column--left {
+    order: 2;
+  }
+
+  .revenue-benefits__column--right {
+    order: 3;
+  }
+}
+
+@media (max-width: 767px) {
+  .revenue-benefits__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .revenue-benefits__media,
+  .revenue-benefits__column--left,
+  .revenue-benefits__column--right {
+    order: initial;
+  }
+
+  .revenue-benefits__card {
+    min-height: auto;
+  }
+}

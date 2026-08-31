@@ -1,0 +1,74 @@
+.rental-categories-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* .row/.ld-row (vendored) put a clearfix (content:''; display:table) on
+   ::before/::after for float-based layouts. On a flex container those
+   pseudo-elements become real flex items instead of floats, adding two
+   phantom empty cards -- one at each end of the track -- which throws off
+   the translateX(-50%) seamless-loop math since 50% must land exactly on
+   the boundary between the real and duplicated set. Same fix as
+   .erp-industries-grid in ErpSoftwarePage.css. */
+.rental-categories-grid::before,
+.rental-categories-grid::after {
+  display: none !important;
+  content: none !important;
+}
+
+.rental-categories-grid {
+  display: flex !important;
+  width: max-content;
+  gap: 20px;
+  margin: 0 !important;
+  animation: rental-categories-scroll 32s linear infinite;
+}
+
+@keyframes rental-categories-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.rental-categories-grid .fancy-box {
+  flex: 0 0 260px;
+  /* Same load-bearing height as .erp-industries-grid .fancy-box
+     (ErpSoftwarePage.css): the vendor .cb-img-container/.fancy-box-contents
+     are position:absolute; height:100%, so without an explicit height here
+     that 100% resolves against nothing sane. padding-bottom:0 kills the
+     vendor .fancy-box-overlay.tall aspect-ratio hack (its percentage would
+     otherwise resolve against this flex row's max-content width, not this
+     card's own 260px, ballooning the card) -- this height replaces it. */
+  height: 340px;
+  padding-bottom: 0 !important;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.rental-categories-grid .fancy-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(16, 29, 75, 0.18);
+}
+
+@media (max-width: 767px) {
+  .rental-categories-grid {
+    gap: 12px;
+  }
+
+  .rental-categories-grid .fancy-box {
+    flex: 0 0 58vw;
+    height: 280px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rental-categories-grid {
+    animation: none;
+  }
+
+  .rental-categories-viewport {
+    overflow-x: auto;
+  }
+
+  .rental-categories-grid [aria-hidden='true'] {
+    display: none;
+  }
+}

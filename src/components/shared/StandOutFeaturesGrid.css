@@ -1,0 +1,262 @@
+/* The original theme's ".vc_col-md-4" is a float-based "column" with no matching-height
+   guarantee, same root cause as TechStackRow.css. When one card's title/desc ran shorter
+   than its siblings, floats wrapped the next card into the wrong horizontal slot instead of
+   a clean new row -- producing an orphaned card with a jarring amount of empty bottom padding
+   and gaps elsewhere in the grid. Grid sidesteps this: every card in a row stretches to the
+   same height regardless of content length, and wrapping is always correct. The hover lift
+   (".hover-flash-card") replicates an effect that previously lived only in 4 of the 17 pages'
+   own bundles that use this component -- applied here once, uniformly, for all of them. */
+/* The heading block above the grid already carries its own top spacer
+   (.ld-empty-space right after the Reveal), but nothing padded the BOTTOM --
+   the card grid butted directly against whatever section came next on every
+   single page using this component (confirmed 0px on 5/5 checked instances
+   on one page alone). Same missing-breathing-room pattern already fixed for
+   ComparisonTable/PdfDownloadCta/RoleFeatureTabs/MoneyBackGuarantee -- see
+   [[boxed_section_spacing_audit]]. */
+.stand-out-features-section {
+  padding-bottom: 60px;
+}
+
+@media (max-width: 767px) {
+  .stand-out-features-section {
+    padding-bottom: 36px;
+  }
+}
+
+.stand-out-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 0;
+}
+
+.stand-out-features-grid__card {
+  height: 100%;
+}
+
+.stand-out-features-grid__card > .iconbox {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  /* .iconbox-icon-wrap and .contents (title+desc) are the only two flex
+     children here, stacked in a column -- neither carries its own
+     margin/gap, so the title sat flush against the icon with zero
+     breathing room on every card, on every page using this component. */
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Gradient accent bar along the top edge that wipes in on hover. Uses each
+   page's --card-accent so it stays on-brand everywhere this component is used. */
+.stand-out-features-grid__card > .iconbox::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--card-accent, #0030b8), #8b5cf6);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.stand-out-features-grid__card:hover > .iconbox {
+  transform: translateY(-12px);
+  border-color: var(--card-accent, #0030b8);
+  box-shadow: 0 24px 46px -20px color-mix(in srgb, var(--card-accent, #0030b8) 55%, transparent);
+}
+
+.stand-out-features-grid__card:hover > .iconbox::before {
+  transform: scaleX(1);
+}
+
+/* Icon sits in a soft rounded chip tinted with the accent; on hover the chip
+   fills solid, the glyph turns white and gives a little pop. */
+.stand-out-features-grid__card .premium-icon-box .iconbox-icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: #eef2ff;
+  background: color-mix(in srgb, var(--card-accent, #0030b8) 12%, #fff);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background 0.4s ease;
+}
+
+.stand-out-features-grid__card .premium-icon-box .iconbox-icon-container i {
+  font-size: 26px;
+  transition: color 0.4s ease, transform 0.4s ease;
+}
+
+.stand-out-features-grid__card:hover .premium-icon-box .iconbox-icon-container {
+  background: var(--card-accent, #0030b8);
+  transform: scale(1.08) rotate(-6deg);
+}
+
+.stand-out-features-grid__card:hover .premium-icon-box .iconbox-icon-container i {
+  color: #fff !important;
+  transform: scale(1.1);
+}
+
+/* Title shifts to the accent colour on hover. */
+.stand-out-features-grid__card .contents h3 {
+  transition: color 0.3s ease;
+}
+
+.stand-out-features-grid__card:hover .contents h3 {
+  color: var(--card-accent, #0030b8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stand-out-features-grid__card > .iconbox,
+  .stand-out-features-grid__card > .iconbox::before,
+  .stand-out-features-grid__card .premium-icon-box .iconbox-icon-container,
+  .stand-out-features-grid__card .premium-icon-box .iconbox-icon-container i {
+    transition: none;
+  }
+
+  .stand-out-features-grid__card:hover > .iconbox {
+    transform: none;
+  }
+
+  .stand-out-features-grid__card:hover .premium-icon-box .iconbox-icon-container {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   GLASS VARIANT -- advanced dark UI, opted in per page
+   (currently the crypto-wallet features section only). Everything
+   is gated behind .stand-out-features-section--glass / the
+   .sof-*--glass classes so no other page is affected.
+   ============================================================ */
+.stand-out-features-section--glass {
+  margin-top: clamp(40px, 5vw, 64px);
+  padding: clamp(56px, 6vw, 92px) 0 clamp(56px, 6vw, 88px);
+  background:
+    radial-gradient(1100px 560px at 12% -5%, rgba(108, 59, 255, 0.28), transparent 60%),
+    radial-gradient(950px 520px at 105% 108%, rgba(232, 62, 188, 0.2), transparent 55%),
+    linear-gradient(160deg, #0a0f2c 0%, #131a3e 55%, #0c1130 100%);
+  overflow: hidden;
+}
+
+.stand-out-features-section--glass h2 {
+  color: #fff;
+}
+
+.stand-out-features-section--glass .ld-fancy-heading h6 .ld-fh-txt,
+.stand-out-features-section--glass .ld-fancy-heading h6 {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Glass card surface */
+.sof-iconbox--glass.iconbox {
+  padding: 30px 26px !important;
+  border-radius: 18px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  color: #fff !important;
+}
+
+.sof-iconbox--glass .contents h3 {
+  color: #fff !important;
+}
+
+.sof-iconbox--glass .contents p,
+.sof-iconbox--glass .contents p span {
+  color: rgba(255, 255, 255, 0.68) !important;
+  font-size: 15px;
+}
+
+/* Cards gently drift on their own (the "normal-state" motion). The float
+   lives on the Reveal wrapper, staggered with negative delays so the six
+   cards bob out of sync; the inner .iconbox keeps its own hover lift. The
+   wrapper's entrance still fades in via opacity (the animation only owns
+   transform). */
+.sof-card--glass {
+  animation: sof-glass-float 6s ease-in-out infinite;
+}
+
+.sof-card--glass:nth-child(2) { animation-delay: -2s; }
+.sof-card--glass:nth-child(3) { animation-delay: -4s; }
+.sof-card--glass:nth-child(4) { animation-delay: -1s; }
+.sof-card--glass:nth-child(5) { animation-delay: -3s; }
+.sof-card--glass:nth-child(6) { animation-delay: -5s; }
+
+@keyframes sof-glass-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-9px); }
+}
+
+/* The shared top accent bar reads brighter on the dark card. */
+.sof-card--glass > .iconbox::before {
+  height: 3px;
+  background: linear-gradient(90deg, #6c3bff, #e83ebc);
+}
+
+/* Gradient neon icon chip with an always-on glow pulse (the "normal-state"
+   animation) -- !important beats the shared light-variant chip rules. */
+.sof-iconbox--glass .iconbox-icon-container {
+  width: 58px !important;
+  height: 58px !important;
+  border-radius: 16px !important;
+  background: linear-gradient(135deg, #6c3bff, #e83ebc) !important;
+  box-shadow: 0 10px 26px -8px rgba(108, 59, 255, 0.6);
+  animation: sof-glass-chip-pulse 3.2s ease-in-out infinite;
+}
+
+.sof-iconbox--glass .iconbox-icon-container i {
+  color: #fff !important;
+  font-size: 24px !important;
+}
+
+@keyframes sof-glass-chip-pulse {
+  0%, 100% { box-shadow: 0 10px 26px -8px rgba(108, 59, 255, 0.5); }
+  50%      { box-shadow: 0 14px 34px -6px rgba(232, 62, 188, 0.72); }
+}
+
+/* Glass hover: stronger lift + neon glow, chip pops, title stays white. */
+.sof-card--glass:hover > .sof-iconbox--glass.iconbox {
+  transform: translateY(-12px);
+  border-color: rgba(139, 92, 246, 0.6) !important;
+  box-shadow: 0 30px 60px -24px rgba(108, 59, 255, 0.6);
+}
+
+.sof-card--glass:hover .sof-iconbox--glass .iconbox-icon-container {
+  transform: scale(1.1) rotate(-6deg);
+  background: linear-gradient(135deg, #7b4dff, #ff54c9) !important;
+}
+
+.sof-card--glass:hover .sof-iconbox--glass .contents h3 {
+  color: #fff !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sof-card--glass,
+  .sof-iconbox--glass .iconbox-icon-container {
+    animation: none;
+  }
+
+  .sof-card--glass:hover .sof-iconbox--glass .iconbox-icon-container {
+    transform: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .stand-out-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .stand-out-features-grid {
+    grid-template-columns: 1fr;
+  }
+}

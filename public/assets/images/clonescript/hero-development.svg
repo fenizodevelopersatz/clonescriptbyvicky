@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 556 439" width="556" height="439" role="img" aria-label="Web and app development illustration">
+  <defs>
+    <linearGradient id="fz-hero-g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0030b8"/>
+      <stop offset="100%" stop-color="#00366d"/>
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="278" cy="230" rx="260" ry="190" fill="url(#fz-hero-g)" opacity="0.08"/>
+
+  <g transform="translate(58,60)">
+    <rect x="0" y="0" width="440" height="260" rx="16" fill="#101B48"/>
+    <rect x="14" y="14" width="412" height="232" rx="6" fill="#ffffff"/>
+    <circle cx="28" cy="4" r="0" fill="none"/>
+    <circle cx="18" cy="7" r="3" fill="#ff5f57"/>
+    <circle cx="30" cy="7" r="3" fill="#febc2e"/>
+    <circle cx="42" cy="7" r="3" fill="#28c840"/>
+
+    <rect x="34" y="46" width="150" height="14" rx="4" fill="#0030b8"/>
+    <rect x="34" y="72" width="220" height="10" rx="4" fill="#c9d3ec"/>
+    <rect x="34" y="90" width="180" height="10" rx="4" fill="#c9d3ec"/>
+    <rect x="34" y="120" width="110" height="34" rx="8" fill="#0030b8"/>
+    <rect x="34" y="170" width="90" height="8" rx="4" fill="#dbe3f5"/>
+
+    <rect x="270" y="46" width="130" height="150" rx="10" fill="#eef2fb" stroke="#dbe3f5" stroke-width="1.5"/>
+    <rect x="286" y="62" width="98" height="10" rx="4" fill="#0030b8" opacity="0.7"/>
+    <rect x="286" y="82" width="70" height="8" rx="4" fill="#9fb0dd"/>
+    <path d="M286 150 L306 122 L326 138 L354 100 L384 116" fill="none" stroke="#0030b8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="384" cy="116" r="6" fill="#0030b8"/>
+  </g>
+
+  <g transform="translate(30,300)">
+    <rect x="0" y="0" width="150" height="90" rx="16" fill="#ffffff" stroke="#dbe3f5" stroke-width="1.5"/>
+    <text x="18" y="42" font-family="Poppins, Arial, sans-serif" font-weight="800" font-size="26" fill="#0030b8">&lt;/&gt;</text>
+    <text x="18" y="68" font-family="Poppins, Arial, sans-serif" font-weight="500" font-size="14" fill="#101b48">Clean Code</text>
+  </g>
+
+  <g transform="translate(376,300)">
+    <rect x="0" y="0" width="150" height="90" rx="16" fill="#ffffff" stroke="#dbe3f5" stroke-width="1.5"/>
+    <rect x="18" y="18" width="60" height="30" rx="6" fill="#0030b8" opacity="0.85"/>
+    <rect x="86" y="18" width="46" height="30" rx="6" fill="#0030b8" opacity="0.35"/>
+    <text x="18" y="70" font-family="Poppins, Arial, sans-serif" font-weight="500" font-size="14" fill="#101b48">Responsive UI</text>
+  </g>
+
+  <circle cx="500" cy="60" r="8" fill="#0030b8" opacity="0.4"/>
+  <circle cx="40" cy="40" r="6" fill="#0030b8" opacity="0.3"/>
+</svg>

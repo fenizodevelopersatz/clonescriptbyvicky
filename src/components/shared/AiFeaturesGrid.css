@@ -1,0 +1,58 @@
+/* Same float-wrap bug as TechStackRow/StandOutFeaturesGrid/AiFeaturesSection
+   (see those files' own comments): the WPBakery ".vc_col-sm-N" columns are
+   float-based with no matching-height guarantee, so cards with different
+   description lengths wrap into the wrong column instead of a clean row --
+   e.g. a 4-line card leaves the next row's other column empty, stranding a
+   single card alone before the layout catches back up. CSS Grid fixes this:
+   equal-height rows, always-correct column alignment, regardless of text length. */
+.ai-features-grid__row {
+  display: grid;
+  gap: 24px;
+}
+
+/* This element also carries the Bootstrap-style .row class, whose
+   ::before/::after clearfix isn't neutralized for bare .row here (only
+   .ld-row gets that treatment elsewhere) -- same bug documented in
+   BlockquoteTestimonials.css and fixed the same way in AiFeaturesSection.css/
+   WhatIsLogistics.css: left alone, those pseudo-elements become phantom grid
+   items and shift every real card over by one cell. A single-class override
+   loses the specificity tie against the vendored rule on load order, so this
+   repeats the class for 0,3,0 specificity to actually win it.  */
+.row.ld-row.ai-features-grid__row::before,
+.row.ld-row.ai-features-grid__row::after {
+  content: none;
+  display: none;
+}
+
+.ai-features-grid__row > .wpb_column {
+  float: none;
+  width: auto;
+  margin: 0;
+}
+
+.ai-features-grid__row > .wpb_column,
+.ai-features-grid__row .vc_column-inner,
+.ai-features-grid__row .wpb_wrapper,
+.ai-features-grid__row .wpb_wrapper-inner,
+.ai-features-grid__row .wpb_wrapper-inner > div {
+  height: 100%;
+}
+
+.ai-features-grid__row .iconbox {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 991px) {
+  .ai-features-grid__row {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .ai-features-grid__row {
+    grid-template-columns: 1fr !important;
+  }
+}

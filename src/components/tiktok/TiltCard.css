@@ -1,0 +1,26 @@
+.tk-tilt {
+  perspective: var(--tk-perspective, 1200px);
+  /* Rest values so the inner transform is valid before the first pointermove
+     and after pointerleave, and for reduced-motion visitors (where the hook
+     never attaches at all). */
+  --tk-rx: 0deg;
+  --tk-ry: 0deg;
+  --tk-px: 0;
+  --tk-py: 0;
+}
+
+.tk-tilt__inner {
+  transform-style: preserve-3d;
+  transform: rotateX(var(--tk-rx)) rotateY(var(--tk-ry));
+  /* Long enough to feel weighted on pointerleave, short enough that it still
+     tracks the cursor: pointermove overwrites the target every frame, so this
+     reads as easing rather than lag. */
+  transition: transform 380ms var(--clonescript-ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tk-tilt__inner {
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,1 @@
+const customMenu22=document.querySelector('.fixed-menu2');const section22=document.getElementById('standard2');window.addEventListener('scroll',()=>{const section2Top=section22.getBoundingClientRect().top;if(section2Top<=0){customMenu22.classList.add('position_static')}else{customMenu22.classList.remove('position_static')}})

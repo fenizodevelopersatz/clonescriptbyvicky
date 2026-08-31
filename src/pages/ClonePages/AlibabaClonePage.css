@@ -1,0 +1,28 @@
+/* Every section on this page butts directly against its neighbor with zero
+   gap -- vertical rhythm normally comes from each section's own internal
+   padding/spacer, not inter-section margin (see other .vc_row sections). This
+   one is the exception: a bordered white card with its own visible edges, so
+   it needs real breathing room on both sides or it visually collides with
+   the tech-stack cards above and the stand-out-features cards below. */
+.alibaba-live-demo-cta {
+  padding: 56px 0;
+}
+
+.alibaba-live-demo-cta .ld-container.container {
+  padding: 40px 48px;
+  border: 1px solid rgba(16, 27, 72, 0.08);
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 16px 40px rgba(16, 27, 72, 0.07);
+}
+
+@media (max-width: 767px) {
+  .alibaba-live-demo-cta {
+    padding: 36px 0;
+  }
+
+  .alibaba-live-demo-cta .ld-container.container {
+    padding: 28px 20px;
+    border-radius: 18px;
+  }
+}

@@ -1,0 +1,270 @@
+html,
+body {
+  margin: 0;
+}
+
+/* Moved to the left edge (vendored default is right:3%, right:20px on
+   mobile -- see shared-713aa8f4.css); !important since neither vendored
+   rule uses it and load order between dynamically-injected page bundles
+   isn't reliable enough to trust a plain override here. */
+.float_social {
+  left: 3% !important;
+  right: auto !important;
+}
+
+@media (max-width: 767px) {
+  .float_social {
+    left: 20px !important;
+    right: auto !important;
+  }
+}
+
+/* The "Chat with us" hover tooltip and its slide-left drift animation
+   (shared-713aa8f4.css) both assumed the button sits on the right edge,
+   sliding text further left/inward on hover. Mirrored so it drifts right/
+   inward now that the button is on the left instead. Scoped to
+   .float_social -- confirmed .slide-left/.mob_schedule_wa aren't reused
+   anywhere else in src/, so this can't affect anything else. */
+.float_social .mob_schedule_wa {
+  right: auto !important;
+  left: -10% !important;
+  transform: translateX(40%) translateY(-10px) !important;
+}
+
+.float_social .whatlink:hover .mob_schedule_wa {
+  transform: translateX(50%) translateY(-10px) !important;
+}
+
+.float_social .slide-left {
+  animation-name: cs-whatsapp-slide-right !important;
+}
+
+@keyframes cs-whatsapp-slide-right {
+  0% { transform: translateX(0); }
+  16.67% { transform: translateX(100px); }
+  100% { transform: translateX(100px); }
+}
+
+/* Notification-style badge on the floating WhatsApp button, matching the
+   header cart's count-badge treatment. */
+.float_social .btn-icon {
+  position: relative;
+}
+
+.clonescript-whatsapp-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #ff3c3c;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* "Big box" flip-feature grids (Fiverr/OLX/Udemy "Add-On Features" --
+   AddOnFeaturesFlip.jsx / FreeAddOnFeatures.jsx, all sharing this same
+   vendored .ld-flipbox markup). The gradient/white-back CSS the original
+   theme shipped for this targets WPBakery instance-ID classes that don't
+   exist in this JSX, so both faces were silently falling back to a flat
+   var(--color-primary) blue -- including the back face, which has inline
+   black description text (see AddOnFeaturesFlip.jsx) and needs a light
+   background to be legible at all. !important because a later-loaded
+   stylesheet (shared-*.css) sets the flat blue with equal/higher
+   specificity. Scoped to .ld-flipbox-face (iconbox-heading-md only) so it
+   never touches the small icon grids (SimpleIconGrid/StandOutFeaturesGrid),
+   which use iconbox-heading-xs instead.
+   Soft lavender front + subtle indigo-tinted shadow per the "comfortable
+   for long viewing" palette pass -- title/icon color is set directly in
+   each page's JSX (was per-page inconsistent: purple/cyan/neon-pink) since
+   that's an inline style on the element itself, not something this
+   stylesheet can cleanly reach. */
+.ld-flipbox-face.ld-flipbox-front {
+  background: var(--clonescript-card-gradient, linear-gradient(135deg, #eef2ff 0%, #f3e8ff 100%)) !important;
+  border-radius: var(--clonescript-radius-lg, 22px) !important;
+  border: 1px solid var(--clonescript-line, #e2e8f0);
+  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.1);
+}
+
+.ld-flipbox-face.ld-flipbox-back {
+  background: #fff !important;
+  border-radius: var(--clonescript-radius-lg, 22px) !important;
+  border: 1px solid var(--clonescript-line, #e2e8f0);
+  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.1);
+}
+
+.ld-flipbox.ld-flipbox-shadow-onhover:hover .ld-flipbox-wrap {
+  box-shadow: 0 12px 32px rgba(79, 70, 229, 0.16) !important;
+}
+
+/* The title/icon color set via inline style on the .iconbox wrapper
+   (AddOnFeaturesFlip.jsx / FreeAddOnFeatures.jsx) doesn't actually reach
+   the <h3> or the icon: both have their own direct vendored color rules
+   (h3 -> a flat dark navy, .iconbox-icon-container -> var(--color-primary))
+   which beat inherited color regardless of the parent's specificity. */
+.ld-flipbox-face.ld-flipbox-front h3,
+.ld-flipbox-face.ld-flipbox-front .iconbox-icon-container,
+.ld-flipbox-face.ld-flipbox-front .iconbox-icon-container i {
+  color: var(--clonescript-btn-primary, #4f46e5) !important;
+}
+
+/* Defensive: the vendored header's Bootstrap-style .row/.col grid uses
+   negative gutter margins that bleed past the viewport at some breakpoints
+   (confirmed independent of DecorativeBackground and reproducible on every
+   route, e.g. ~18px overflow at 768px tablet width) -- clip it at the body
+   level rather than chase it through vendored CSS, since body isn't part of
+   the header's sticky/dropdown positioning chain. */
+body {
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+img,
+svg,
+video,
+iframe { max-width: 100%; }
+
+button,
+a,
+input,
+select,
+textarea { font: inherit; }
+
+/* .btn-naked ("ghost" button, no visible chrome) only resets background-color
+   to transparent on :hover (litespeed bundle, shared-*.css) -- it never sets
+   a resting-state background at all. That's invisible on the <a>-tag variants
+   used everywhere else, but the two places this class renders on a real
+   <button> (DemoForm's "Back" link, CartDropdown's cart-clear icon) fall back
+   to the browser's native button chrome instead: a light gray oval, visible
+   until hover kicks in and masks it. Reset it directly so "naked" looks the
+   same at rest as it already does on hover. */
+button.btn-naked {
+  background-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid #5f2eea;
+  outline-offset: 3px;
+}
+
+/* Vendored theme CSS puts a clearfix (content:" "; display:table) on every
+   .row/.ld-row via ::before/::after for float-based layouts. Several
+   components repurpose that same class as a CSS Grid container (inline
+   `display: grid`) for quick grids -- the clearfix pseudo-element still
+   generates a box there too and becomes an anonymous first grid item,
+   silently shifting every real child over by one cell and spilling the
+   last item into its own row (confirmed on turo-clone's "Add-On Features"
+   icon grid: 15 items rendered as 4/5/5/1 instead of 5/5/5). The same
+   `className="row ld-row" style={{ display: 'grid', ... }}` idiom is used
+   in 19+ components sitewide, so fix it once here instead of per-component. */
+.row[style*="display: grid"]::before,
+.row[style*="display: grid"]::after,
+.ld-row[style*="display: grid"]::before,
+.ld-row[style*="display: grid"]::after {
+  content: none;
+}
+
+.carousel-container,
+.carousel-items,
+.flickity-viewport { max-width: 100%; }
+
+.carousel-container,
+.flickity-viewport { overflow: hidden; }
+
+.clonescript-pdf-cta__media {
+  width: 100%;
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+.clonescript-pdf-cta__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 260px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.clonescript-demo-tab__visual {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.clonescript-demo-tab__visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 44px -18px rgba(16, 27, 72, 0.35);
+}
+
+/* This bordered/shadowed panel had no section-level padding, so it touched
+   whatever came directly before/after it -- same missing-breathing-room
+   pattern fixed for the other boxed sections (ComparisonTable, PdfDownloadCta,
+   alibaba-live-demo-cta). */
+.money-back-section {
+  padding: 48px 0;
+}
+
+@media (max-width: 767px) {
+  .money-back-section {
+    padding: 32px 0;
+  }
+}
+
+.money-back-panel {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  background-color: #f4fef0;
+  border: 1px solid #4b922e;
+  border-radius: 15px;
+  padding: 30px 40px;
+  transform: rotate(-2deg);
+  box-shadow: 0 18px 30px -12px rgba(46, 125, 50, 0.35);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.money-back-panel:hover {
+  transform: rotate(0deg);
+  box-shadow: 0 12px 20px -10px rgba(46, 125, 50, 0.25);
+}
+
+@media (max-width: 767px) {
+  .money-back-panel {
+    transform: rotate(-1deg);
+  }
+}
+
+.route-loading {
+  min-height: 55vh;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 14px;
+  color: #101b48;
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

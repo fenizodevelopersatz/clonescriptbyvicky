@@ -1,0 +1,4 @@
+Fixed the Bonus Transfer on BMAN - Completed
+CloneScript:
+All the page contents only completed - replace all the drive data.
+Working on the image replacement.

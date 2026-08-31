@@ -1,0 +1,94 @@
+.main-footer > section,
+.main-footer > section > section.vc_row {
+  width: 100%;
+  max-width: 100%;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  left: auto !important;
+}
+
+.main-footer .clonescript-business-solutions > .vc_row:first-child .fancy-title h3 {
+  color: #000;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.main-footer .clonescript-sitemap-category .ld-fancy-heading h4 {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0 0 8px;
+  padding: 7px 8px;
+  border-radius: 4px;
+  background: var(--clonescript-footer-title-bg);
+  color: var(--clonescript-footer-title-color);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+}
+
+.main-footer .clonescript-sitemap-category .ld-fancy-heading h4 .ld-fh-txt {
+  color: inherit;
+}
+
+.clonescript-sitemap-newtag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: #ff3c78;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+@media (max-width: 991px) {
+  .main-footer .clonescript-business-solutions > .vc_row:first-child .fancy-title h3 {
+    font-size: 26px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 767px) {
+  .main-footer .clonescript-business-solutions > .vc_row:first-child .fancy-title h3 {
+    font-size: 24px;
+  }
+}
+
+.main-footer .footer-review-platforms__logos {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: center;
+  gap: 30px;
+  margin-top: 28px;
+}
+
+.main-footer .footer-review-platforms__logos a {
+  display: block;
+  transition: opacity 150ms ease;
+}
+
+.main-footer .footer-review-platforms__logos a:hover {
+  opacity: 0.75;
+}
+
+.main-footer .footer-review-platforms__logos img {
+  display: block;
+  width: 165px;
+  max-width: 100%;
+  height: 48px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+@media (max-width: 767px) {
+  .main-footer .footer-review-platforms__logos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 18px;
+  }
+}

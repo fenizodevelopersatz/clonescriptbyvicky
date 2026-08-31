@@ -1,0 +1,120 @@
+/* The cart offcanvas panel's theme CSS is meant to hide it via
+   `.ld-module-dropdown[aria-expanded=true]`, but that rule isn't present in
+   the CSS this app actually loads -- so the closed-state panel (position:
+   fixed, full viewport height) sits fully interactive over the right third
+   of every page at all times, blocking mega-menu clicks positioned under
+   it. Drive the same open/closed visual directly off the .show class this
+   component already toggles. */
+.ld-module-cart-offcanvas .ld-module-dropdown {
+  display: none !important;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  clip-path: inset(0 0 0 100%);
+  transition: opacity 0.3s, visibility 0.3s, clip-path 0.3s;
+}
+.ld-module-cart-offcanvas .ld-module-dropdown.show {
+  display: block !important;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+  clip-path: inset(0);
+}
+
+/* Menu items with no built page in this app yet. Rendered as a non-anchor
+   so they can't be clicked or jump the page to "#", just a visible
+   affordance that they're inactive. */
+.menu-item-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.menu-item-disabled .liquid-overlay-link {
+  cursor: not-allowed;
+}
+
+/* Defensive: guarantee each mega-menu card's full-card click target always
+   wins over its own icon/text sibling within this menu specifically. */
+.nav-item-children .liquid-overlay-link {
+  z-index: 5;
+}
+
+/* useMobileNav toggles this class on <html> while the mobile menu is open,
+   but no CSS backed it -- so scroll never actually locked. */
+html.overflow-hidden {
+  overflow: hidden;
+}
+
+/* Mega-menu item hover. The theme's .iconbox-filled-hover:before overlay
+   (background: var(--color-primary) = #0030b8) DOES fade to opacity:1 on hover
+   via pure CSS -- it does not need the theme's (un-ported) JS after all. Since
+   .contents sits above it (z-index:2), the item reads as a solid brand-blue
+   card on hover, so the title/subtitle must go WHITE to stay legible (dark text
+   on the blue fill was invisible -- the bug reported on the crypto page).
+   The icon keeps its own gradient chip. !important is required to beat a plain
+   litespeed rule that otherwise forces these colours. */
+.megamenu-column .iconbox-filled-hover:hover:before {
+  background: linear-gradient(135deg, #0030b8, #6c3bff) !important;
+  opacity: 1;
+}
+.megamenu-column .iconbox-filled-hover:hover,
+.megamenu-column .iconbox-filled-hover:hover h3,
+.megamenu-column .iconbox-filled-hover:hover p {
+  color: #fff !important;
+}
+
+/* The mega-menu item icon was sized for a wider desktop card than this
+   4-column layout gives each item, crowding longer titles (e.g. "Fashion
+   Resale Script") against the "new" badge in the corner. The badge itself is
+   tightened at its source rule in assets/css/shared-713aa8f4.css. */
+.megamenu-column .iconbox .iconbox-icon-container {
+  width: 40px !important;
+  height: 40px !important;
+  font-size: 16px !important;
+}
+
+/* The theme's cart CSS (.ld-cart-product, .ld-cart-product-remove, etc.)
+   ships fully built in the litespeed bundle but was never wired to real
+   markup -- CartDropdown now renders live localStorage cart items into it.
+   .ld-cart-product-details only has a width from the source CSS (it
+   originally wrapped a product-info figure/link this app doesn't have), so
+   the plan-name + product-name spans need their own stacking rule, and
+   .ld-cart-button's vertical button stack (relied on by the theme's own
+   ".btn+.btn{margin-top:1em}" rule) needs a flex-column ancestor. Both are
+   scoped under .ld-module-cart-offcanvas to outrank the base theme rules
+   regardless of stylesheet load order. */
+.ld-module-cart-offcanvas .ld-cart-product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 55%;
+}
+.ld-module-cart-offcanvas .ld-cart-product-name {
+  font-weight: 600;
+}
+/* .ld-cart-product-meta is a Link back to that item's product page (the
+   cart's "more information" -- see CartDropdown), so it needs its own
+   link-reset instead of inheriting the theme's default anchor styling. */
+.ld-module-cart-offcanvas .ld-cart-product-meta {
+  display: block;
+  font-size: 12px;
+  color: #767676;
+  text-decoration: none;
+}
+.ld-module-cart-offcanvas .ld-cart-product-meta:hover {
+  color: var(--color-primary, #0030b8);
+  text-decoration: underline;
+}
+.ld-module-cart-offcanvas .ld-cart-product-features {
+  display: block;
+  font-size: 11px;
+  color: #9a9a9a;
+}
+.ld-module-cart-offcanvas .ld-cart-button {
+  display: flex;
+  flex-direction: column;
+}
+.ld-module-cart-offcanvas .ld-cart-clear {
+  cursor: pointer;
+}

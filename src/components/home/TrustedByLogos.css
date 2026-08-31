@@ -1,0 +1,55 @@
+/* Auto-scrolling marquee, replacing a static 4-up grid so this section moves
+   the way the original site's carousel did. See FENIZO_REBRAND_LOG.md
+   (56c5bd4) for why it carries the safe trustCategories badges instead of
+   the original's real third-party client logos -- those imply an endorsement
+   this business can't verify.
+   The item list is rendered twice back to back (see TrustedByLogos.jsx) so
+   the track can loop seamlessly: animating from 0 to -50% of the track's own
+   width ends exactly where the (identical, aria-hidden) second copy begins. */
+.clonescript-trust-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+}
+
+.clonescript-trust-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: clonescript-trust-marquee-scroll 16s linear infinite;
+}
+
+.clonescript-trust-marquee:hover .clonescript-trust-marquee__track {
+  animation-play-state: paused;
+}
+
+.clonescript-trust-marquee__item {
+  flex: 0 0 auto;
+  width: 220px;
+  padding: 0 20px;
+}
+
+.clonescript-trust-marquee__item .iconbox {
+  margin-bottom: 0;
+}
+
+@keyframes clonescript-trust-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clonescript-trust-marquee__track {
+    animation: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .clonescript-trust-marquee__item {
+    width: 160px;
+    padding: 0 12px;
+  }
+}

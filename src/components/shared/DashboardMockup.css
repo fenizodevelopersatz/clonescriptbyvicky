@@ -1,0 +1,131 @@
+.cs-dash-mock {
+  width: 100%;
+  aspect-ratio: 1.35;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--clonescript-line, #dfe4f2);
+  box-shadow: 0 20px 44px -18px rgba(16, 27, 72, 0.35);
+  display: flex;
+  flex-direction: column;
+  /* Self-contained container-query root: internal text/gaps below scale off
+     this element's own rendered width (cqw), not the viewport (vw). That
+     matters once this same component is dropped into a much narrower slot
+     than its original School CRM context, e.g. the ERP dashboard preview's
+     fixed-height iMac frame -- vw-based sizing there would size text off
+     the full viewport instead of the actual (tiny) card width. */
+  container-type: inline-size;
+}
+
+/* A parent with an explicit height (like the ERP dashboard preview's
+   absolutely-positioned, overflow:hidden slot) can override this via
+   `height: 100% !important` -- aspect-ratio only fills in a dimension that
+   isn't otherwise determined, so an explicit height safely takes over. */
+
+.cs-dash-mock__topbar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  background: #f5f7ff;
+  border-bottom: 1px solid var(--clonescript-line, #dfe4f2);
+}
+
+.cs-dash-mock__brand {
+  font-weight: 800;
+  font-size: clamp(9px, 4cqw, 12px);
+  color: var(--clonescript-ink, #111936);
+  letter-spacing: -0.01em;
+}
+
+.cs-dash-mock__user {
+  margin-left: auto;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 10px;
+}
+
+.cs-dash-mock__body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+.cs-dash-mock__sidebar {
+  flex-shrink: 0;
+  width: 16%;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fafbff;
+  border-right: 1px solid var(--clonescript-line, #dfe4f2);
+}
+
+.cs-dash-mock__nav-item {
+  display: block;
+  height: 8px;
+  border-radius: 4px;
+  background: #e4e8f5;
+}
+
+.cs-dash-mock__main {
+  flex: 1;
+  min-width: 0;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cs-dash-mock__stats {
+  display: flex;
+  gap: 10px;
+}
+
+.cs-dash-mock__stat {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #f5f7ff;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cs-dash-mock__stat-value {
+  font-weight: 800;
+  font-size: clamp(11px, 4.8cqw, 15px);
+  line-height: 1.2;
+}
+
+.cs-dash-mock__stat-label {
+  font-size: clamp(7px, 3.2cqw, 9px);
+  color: var(--clonescript-muted, #687087);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cs-dash-mock__chart {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(4px, 1.4cqw, 10px);
+  padding: 10px 4px 0;
+  border-top: 1px solid var(--clonescript-line, #dfe4f2);
+}
+
+.cs-dash-mock__chart span {
+  flex: 1;
+  min-height: 6%;
+  border-radius: 4px 4px 1px 1px;
+}

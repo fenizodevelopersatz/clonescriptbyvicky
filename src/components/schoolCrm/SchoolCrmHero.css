@@ -1,0 +1,14 @@
+.cs-schoolcrm-hero__heading {
+  font-size: clamp(32px, 5vw, 44px);
+  line-height: 1.15;
+}
+
+.cs-schoolcrm-hero__desc {
+  max-width: 520px;
+}
+
+@media (min-width: 992px) {
+  .cs-schoolcrm-hero__heading {
+    font-size: clamp(44px, 4.4vw, 60px);
+  }
+}

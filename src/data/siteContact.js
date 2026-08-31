@@ -1,0 +1,22 @@
+// Dummy contact details used across the app.
+export const siteContact = {
+  companyName: 'Example Studio',
+  shortName: 'Example',
+  supportEmail: 'hello@example.com',
+  careersEmail: 'careers@example.com',
+  whatsappNumber: '+91 90000 00000',
+  whatsappNumberDisplay: '+91 90000 00000',
+  whatsappApiNumber: '919000000000',
+  addressLine1: '123 Example Street',
+  addressLine2: 'Example City, Example State, India',
+  indiaAddress: '123 Example Street, Example City, Example State, India',
+  indiaPhones: ['+91 90000 00000'],
+  businessHours: 'Mon – Fri: 9:00 AM – 6:00 PM IST',
+  mapsEmbedSrc: '',
+  calendlyUrl: '#',
+  erpStoreDemoUrl: '#',
+  erpAdminDemoUrl: '#',
+  demoEmail: 'demo@example.com',
+  demoPassword: 'password123',
+  cloneDemoUrl: '#',
+}

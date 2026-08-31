@@ -1,0 +1,172 @@
+/* Shared 5-card review grid used across pages (originally built to replace the
+   single-image school-review.png collage on SchoolCrmPage; now reused site-wide
+   with per-page content/colors/avatars passed in as data). Three cards on the
+   first row, the remaining two centred underneath -- flex-wrap +
+   justify-content:center produces that on its own, without a hardcoded second-row
+   rule. Cards get an explicit third-of-a-row basis (rather than flex-grow) so the
+   two on the last row stay exactly as wide as the three above them instead of
+   stretching to fill. */
+.reviewcard-grid {
+  --rv-gap: clamp(16px, 2vw, 26px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--rv-gap);
+  width: min(100%, var(--clonescript-container, 1170px));
+  margin-inline: auto;
+  padding-inline: var(--clonescript-gutter, 20px);
+  text-align: left;
+}
+
+.reviewcard {
+  --rv-bg: #eef2ff;
+  --rv-accent: #4f46e5;
+  --rv-dot: #8b7cf6;
+  position: relative;
+  display: flex;
+  flex: 0 1 calc((100% - (2 * var(--rv-gap))) / 3);
+  flex-direction: column;
+  margin: 0;
+  padding: clamp(22px, 2.2vw, 30px);
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--rv-bg);
+  box-shadow: 0 10px 30px rgb(16 27 72 / 8%);
+  transition: transform 260ms var(--clonescript-ease, ease), box-shadow 260ms var(--clonescript-ease, ease);
+}
+
+.reviewcard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 42px rgb(16 27 72 / 14%);
+}
+
+/* The small solid circle in the top-right corner of every card in the original. */
+.reviewcard__dot {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--rv-dot);
+  opacity: 0.8;
+}
+
+.reviewcard__head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  /* Leave room for the absolutely-positioned corner dot. */
+  padding-right: 42px;
+}
+
+.reviewcard__mark {
+  color: var(--rv-accent);
+  font-size: 28px;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+.reviewcard__stars {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.reviewcard__star {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  font-size: 15px;
+  line-height: 1;
+}
+
+/* Half stars: a width-clipped coloured copy sits over a faded full star, so a 4.5
+   rating renders exactly without needing a separate half-star glyph. */
+.reviewcard__star-bg,
+.reviewcard__star-fg {
+  position: absolute;
+  inset: 0;
+  color: var(--rv-accent);
+}
+
+.reviewcard__star-bg { opacity: 0.25; }
+
+.reviewcard__star-fg {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.reviewcard__quote {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: #2b2f45;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.reviewcard__author {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgb(23 37 84 / 10%);
+}
+
+/* Avatar keeps the source design's white ring plus the offset accent disc
+   peeking out behind its lower-right edge. */
+.reviewcard__avatar {
+  position: relative;
+  flex: 0 0 auto;
+  width: 62px;
+  height: 62px;
+}
+
+.reviewcard__avatar::before {
+  content: '';
+  position: absolute;
+  right: -6px;
+  bottom: -5px;
+  width: 62%;
+  height: 62%;
+  border-radius: 50%;
+  background: var(--rv-dot);
+}
+
+.reviewcard__avatar img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.reviewcard__meta { min-width: 0; }
+
+.reviewcard__name {
+  display: block;
+  color: var(--rv-accent);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.reviewcard__role {
+  display: block;
+  margin-top: 2px;
+  color: #5b6079;
+  font-size: 12.5px;
+}
+
+@media (max-width: 991px) {
+  .reviewcard { flex-basis: calc((100% - var(--rv-gap)) / 2); }
+}
+
+@media (max-width: 575px) {
+  .reviewcard { flex-basis: 100%; }
+}

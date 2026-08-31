@@ -1,0 +1,27 @@
+{
+  "name": "react-app-v2",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 4000",
+    "build": "vite build",
+    "prebuild": "node tools/image-replacer/scan.js",
+    "lint": "oxlint src",
+    "preview": "vite preview",
+    "images:scan": "node tools/image-replacer/scan.js"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.2"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "oxlint": "^1.75.0",
+    "sharp": "^0.35.4",
+    "vite": "^8.2.0"
+  }
+}

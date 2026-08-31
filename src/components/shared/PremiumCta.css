@@ -1,0 +1,110 @@
+.cs-premium-cta {
+  padding: clamp(16px, 3vw, 32px) var(--clonescript-gutter, 20px);
+}
+
+.cs-premium-cta__panel {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: clamp(48px, 7vw, 84px) clamp(24px, 6vw, 64px);
+  border-radius: clamp(24px, 3vw, 32px);
+  background: linear-gradient(135deg, #f4f0ff 0%, #eef2ff 50%, #f8f4ff 100%);
+  border: 1px solid var(--clonescript-line, #e2e8f0);
+  box-shadow: 0 20px 50px -24px rgba(79, 70, 229, 0.2);
+  text-align: center;
+}
+
+.cs-premium-cta__glow {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(420px 320px at 20% 15%, rgba(139, 124, 246, 0.18), transparent 65%),
+    radial-gradient(460px 340px at 85% 85%, rgba(192, 132, 252, 0.14), transparent 65%);
+  pointer-events: none;
+}
+
+.cs-premium-cta__icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(120px, 16vw, 180px);
+  color: var(--clonescript-violet, #8b7cf6);
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.cs-premium-cta__sparkle {
+  position: absolute;
+  font-size: clamp(18px, 2.4vw, 26px);
+  color: var(--clonescript-accent-soft, #c084fc);
+  opacity: 0.6;
+}
+
+.cs-premium-cta__sparkle--left {
+  bottom: 22%;
+  left: 12%;
+}
+
+.cs-premium-cta__sparkle--right {
+  top: 22%;
+  right: 12%;
+}
+
+.cs-premium-cta__content {
+  position: relative;
+  z-index: 1;
+}
+
+.cs-premium-cta__heading {
+  margin: 0 0 14px;
+  color: var(--clonescript-ink, #111936);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.cs-premium-cta__sub {
+  max-width: 560px;
+  margin: 0 auto 32px;
+  color: var(--clonescript-muted, #667085);
+  font-size: clamp(15px, 1.6vw, 17px);
+  line-height: 1.6;
+}
+
+.cs-premium-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border-radius: 999px;
+  background: var(--clonescript-btn-primary, #4f46e5);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 0 12px 28px -10px rgba(79, 70, 229, 0.4);
+  transition: transform 220ms var(--clonescript-ease, ease), box-shadow 220ms var(--clonescript-ease, ease);
+}
+
+.cs-premium-cta__btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px -10px rgba(79, 70, 229, 0.48);
+}
+
+@media (max-width: 767px) {
+  .cs-premium-cta__panel {
+    padding: 40px 22px;
+  }
+
+  .cs-premium-cta__sparkle {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-premium-cta__btn {
+    transition: none;
+  }
+}

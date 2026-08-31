@@ -1,0 +1,12 @@
+/* This row uses an inline display:grid style but still carries the plain
+   Bootstrap .row class, whose ::before/::after clearfix isn't neutralized for
+   bare .row (only .ld-row gets that treatment elsewhere) -- same bug fixed in
+   AiFeaturesSection.css. Left alone, those two pseudo-elements become real
+   grid items and shift all 3 cards over by one cell. A single-class override
+   would lose the specificity tie against the vendored rule on load order, so
+   this repeats the class for 0,3,0 specificity, same as that fix. */
+.row.ld-row.what-is-logistics-grid::before,
+.row.ld-row.what-is-logistics-grid::after {
+  content: none;
+  display: none;
+}

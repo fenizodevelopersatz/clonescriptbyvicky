@@ -1,0 +1,583 @@
+:root {
+  /* Softer, low-saturation palette -- easier on the eyes for long viewing,
+     still blue/purple brand identity but no neon/highly-saturated tones.
+     ink/text/muted/canvas/line are exact Tailwind slate-900/600/500/50/200. */
+  --clonescript-ink: #172554;
+  --clonescript-text: #475569;
+  --clonescript-muted: #64748b;
+  --clonescript-blue: #4f6ef7;
+  --clonescript-blue-dark: #4f46e5;
+  --clonescript-violet: #8b7cf6;
+  --clonescript-accent-soft: #c084fc;
+  --clonescript-surface: #fff;
+  --clonescript-surface-soft: #eef2ff;
+  --clonescript-canvas: #f8fafc;
+  --clonescript-line: #e2e8f0;
+  --clonescript-font: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  --clonescript-container: 1170px;
+  --clonescript-gutter: clamp(20px, 4vw, 48px);
+  --clonescript-section-y: clamp(68px, 7vw, 108px);
+  --clonescript-section-y-compact: clamp(42px, 5vw, 72px);
+  --clonescript-radius-md: 18px;
+  --clonescript-radius-lg: clamp(20px, 2.4vw, 28px);
+  --clonescript-shadow-sm: 0 8px 24px rgb(16 27 72 / 8%);
+  --clonescript-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Solid primary-button color (spec explicitly wants flat buttons here,
+     not a gradient) and a soft card-background gradient, kept as separate
+     tokens from --clonescript-blue/-violet (still used for icons/links)
+     so button vs. accent colors can be tuned independently. */
+  --clonescript-btn-primary: #4f46e5;
+  --clonescript-card-gradient: linear-gradient(135deg, #eef2ff 0%, #f3e8ff 100%);
+  --clonescript-brand-from: #4f6ef7;
+  --clonescript-brand-via: #8b7cf6;
+  --clonescript-brand-to: #8b7cf6;
+  --clonescript-brand-gradient: linear-gradient(110deg, var(--clonescript-brand-from), var(--clonescript-brand-via), var(--clonescript-brand-to));
+}
+
+/* Sections butt against their neighbor at 0 outer gap by convention (rhythm
+   is meant to live inside each section) -- but that only reads right when a
+   section HAS internal top/bottom padding of its own. Bordered/filled "boxed"
+   sections got their own scoped padding earlier (ComparisonTable, PdfDownloadCta,
+   MoneyBackGuarantee, RoleFeatureTabs, StandOutFeaturesGrid), but plain
+   heading/grid/list sections need the exact same treatment -- without it they
+   visually merge into whatever sits above/below them. Reusable utility for any
+   such section instead of repeating this in every component's own CSS file. */
+.clonescript-section-spaced {
+  padding-top: var(--clonescript-section-y-compact);
+  padding-bottom: var(--clonescript-section-y-compact);
+}
+
+html { color-scheme: light; scroll-behavior: smooth; }
+
+body {
+  min-width: 320px;
+  /* !important: a same-specificity `body{background-color:#fff}` rule in the
+     vendored litespeed bundle loads later (dynamically, per-route) and wins
+     the cascade tie otherwise -- confirmed via a direct stylesheet-rule scan,
+     not assumed. */
+  background: var(--clonescript-canvas) !important;
+  color: var(--clonescript-text) !important;
+  font-family: var(--clonescript-font);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Transparent so the fixed DecorativeBackground (z-index:-1, mounted as this
+   element's first child) shows through in the gaps between opaque section
+   fills -- body's own background (above) is the actual canvas color. */
+.clonescript-site {
+  width: 100%;
+  min-height: 100vh;
+  background: transparent;
+  color: var(--clonescript-text);
+  font-family: var(--clonescript-font);
+}
+
+.clonescript-site > .content,
+.clonescript-site > .content > .wpb-content-wrapper,
+.clonescript-site > .content > .wpb-content-wrapper > .vc_section:first-child,
+.clonescript-site > .content > .wpb-content-wrapper > .vc_row:first-child {
+  padding-top: clamp(24px, 3vw, 44px);
+}
+
+.clonescript-site .main-footer {
+  margin-top: clamp(36px, 4vw, 64px);
+}
+
+.clonescript-site :where(h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, select) { font-family: inherit; }
+.clonescript-site :where(h1, h2, h3, h4, h5, h6) { text-wrap: balance; }
+.clonescript-site :where(p, li) { text-wrap: pretty; }
+
+.clonescript-site .ld-container.container {
+  width: min(100%, calc(var(--clonescript-container) + (2 * var(--clonescript-gutter))));
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: var(--clonescript-gutter);
+}
+
+/* .container-fluid means genuinely fluid (100% of the viewport), unlike .container's capped
+   width above — it must stay full width, only picking up the same gutter for edge padding. */
+.clonescript-site .ld-container.container-fluid {
+  width: 100%;
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: var(--clonescript-gutter);
+}
+
+/* A real loading boundary prevents unstyled WPBakery rows from flashing while
+   preserving the stable shared header/footer shell. Same class name that
+   index.html's initial app-shell spinner uses, so a single toggle in
+   usePageStylesheets.js covers both the first paint and route transitions. */
+body.clonescript-page-styles-loading .clonescript-site > .content {
+  min-height: 68vh;
+  visibility: hidden;
+}
+
+body:not(.clonescript-page-styles-loading) .clonescript-site > .content { animation: clonescript-page-enter 420ms var(--clonescript-ease) both; }
+@keyframes clonescript-page-enter {
+  from { opacity: 0; transform: translate3d(0, 8px, 0); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Header */
+.clonescript-site .secondarybar-wrap { display: none; }
+
+.clonescript-site #header,
+.clonescript-site .mainbar-wrap,
+.clonescript-site .mainbar,
+.clonescript-site .mainbar-row { min-height: 95px; }
+
+.clonescript-site #header {
+  position: relative;
+  z-index: 1000;
+  width: 100%;
+  background: #fff;
+}
+
+.clonescript-site .mainbar-wrap {
+  display: flex;
+  align-items: center;
+  height: 95px;
+  padding: 0 !important;
+  background: rgb(255 255 255 / 96%);
+  border-bottom: 1px solid rgb(16 27 72 / 7%);
+  box-shadow: 0 4px 18px rgb(16 27 72 / 5%);
+  backdrop-filter: blur(14px);
+}
+
+.clonescript-site .mainbar-wrap.is-stuck { box-shadow: 0 10px 30px rgb(16 27 72 / 10%); }
+
+.clonescript-site .mainbar-container,
+.clonescript-site .secondarybar-container {
+  width: 100%;
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: 30px;
+}
+
+.clonescript-site .navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 68px;
+  padding: 0;
+}
+
+.clonescript-site .navbar-brand .logo-default {
+  display: block;
+  width: 240px;
+  max-width: min(240px, 48vw);
+  height: auto;
+  max-height: 67px;
+  object-fit: contain;
+}
+
+.clonescript-site #primary-nav > li > a {
+  color: #090b13;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+
+.clonescript-site #primary-nav > li > a:hover,
+.clonescript-site #primary-nav > li > a:focus-visible { color: var(--clonescript-blue); }
+
+.clonescript-site .mainbar-row > .vc_col-sm-3:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+@media (min-width: 992px) {
+  .clonescript-site .mainbar,
+  .clonescript-site .mainbar-row { width: 100%; }
+
+  .clonescript-site .mainbar-row {
+    display: grid;
+    grid-template-columns: 3fr 6fr 3fr;
+    align-items: stretch;
+    margin: 0;
+  }
+
+  .clonescript-site .mainbar-row > .col {
+    float: none;
+    width: auto;
+    min-width: 0;
+  }
+
+  .clonescript-site #main-header-collapse {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .clonescript-site #primary-nav {
+    display: flex;
+    height: 100%;
+    align-items: stretch;
+  }
+}
+
+/* Buttons */
+.clonescript-site .btn {
+  min-height: 46px;
+  border-radius: 999px;
+  font-weight: 600;
+  line-height: 1.2;
+  transition: transform 180ms var(--clonescript-ease), box-shadow 180ms var(--clonescript-ease), color 180ms ease, background-color 180ms ease;
+}
+
+.clonescript-site .btn > span,
+.clonescript-site .vc_btn3 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.clonescript-site .btn:hover,
+.clonescript-site .vc_btn3:hover { transform: translateY(-2px); }
+
+.clonescript-site .btn-bordered-gradient {
+  isolation: isolate;
+  overflow: hidden;
+  color: #fff;
+  box-shadow: 0 10px 24px rgb(55 43 223 / 20%);
+}
+
+.clonescript-site .btn-bordered-gradient .btn-gradient-bg { background: linear-gradient(110deg, #1239ff 0%, #5241ff 48%, #c05cf1 100%); }
+.clonescript-site .btn-bordered-gradient .btn-gradient-bg-hover { background: linear-gradient(110deg, #0529d8 0%, #4132e8 48%, #a745dc 100%); }
+
+/* GradientButton.jsx's SVG (width/height="100%", <rect> with no fill attr)
+   relies on the vendored .btn-gradient-border rule for its real sizing and
+   fill:transparent -- but that rule lives in a page-specific stylesheet
+   loaded later by usePageStylesheets, not this globally-bundled file. Header
+   buttons (Schedule Demo Tour, etc.) render before that arrives on every
+   route, so without this, the SVG briefly shows at its unconstrained
+   percentage size with the SVG-spec default rect fill (black) -- a large
+   black box flashing over the header until the page bundle catches up.
+   Duplicated here, load-order-independent, so it never happens regardless
+   of how slow that fetch is. */
+.clonescript-site .btn-gradient-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+  fill: transparent;
+  stroke: transparent;
+}
+
+.clonescript-site .btn-gradient-border rect { fill: transparent; }
+
+.clonescript-site .custom-border-glow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 7px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  background: linear-gradient(110deg, var(--clonescript-blue, #4f6ef7), var(--clonescript-violet, #8b7cf6));
+  color: #fff;
+  box-shadow: 0 0 0 6px rgba(79, 70, 229, 0.16);
+  overflow: hidden;
+}
+
+/* Sliding shine line across the VIP Club badge -- box-shadow lives outside
+   the border box so this element's own overflow:hidden (needed to clip the
+   streak to the pill's rounded corners) doesn't cut off the pulse-gold glow
+   ring above. */
+.clonescript-site .custom-border-glow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -30%;
+  width: 22%;
+  height: 100%;
+  background: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.75) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  animation: clonescript-vip-shine 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes clonescript-vip-shine {
+  0%, 15% { left: -30%; }
+  65%, 100% { left: 130%; }
+}
+
+/* Overrides the vendored gold pulse-glow animation (shared-713aa8f4.css's
+   .pulse-gold/@keyframes gold-pulse-animation) to match -- confirmed that
+   class isn't reused anywhere else in src/. */
+.clonescript-site .pulse-gold {
+  animation-name: clonescript-vip-pulse;
+}
+
+@keyframes clonescript-vip-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.55); }
+  100% { box-shadow: 0 0 0 7px rgba(139, 124, 246, 0.22); }
+}
+
+/* Content primitives and the root fix for full-width row overflow. */
+.clonescript-site .content { width: 100%; max-width: 100%; }
+
+.clonescript-site .wpb-content-wrapper > .vc_section,
+.clonescript-site .wpb-content-wrapper > .vc_row {
+  width: 100%;
+  max-width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+  left: auto;
+}
+
+.clonescript-site .wpb-content-wrapper > .vc_section > .vc_row {
+  width: auto;
+  max-width: 100%;
+  left: auto;
+}
+
+.clonescript-site .wpb-content-wrapper > .vc_section > .vc_row:not([class*='vc_custom_']) {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.clonescript-site .wpb-content-wrapper > .vc_row > .vc_row {
+  width: auto;
+  max-width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.clonescript-site .fancy-title :where(h1, h2, h3) { color: var(--clonescript-ink); letter-spacing: -.025em; }
+.clonescript-site :where(.wpb_single_image, .vc_single_image-wrapper) img { max-width: 100%; height: auto; }
+
+/* WPBakery's "empty space" module renders its height via a unique per-instance class
+   (e.g. ".ld_spacer_6a665a80b4c4d{height:80px}") generated by the page builder -- 1,828
+   of these exist across the original site, one per usage, each with its own value (5px to
+   200px). Migrated JSX kept only the generic ".ld-empty-space" wrapper class and dropped the
+   unique per-instance class, so every spacer sitewide collapsed to ~0px. Fixing all 1,828
+   individually is a large, separate effort; this fallback restores a reasonable default gap
+   everywhere so sections aren't touching, while specific sections (e.g. AlibabaHero) carry
+   their exact original value as an inline style, which naturally overrides this default. */
+.ld-empty-space {
+  height: 24px;
+}
+
+.clonescript-site .iconbox-icon-container {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  line-height: 1;
+}
+
+.clonescript-site .iconbox-icon-container :where(i, svg) { display: block; line-height: 1; }
+
+/* Footer's "Book a Meeting" panel (ScheduleFormSection, rendered sitewide by Footer.jsx)
+   used to get its pink background/rounding only from each page's own legacy -10-/-11-
+   CSS bundle -- the same two rules duplicated identically in all 21 original pages'
+   bundles. Pages with no original WPBakery export (schoolCrm, logisticsClone) load none
+   of those bundles, so the panel rendered with no background at all. Promoted here once,
+   globally, instead of re-duplicating it into a 22nd/23rd page-specific bundle. */
+.schedule-bg { background: #ee609c4d !important; }
+
+.vc_custom_1740027174021 {
+  margin-right: 20px !important;
+  margin-left: 20px !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  border-radius: 35px !important;
+}
+
+/* The meeting form is rendered from the shared footer.  Most legacy routes
+   receive this card style from their page bundle; logistics does not, so keep
+   the source treatment available to every route here. */
+.vc_custom_1775890206239 {
+  padding: 20px !important;
+  background-color: #ffffff !important;
+  border-radius: 30px !important;
+  position: relative !important;
+}
+
+/* Same form's calendar icon is pulled out of flow and pinned to the card's top-left
+   corner on every original page's own bundle -- without it (schoolCrm, logisticsClone)
+   the icon just sits inline above the heading instead of overlapping the card edge. */
+.calendar-icon-position {
+  position: absolute;
+  top: -60px;
+  left: -40px;
+}
+
+/* Header's mega-menu dropdown panel (MegaMenu.jsx, rendered sitewide by Header.jsx) has
+   the exact same problem: its white background is this one rule, duplicated identically
+   in every original page's own -12- bundle. Without it the panel is fully transparent
+   (border-radius/shadow still apply from the globally-loaded base bundle, so only the
+   background was missing) -- page content underneath shows straight through the open
+   dropdown on any page with no page-specific bundle. */
+.vc_custom_1773740224502 { background-color: #ffffff !important; }
+
+/* Same root cause, swept across every other vc_custom_* class referenced by Header.jsx,
+   MegaMenu.jsx, Footer.jsx and its children (FooterBottom.jsx, FooterSitemap.jsx) --
+   these are the only components rendered on literally every page (via Layout.jsx), so
+   any of their styling that lived only in per-page bundles was silently missing on
+   schoolCrm/logisticsClone. Verified each rule is byte-identical across every original
+   page's own bundle before promoting it here, so this changes nothing for pages that
+   already had it loaded -- purely additive. */
+.vc_custom_1732278024061 { padding: 10px !important; }
+.vc_custom_1739518650347 { padding-top: 15px !important; padding-bottom: 15px !important; background-position: center !important; background-repeat: no-repeat !important; background-size: cover !important; }
+.vc_custom_1718194534933 { background-position: center !important; background-repeat: no-repeat !important; background-size: cover !important; }
+.vc_custom_1726132830590 { background-color: #f5f7ff !important; }
+.vc_custom_1726132866277 { padding: 10px !important; border: 1px solid #afafaf !important; border-radius: 10px !important; }
+.vc_custom_1726203463031 { padding-left: 10px !important; }
+.vc_custom_1726203548888 { border-radius: 15px !important; }
+.vc_custom_1726211991731 { margin-bottom: 0px !important; }
+.vc_custom_1726230443525 { margin-bottom: 0px !important; padding-bottom: 0px !important; }
+.vc_custom_1726230471562 { margin-bottom: 0px !important; padding-bottom: 0px !important; }
+.vc_custom_1726232017247 { margin-bottom: 1px !important; padding-bottom: 1px !important; }
+.vc_custom_1726232338760 { margin-bottom: 0px !important; }
+.vc_custom_1726298044719 { padding-top: 20px !important; padding-bottom: 20px !important; }
+.vc_custom_1726298125755 { padding-top: 0px !important; }
+.vc_custom_1742799354729 { margin-bottom: 10px !important; }
+.vc_custom_1773139863014 { margin-bottom: 10px !important; }
+.vc_custom_1721655678770 { border-radius: 15px !important; }
+.vc_custom_1721710219815 { padding: 15px !important; background-color: #ffffff !important; border-radius: 15px !important; }
+.vc_custom_1726227127650 { background-color: #f5f7ff !important; }
+
+.clonescript-site .clonescript-section-observed {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition: opacity 620ms var(--clonescript-ease), transform 620ms var(--clonescript-ease);
+  will-change: opacity, transform;
+}
+
+.clonescript-site .clonescript-section-observed.clonescript-section-visible { opacity: 1; transform: none; will-change: auto; }
+
+/* Footer */
+.clonescript-site .main-footer { color: var(--clonescript-text); background: var(--clonescript-surface-soft); }
+
+.clonescript-site .main-footer > section,
+.clonescript-site .main-footer > section > .vc_row {
+  width: 100%;
+  max-width: 100%;
+  margin-inline: 0;
+  left: auto;
+}
+
+.clonescript-site .main-footer .vc_custom_1726132830590 { padding: 32px 0 24px; background: var(--clonescript-surface-soft); }
+
+.clonescript-site .main-footer .vc_custom_1726132830590 > .vc_row > .ld-container > .ld-row {
+  display: grid;
+  grid-template-columns: minmax(260px, 1.05fr) minmax(390px, 1.35fr) minmax(290px, 1fr);
+  align-items: start;
+  gap: clamp(28px, 4vw, 64px);
+  margin: 0;
+}
+
+.clonescript-site .main-footer .vc_custom_1726132830590 > .vc_row > .ld-container > .ld-row > .wpb_column {
+  float: none;
+  width: 100%;
+  padding: 0;
+}
+
+.clonescript-site .main-footer .vc_custom_1726298125755,
+.clonescript-site .main-footer .vc_custom_1726298044719 .vc_inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 34px;
+  margin: 0;
+}
+
+/* Neutralize the legacy .vc_row clearfix (content:" "; display:table), which otherwise
+   generates two extra ::before/::after grid items and throws off auto-placement. */
+.clonescript-site .main-footer .vc_custom_1726298125755::before,
+.clonescript-site .main-footer .vc_custom_1726298125755::after,
+.clonescript-site .main-footer .vc_custom_1726298044719 .vc_inner::before,
+.clonescript-site .main-footer .vc_custom_1726298044719 .vc_inner::after {
+  content: none;
+}
+
+.clonescript-site .main-footer .vc_custom_1726298125755 > .wpb_column,
+.clonescript-site .main-footer .vc_custom_1726298044719 .vc_inner > .wpb_column { float: none; width: 100%; padding: 0; }
+
+.clonescript-site .main-footer .vc_custom_1726132866277 {
+  padding: 22px;
+  border: 1px solid rgb(16 27 72 / 24%);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: var(--clonescript-shadow-sm);
+}
+
+.clonescript-site .main-footer .vc_custom_1773139863014 img {
+  width: 240px;
+  height: auto;
+}
+
+.clonescript-site .main-footer .lqd-custom-menu li + li { margin-top: 7px; }
+.clonescript-site .main-footer .lqd-custom-menu a { color: #5b6070; line-height: 1.55; }
+.clonescript-site .main-footer .lqd-custom-menu a:hover { color: var(--clonescript-blue); }
+.clonescript-site .main-footer .social-icon { display: flex; flex-wrap: wrap; gap: 10px; }
+.clonescript-site .main-footer .social-icon li { margin: 0; }
+
+.clonescript-site .main-footer .social-icon a {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: var(--clonescript-shadow-sm);
+}
+
+@media (max-width: 1199px) {
+  :root { --clonescript-container: 1080px; }
+  .clonescript-site .navbar-brand .logo-default { width: 210px; }
+  .clonescript-site .main-footer .vc_custom_1726132830590 > .vc_row > .ld-container > .ld-row {
+    grid-template-columns: minmax(230px, .9fr) minmax(340px, 1.25fr) minmax(260px, .95fr);
+    gap: 28px;
+  }
+}
+
+@media (max-width: 991px) {
+  :root { --clonescript-gutter: clamp(20px, 4vw, 36px); --clonescript-section-y: 76px; }
+  .clonescript-site #header,
+  .clonescript-site .mainbar-wrap,
+  .clonescript-site .mainbar,
+  .clonescript-site .mainbar-row { min-height: 82px; }
+  .clonescript-site .mainbar-wrap { min-height: 82px; height: auto; }
+  .clonescript-site .navbar-brand .logo-default { width: 190px; max-height: 58px; }
+  .clonescript-site .main-footer .vc_custom_1726132830590 > .vc_row > .ld-container > .ld-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .clonescript-site .main-footer .vc_custom_1726132830590 > .vc_row > .ld-container > .ld-row > .wpb_column:last-child {
+    grid-column: 1 / -1;
+    width: min(100%, 620px);
+    justify-self: center;
+  }
+}
+
+@media (max-width: 767px) {
+  :root { --clonescript-gutter: 20px; --clonescript-section-y: 64px; --clonescript-section-y-compact: 40px; }
+  .clonescript-site #header,
+  .clonescript-site .mainbar-wrap,
+  .clonescript-site .mainbar,
+  .clonescript-site .mainbar-row { min-height: 72px; }
+  .clonescript-site .mainbar-wrap { min-height: 72px; height: auto; }
+  .clonescript-site .navbar-header { display: flex; align-items: center; justify-content: space-between; min-height: 72px; }
+  .clonescript-site .navbar-brand { min-height: 56px; }
+  .clonescript-site .navbar-brand .logo-default { width: 174px; max-width: 52vw; max-height: 50px; }
+  .clonescript-site .main-footer .vc_custom_1773139863014 img { width: 200px; }
+  .clonescript-site .main-footer .vc_custom_1726132830590 { padding: 24px 0 18px; }
+  .clonescript-site .main-footer .vc_custom_1726132830590 > .vc_row > .ld-container > .ld-row,
+  .clonescript-site .main-footer .vc_custom_1726298125755,
+  .clonescript-site .main-footer .vc_custom_1726298044719 .vc_inner { grid-template-columns: 1fr; }
+  .clonescript-site .main-footer .vc_custom_1726132830590 > .vc_row > .ld-container > .ld-row > .wpb_column:last-child { grid-column: auto; }
+  .clonescript-site .main-footer .vc_custom_1726132866277 { padding: 18px; }
+  .clonescript-site .clonescript-section-observed { transform: translate3d(0, 12px, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  body:not(.clonescript-page-styles-loading) .clonescript-site > .content,
+  .clonescript-site .clonescript-section-observed { opacity: 1; transform: none; animation: none; transition: none; }
+}

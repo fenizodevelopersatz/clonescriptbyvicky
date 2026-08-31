@@ -1,0 +1,1 @@
+var nbcpf={"ajaxurl":"wp-admin/admin-ajax.php"}

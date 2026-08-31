@@ -1,0 +1,124 @@
+.achievement-photo-frame {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 50px 40px;
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.achievement-photo-frame::before {
+  content: '';
+  position: absolute;
+  inset: 34px;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(22px);
+  background:
+    radial-gradient(circle at 28% 26%, rgba(224, 130, 255, 0.45), transparent 60%),
+    radial-gradient(circle at 72% 70%, rgba(120, 190, 255, 0.4), transparent 60%);
+}
+
+.achievement-photo-frame__ring {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  box-shadow: 0 20px 50px rgba(16, 27, 72, 0.18);
+  transition: box-shadow 0.35s var(--clonescript-ease);
+}
+
+.achievement-photo-frame__ring:hover,
+.achievement-photo-frame__ring:focus-visible {
+  box-shadow: 0 26px 60px rgba(139, 92, 246, 0.32);
+}
+
+.achievement-photo-frame__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 60% 18%;
+}
+
+.achievement-badge {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 108px;
+  border-radius: 18px;
+  padding: 12px 14px;
+  text-align: center;
+  line-height: 1.25;
+  color: #1f2430;
+  box-shadow: 0 12px 28px rgba(16, 27, 72, 0.12);
+}
+
+.achievement-badge strong {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.achievement-badge span {
+  font-size: 12px;
+  font-weight: 600;
+  color: #55596b;
+}
+
+.achievement-badge--tl {
+  top: 0;
+  left: 0;
+  background: #eaf0ff;
+}
+
+.achievement-badge--tr {
+  top: 30px;
+  right: 0;
+  background: #ffe8f3;
+}
+
+.achievement-badge--bl {
+  bottom: 30px;
+  left: 10px;
+  background: #ffe8f3;
+}
+
+.achievement-badge--br {
+  bottom: 0;
+  right: 10px;
+  background: #f1e7ff;
+}
+
+@media (max-width: 575px) {
+  .achievement-photo-frame {
+    max-width: 340px;
+    padding: 40px 10px;
+  }
+
+  .achievement-photo-frame__img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .achievement-badge {
+    min-width: 88px;
+    padding: 8px 10px;
+    border-radius: 14px;
+  }
+
+  .achievement-badge strong {
+    font-size: 16px;
+  }
+
+  .achievement-badge span {
+    font-size: 10px;
+  }
+}

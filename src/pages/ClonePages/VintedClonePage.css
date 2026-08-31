@@ -1,0 +1,261 @@
+.vinted-motion-page > section,
+.vinted-motion-page > section > section.vc_row {
+  width: 100%;
+  max-width: 100%;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+#root:has(.vinted-motion-page) .content,
+#root:has(.vinted-motion-page) .vinted-motion-page {
+  width: 100%;
+  max-width: 100%;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+#root:has(.vinted-motion-page) .mainbar-row {
+  min-height: 78px;
+}
+
+.vinted-motion-page > section:first-child .sv_first_row {
+  padding-top: 60px;
+  padding-bottom: 107px;
+}
+
+.vinted-motion-page .vinted-hero-badge {
+  margin-bottom: 40px;
+}
+
+.vinted-motion-page .vinted-hero-rotator {
+  margin-top: 40px;
+}
+
+.vinted-motion-page .vinted-hero-primary-cta {
+  margin-top: 45px;
+}
+
+.vinted-motion-page > section:nth-child(2) {
+  padding-top: 75px;
+  padding-bottom: 27px;
+}
+
+.vinted-motion-page > section:nth-child(3) {
+  padding-top: 98px;
+  padding-bottom: 98px;
+}
+
+.vinted-motion-page > .clonescript-section-motion[data-clonescript-reveal='pending'] {
+  opacity: 0;
+  transform: translate3d(0, 52px, 0);
+}
+
+.vinted-review-platforms__logos {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: center;
+  gap: 30px;
+  margin-top: 67px;
+}
+
+.vinted-review-platforms__logos img {
+  display: block;
+  width: 165px;
+  max-width: 100%;
+  height: 48px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.clonescript-pdf-cta__panel {
+  align-items: center;
+  max-width: 920px;
+  min-height: 300px;
+  margin: 0 auto !important;
+  padding: 30px 52px;
+  border-radius: 8px;
+  background: #ccefff;
+}
+
+.clonescript-pdf-cta__media img {
+  display: block;
+  width: 240px;
+  max-height: 260px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.vinted-live-demo-cta img {
+  display: block;
+  width: min(600px, 100%);
+  height: auto;
+  margin: 0 auto;
+}
+
+.vinted-live-demo-card {
+  padding: 48px 40px;
+  align-items: center;
+}
+
+/* The "Book a Live Demo" photo had no framing at all -- just a bare <img>.
+   Gives it the colorful, bordered treatment the rest of this page's CTAs
+   use: a soft blurred color-blob behind it, plus a white border + shadow
+   on the photo itself so it reads as a deliberately framed portrait. */
+.vinted-live-demo-photo {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 28px;
+}
+.vinted-live-demo-photo::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(18px);
+  background:
+    radial-gradient(circle at 28% 26%, rgba(224, 130, 255, 0.4), transparent 60%),
+    radial-gradient(circle at 72% 70%, rgba(120, 190, 255, 0.4), transparent 60%);
+}
+.vinted-live-demo-photo img {
+  position: relative;
+  z-index: 1;
+  border-radius: 24px;
+  border: 4px solid #fff;
+  box-shadow: 0 20px 50px rgba(16, 27, 72, 0.18);
+}
+
+.vinted-motion-page > .clonescript-section-motion[data-clonescript-reveal='visible'] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 800ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 800ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vinted-motion-page > .clonescript-section-motion {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (min-width: 992px) {
+  #root:has(.vinted-motion-page) .mainbar-row {
+    min-height: 75px;
+  }
+
+  .vinted-motion-page > section:first-child .sv_first_row {
+    padding-top: 78px;
+    padding-bottom: 137px;
+  }
+
+  .vinted-motion-page .vinted-hero-badge {
+    margin-bottom: 31px;
+  }
+
+  .vinted-motion-page .vinted-hero-rotator {
+    margin-top: 35px;
+  }
+
+  .vinted-motion-page .vinted-hero-primary-cta {
+    margin-top: 39px;
+  }
+
+  .vinted-motion-page > section:nth-child(2) {
+    min-height: 0;
+    padding-top: var(--clonescript-section-y);
+    padding-bottom: var(--clonescript-section-y-compact);
+  }
+
+  .vinted-motion-page > section:nth-child(3) {
+    min-height: 0;
+    padding-top: var(--clonescript-section-y);
+    padding-bottom: var(--clonescript-section-y);
+  }
+
+  .vinted-motion-page > section:nth-child(2) > section:nth-child(2) {
+    padding-top: 79px;
+  }
+
+  .vinted-overview-group {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    gap: var(--clonescript-section-y-compact);
+  }
+
+  .vinted-overview-group > section:nth-child(n + 2) {
+    margin-top: 0 !important;
+  }
+
+  /* These fixed per-section heights were originally captured to match the
+     page's ORIGINAL (much shorter) content section-by-section. Content added
+     since then (buyer/seller/admin feature grids, extra revenue/pricing/FAQ
+     sections, etc.) shifted every later section's child-index and made most
+     of the individual pixel values stale/inapplicable to their new content
+     anyway. Since the catch-all rule below already overrides height/
+     min-height/padding for this whole range (same selector specificity, and
+     it comes later in the cascade -- confirmed via computed style that the
+     per-child values were being fully overridden even before this cleanup),
+     the individual rules were dead weight. Only three age survive because
+     they set a property (margin-top) or target a nested element (img) the
+     catch-all doesn't touch -- renumbered here to the sections' new
+     positions after the RoleFeatureTabs restoration shifted every later
+     child index by -3 (verified live via
+     `Array.from(container.children).filter(...)`):
+     nth-child(8) = TechStackRow, nth-child(13) = RevenueBenefits,
+     nth-child(23) = the testimonial/review section. Note the margin-top
+     declarations below have always been overridden back to 0 by the reset
+     rule at the end of this block (same selector, same specificity, later
+     in the cascade) -- true since the original nth-child(7)/(17) numbering
+     too, so this is pre-existing, not something this renumbering changed. */
+  .vinted-motion-page > section:nth-child(8) {
+    margin-top: 49px !important;
+  }
+
+  .vinted-motion-page > section:nth-child(13) img {
+    width: 540px;
+    max-height: 430px;
+    object-fit: contain;
+  }
+
+  .vinted-motion-page > section:nth-child(23) {
+    margin-top: 38px !important;
+  }
+
+  .vinted-motion-page > section:nth-child(n + 5):nth-child(-n + 25) {
+    height: auto;
+    min-height: 0;
+    padding-top: var(--clonescript-section-y);
+    padding-bottom: var(--clonescript-section-y-compact);
+  }
+
+  .vinted-motion-page > section:nth-child(8),
+  .vinted-motion-page > section:nth-child(23) {
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .vinted-review-platforms__logos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 18px;
+    margin-top: 42px;
+  }
+
+  .clonescript-pdf-cta__panel {
+    width: calc(100% - 30px);
+    padding: 28px 20px;
+  }
+
+  .clonescript-pdf-cta__media {
+    margin-bottom: 24px;
+  }
+
+  .vinted-live-demo-card {
+    padding: 28px 20px;
+  }
+}

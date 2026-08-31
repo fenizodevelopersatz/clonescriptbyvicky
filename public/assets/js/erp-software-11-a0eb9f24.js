@@ -1,0 +1,1 @@
+(function($){$("head").append("<style>.liquid-column-6a665a6682c13 > .vc_column-inner > .wpb_wrapper { box-shadow:0px 0px 20px 0px rgba(108, 108, 108, 0.59)};</style>")})(jQuery)

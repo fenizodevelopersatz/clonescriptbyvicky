@@ -1,0 +1,165 @@
+/* .carousel-container is styled overflow:hidden globally for real sliding carousels, where it
+   hides off-screen slides. This component swaps content via React state instead of sliding a
+   strip, so nothing should ever be off-screen — but the hidden overflow was clipping the bottom
+   of the cards whenever the grid's auto-sized height landed a few px short of its content. */
+.blockquote-testimonial-carousel {
+  overflow: visible;
+}
+
+.carousel-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 0;
+}
+
+.carousel-dots .dot {
+  appearance: none;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #333;
+  opacity: 0.25;
+  cursor: pointer;
+  transition: opacity 200ms ease, transform 200ms ease, background-color 200ms ease;
+}
+
+.carousel-dots .dot.is-selected {
+  background: #002692;
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.carousel-dots .dot:hover {
+  opacity: 0.7;
+}
+
+.carousel-dots .dot:focus-visible {
+  outline: 3px solid rgb(0 38 146 / 28%);
+  outline-offset: 4px;
+}
+
+/* The legacy theme's un-initialized-Flickity fallback (.carousel-items:not(.flickity-enabled),
+   specificity 0,2,0) and its item width rule (.carousel-item:not([class*="col-"]), also 0,2,0)
+   both tie or beat a single class, and this carousel never runs the real Flickity JS that would
+   normally neutralize them — so without three classes here to clear that bar, the fallback wins
+   and forces every card to 100% width in an unwrapped flex row, pushing the second testimonial
+   off-screen instead of showing 2-up. */
+.carousel-items.row.blockquote-testimonial-grid--split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+  /* The same legacy fallback also sets overflow-x: scroll, which per spec forces the computed
+     overflow-y to auto too (a non-visible overflow-x with unset overflow-y always does this).
+     That turns the grid into a scroll container whose auto height can come out a hair short of
+     its content, showing a nested scrollbar. Neither axis should scroll here — the page scrolls. */
+  overflow: visible;
+}
+
+/* This element also carries the Bootstrap-style .row class, whose ::before/::after clearfix
+   (content:" "; display:table) isn't neutralized for plain .row here (only .ld-row gets that
+   treatment elsewhere). Left alone, those two pseudo-elements become extra grid items and the
+   two real cards land diagonally instead of side by side — same failure mode as the .row
+   clearfix bug in the footer nav columns. */
+.carousel-items.row.blockquote-testimonial-grid--split::before,
+.carousel-items.row.blockquote-testimonial-grid--split::after {
+  content: none;
+}
+
+.carousel-items.row.blockquote-testimonial-grid--split > .carousel-item {
+  width: auto;
+  min-width: 0;
+}
+
+/* Must come after the base rule above: same 0,3,0 specificity, so with an equal-specificity
+   tie the later rule in source order wins — this needs to be that later rule to take effect
+   inside the media query. */
+@media (max-width: 767px) {
+  .carousel-items.row.blockquote-testimonial-grid--split {
+    grid-template-columns: 1fr;
+  }
+
+  .carousel-items.row.blockquote-testimonial-grid--split > .carousel-item:nth-child(n + 2) {
+    display: none;
+  }
+}
+
+/* Colorful card treatment: each card cycles through a 5-color pastel palette (by testimonial
+   identity, not carousel position, so a given reviewer keeps the same color as it rotates)
+   instead of the legacy theme's plain white-and-shadow card.
+   Selectors repeat the .testimonial-colorful class (a no-op combinator, since both classes are
+   always present together) purely to reach 3-class specificity — page-specific grid CSS like
+   ErpSoftwarePage.css's ".erp-testimonial-grid .testimonial" is a (0,2,0) selector that would
+   otherwise win the cascade and force the card back to a plain white background. */
+.testimonial.testimonial-colorful.testimonial-colorful {
+  position: relative;
+  padding: 40px 32px 32px;
+  border: none;
+  border-radius: var(--clonescript-radius-lg, 26px);
+  box-shadow: 0 20px 48px -24px rgba(16, 27, 72, 0.22);
+  overflow: hidden;
+}
+
+.testimonial.testimonial-colorful-0.testimonial-colorful-0 { background: #EDE7FF; --testimonial-accent: #7C5CFC; }
+.testimonial.testimonial-colorful-1.testimonial-colorful-1 { background: #FFF1DA; --testimonial-accent: #F5A623; }
+.testimonial.testimonial-colorful-2.testimonial-colorful-2 { background: #E3F1FF; --testimonial-accent: #2F6FE4; }
+.testimonial.testimonial-colorful-3.testimonial-colorful-3 { background: #FFE3EE; --testimonial-accent: #EC4899; }
+.testimonial.testimonial-colorful-4.testimonial-colorful-4 { background: #DEFBF0; --testimonial-accent: #12B886; }
+
+.testimonial-colorful__quote-mark {
+  position: absolute;
+  top: 22px;
+  left: 28px;
+  font-size: 40px;
+  color: var(--testimonial-accent);
+  opacity: 0.35;
+}
+
+.testimonial-colorful .testimonial-colorful__stars {
+  display: flex;
+  justify-content: flex-end;
+  gap: 3px;
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+  font-size: 15px;
+  color: #f5a623;
+}
+
+.testimonial-colorful .testimonial-quote {
+  padding: 0;
+  margin-bottom: 22px;
+}
+
+.testimonial-colorful .testimonial-quote blockquote {
+  line-height: 1.6;
+}
+
+.testimonial-colorful .testimonial-details {
+  margin: 0;
+}
+
+.testimonial-colorful .testimonial-details h5 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.testimonial-colorful__badge {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--testimonial-accent);
+  font-size: 11px;
+  font-weight: 600;
+}

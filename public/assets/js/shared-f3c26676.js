@@ -1,0 +1,1 @@
+window.liquidParams={localscrollSpeed:2000,mobileNavBreakpoint:1190}

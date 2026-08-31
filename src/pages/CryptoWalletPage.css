@@ -1,0 +1,1160 @@
+/* CryptoWalletPage is a brand-new page with no original WPBakery/HTML export (same
+   situation as SchoolCrmPage/LogisticsClonePage) -- it rides the shared design-system CSS
+   already loaded by pageStylesheets.cryptoWallet (base litespeed bundle + typography
+   override) for every ordinary section. This file only covers the handful of sections that
+   deliberately break from the sitewide light/boxed look to match the reference screenshot:
+   the dark hero (incl. its stat bar) and the dark "four wallet types" panel. */
+
+/* Space Grotesk -- the accent font for the crypto page's process-step numbers
+   and titles (distinct from the sitewide Poppins). Falls back cleanly if the
+   external request is blocked. Must stay at the top: @import precedes rules. */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
+
+/* Drop the theme's 15px side padding on the hero's section wrapper so the
+   full-width band has no residual inset. */
+.cw-hero-wrap {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Full-width dark background band (edge to edge); the content stays centred
+   inside the .container. Full-bleed breaks out of the parent .vc_section's
+   side padding so the background reaches the viewport edges. */
+.cw-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  /* !important beats the design-system's `.vc_row` width/margin/max-width
+     reset (max-width:100% was clamping the 100vw back to the container). */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  padding: clamp(44px, 6vw, 92px) 0;
+  background: linear-gradient(135deg, #0d1440 0%, #172554 45%, #2a1a6b 100%);
+}
+
+/* The panel is now just a transparent content wrapper -- no card. */
+.cw-hero__panel {
+  position: relative;
+  z-index: 1;
+}
+
+.cw-hero::before,
+.cw-hero::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(70px);
+}
+
+.cw-hero::before {
+  top: -12%;
+  right: 4%;
+  width: 34%;
+  padding-bottom: 34%;
+  background: rgba(139, 124, 246, 0.4);
+  animation: cw-hero-blob-a 15s ease-in-out infinite;
+}
+
+.cw-hero::after {
+  bottom: -18%;
+  left: 2%;
+  width: 30%;
+  padding-bottom: 30%;
+  background: rgba(79, 110, 247, 0.32);
+  animation: cw-hero-blob-b 19s ease-in-out infinite;
+}
+
+/* The two glow blobs drift + breathe -> a living aurora behind the content. */
+@keyframes cw-hero-blob-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-7%, 9%) scale(1.16); }
+}
+
+@keyframes cw-hero-blob-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(9%, -7%) scale(1.13); }
+}
+
+/* Slow-moving tech grid, faded at the edges -- the "advanced" texture. */
+.cw-hero__grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 60% 40%, #000 25%, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 80% at 60% 40%, #000 25%, transparent 75%);
+  animation: cw-hero-grid 22s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes cw-hero-grid {
+  from { background-position: 0 0, 0 0; }
+  to   { background-position: 46px 46px, 46px 46px; }
+}
+
+.cw-hero__panel > .row.ld-row {
+  position: relative;
+  z-index: 1;
+}
+
+/* Staggered fade-up entrance for the hero text. */
+.cw-hero__reveal {
+  opacity: 0;
+  animation: cw-hero-reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cw-hero-reveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.cw-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  padding: 6px 16px;
+  border: 1px solid rgba(139, 124, 246, 0.5);
+  border-radius: 999px;
+  background: rgba(139, 124, 246, 0.14);
+  color: #d7ddff;
+  font-family: 'Space Grotesk', 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: cw-hero-eyebrow 3.2s ease-in-out infinite;
+}
+
+/* A pulsing dot before the eyebrow text (added in the component). */
+.cw-hero__eyebrow::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #b794ff;
+  box-shadow: 0 0 8px #b794ff;
+  animation: cw-hero-dot 1.6s ease-in-out infinite;
+}
+
+@keyframes cw-hero-eyebrow {
+  0%, 100% { box-shadow: 0 0 16px -6px rgba(139, 124, 246, 0.55); }
+  50%      { box-shadow: 0 0 24px -2px rgba(232, 62, 188, 0.6); }
+}
+
+@keyframes cw-hero-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* The eyebrow carries BOTH the entrance reveal and the glow -- `animation`
+   isn't additive across classes, so declare them together here (higher
+   specificity wins) or the reveal's opacity:0 would leave it invisible. */
+.cw-hero__eyebrow.cw-hero__reveal {
+  animation:
+    cw-hero-reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both,
+    cw-hero-eyebrow 3.2s ease-in-out 0.9s infinite;
+}
+
+.cw-hero__heading {
+  color: #fff;
+  font-family: 'Space Grotesk', 'Poppins', sans-serif;
+  font-size: clamp(30px, 4.4vw, 48px);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+}
+
+/* Light sheen sweeping across the heading text. */
+.cw-hero__heading .ld-fh-txt {
+  background: linear-gradient(100deg, #fff 0%, #fff 42%, #d7c4ff 50%, #fff 58%, #fff 100%);
+  background-size: 240% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: cw-hero-sheen 6s linear infinite;
+}
+
+@keyframes cw-hero-sheen {
+  to { background-position: -240% center; }
+}
+
+.cw-hero__desc,
+.cw-hero__desc span {
+  max-width: 520px;
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.cw-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.cw-hero__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 22px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.cw-hero__btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.cw-hero__btn-secondary i {
+  font-size: 17px;
+  color: #25d366;
+}
+
+.cw-hero__visual {
+  /* Full-width (fills the visual column) -- not a boxed card. */
+  max-width: none;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  /* Always-on gentle float; the neon graphic drifts as if hovering. */
+  animation: cw-hero-float 5.5s ease-in-out infinite;
+}
+
+/* Soft brand halo behind the transparent neon art -- pulses to give the
+   whole visual life even before you interact with it. */
+.cw-hero__visual::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: 86%;
+  height: 74%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  background: radial-gradient(ellipse at center, rgba(108, 59, 255, 0.5), rgba(232, 62, 188, 0.2) 45%, transparent 72%);
+  filter: blur(30px);
+  animation: cw-hero-glow 4.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.cw-hero__visual img {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
+}
+
+/* Hover: the art lifts + zooms slightly and gains a coloured drop-glow. */
+.cw-hero__visual:hover img {
+  transform: scale(1.05) translateY(-2px);
+  filter: drop-shadow(0 14px 32px rgba(108, 59, 255, 0.55));
+}
+
+@keyframes cw-hero-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+@keyframes cw-hero-glow {
+  0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(0.92); }
+  50%      { opacity: 0.9; transform: translate(-50%, -50%) scale(1.06); }
+}
+
+/* Static coin-vortex graphic in a clean rounded frame (no spin) -- just a
+   gentle zoom on hover. */
+.cw-service-panel__imgwrap {
+  display: block;
+  aspect-ratio: 1.35;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 44px -18px rgba(16, 27, 72, 0.35);
+}
+
+.cw-service-panel__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cw-service-panel__imgwrap:hover .cw-service-panel__image {
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cw-service-panel__imgwrap:hover .cw-service-panel__image {
+    transform: none;
+  }
+}
+
+.cw-hero__stats {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  margin-top: clamp(32px, 4vw, 52px);
+  padding-top: clamp(24px, 3vw, 36px);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.cw-hero__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  color: #fff;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cw-hero__stat:hover {
+  transform: translateY(-5px);
+}
+
+.cw-hero__stat i {
+  margin-bottom: 4px;
+  font-size: 20px;
+  color: #9fb0ff;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s ease, filter 0.3s ease;
+}
+
+.cw-hero__stat:hover i {
+  color: #c9b6ff;
+  transform: scale(1.18);
+  filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.7));
+}
+
+.cw-hero__stat strong {
+  color: #fff;
+  font-family: 'Space Grotesk', 'Poppins', sans-serif;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.cw-hero__stat span {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cw-hero::before,
+  .cw-hero::after,
+  .cw-hero__grid,
+  .cw-hero__eyebrow,
+  .cw-hero__eyebrow::before,
+  .cw-hero__eyebrow.cw-hero__reveal,
+  .cw-hero__heading .ld-fh-txt,
+  .cw-hero__reveal {
+    animation: none;
+  }
+
+  .cw-hero__reveal {
+    opacity: 1;
+  }
+
+  .cw-hero__heading .ld-fh-txt {
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+  }
+
+  .cw-hero__stat,
+  .cw-hero__stat i {
+    transition: none;
+  }
+}
+
+/* Wallet types dark panel */
+.cw-wallet-types {
+  padding: clamp(20px, 3vw, 36px) 0;
+}
+
+.cw-wallet-types__panel {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: clamp(32px, 5vw, 64px) clamp(24px, 4vw, 56px);
+  border-radius: var(--clonescript-radius-lg, 28px);
+  background: linear-gradient(135deg, #101a44 0%, #1c1656 55%, #2d1a5e 100%);
+  box-shadow: 0 30px 70px -30px rgba(10, 16, 60, 0.5);
+  text-align: center;
+}
+
+.cw-wallet-types__panel::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: -30%;
+  left: 50%;
+  width: 60%;
+  padding-bottom: 60%;
+  border-radius: 50%;
+  background: rgba(139, 124, 246, 0.22);
+  filter: blur(70px);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.cw-wallet-types__panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cw-wallet-types__heading {
+  color: #fff;
+  font-size: clamp(26px, 3.6vw, 38px);
+}
+
+.cw-wallet-types__intro {
+  max-width: 640px;
+  margin: 0 auto 8px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 15.5px;
+  line-height: 1.65;
+}
+
+.cw-wallet-types__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: clamp(28px, 3.4vw, 44px) 0 clamp(28px, 3.4vw, 40px);
+  text-align: left;
+}
+
+/* Each card drifts on its own (staggered) -- the "movement". The float lives
+   on the cell wrapper so it never fights the item's flash-sweep / hover. */
+.cw-wallet-types__cell {
+  height: 100%;
+  animation: cw-wt-float 6s ease-in-out infinite;
+}
+
+.cw-wallet-types__cell:nth-child(2) { animation-delay: -1.5s; }
+.cw-wallet-types__cell:nth-child(3) { animation-delay: -3s; }
+.cw-wallet-types__cell:nth-child(4) { animation-delay: -4.5s; }
+
+@keyframes cw-wt-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-9px); }
+}
+
+.cw-wallet-types__item {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 22px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Content rides above the sheen so text stays crisp while the flash passes
+   across the card surface behind it. */
+.cw-wallet-types__item > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Diagonal "flash" that sweeps across each card on a loop (staggered per
+   card so the light travels along the row). */
+.cw-wallet-types__item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  z-index: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.14) 44%,
+    rgba(183, 195, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.14) 56%,
+    transparent
+  );
+  transform: skewX(-18deg);
+  animation: cw-wt-flash 5.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.cw-wallet-types__cell:nth-child(2) .cw-wallet-types__item::after { animation-delay: 1.3s; }
+.cw-wallet-types__cell:nth-child(3) .cw-wallet-types__item::after { animation-delay: 2.6s; }
+.cw-wallet-types__cell:nth-child(4) .cw-wallet-types__item::after { animation-delay: 3.9s; }
+
+@keyframes cw-wt-flash {
+  0%   { left: -75%; }
+  22%  { left: 145%; }
+  100% { left: 145%; }
+}
+
+/* Hover: lift + neon glow, icon pops. */
+.cw-wallet-types__item:hover {
+  transform: translateY(-6px);
+  border-color: rgba(139, 124, 246, 0.6);
+  box-shadow: 0 26px 48px -20px rgba(108, 59, 255, 0.55);
+}
+
+.cw-wallet-types__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6c3bff, #e83ebc);
+  color: #fff;
+  font-size: 19px;
+  box-shadow: 0 8px 20px -6px rgba(108, 59, 255, 0.6);
+  animation: cw-wt-icon-pulse 3.2s ease-in-out infinite;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cw-wallet-types__item:hover .cw-wallet-types__icon {
+  transform: scale(1.1) rotate(-6deg);
+}
+
+@keyframes cw-wt-icon-pulse {
+  0%, 100% { box-shadow: 0 8px 20px -6px rgba(108, 59, 255, 0.45); }
+  50%      { box-shadow: 0 12px 28px -4px rgba(232, 62, 188, 0.7); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cw-wallet-types__cell,
+  .cw-wallet-types__item::after,
+  .cw-wallet-types__icon {
+    animation: none;
+  }
+
+  .cw-wallet-types__item::after {
+    display: none;
+  }
+
+  .cw-wallet-types__item:hover {
+    transform: none;
+  }
+
+  .cw-wallet-types__item:hover .cw-wallet-types__icon {
+    transform: none;
+  }
+}
+
+.cw-wallet-types__item h3 {
+  margin: 0 0 8px;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.cw-wallet-types__item p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.cw-wallet-types__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 28px;
+  border-radius: 999px;
+  background: #fff;
+  color: #17205e;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.cw-wallet-types__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.5);
+  color: #17205e;
+}
+
+/* ===== "Coins & Networks" -- modern dark neon band (crypto only) =====
+   Entirely reworked: a dark gradient section band with dark-glass coin cards,
+   each coin's icon glowing in its own brand colour (staggered pulse), white
+   Space Grotesk labels, staggered entrance + hover lift/glow. Scoped to the
+   crypto route so the ~6 other pages using TechStackRow keep the light tiles. */
+.clonescript-route-crypto-wallet .cs-techstack-section {
+  margin-top: clamp(40px, 5vw, 64px);
+  padding: clamp(56px, 6vw, 90px) 0 clamp(56px, 6vw, 86px);
+  background:
+    radial-gradient(920px 500px at 12% -6%, rgba(108, 59, 255, 0.26), transparent 60%),
+    radial-gradient(820px 460px at 104% 106%, rgba(232, 62, 188, 0.18), transparent 55%),
+    linear-gradient(160deg, #0a0f2c 0%, #131a3e 55%, #0c1130 100%);
+  overflow: hidden;
+}
+
+.clonescript-route-crypto-wallet .cs-techstack-section .ld-fancy-heading h2,
+.clonescript-route-crypto-wallet .cs-techstack-section .ld-fh-txt {
+  color: #fff;
+}
+
+.clonescript-route-crypto-wallet .tech-stack-grid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.clonescript-route-crypto-wallet .tech-stack-grid__card {
+  border-radius: 18px !important;
+  background: rgba(255, 255, 255, 0.045) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.clonescript-route-crypto-wallet .tech-stack-grid__card:hover {
+  transform: translateY(-8px);
+  border-color: color-mix(in srgb, var(--tech-color) 65%, transparent) !important;
+  box-shadow: 0 24px 46px -20px color-mix(in srgb, var(--tech-color) 55%, transparent) !important;
+}
+
+/* Neon coin chip -- glows in the coin's own colour, gently pulsing. */
+.clonescript-route-crypto-wallet .tech-stack-grid__icon {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--tech-color) 20%, #0e1230);
+  border: 1px solid color-mix(in srgb, var(--tech-color) 48%, transparent);
+  box-shadow: 0 0 16px -3px color-mix(in srgb, var(--tech-color) 55%, transparent);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+  animation: cw-coin-pulse 3.6s ease-in-out infinite;
+}
+
+.clonescript-route-crypto-wallet .tech-stack-grid__icon i {
+  font-size: 30px;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--tech-color) 60%, transparent));
+}
+
+.clonescript-route-crypto-wallet .tech-stack-grid__card:hover .tech-stack-grid__icon {
+  transform: scale(1.12);
+  box-shadow: 0 0 30px 0 color-mix(in srgb, var(--tech-color) 70%, transparent);
+}
+
+@keyframes cw-coin-pulse {
+  0%, 100% { box-shadow: 0 0 14px -4px color-mix(in srgb, var(--tech-color) 42%, transparent); }
+  50%      { box-shadow: 0 0 24px 0 color-mix(in srgb, var(--tech-color) 66%, transparent); }
+}
+
+/* Desynced pulse so the grid shimmers organically. */
+.clonescript-route-crypto-wallet .tech-stack-grid__cell:nth-child(3n) .tech-stack-grid__icon { animation-delay: -1.2s; }
+.clonescript-route-crypto-wallet .tech-stack-grid__cell:nth-child(3n + 1) .tech-stack-grid__icon { animation-delay: -2.4s; }
+.clonescript-route-crypto-wallet .tech-stack-grid__cell:nth-child(4n) .tech-stack-grid__icon { animation-delay: -0.6s; }
+
+.clonescript-route-crypto-wallet .tech-stack-grid__card h3 {
+  color: #fff !important;
+  font-family: 'Space Grotesk', 'Poppins', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 991px) {
+  .clonescript-route-crypto-wallet .tech-stack-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .clonescript-route-crypto-wallet .tech-stack-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clonescript-route-crypto-wallet .tech-stack-grid__card,
+  .clonescript-route-crypto-wallet .tech-stack-grid__icon {
+    transition: none;
+    animation: none;
+  }
+
+  .clonescript-route-crypto-wallet .tech-stack-grid__card:hover,
+  .clonescript-route-crypto-wallet .tech-stack-grid__card:hover .tech-stack-grid__icon {
+    transform: none;
+  }
+}
+
+/* ===== "100% Money Back Guaranteed" -- entirely restyled (crypto only) =====
+   From a light-green banner to a dark neon glass card matching the crypto
+   theme. Scoped under the crypto route so the other ~21 pages keep the green
+   banner. */
+.clonescript-route-crypto-wallet .money-back-panel {
+  position: relative;
+  overflow: hidden;
+  gap: 28px !important;
+  padding: 34px 40px !important;
+  border-radius: 22px !important;
+  border: 1px solid rgba(139, 124, 246, 0.38) !important;
+  background:
+    radial-gradient(600px 240px at 10% -10%, rgba(108, 59, 255, 0.32), transparent 60%),
+    radial-gradient(520px 220px at 105% 120%, rgba(232, 62, 188, 0.22), transparent 55%),
+    linear-gradient(135deg, #0d1030 0%, #1a1550 55%, #241a5c 100%) !important;
+  box-shadow: 0 30px 70px -28px rgba(108, 59, 255, 0.55) !important;
+}
+
+.clonescript-route-crypto-wallet .money-back-section {
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Content rides above the shine sweep. */
+.clonescript-route-crypto-wallet .money-back-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Diagonal shine that sweeps across the card. */
+.clonescript-route-crypto-wallet .money-back-panel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  z-index: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.12) 45%,
+    rgba(183, 195, 255, 0.32) 50%,
+    rgba(255, 255, 255, 0.12) 55%,
+    transparent
+  );
+  transform: skewX(-18deg);
+  animation: cw-mb-flash 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes cw-mb-flash {
+  0%   { left: -60%; }
+  25%  { left: 150%; }
+  100% { left: 150%; }
+}
+
+/* Seal pulses + glows. */
+.clonescript-route-crypto-wallet .money-back-panel img {
+  width: 104px !important;
+  height: 104px !important;
+  animation: cw-mb-badge 3.6s ease-in-out infinite;
+}
+
+@keyframes cw-mb-badge {
+  0%, 100% { transform: scale(1) rotate(0); filter: drop-shadow(0 0 14px rgba(108, 59, 255, 0.6)); }
+  50%      { transform: scale(1.06) rotate(-4deg); filter: drop-shadow(0 0 26px rgba(232, 62, 188, 0.85)); }
+}
+
+.clonescript-route-crypto-wallet .money-back-panel h2 {
+  color: #fff !important;
+  font-family: 'Space Grotesk', 'Poppins', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.clonescript-route-crypto-wallet .money-back-panel .st-desc p span {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+@media (max-width: 575px) {
+  .clonescript-route-crypto-wallet .money-back-panel {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 24px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clonescript-route-crypto-wallet .money-back-panel::after,
+  .clonescript-route-crypto-wallet .money-back-panel img {
+    animation: none;
+  }
+
+  .clonescript-route-crypto-wallet .money-back-panel img {
+    filter: drop-shadow(0 0 16px rgba(108, 59, 255, 0.6));
+  }
+}
+
+/* ===== "From First Call to a Wallet in Production" -- process steps =====
+   Crypto-only redesign: gradient neon icon circles, big gradient step numbers
+   in Space Grotesk, tinted connector, staggered hover. Scoped under the crypto
+   route so the ~6 other pages using ProcessSteps keep the plain green style. */
+.clonescript-route-crypto-wallet .cs-process-steps .ld-row {
+  counter-reset: cs-step;
+  row-gap: 44px;
+}
+
+.clonescript-route-crypto-wallet .cs-process-steps .ld-pb {
+  counter-increment: cs-step;
+}
+
+/* Big gradient number above each icon (the "font change"). */
+.clonescript-route-crypto-wallet .cs-process-steps .ld-pb::before {
+  content: counter(cs-step, decimal-leading-zero);
+  display: block;
+  margin-bottom: 12px;
+  font-family: 'Space Grotesk', 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  background: linear-gradient(120deg, #6c3bff, #e83ebc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Gradient neon icon circle (was a flat green 208px disc). */
+.clonescript-route-crypto-wallet .cs-process-steps .ld-pb-icon-wrap {
+  width: 118px !important;
+  height: 118px !important;
+  background: linear-gradient(150deg, #6c3bff 0%, #a855f7 50%, #e83ebc 100%) !important;
+  color: #fff !important;
+  font-size: 46px !important;
+  box-shadow: 0 20px 40px -14px rgba(108, 59, 255, 0.6);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+}
+
+.clonescript-route-crypto-wallet .cs-process-steps .ld-pb:hover .ld-pb-icon-wrap {
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: 0 26px 50px -12px rgba(232, 62, 188, 0.6);
+}
+
+/* Tint the theme's dashed connector to the brand accent. */
+.clonescript-route-crypto-wallet .cs-process-steps .ld-pb-top:after {
+  border-color: rgba(139, 92, 246, 0.45) !important;
+}
+
+/* Titles in the accent font. */
+.clonescript-route-crypto-wallet .cs-process-steps .ld-pb-content h3 {
+  margin-top: 6px;
+  font-family: 'Space Grotesk', 'Poppins', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #101b48;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clonescript-route-crypto-wallet .cs-process-steps .ld-pb-icon-wrap {
+    transition: none;
+  }
+
+  .clonescript-route-crypto-wallet .cs-process-steps .ld-pb:hover .ld-pb-icon-wrap {
+    transform: none;
+  }
+}
+
+/* ===== "Features of Every CloneScript Wallet" -- light premium (crypto only)
+   A clean light band so it contrasts the dark hero above it: soft lavender
+   background, white cards with a gentle purple border, and gradient purple->
+   pink icon chips. */
+.clonescript-route-crypto-wallet .stand-out-features-section {
+  background: linear-gradient(180deg, #ffffff 0%, #f6f5ff 55%, #f0eefe 100%);
+  padding-top: clamp(48px, 5vw, 76px);
+}
+
+.clonescript-route-crypto-wallet .stand-out-features-grid__card {
+  border-color: rgba(139, 92, 246, 0.18) !important;
+  box-shadow: 0 14px 34px -22px rgba(108, 59, 255, 0.28) !important;
+}
+
+.clonescript-route-crypto-wallet .stand-out-features-grid__card .premium-icon-box .iconbox-icon-container {
+  background: linear-gradient(135deg, #7c5cff, #e83ebc) !important;
+  box-shadow: 0 10px 22px -8px rgba(108, 59, 255, 0.5);
+}
+
+.clonescript-route-crypto-wallet .stand-out-features-grid__card .premium-icon-box .iconbox-icon-container i {
+  color: #fff !important;
+}
+
+.clonescript-route-crypto-wallet .stand-out-features-grid__card:hover .premium-icon-box .iconbox-icon-container {
+  background: linear-gradient(135deg, #8b6bff, #f455cc) !important;
+}
+
+.clonescript-route-crypto-wallet .stand-out-features-grid__card h3 {
+  font-family: 'Space Grotesk', 'Poppins', sans-serif;
+}
+
+/* ===== "Five Layers" checklist -- advanced card UI (crypto only) =====
+   Scoped under the crypto route so the ~6 other pages using WhyChooseChecklist
+   keep their plain underline-row style. */
+.clonescript-route-crypto-wallet .wcc-section .sv_border_why_choose_us {
+  border-bottom: none !important;
+  padding: 14px 18px !important;
+  margin-bottom: 12px !important;
+  border-radius: 12px;
+  background: #f7f6ff;
+  border: 1px solid #ece9fb;
+  border-left: 3px solid #8b5cf6;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease, border-left-color 0.35s ease, border-color 0.35s ease;
+}
+
+.clonescript-route-crypto-wallet .wcc-section .sv_border_why_choose_us:hover {
+  transform: translateX(6px);
+  border-left-color: #e83ebc;
+  border-color: rgba(108, 59, 255, 0.28);
+  box-shadow: 0 16px 32px -18px rgba(108, 59, 255, 0.45);
+}
+
+.clonescript-route-crypto-wallet .wcc-section .wcc-check {
+  color: #8b5cf6 !important;
+}
+
+/* The security graphic drifts gently and sits over a soft brand glow. */
+.clonescript-route-crypto-wallet .wcc-image {
+  position: relative;
+  border: none !important;
+  animation: cw-wcc-float 6s ease-in-out infinite;
+}
+
+.clonescript-route-crypto-wallet .wcc-image::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: 78%;
+  height: 70%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  background: radial-gradient(ellipse at center, rgba(108, 59, 255, 0.4), rgba(232, 62, 188, 0.18) 45%, transparent 72%);
+  filter: blur(34px);
+  animation: cw-wcc-glow 4.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.clonescript-route-crypto-wallet .wcc-image img {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes cw-wcc-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+@keyframes cw-wcc-glow {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.92); }
+  50%      { opacity: 0.85; transform: translate(-50%, -50%) scale(1.06); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clonescript-route-crypto-wallet .wcc-section .sv_border_why_choose_us {
+    transition: none;
+  }
+
+  .clonescript-route-crypto-wallet .wcc-section .sv_border_why_choose_us:hover {
+    transform: none;
+  }
+
+  .clonescript-route-crypto-wallet .wcc-image,
+  .clonescript-route-crypto-wallet .wcc-image::before {
+    animation: none;
+  }
+}
+
+/* ===== "What Is a Crypto Wallet?" -- restructured concept cards ===== */
+.cw-whatis__accent {
+  background: linear-gradient(120deg, #6c3bff, #e83ebc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cw-whatis__intro {
+  max-width: 760px;
+  margin: 18px auto 0;
+  text-align: center;
+}
+
+.cw-whatis__intro p {
+  color: #4b5570;
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 12px;
+}
+
+.cw-whatis__lead {
+  color: #101b48 !important;
+  font-weight: 600;
+  margin-top: 6px !important;
+}
+
+.cw-concepts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  max-width: 960px;
+  margin: 34px auto 0;
+}
+
+.cw-concept-cell {
+  height: 100%;
+}
+
+.cw-concept-card {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 30px 26px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid #e6e9f5;
+  overflow: hidden;
+  text-align: left;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Gradient bar wipes across the top on hover. */
+.cw-concept-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #6c3bff, #e83ebc);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cw-concept-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(108, 59, 255, 0.35);
+  box-shadow: 0 24px 46px -22px rgba(108, 59, 255, 0.42);
+}
+
+.cw-concept-card:hover::before {
+  transform: scaleX(1);
+}
+
+.cw-concept-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #6c3bff, #e83ebc);
+  color: #fff;
+  font-size: 22px;
+  box-shadow: 0 10px 24px -8px rgba(108, 59, 255, 0.5);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cw-concept-card:hover .cw-concept-card__icon {
+  transform: scale(1.1) rotate(-6deg);
+}
+
+.cw-concept-card__term {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #101b48;
+}
+
+.cw-concept-card__desc {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #5b6478;
+}
+
+@media (max-width: 767px) {
+  .cw-concepts {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 420px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cw-concept-card,
+  .cw-concept-card::before,
+  .cw-concept-card__icon {
+    transition: none;
+  }
+
+  .cw-concept-card:hover {
+    transform: none;
+  }
+
+  .cw-concept-card:hover .cw-concept-card__icon {
+    transform: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .cw-hero__stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cw-wallet-types__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .cw-hero__panel,
+  .cw-wallet-types__panel {
+    border-radius: 22px;
+  }
+
+  .cw-hero__stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px 14px;
+  }
+
+  .cw-wallet-types__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cw-hero__visual {
+    max-width: 340px;
+    margin-top: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cw-hero__btn-secondary,
+  .cw-wallet-types__cta {
+    transition: none;
+  }
+
+  .cw-hero__visual,
+  .cw-hero__visual::before {
+    animation: none;
+  }
+
+  .cw-hero__visual img {
+    transition: none;
+  }
+
+  .cw-hero__visual:hover img {
+    transform: none;
+    filter: none;
+  }
+}

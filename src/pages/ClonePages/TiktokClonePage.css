@@ -1,0 +1,284 @@
+/* Page-scoped 3D treatment for /tiktok-clone.
+ *
+ * Everything here is namespaced under .tiktok-clone-page on purpose: most of
+ * this page is assembled from src/components/shared/* (PricingPlans,
+ * StandOutFeaturesGrid, RevenueBenefits, LaunchCta, ...) and
+ * amazon/AmazonFeatureTabs, all of which every other clone page also renders.
+ * The depth pass reaches them from the outside instead of editing them, so no
+ * other route changes. The genuinely tiktok-only pieces (TiktokScene,
+ * TiltCard, TiktokPhoneStack) keep their CSS colocated with the component.
+ */
+
+.tiktok-clone-page {
+  --tk-teal: #06c7c9;
+  --tk-pink: #fe3b6c;
+  --tk-deep: #031833;
+  --tk-perspective: 1200px;
+  --tk-ease: var(--clonescript-ease, cubic-bezier(0.22, 1, 0.36, 1));
+  /* The scene's orbs are wider than the viewport and several sections tilt
+     past their own box. clip (not hidden) so anchor links like #prices still
+     scroll, and so no section becomes a scroll container. */
+  overflow-x: clip;
+}
+
+/* Containing block for the absolutely-positioned TiktokScene. */
+.tiktok-clone-page .wpb-content-wrapper {
+  position: relative;
+}
+
+/* Content rides above the scene. Sections are transparent, so the orbs and the
+   grid floor show through between them. */
+.tiktok-clone-page .wpb-content-wrapper > section,
+.tiktok-clone-page .wpb-content-wrapper > .vc_row {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------------------------------------------------------------- hero ---- */
+
+/* ProductShowcase is a plain div, so its children are flattened by default;
+   preserve-3d is what turns the chips' translateZ into real parallax against
+   the render instead of a scale. */
+.tiktok-clone-page .tiktok-hero-stage .cs-product-showcase {
+  transform-style: preserve-3d;
+}
+
+.tiktok-clone-page .tiktok-hero-stage .cs-product-showcase__glow {
+  /* Furthest plane: pushed back so it reads as light behind the device. */
+  transform: translateZ(-90px) scale(1.12);
+}
+
+.tiktok-clone-page .tiktok-hero-stage .cs-product-showcase__img {
+  transform: translateZ(20px);
+  /* One-shot settle from a raked-back camera to flat. Not looping. */
+  animation: tk-hero-settle 900ms var(--tk-ease) both;
+}
+
+.tiktok-clone-page .tiktok-hero-stage:hover .cs-product-showcase__img {
+  /* Overrides the shared -4px hover nudge, which would flatten the Z plane. */
+  transform: translateZ(34px);
+}
+
+.tiktok-clone-page .tiktok-hero-stage .cs-product-showcase__chip {
+  /* Nearest plane. The extra translate is pointer-linked, so the chips slide
+     across the render as the stage tilts -- the parallax that sells depth. */
+  transform:
+    translateZ(80px)
+    translate3d(calc(var(--tk-px, 0) * -26px), calc(var(--tk-py, 0) * -22px), 0);
+  transition: transform 380ms var(--tk-ease);
+  box-shadow: 0 20px 34px -14px rgba(3, 24, 51, 0.45);
+}
+
+@keyframes tk-hero-settle {
+  from {
+    opacity: 0;
+    transform: perspective(1200px) rotateX(12deg) translateZ(-120px);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(20px);
+  }
+}
+
+/* ------------------------------------------------- floating page media ---- */
+
+/* "No.1 Video Sharing App" and "Technology We Used". Both are pre-composed
+   transparent renders, so drop-shadow (alpha-aware) rather than box-shadow --
+   a box-shadow would outline the empty bounding box. */
+.tiktok-clone-page .tiktok-media-float img {
+  filter: drop-shadow(0 22px 34px rgba(3, 24, 51, 0.22));
+  transition:
+    transform 420ms var(--tk-ease),
+    filter 420ms var(--tk-ease);
+}
+
+.tiktok-clone-page .tiktok-media-float .tk-tilt__inner {
+  /* Resting rake, straightened by the pointer tilt on hover. */
+  transform:
+    rotateX(calc(3deg + var(--tk-rx)))
+    rotateY(calc(-5deg + var(--tk-ry)));
+}
+
+.tiktok-clone-page .tiktok-media-float:hover img {
+  transform: translateZ(40px);
+  filter: drop-shadow(0 34px 48px rgba(3, 24, 51, 0.3));
+}
+
+/* ------------------------------------------------------- feature cards ---- */
+
+/* StandOutFeaturesGrid + SimpleIconGrid + RevenueBenefits.
+   The perspective is carried in each card's own transform rather than declared
+   on the parent row: a `perspective` property would make that row the
+   containing block for its absolutely-positioned descendants (e.g.
+   .revenue-benefits__arrow), which would move them. */
+.tiktok-clone-page .stand-out-features-grid__card,
+.tiktok-clone-page .revenue-benefits__card,
+.tiktok-clone-page .iconbox-square {
+  transform-style: preserve-3d;
+  transition:
+    transform 380ms var(--tk-ease),
+    box-shadow 380ms var(--tk-ease);
+}
+
+.tiktok-clone-page .stand-out-features-grid__card:hover,
+.tiktok-clone-page .revenue-benefits__card:hover,
+.tiktok-clone-page .iconbox-square:hover {
+  transform: perspective(1000px) translate3d(0, -8px, 44px) rotateX(4deg);
+  box-shadow: 0 30px 50px -22px rgba(3, 24, 51, 0.34);
+}
+
+/* Icons ride one plane in front of their own card. */
+.tiktok-clone-page .stand-out-features-grid__card .iconbox-icon-wrap,
+.tiktok-clone-page .revenue-benefits__card .iconbox-icon-wrap,
+.tiktok-clone-page .iconbox-square .iconbox-icon-wrap {
+  transform: translateZ(26px);
+  transition: transform 380ms var(--tk-ease);
+}
+
+/* A tilted card distorts the focus ring, so square up on keyboard focus. */
+.tiktok-clone-page .stand-out-features-grid__card:focus-within,
+.tiktok-clone-page .revenue-benefits__card:focus-within,
+.tiktok-clone-page .iconbox-square:focus-within {
+  transform: none;
+}
+
+/* ------------------------------------------------------------ launch cta -- */
+
+.tiktok-clone-page .clonescript-launch-cta__panel {
+  perspective: 1300px;
+  transform-style: preserve-3d;
+}
+
+.tiktok-clone-page .clonescript-launch-cta__image {
+  transform: perspective(1300px) rotateY(-8deg) translateZ(30px);
+  transition: transform 520ms var(--tk-ease);
+}
+
+.tiktok-clone-page .clonescript-launch-cta__panel:hover .clonescript-launch-cta__image {
+  transform: perspective(1300px) rotateY(0deg) translateZ(56px);
+}
+
+/* --------------------------------------------------------------- pricing -- */
+
+/* The two plans read as a curved shelf: each angles inward toward the middle,
+   the featured one sits closest to the camera. */
+.tiktok-clone-page #prices .row.ld-row {
+  perspective: 1500px;
+}
+
+/* PricingPlans.css states its shadows through #prices, so these have to carry
+   the id too or they lose on specificity. */
+.tiktok-clone-page #prices .pricing-table {
+  transform-style: preserve-3d;
+  transition:
+    transform 420ms var(--tk-ease),
+    box-shadow 420ms var(--tk-ease);
+}
+
+.tiktok-clone-page #prices .wpb_column:first-child .pricing-table {
+  transform: rotateY(6deg) translateZ(-30px);
+}
+
+.tiktok-clone-page #prices .wpb_column:last-child .pricing-table {
+  transform: rotateY(-6deg) translateZ(-30px);
+}
+
+.tiktok-clone-page #prices .pricing-table.featured {
+  transform: translateZ(40px);
+  box-shadow: 0 40px 70px -34px rgba(3, 24, 51, 0.42);
+}
+
+/* Hover (or keyboard focus) squares a card to the camera and brings it fully
+   forward -- the CTA button inside must be a stable hit target once there, so
+   nothing animates on the button itself. */
+.tiktok-clone-page #prices .wpb_column .pricing-table:hover,
+.tiktok-clone-page #prices .wpb_column .pricing-table:focus-within {
+  transform: rotateY(0deg) translateZ(70px);
+  box-shadow: 0 46px 78px -34px rgba(3, 24, 51, 0.46);
+}
+
+/* ------------------------------------------------------------- faq panel -- */
+
+.tiktok-clone-page .tiktok-faq-panel .tabs-content {
+  padding: clamp(20px, 3vw, 36px);
+  border-radius: var(--clonescript-radius-lg, 22px);
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--clonescript-line, #e2e8f0);
+  box-shadow: 0 26px 54px -20px rgba(3, 24, 51, 0.2);
+}
+
+/* Accordion bodies fold down from their top edge instead of just appearing. */
+.tiktok-clone-page .tiktok-faq-panel .vc_toggle_content {
+  transform-origin: top center;
+  animation: tk-fold-down 280ms var(--tk-ease) both;
+}
+
+@keyframes tk-fold-down {
+  from {
+    opacity: 0;
+    transform: perspective(800px) rotateX(-12deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------ responsive -- */
+
+@media (max-width: 991px) {
+  .tiktok-clone-page {
+    --tk-perspective: 1600px;
+  }
+
+  /* At tablet width the pricing columns are already narrow; the inward yaw
+     starts reading as misalignment rather than as a shelf. */
+  .tiktok-clone-page #prices .wpb_column:first-child .pricing-table,
+  .tiktok-clone-page #prices .wpb_column:last-child .pricing-table {
+    transform: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .tiktok-clone-page .tiktok-media-float .tk-tilt__inner,
+  .tiktok-clone-page .clonescript-launch-cta__image,
+  .tiktok-clone-page #prices .pricing-table,
+  .tiktok-clone-page #prices .pricing-table.featured {
+    transform: none;
+  }
+
+  .tiktok-clone-page .tiktok-faq-panel .tabs-content {
+    padding: 20px 16px;
+    /* backdrop-filter is the most expensive property on the page; on phones
+       the panel is full-bleed anyway, so pay for an opaque fill instead. */
+    background: #fff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tiktok-clone-page *,
+  .tiktok-clone-page *::before,
+  .tiktok-clone-page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .tiktok-clone-page .tiktok-hero-stage .cs-product-showcase__img,
+  .tiktok-clone-page .tiktok-hero-stage .cs-product-showcase__glow,
+  .tiktok-clone-page .tiktok-hero-stage .cs-product-showcase__chip,
+  .tiktok-clone-page .tiktok-media-float .tk-tilt__inner,
+  .tiktok-clone-page .clonescript-launch-cta__image,
+  .tiktok-clone-page #prices .pricing-table,
+  .tiktok-clone-page #prices .pricing-table.featured,
+  .tiktok-clone-page .stand-out-features-grid__card,
+  .tiktok-clone-page .revenue-benefits__card,
+  .tiktok-clone-page .iconbox-square,
+  .tiktok-clone-page .iconbox-icon-wrap {
+    transform: none !important;
+  }
+}

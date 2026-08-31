@@ -1,0 +1,12 @@
+.swiggy-fixed-menu.fixed-menu {
+  position: sticky;
+  top: 75px;
+  z-index: 40;
+  padding: 8px 0;
+  background: rgb(255 255 255 / 96%);
+  backdrop-filter: blur(10px);
+}
+
+.swiggy-feature-panel {
+  scroll-margin-top: 145px;
+}

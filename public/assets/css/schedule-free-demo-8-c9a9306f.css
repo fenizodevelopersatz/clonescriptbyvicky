@@ -1,0 +1,20 @@
+.avatar-cutom{
+   border-radius:35px;
+}
+.avatar-cutom p{
+  line-height:24px;
+}
+
+.testimonial-avatar-topleft .avatar, .testimonial-avatar-topright .avatar {
+   
+    left: 350px !important;
+   
+}
+.fancy-title i {
+    color: #ff0000;
+    margin: 0px 5px 0px 5px;
+}
+
+.fancy-title .line-alt {
+    background-color: #b7b7b782;
+}

@@ -1,0 +1,142 @@
+.clonescript-launch-cta {
+  padding: 36px 0;
+}
+
+.clonescript-launch-cta__panel {
+  align-items: center;
+  overflow: hidden;
+  margin: 0;
+  padding: clamp(28px, 4vw, 54px);
+  border: 1px solid rgba(0, 38, 146, 0.11);
+  border-radius: 28px;
+  background: linear-gradient(118deg, #f7f4ff 0%, #ffffff 48%, #edf7ff 100%);
+  box-shadow: 0 18px 44px rgba(16, 27, 72, 0.09);
+}
+
+.clonescript-launch-cta__image {
+  display: grid;
+  place-items: center;
+}
+
+.clonescript-launch-cta__image img {
+  display: block;
+  width: min(100%, 520px);
+  height: auto;
+  margin: 0 auto;
+}
+
+.clonescript-launch-cta__content .fancy-title h3 {
+  max-width: 610px;
+  margin-bottom: 24px;
+  font-size: clamp(26px, 2.6vw, 40px);
+  line-height: 1.22;
+}
+
+.clonescript-launch-cta--text-only .clonescript-launch-cta__content {
+  text-align: center;
+}
+
+.clonescript-launch-cta--text-only .clonescript-launch-cta__content .fancy-title h3 {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (max-width: 767px) {
+  .clonescript-launch-cta {
+    padding: 24px 0;
+  }
+
+  .clonescript-launch-cta__panel {
+    padding: 28px 22px;
+    border-radius: 20px;
+  }
+
+  .clonescript-launch-cta__content {
+    margin-top: 24px;
+  }
+}
+
+/* Dark "banner" variant: solid gradient panel, full-bleed photo flush to the
+   card edge, CTA pill badge, white type. The panel/columns here are plain
+   block/float layout (not flexbox -- confirmed via computed styles; `order`
+   and `align-items` are silently no-ops on this container), so the image is
+   pulled out of flow with position:absolute and pinned to the panel's full
+   height/right edge instead of trying to flex/stretch it into place. That
+   also means source order no longer matters, so content can stay first in
+   the DOM while rendering on the left. */
+.clonescript-launch-cta--dark .clonescript-launch-cta__panel {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--clonescript-blue, #4f6ef7) 0%, var(--clonescript-btn-primary, #4f46e5) 100%);
+  border-color: transparent;
+}
+
+.clonescript-launch-cta--dark .clonescript-launch-cta__content {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 56%;
+  padding: clamp(28px, 4vw, 54px);
+}
+
+.clonescript-launch-cta--dark .clonescript-launch-cta__image-col {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 44%;
+  padding: 0;
+}
+
+.clonescript-launch-cta--dark .clonescript-launch-cta__image-col .vc_column-inner,
+.clonescript-launch-cta--dark .clonescript-launch-cta__image-col .wpb_wrapper,
+.clonescript-launch-cta--dark .clonescript-launch-cta__image-col .wpb_wrapper-inner,
+.clonescript-launch-cta--dark .clonescript-launch-cta__image-col .wpb_single_image,
+.clonescript-launch-cta--dark .clonescript-launch-cta__image-col figure,
+.clonescript-launch-cta--dark .clonescript-launch-cta__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.clonescript-launch-cta--dark .clonescript-launch-cta__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+}
+
+.clonescript-launch-cta--dark .clonescript-launch-cta__badge {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.clonescript-launch-cta--dark .clonescript-launch-cta__content .fancy-title h3 {
+  color: #fff;
+}
+
+.clonescript-launch-cta--dark .clonescript-launch-cta__content .st-desc p {
+  margin: 0 0 24px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.clonescript-launch-cta--dark .clonescript-launch-cta__content .btn.btn-solid {
+  background: #fff !important;
+  border-color: #fff !important;
+  color: #0a1f6e !important;
+}

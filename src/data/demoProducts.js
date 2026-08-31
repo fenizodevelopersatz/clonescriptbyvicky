@@ -1,0 +1,15 @@
+export const demoProducts = [
+  'Rental & Booking Scripts',
+  'Taxi Booking Scripts',
+  'Travel Scripts',
+  'On Demand Multi Service Apps',
+  'Food Delivery Apps',
+  'Uber Clone For X',
+  'Freelance marketplace Scripts',
+  'On Demand Delivery Apps',
+  'E-Learning Scripts',
+  'Handyman Service Scripts',
+  'Social Networking Scripts',
+  'ECommerce Scripts',
+  'Classified Scripts',
+]

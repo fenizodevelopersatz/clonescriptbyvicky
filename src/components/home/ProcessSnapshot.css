@@ -1,0 +1,54 @@
+.cs-process-snapshot {
+  padding-top: var(--clonescript-compact-space, 48px);
+}
+
+.cs-process-snapshot__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.cs-process-snapshot__item {
+  padding: 28px 22px;
+  border-radius: var(--clonescript-radius-md, 18px);
+  background: var(--clonescript-surface, #fff);
+  border: 1px solid var(--clonescript-line, #dfe4f2);
+  box-shadow: var(--clonescript-shadow-sm, 0 8px 24px rgb(16 27 72 / 8%));
+  text-align: center;
+}
+
+.cs-process-snapshot__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2457f5, #7135e8);
+  color: #fff;
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.cs-process-snapshot__item h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--clonescript-ink, #101b48);
+}
+
+.cs-process-snapshot__item p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--clonescript-muted, #687087);
+}
+
+@media (max-width: 991px) {
+  .cs-process-snapshot__grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}

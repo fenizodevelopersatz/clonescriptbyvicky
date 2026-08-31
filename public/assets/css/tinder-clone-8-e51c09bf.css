@@ -1,0 +1,118 @@
+.text_align{
+text-align:justify;
+}
+.align_left{
+	text-align:left !important;
+}
+
+/* amazon */
+.gradient_heading2{
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.30) 26.75%, rgba(255, 255, 255, 0.00) 82.48%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;text-align: center;
+font-family: Poppins;
+font-size: 105px;
+font-style: normal;
+font-weight: 800;
+line-height: 120%; /* 136.8px */
+}
+.gradient_heading{
+background: linear-gradient(180deg, rgba(254, 185, 48, 0.30) 17.15%, rgba(254, 185, 48, 0.00) 78.83%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-align: center;
+font-family: Poppins;
+/* font-size:6vw; */
+font-size: 105px;
+font-style: normal;
+font-weight: 800;
+line-height: 120%;
+}
+/* .section3 .triumph{
+position: relative;
+left: 50px;
+top: 30px;
+} */
+.section3 .amazonclone{
+color: #FEB930;
+}
+.gradient_headingleft{
+background: linear-gradient(180deg, rgba(254, 185, 48, 0.30) 17.15%, rgba(254, 185, 48, 0.00) 78.83%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-align: left;
+font-family: Poppins;
+/* font-size:6vw; */
+font-size: 105px;
+font-style: normal;
+font-weight: 800;
+line-height: 120%;
+}
+.section3 .amazonclone{
+color: #FEB930;
+}
+.section7 .mobile_bg{
+       position: absolute;
+    z-index: -1;
+    top: -45px;
+    right: -75px;
+}
+.section9 .cardimg{
+    position:relative;
+    z-index:2;
+}
+.section12 .whybg{
+    border-radius: 50px;
+border: 1px solid #EDA80A;
+background: rgba(237, 237, 237, 0.20);
+box-shadow: 0px 0px 14px 0px rgba(137, 237, 233, 0.12);
+backdrop-filter: blur(10px);
+}
+.cardbg{
+    border-radius: 50px;
+border: 1px solid #FBE794;
+background: linear-gradient(270deg, rgba(251, 233, 148, 0.10) 0%, rgba(255, 255, 255, 0.00) 100%), rgba(237, 237, 237, 0.20);
+box-shadow: 0px 0px 14px 0px rgba(137, 237, 233, 0.12);
+backdrop-filter: blur(10px);
+}
+.cardbg2{
+  border-radius: 50px;
+border: 1px solid #FBE794;
+background: linear-gradient(180deg, rgba(251, 233, 148, 0.20) 0%, rgba(255, 255, 255, 0.00) 100%), rgba(237, 237, 237, 0.20);
+box-shadow: 0px 0px 14px 0px rgba(137, 237, 233, 0.12);
+backdrop-filter: blur(10px);
+}
+.absolute_bg{
+	 position: absolute;
+   z-index: -1;
+}
+.absolute_bg1{
+	 position: absolute;
+}
+.section21{
+    background: linear-gradient(180deg, #084862 -24.29%, #031C26 100%);
+}
+.features_acc .active .accordion-title a{
+    background: linear-gradient(90deg, #FEB930 0%, rgba(254, 185, 48, 0.16) 99.74%);
+    border-radius: 10px;
+}
+.amazon .vc_tta-color-white.vc_tta-style-flat .vc_tta-tab.vc_active>a {
+   
+    color: #000;
+    border: 1px solid #00000000;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #FEB930 0%, rgba(254, 185, 48, 0.16) 99.74%);
+}
+.amazon .vc_tta-color-white.vc_tta-style-flat .vc_tta-tab>a {
+     background-color: #ffffff;
+    color: #000;
+    border-radius: 10px ;
+    border: 1px solid #212121;
+}
+.sticky_menu a {
+      padding: 10px 20px 10px 20px;
+}
+/* amazon */

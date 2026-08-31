@@ -1,0 +1,16 @@
+/* This section has a colored pricing-table header (background fill) on every
+   column, so -- like clonescript-launch-cta and alibaba-live-demo-cta -- it
+   needs its own top/bottom breathing room or it visually collides with
+   whatever section sits directly above/below it (every section on this site
+   butts against its neighbor at 0 outer gap by convention; plain text/heading
+   sections don't need padding to look right there, but a filled/bordered box
+   does). */
+.comparison-table-section {
+  padding: 48px 0;
+}
+
+@media (max-width: 767px) {
+  .comparison-table-section {
+    padding: 32px 0;
+  }
+}

@@ -1,0 +1,1470 @@
+.erp-software-page {
+  --erp-primary: #002692;
+  --erp-ink: #101d4b;
+  --erp-muted: #616472;
+  --erp-surface: #f5f7ff;
+  --erp-border: rgba(0, 38, 146, 0.18);
+  color: var(--erp-ink);
+  overflow: clip;
+}
+
+.erp-software-page > section,
+.erp-software-page > .vc_section,
+.erp-software-page > .vc_row {
+  width: 100%;
+  max-width: 100%;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.erp-software-page h1,
+.erp-software-page h2,
+.erp-software-page h3,
+.erp-software-page h4,
+.erp-software-page h5,
+.erp-software-page h6 {
+  color: var(--erp-ink);
+  letter-spacing: -0.02em;
+}
+
+.erp-software-page h1 {
+  font-size: clamp(42px, 4.1vw, 60px);
+  line-height: 1.12;
+}
+
+.erp-software-page h2 {
+  font-size: clamp(31px, 3vw, 44px);
+  line-height: 1.18;
+}
+
+.erp-software-page p {
+  color: var(--erp-muted);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.erp-software-page .container {
+  width: min(1140px, calc(100% - 48px));
+  max-width: 1140px;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+#root:has(.erp-software-page) .main-nav > li > a,
+#root:has(.erp-software-page) .main-nav .link-txt {
+  color: #050505;
+}
+
+.erp-hero-section {
+  background: linear-gradient(180deg, #f5f7ff 0%, #fff 100%);
+}
+
+.erp-hero {
+  padding: 100px 0 36px;
+}
+
+.erp-hero .wpb_text_column {
+  max-width: 950px;
+  margin: 26px auto 0;
+}
+
+.erp-hero-actions {
+  padding: 28px 0 88px;
+}
+
+.erp-hero-actions .btn + .btn {
+  margin-left: 18px;
+}
+
+.erp-hero-actions .btn {
+  min-width: 185px;
+  min-height: 54px;
+  justify-content: center;
+}
+
+.erp-hero-media {
+  padding: 0 0 85px;
+}
+
+.erp-hero-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 24px 70px rgba(20, 32, 82, 0.14);
+}
+
+.erp-trusted-section {
+  padding: 90px 0 35px;
+  background: #f5f7ff;
+}
+
+.erp-trusted-section .vc_empty_space[style*="67"] {
+  height: 42px !important;
+}
+
+.erp-trust-logos {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: center;
+  gap: 26px;
+  width: min(1140px, 100%);
+  margin: 0 auto 56px;
+}
+
+.erp-trust-logos img {
+  width: 100%;
+  max-width: 160px;
+  max-height: 52px;
+  margin: auto;
+  object-fit: contain;
+}
+
+.erp-testimonials-section {
+  padding: 0 0 90px;
+  background: #f5f7ff;
+}
+
+/* .carousel-container is styled overflow:hidden globally for real sliding carousels, where it
+   hides off-screen slides. This section swaps content via React state instead of sliding a
+   strip, so nothing should ever be off-screen — but the hidden overflow was clipping the bottom
+   of the cards whenever the grid's auto-sized height landed a few px short of its content. */
+.erp-testimonials-section .carousel-container {
+  overflow: visible;
+}
+
+.erp-testimonial-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin: 0 !important;
+  /* The legacy .carousel-items:not(.flickity-enabled) fallback sets overflow-x: scroll, which
+     per spec forces overflow-y to compute as auto too. That makes this a scroll container whose
+     auto height can land a few px short of its content, showing a nested scrollbar. */
+  overflow: visible !important;
+}
+
+.erp-testimonial-grid .carousel-item {
+  display: block;
+  width: auto !important;
+  padding: 0;
+}
+
+.erp-testimonial-grid .testimonial {
+  height: 100%;
+  min-height: 230px;
+  padding: 34px;
+  border: 1px solid rgba(16, 29, 75, 0.08);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 15px 45px rgba(24, 36, 83, 0.09);
+}
+
+.erp-testimonial-grid .avatar img {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.erp-testimonials-section .carousel-dots {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.erp-core-section {
+  padding: 100px 0 110px;
+}
+
+.erp-core-section .fancy-title {
+  margin-bottom: 55px;
+}
+
+.erp-core-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 54px 25px;
+  justify-content: center;
+}
+
+.erp-core-card__desc {
+  margin: 12px 0 0;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.55;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.erp-core-grid::before,
+.erp-core-grid::after,
+.erp-simple-icon-grid::before,
+.erp-simple-icon-grid::after,
+.erp-why-layout::before,
+.erp-why-layout::after,
+.erp-guide-panel::before,
+.erp-guide-panel::after,
+.erp-modules-grid::before,
+.erp-modules-grid::after,
+.erp-industries-grid::before,
+.erp-industries-grid::after,
+.erp-standout-grid::before,
+.erp-standout-grid::after,
+.erp-tech-grid::before,
+.erp-tech-grid::after,
+.erp-demo-layout::before,
+.erp-demo-layout::after,
+.erp-launch-panel::before,
+.erp-launch-panel::after,
+.erp-moneyback-panel::before,
+.erp-moneyback-panel::after {
+  display: none !important;
+  content: none !important;
+}
+
+.erp-core-grid > div,
+.erp-tech-grid > div,
+.erp-modules-grid > div,
+.erp-standout-grid > div {
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+.erp-core-grid .iconbox {
+  margin: 0;
+  text-align: center;
+}
+
+.erp-capabilities-section {
+  padding: 50px 0;
+  background: #f8f9ff;
+}
+
+.erp-simple-icon-section {
+  padding: 20px 0 40px;
+}
+
+.erp-simple-icon-section + .erp-simple-icon-section {
+  padding-top: 40px;
+  border-top: 1px solid rgba(0, 38, 146, 0.1);
+}
+
+.erp-simple-icon-grid {
+  display: grid !important;
+  grid-template-columns: repeat(var(--erp-columns), minmax(0, 1fr));
+  gap: 18px 24px;
+  margin-top: 45px;
+}
+
+.erp-simple-icon-card {
+  min-width: 0;
+  margin: 0 !important;
+  padding: 14px 16px;
+  border: 1px solid var(--erp-border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 7px 22px rgba(0, 38, 146, 0.05);
+}
+
+.erp-simple-icon-card h3 {
+  min-width: 0;
+  margin: 0;
+  font-size: 16px !important;
+  line-height: 1.35 !important;
+  overflow-wrap: anywhere;
+}
+
+.erp-simple-icon-card .iconbox-icon-wrap,
+.erp-simple-icon-card .iconbox-icon-container {
+  width: 42px !important;
+  height: 42px !important;
+}
+
+/* The vendored default puts this margin on .iconbox-icon-container (and a
+   scoped copy of that selector is below, for the tie-break reason noted
+   there), but here .iconbox-icon-wrap is ALSO forced to width:42px !important
+   two rules up -- with the wrap's width pinned exactly to the icon's own
+   size, a margin on the *inner* icon-container has no room to expand the
+   wrap's flex-item footprint, so it never reaches the title. The wrap itself
+   is the actual flex sibling of <h3>, so the gap has to live there instead. */
+.erp-simple-icon-card .iconbox-icon-wrap {
+  margin-right: 18px;
+}
+
+/* Specificity tie with the vendored `.iconbox-inline .iconbox-icon-container
+   { margin-right: 15px }` rule (both two classes deep) -- confirmed via a
+   document.styleSheets scan that the vendored rule was winning the tie on
+   load order. The `.erp-simple-icon-section` ancestor breaks the tie. Zeroed
+   out now that the real gap lives on .iconbox-icon-wrap above, so the two
+   margins don't stack into 36px. */
+.erp-simple-icon-section .erp-simple-icon-card .iconbox-icon-container {
+  margin-right: 0;
+  font-size: 23px !important;
+}
+
+.erp-simple-icon-card .iconbox-icon-container > i {
+  font-size: 23px !important;
+  line-height: 1 !important;
+}
+
+.erp-simple-icon-card__desc {
+  min-width: 0;
+  margin: 10px 0 0;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.erp-why-section {
+  padding: 110px 0;
+}
+
+.erp-why-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 72px;
+}
+
+.erp-why-layout > div {
+  width: auto !important;
+}
+
+.erp-why-layout img {
+  width: 100%;
+  height: auto;
+}
+
+.erp-guide-section {
+  padding: 85px 0 105px;
+  background: #fff;
+}
+
+.erp-guide-section > .container:first-child {
+  margin-bottom: 65px;
+}
+
+.erp-guide-panel {
+  display: grid !important;
+  grid-template-columns: 320px minmax(0, 1fr);
+  align-items: center;
+  gap: 64px;
+  width: 920px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 38px 62px;
+  border-radius: 18px;
+  background: linear-gradient(115deg, #dff5ff, #c9edff);
+  box-shadow: 0 15px 45px rgba(0, 83, 150, 0.1);
+}
+
+.erp-guide-visual img {
+  display: block;
+  width: 100%;
+  max-height: 355px;
+  object-fit: contain;
+}
+
+.erp-guide-visual {
+  container-type: inline-size;
+}
+
+.erp-egc-root {
+  width: 100%;
+  max-width: 260px;
+  aspect-ratio: 307 / 406;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 3cqw, 14px);
+  padding: clamp(14px, 7cqw, 26px) clamp(12px, 6cqw, 22px);
+  border-radius: clamp(10px, 4cqw, 16px);
+  background: linear-gradient(160deg, #7c5cff 0%, #6a5ae0 45%, #4a63d6 100%);
+  box-shadow: 0 20px 40px -14px rgba(76, 60, 200, 0.45);
+  color: #fff;
+}
+
+.erp-egc-root::after {
+  content: '';
+  position: absolute;
+  top: clamp(4px, 2cqw, 8px);
+  right: 0;
+  bottom: clamp(4px, 2cqw, 8px);
+  width: clamp(4px, 2.2cqw, 9px);
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 3px 0 0 3px;
+}
+
+.erp-egc-brand {
+  font-weight: 800;
+  font-size: clamp(8px, 4cqw, 15px);
+  letter-spacing: 0.02em;
+}
+
+.erp-egc-title {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1px, 0.8cqw, 3px);
+  line-height: 1.15;
+}
+
+.erp-egc-title span {
+  font-weight: 700;
+  font-size: clamp(10px, 5.4cqw, 20px);
+}
+
+.erp-egc-title strong {
+  font-weight: 800;
+  font-size: clamp(11px, 6cqw, 22px);
+  color: #ffc233;
+}
+
+.erp-egc-subtitle {
+  font-size: clamp(6.5px, 3cqw, 11px);
+  opacity: 0.85;
+  line-height: 1.35;
+}
+
+.erp-egc-preview {
+  flex: 1;
+  min-height: 0;
+  background: #fff;
+  border-radius: clamp(6px, 2.6cqw, 10px);
+  padding: clamp(6px, 3cqw, 12px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 2cqw, 8px);
+}
+
+.erp-egc-preview-head {
+  height: clamp(8px, 4cqw, 16px);
+  border-radius: 4px;
+  background: linear-gradient(135deg, #7c5cff, #5aa9f7);
+  width: 60%;
+}
+
+.erp-egc-preview-bars {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(3px, 1.6cqw, 7px);
+}
+
+.erp-egc-preview-bars span {
+  flex: 1;
+  min-height: 10%;
+  border-radius: 3px 3px 1px 1px;
+  background: linear-gradient(180deg, #8b7bff, #5aa9f7);
+}
+
+.erp-egc-features {
+  display: flex;
+  justify-content: space-between;
+  gap: clamp(4px, 2cqw, 8px);
+}
+
+.erp-egc-feature {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2px, 1cqw, 5px);
+  font-size: clamp(6px, 2.8cqw, 10px);
+  font-weight: 600;
+  text-align: center;
+}
+
+.erp-egc-feature-icon {
+  width: clamp(16px, 8cqw, 28px);
+  height: clamp(16px, 8cqw, 28px);
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(7px, 3.6cqw, 13px);
+}
+
+@media (max-width: 767px) {
+  .erp-egc-root {
+    max-width: 220px;
+  }
+}
+
+.erp-guide-copy {
+  width: auto !important;
+  text-align: left !important;
+}
+
+.erp-guide-copy .fancy-title,
+.erp-guide-copy .st-desc p {
+  text-align: left;
+}
+
+.erp-modules-section {
+  padding: 100px 0;
+  background: #f8f9ff;
+}
+
+.erp-modules-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 55px;
+}
+
+.erp-modules-grid .sv_border {
+  height: 100%;
+  min-height: 245px;
+  margin: 0;
+  padding: 30px 26px;
+  border: 1px solid var(--erp-border);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 25px rgba(0, 38, 146, 0.05);
+}
+
+.erp-industries-section {
+  padding: 70px 0;
+}
+
+.erp-industries-section > .container:first-child {
+  margin-bottom: 40px;
+}
+
+.erp-industries-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.erp-industries-grid {
+  display: flex !important;
+  width: max-content;
+  gap: 14px;
+  margin: 0 !important;
+  animation: erp-industries-scroll 28s linear infinite;
+}
+
+@keyframes erp-industries-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.erp-industries-grid .fancy-box {
+  flex: 0 0 250px;
+  /* The vendor .cb-img-container/.fancy-box-contents rules are
+     position:absolute; height:100%, meant to fill a card with an explicit
+     height (WPBakery normally inlines one per-instance). Without a definite
+     height here, that 100% doesn't resolve against anything sane and the
+     card balloons to thousands of px tall -- this height is load-bearing,
+     not decorative. */
+  height: 260px;
+  /* The vendor .fancy-box-overlay.tall class (also on this element) sets
+     padding-bottom: 133.335% -- the pre-aspect-ratio trick for reserving
+     height as a percentage of width. Percentage padding resolves against
+     the CONTAINING BLOCK's width, which here is this flex row's
+     width:max-content track (3154px+), not this card's own 250px -- so it
+     was demanding ~4200px of padding, and padding can't compress below its
+     computed value, so it dragged the explicit height above along with it.
+     The explicit height already does this box's sizing; kill the hack. */
+  padding-bottom: 0 !important;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.erp-industries-grid .fancy-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(16, 29, 75, 0.18);
+}
+
+.erp-industries-grid img {
+  display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.erp-standout-section {
+  padding: 105px 0 115px;
+  background: #f5f7ff;
+}
+
+.erp-standout-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.erp-standout-grid .iconbox {
+  height: 100%;
+  min-height: 245px;
+  margin: 0;
+  padding: 30px;
+  border: 1px solid var(--erp-border);
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0, 38, 146, 0.06);
+  transition: transform 260ms ease, box-shadow 260ms ease;
+}
+
+.erp-standout-grid .iconbox:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 38px rgba(0, 38, 146, 0.13);
+}
+
+.erp-tech-section {
+  padding: 30px 0 31px;
+}
+
+.erp-section-description {
+  max-width: 720px;
+  margin: 15px auto 0;
+  text-align: center;
+}
+
+.erp-tech-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px 24px;
+  margin-top: 55px;
+}
+
+.erp-tech-grid .iconbox {
+  min-height: 185px;
+  margin: 0;
+  padding: 25px 15px;
+  text-align: center;
+}
+
+.erp-tech-grid .iconbox-icon-container,
+.erp-tech-grid .iconbox-icon-container > i {
+  font-size: 60px !important;
+  line-height: 1;
+}
+
+.erp-tech-grid .liquid-image-icon {
+  width: 60px !important;
+  height: 48px !important;
+  object-fit: contain;
+}
+
+.erp-demo-section {
+  padding: 105px 0 115px;
+  background: #f8f9ff;
+  scroll-margin-top: 95px;
+}
+
+.erp-demo-section .tabs {
+  margin-top: 45px;
+}
+
+.erp-demo-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.7fr);
+  align-items: center;
+  gap: 55px;
+  margin-top: 42px;
+}
+
+.erp-demo-captions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 32px;
+  margin-top: 32px;
+  text-align: left;
+}
+
+.erp-demo-captions .iconbox-icon-container {
+  width: 36px !important;
+  height: 36px !important;
+}
+
+.erp-demo-captions p {
+  margin: 4px 0 0;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+  .erp-demo-captions {
+    grid-template-columns: 1fr;
+  }
+}
+
+.erp-demo-preview img {
+  display: block;
+  width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 20px 55px rgba(16, 29, 75, 0.14);
+}
+
+.erp-demo-credentials {
+  width: auto !important;
+  padding: 35px !important;
+  border: 1px solid var(--erp-border);
+  border-radius: 15px;
+  background: #fff;
+}
+
+.erp-demo-credentials .iconbox {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.erp-launch-section {
+  padding: 105px 0;
+}
+
+.erp-launch-panel {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 0.85fr);
+  align-items: center;
+  gap: 45px;
+  min-height: 440px;
+  padding: 55px 65px;
+  border-radius: 20px;
+  background: linear-gradient(120deg, #fce1ed, #fff2f7);
+  overflow: hidden;
+}
+
+.erp-launch-panel > div {
+  width: auto !important;
+  margin: 0 !important;
+}
+
+.erp-launch-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.erp-launch-visual svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: #6d4fe0;
+}
+
+.erp-dashboard-section {
+  padding: 60px 0 75px;
+  background: #f8f9ff;
+}
+
+.erp-dashboard-section > .container + .container {
+  margin-top: 65px;
+}
+
+.erp-dashboard-mockup {
+  position: relative;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* DashboardMockup (components/shared/) defaults to aspect-ratio-driven
+   height for its original School CRM slot, which only constrains width.
+   This slot is absolutely positioned with an explicit height instead, so
+   force the mockup to fill it exactly rather than leaving a gap. */
+.erp-dashboard-mockup .cs-dash-mock {
+  height: 100%;
+}
+
+.erp-d3p-root {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1.6cqw, 14px);
+  padding: clamp(8px, 2.5cqw, 22px);
+  background: linear-gradient(180deg, #f7f8ff 0%, #fff 100%);
+}
+
+.erp-d3p-root .erp-d3p-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.erp-d3p-root .erp-d3p-burger {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: clamp(14px, 3cqw, 20px);
+}
+
+.erp-d3p-root .erp-d3p-burger span {
+  display: block;
+  height: 2px;
+  border-radius: 1px;
+  background: #555;
+}
+
+.erp-d3p-root .erp-d3p-pos {
+  background: linear-gradient(135deg, #7c5cff, #5aa9f7);
+  color: #fff;
+  font-weight: 700;
+  font-size: clamp(7px, 1.4cqw, 12px);
+  padding: clamp(3px, 0.8cqw, 6px) clamp(6px, 1.6cqw, 12px);
+  border-radius: 999px;
+}
+
+.erp-d3p-root .erp-d3p-banner {
+  background: linear-gradient(135deg, #7c5cff 0%, #5aa9f7 100%);
+  border-radius: clamp(8px, 1.6cqw, 16px);
+  padding: clamp(10px, 3cqw, 26px) clamp(12px, 3.5cqw, 30px);
+  color: #fff;
+}
+
+.erp-d3p-root .erp-d3p-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: clamp(7px, 1.2cqw, 11px);
+  padding: clamp(3px, 0.7cqw, 5px) clamp(8px, 1.8cqw, 12px);
+  border-radius: 999px;
+  margin-bottom: clamp(4px, 1cqw, 10px);
+  color: #fff;
+}
+
+.erp-d3p-root .erp-d3p-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  display: inline-block;
+}
+
+.erp-d3p-root .erp-d3p-banner h3 {
+  font-size: clamp(11px, 2.6cqw, 22px);
+  margin: clamp(2px, 0.6cqw, 6px) 0;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #fff;
+}
+
+.erp-d3p-root .erp-d3p-banner-desc {
+  font-size: clamp(7.5px, 1.5cqw, 12.5px);
+  opacity: 0.92;
+  margin: 0;
+  line-height: 1.3;
+  max-width: 85%;
+  color: #fff;
+}
+
+.erp-d3p-root .erp-d3p-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(6px, 1.6cqw, 14px);
+}
+
+.erp-d3p-root .erp-d3p-stat {
+  flex: 1 1 0;
+  min-width: clamp(46px, 16cqw, 68px);
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 1.2cqw, 10px);
+  background: #fff;
+  border: 1px solid #ece9fb;
+  border-radius: clamp(6px, 1.2cqw, 12px);
+  padding: clamp(6px, 1.6cqw, 12px);
+  box-shadow: 0 4px 10px rgba(90, 70, 200, 0.05);
+}
+
+.erp-d3p-root .erp-d3p-stat-icon {
+  width: clamp(14px, 3cqw, 26px);
+  height: clamp(14px, 3cqw, 26px);
+  border-radius: 8px;
+  flex: none;
+}
+
+.erp-d3p-root .erp-d3p-stat-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.erp-d3p-root .erp-d3p-stat-label {
+  font-size: clamp(6px, 1.05cqw, 9px);
+  color: #8b8b96;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.erp-d3p-root .erp-d3p-stat-value {
+  font-size: clamp(9px, 1.9cqw, 15px);
+  font-weight: 700;
+  color: #1f2430;
+}
+
+.erp-d3p-root .erp-d3p-chart-card {
+  flex: 1;
+  min-height: 0;
+  background: #fff;
+  border: 1px solid #ece9fb;
+  border-radius: clamp(8px, 1.6cqw, 16px);
+  padding: clamp(8px, 2cqw, 18px);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 14px rgba(90, 70, 200, 0.05);
+}
+
+.erp-d3p-root .erp-d3p-chart-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: clamp(6px, 1.6cqw, 14px);
+}
+
+.erp-d3p-root .erp-d3p-chart-head strong {
+  display: block;
+  font-size: clamp(8.5px, 1.7cqw, 13px);
+  color: #1f2430;
+  font-weight: 700;
+}
+
+.erp-d3p-root .erp-d3p-chart-sub {
+  display: block;
+  font-size: clamp(6.5px, 1.1cqw, 9.5px);
+  color: #9494a3;
+  margin-top: 2px;
+}
+
+.erp-d3p-root .erp-d3p-3d-pill {
+  flex: none;
+  background: linear-gradient(135deg, #7c5cff, #5aa9f7);
+  color: #fff;
+  font-size: clamp(6px, 1cqw, 9px);
+  font-weight: 700;
+  padding: clamp(2px, 0.5cqw, 4px) clamp(6px, 1.4cqw, 10px);
+  border-radius: 999px;
+}
+
+.erp-d3p-root .erp-d3p-bars {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(4px, 1.6cqw, 14px);
+  padding-top: clamp(4px, 1cqw, 8px);
+  border-top: 1px dashed #eee;
+}
+
+.erp-d3p-root .erp-d3p-bar {
+  flex: 1;
+  min-height: 6%;
+  border-radius: 6px 6px 2px 2px;
+  background: linear-gradient(180deg, #8b7bff, #5aa9f7);
+  box-shadow: 0 6px 14px rgba(90, 70, 200, 0.25);
+  transform-origin: bottom;
+  animation: erp-d3p-grow 0.7s ease both;
+}
+
+.erp-d3p-root .erp-d3p-bar:nth-child(1) { animation-delay: 0s; }
+.erp-d3p-root .erp-d3p-bar:nth-child(2) { animation-delay: 0.05s; }
+.erp-d3p-root .erp-d3p-bar:nth-child(3) { animation-delay: 0.1s; }
+.erp-d3p-root .erp-d3p-bar:nth-child(4) { animation-delay: 0.15s; }
+.erp-d3p-root .erp-d3p-bar:nth-child(5) { animation-delay: 0.2s; }
+.erp-d3p-root .erp-d3p-bar:nth-child(6) { animation-delay: 0.25s; }
+.erp-d3p-root .erp-d3p-bar:nth-child(7) { animation-delay: 0.3s; }
+
+@keyframes erp-d3p-grow {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+.erp-pricing-section {
+  padding: 70px 0 50px;
+  scroll-margin-top: 95px;
+}
+
+#prices.erp-pricing-section > .container {
+  width: min(1360px, calc(100% - 48px));
+  max-width: 1360px;
+}
+
+.erp-pricing-section > .container > .row + .row {
+  margin-top: 65px;
+}
+
+.erp-pricing-section .pricing-table {
+  height: 100%;
+  border-radius: 16px;
+}
+
+.erp-moneyback-section {
+  padding: 25px 0 50px;
+}
+
+.erp-moneyback-panel {
+  display: grid !important;
+  grid-template-columns: 190px minmax(0, 1fr);
+  align-items: center;
+  gap: 35px;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 35px 64px;
+  border: 1px solid #aedba7;
+  border-radius: 14px;
+  background: #f2fff0;
+  transform: rotate(-2deg);
+  box-shadow: 0 18px 30px -12px rgba(46, 125, 50, 0.35);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.erp-moneyback-panel:hover {
+  transform: rotate(0deg);
+  box-shadow: 0 12px 20px -10px rgba(46, 125, 50, 0.25);
+}
+
+.erp-moneyback-panel > div {
+  width: auto !important;
+}
+
+.erp-moneyback-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.erp-faq-section {
+  padding: 50px 0;
+  background: #f8f9ff;
+}
+
+.erp-faq-section > .container > .row:first-child {
+  margin-bottom: 45px;
+}
+
+.erp-faq-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 42px;
+  border-bottom: 1px solid var(--erp-border);
+}
+
+.erp-faq-tabs button {
+  padding: 14px 24px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: #626574;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+}
+
+.erp-faq-tabs button.active {
+  border-bottom-color: var(--erp-primary);
+  color: var(--erp-primary);
+}
+
+.erp-faq-content .vc_do_toggle {
+  margin-bottom: 14px;
+  padding: 0 22px;
+  border: 1px solid rgba(16, 29, 75, 0.1);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.erp-faq-content .vc_toggle_title {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.erp-faq-content .vc_toggle_title h5 {
+  margin: 0;
+}
+
+.erp-server-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
+  align-items: center;
+  gap: 65px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 35px;
+  border: 1px solid var(--erp-border);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.erp-server-panel img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.erp-server-panel ul {
+  padding: 0;
+  list-style: none;
+}
+
+.erp-server-panel li {
+  margin: 13px 0;
+  color: #424654;
+}
+
+.erp-server-panel li i {
+  margin-right: 12px;
+  color: #21a85a;
+}
+
+.erp-software-page > .erp-journal-section {
+  padding: 50px 0 60px !important;
+}
+
+.erp-journal-section .liquid-lp-media img {
+  width: 100%;
+  aspect-ratio: 1.48;
+  object-fit: cover;
+}
+
+.erp-journal-section .liquid-lp-title {
+  margin: 0 0 12px !important;
+  font-size: 20px !important;
+  line-height: 1.4 !important;
+}
+
+.erp-journal-section .liquid-lp-date {
+  font-size: 14px;
+}
+
+.erp-motion-page > .clonescript-section-motion[data-clonescript-reveal='pending'] {
+  opacity: 0;
+  transform: translateY(42px);
+}
+
+.erp-motion-page > .clonescript-section-motion[data-clonescript-reveal='visible'] {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 760ms cubic-bezier(0.22, 1, 0.36, 1), transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#root:has(.erp-software-page) .main-footer .vc_custom_1718194534933 {
+  width: min(940px, calc(100% - 48px));
+  margin: 30px auto 70px !important;
+  padding: 18px 26px;
+  border-radius: 14px;
+  background: #eef0ff;
+}
+
+@media (max-width: 991px) {
+  .erp-software-page .container {
+    width: min(100% - 40px, 1140px);
+  }
+
+  .erp-trust-logos {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .erp-core-grid,
+  .erp-tech-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .erp-simple-icon-section--powerful .erp-simple-icon-grid,
+  .erp-modules-grid,
+  .erp-standout-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .erp-why-layout,
+  .erp-demo-layout,
+  .erp-launch-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .erp-guide-panel {
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 40px;
+    padding: 36px 42px;
+  }
+
+  .erp-launch-visual {
+    max-width: 600px;
+    margin: 0 auto !important;
+  }
+
+  .erp-server-panel {
+    gap: 35px;
+  }
+}
+
+@media (max-width: 767px) {
+  .erp-software-page .container {
+    width: min(100% - 32px, 1140px);
+  }
+
+  .erp-software-page h1 {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+
+  .erp-software-page h2 {
+    font-size: 26px;
+    line-height: 1.28;
+  }
+
+  .erp-software-page p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .erp-hero {
+    padding: 96px 0 24px;
+  }
+
+  .erp-hero-actions {
+    padding: 30px 0 78px;
+  }
+
+  .erp-hero-actions .btn {
+    min-width: 142px;
+    min-height: 48px;
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .erp-hero-actions .btn + .btn {
+    margin-left: 8px;
+  }
+
+  .erp-hero-media {
+    display: none;
+  }
+
+  .erp-trusted-section,
+  .erp-core-section,
+  .erp-why-section,
+  .erp-guide-section,
+  .erp-modules-section,
+  .erp-industries-section,
+  .erp-standout-section,
+  .erp-demo-section,
+  .erp-launch-section,
+  .erp-dashboard-section {
+    padding-top: 76px;
+    padding-bottom: 80px;
+  }
+
+  .erp-capabilities-section,
+  .erp-tech-section,
+  .erp-pricing-section,
+  .erp-faq-section {
+    padding-top: 64px;
+    padding-bottom: 68px;
+  }
+
+  .erp-trust-logos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 20px;
+    margin-bottom: 42px;
+  }
+
+  .erp-testimonials-section {
+    padding-bottom: 78px;
+  }
+
+  .erp-testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .erp-testimonial-grid .carousel-item:nth-child(2) {
+    display: none;
+  }
+
+  .erp-core-grid,
+  .erp-simple-icon-grid,
+  .erp-modules-grid,
+  .erp-standout-grid,
+  .erp-tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .erp-simple-icon-card {
+    min-height: 68px;
+  }
+
+  .erp-why-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .erp-why-layout > div:last-child {
+    display: block !important;
+  }
+
+  .erp-guide-section > .container:first-child {
+    margin-bottom: 45px;
+  }
+
+  .erp-guide-panel {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 32px 24px;
+  }
+
+  .erp-guide-visual img {
+    max-width: 220px;
+    margin: auto;
+  }
+
+  .erp-guide-copy,
+  .erp-guide-copy .fancy-title,
+  .erp-guide-copy .st-desc p {
+    text-align: center !important;
+  }
+
+  .erp-modules-grid .sv_border,
+  .erp-standout-grid .iconbox {
+    min-height: 0;
+  }
+
+  .erp-industries-section > .container:first-child {
+    margin-bottom: 40px;
+  }
+
+  .erp-industries-section > .container-fluid {
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .erp-industries-grid {
+    gap: 10px;
+  }
+
+  .erp-industries-grid .fancy-box {
+    flex: 0 0 58vw;
+    height: 280px;
+    padding-bottom: 0 !important;
+  }
+
+  .erp-industries-grid img {
+    height: 280px;
+  }
+
+  .erp-tech-grid .iconbox {
+    min-height: 160px;
+  }
+
+  .erp-demo-section .tabs {
+    margin-top: 30px;
+  }
+
+  .erp-demo-layout {
+    gap: 32px;
+    margin-top: 30px;
+  }
+
+  .erp-demo-credentials {
+    padding: 25px 18px !important;
+  }
+
+  .erp-launch-panel {
+    min-height: 0;
+    padding: 42px 25px;
+  }
+
+  .erp-dashboard-section > .container + .container {
+    margin-top: 42px;
+  }
+
+  .erp-pricing-section > .container > .row + .row {
+    margin-top: 42px;
+  }
+
+  .erp-moneyback-section {
+    padding: 10px 0 80px;
+  }
+
+  .erp-moneyback-panel {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 30px 22px;
+    transform: rotate(-1deg);
+  }
+
+  .erp-moneyback-visual img {
+    max-width: 150px;
+    margin: auto;
+  }
+
+  .erp-faq-tabs {
+    align-items: stretch;
+  }
+
+  .erp-faq-tabs button {
+    flex: 1;
+    padding: 12px 8px;
+    font-size: 12px;
+  }
+
+  .erp-server-panel {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 25px 20px;
+  }
+
+  .erp-software-page > .erp-journal-section {
+    padding: 64px 0 70px !important;
+  }
+
+  #root:has(.erp-software-page) .main-footer .vc_custom_1718194534933 {
+    width: calc(100% - 32px);
+    margin-bottom: 45px !important;
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: #eef0ff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .erp-motion-page > .clonescript-section-motion[data-clonescript-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .erp-industries-grid .fancy-box,
+  .erp-standout-grid .iconbox {
+    transition: none;
+  }
+
+  .erp-industries-grid {
+    animation: none;
+  }
+
+  .erp-industries-viewport {
+    overflow-x: auto;
+  }
+
+  .erp-industries-grid [aria-hidden='true'] {
+    display: none;
+  }
+}

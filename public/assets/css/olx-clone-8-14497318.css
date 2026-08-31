@@ -1,0 +1,191 @@
+.free-bg{
+    background-size: cover;
+    background-image: url(../../wp-content/uploads/2025/02/Frame-6.png);
+    padding: 0px 14px 0px 57px;
+    color: #fff;
+    background-position: left;
+}
+.flip-box-border-udemy .ld-flipbox-face{
+    border: 2px solid #ffbffc;
+    border-radius:10px;
+}
+
+.blink-new p,.ai-animation{
+    background: #ff1800;
+    color: #222;
+    box-shadow: 0 0 10px 2px #ff1e1e6b;
+    animation-name: blink-new-animae;
+    animation-duration: 14s;
+    animation-iteration-count: infinite;
+    
+    border-radius:5px;
+}
+
+@keyframes blink-new-animae {
+ 10% {
+        box-shadow: 0 0 10px 2px #ff1e1e6b;
+        border:1px solid #ff1800;
+        background: #ff1800;
+        
+        color:#ffffff;
+        
+    }
+    20% {
+        box-shadow: none;
+        background: #ffffff;
+        border:1px solid #ff1800;
+        color:#000000;
+       
+       
+    }
+     30% {
+        box-shadow: 0 0 10px 2px #ff1e1e6b;
+        border:1px solid #ff1800;
+        background: #ff1800;
+       
+        color:#ffffff;
+        
+    }
+    40% {
+        box-shadow: none;
+        background: #ffffff;
+        border:1px solid #ff1800;
+        color:#000000;
+       
+       
+    }
+     50% {
+        box-shadow: 0 0 10px 2px #ff1e1e6b;
+        border:1px solid #ff1800;
+        background: #ff1800;
+       
+        color:#ffffff;
+        
+    }
+    60% {
+        box-shadow: none;
+        background: #ffffff;
+        border:1px solid #ff1800;
+        color:#000000;
+       
+       
+    }
+     70% {
+        box-shadow: 0 0 10px 2px #ff1e1e6b;
+        border:1px solid #ff1800;
+        background: #ff1800;
+       
+        color:#ffffff;
+        
+    }
+    80% {
+        box-shadow: none;
+        background: #ffffff;
+        border:1px solid #ff1800;
+        color:#000000;
+       
+       
+    }
+     90% {
+        box-shadow: 0 0 10px 2px #ff1e1e6b;
+        border:1px solid #ff1800;
+        background: #ff1800;
+       
+        color:#ffffff;
+        
+    }
+    100% {
+        box-shadow: none;
+        background: #ffffff;
+        border:1px solid #ff1800;
+        color:#000000;
+
+       
+    }
+}
+
+#fixed-menu ul, #fixed-menu2 ul {
+    border: 2px solid #101B48;
+    padding: 10px 0px;
+    border-radius: 10px;
+}
+#fixed-menu, #fixed-menu2 {
+    display: inline;
+    justify-content: center;
+    left: 0px !important;
+    right: 0px !important;
+}
+#fixed-menu > li >a, #fixed-menu2 > li >a {
+    padding: 8px 10px;
+    border-radius: 7px;
+    margin: 0px 2px;
+}
+.fixed-menu > li > a:hover, .fixed-menu ul > li > a:hover, .fixed-menu li.is-active > a, .fixed-menu li.current-menu-item > a {
+    color: rgb(255, 255, 255);
+    background: rgb(31, 140, 71);
+}
+.custom-tab-clonescript > ul >li>a{
+        display: inline-block;
+        padding: 10px 30px !important;
+}
+.custom-tab-clonescript >ul >li{
+    box-shadow: unset !important;
+    border: 2px solid #101B48 !important;
+}
+.custom-tab-clonescript >ul >li.active,.custom-tab-clonescript >ul >li:hover{
+    border: 2px solid #ffffff !important;
+}
+.custom-tab-clonescript{
+    align-items: center;
+}
+.p-0>.vc_column-inner{
+    padding:0px;
+}
+.custom-tab-clonescript i{
+    font-size: 20px;
+}
+.custom-tab-clonescript >ul >li{
+    margin: 5px 0px !important;
+
+}
+@media screen and (max-width: 991px) {
+.custom-tab-clonescript >ul{
+        flex-flow: unset !important;
+    justify-content: start !important;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #101b48 #f0f0f0;
+}
+.custom-tab-clonescript > ul >li>a {
+    padding: 0px 10px !important;
+}
+    .custom-tab-clonescript >ul {
+        padding: 0px 0 5px !important;
+    }
+.custom-tab-clonescript >ul >li{
+        margin: 0px 5px !important;
+        min-width: 80% !important;
+    }
+    .custom-tab-clonescript >ul{
+        padding: 0px 0 5px;
+    }
+}
+.position_static{
+    position:static !important;
+}
+.fixed-menu i{
+      margin-right: 8px !important;
+}
+@media screen and (max-width: 600px) {
+    #fixed-menu > li >a, #fixed-menu2 > li >a {
+        padding: 8px 6px;
+        margin: 0px 6px;
+        font-size: 12px;
+    }
+    .fixed-menu li + li {
+    margin-left: 2px !important;
+}
+    .scrollmagic-pin-spacer.scene-entered >#fixed-menu, .scrollmagic-pin-spacer.scene-entered >#fixed-menu2 {
+        top: 62px !important;
+    }
+}

@@ -1,0 +1,84 @@
+.cs-tinder-showcase {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.6;
+  padding: clamp(24px, 4vw, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--clonescript-radius-lg, 22px);
+  border: 1px solid var(--clonescript-line, #e2e8f0);
+  background: linear-gradient(135deg, #eef2ff 0%, #fff0f6 100%);
+  overflow: hidden;
+}
+
+.cs-tinder-showcase__glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(320px 260px at 20% 15%, rgba(255, 107, 129, 0.16), transparent 65%),
+    radial-gradient(340px 260px at 82% 85%, rgba(113, 56, 232, 0.16), transparent 65%);
+  pointer-events: none;
+}
+
+.cs-tinder-showcase__frame {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  width: min(84%, 560px);
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--clonescript-line, #dfe4f2);
+  box-shadow: 0 24px 50px -18px rgba(16, 27, 72, 0.4);
+  transform: rotate(-2deg);
+  transition: transform 260ms ease;
+}
+
+.cs-tinder-showcase:hover .cs-tinder-showcase__frame {
+  transform: rotate(0deg);
+}
+
+.cs-tinder-showcase__frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cs-tinder-showcase__chip {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 700;
+  font-size: clamp(9px, 1.4vw, 12px);
+  color: var(--clonescript-ink, #101b48);
+  box-shadow: 0 14px 26px -12px rgba(16, 27, 72, 0.35);
+  white-space: nowrap;
+}
+
+.cs-tinder-showcase__chip i {
+  color: var(--chip-color, #7138e8);
+}
+
+.cs-tinder-showcase__chip--tl { top: 8%; left: 4%; }
+.cs-tinder-showcase__chip--tr { top: 10%; right: 6%; }
+.cs-tinder-showcase__chip--bl { bottom: 10%; left: 6%; }
+
+@media (max-width: 767px) {
+  .cs-tinder-showcase {
+    aspect-ratio: 1.15;
+  }
+
+  .cs-tinder-showcase__frame {
+    width: min(76%, 320px);
+  }
+
+  .cs-tinder-showcase__chip {
+    padding: 6px 10px;
+  }
+}
