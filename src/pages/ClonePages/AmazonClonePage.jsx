@@ -21,6 +21,7 @@ import FaqServerTabs from '../../components/amazon/FaqServerTabs.jsx'
 import BlogTeaser from '../../components/shared/BlogTeaser.jsx'
 import ReviewCards from '../../components/shared/ReviewCards.jsx'
 import TestimonialRotatorSection from '../../components/footer/TestimonialRotatorSection.jsx'
+import './AmazonClonePage.css'
 
 export default function AmazonClonePage() {
   usePageStylesheets(pageStylesheets.amazonClone)
@@ -33,7 +34,7 @@ export default function AmazonClonePage() {
   return (
     <main className="content" id="content">
       <div className="wpb-content-wrapper">
-        <section className="vc_section">
+        <section className="vc_section amazon-hero-section">
           <AmazonHero />
         </section>
 

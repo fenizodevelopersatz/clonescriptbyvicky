@@ -1,0 +1,64 @@
+/* AirbnbClonePage has no page-specific class on its own .wpb-content-wrapper
+   (unlike vinted-clone/turo-clone), so the header-seam fix below rides the
+   route class Layout.jsx already stamps on #wrap for every route -- same
+   technique as zillow-clone's .clonescript-route-zillow-clone. That
+   wrapper's own top padding showed as a light gap between the black header
+   and the black hero below it, now that both are dark instead of blending
+   on white-on-white as before. */
+.clonescript-route-airbnb-clone .wpb-content-wrapper {
+  padding-top: 0 !important;
+}
+
+/* Same reasoning as above, one level further in -- this section's own top
+   padding (theme default .vc_section rule) sat between the wrapper and
+   .airbnb-hero (its only child), showing as a second stacked gap. */
+.airbnb-hero-section {
+  padding-top: 0 !important;
+}
+
+/* Black fill (same #06060f as the sitewide dark header, see Header.css
+   .header-dark-top) so the hero reads as one continuous black block with
+   the header above it instead of a white seam between the two. */
+.airbnb-hero {
+  background: #06060f;
+  /* .airbnb-hero-section (the parent) carries the theme's default 15px side
+     padding, invisible against the old light-on-light background but left
+     the black fill 15px short of each edge, showing thin white corner
+     strips. Same full-bleed technique as erp-hero/zillow-hero: break out to
+     the true viewport width regardless of the parent's padding. */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  /* This hero never had its own bottom padding (theme default is 0), so its
+     content sat flush against the next section right below it -- invisible
+     on the old white-on-white boundary, now an obvious seam between the
+     black hero and the light section after it (same fix already applied on
+     /zillow-clone). */
+  padding-bottom: 60px;
+}
+
+.airbnb-hero h1 {
+  color: #fff;
+}
+
+.airbnb-hero .wpb_text_column p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Neither "View Live Demo" (.btn-solid) nor "Book Free Consultation"
+   (.btn-default.btn-bordered) picks up any themed fill/border/text color
+   here, confirmed via computed style -- both render as a transparent
+   background with the browser's default link blue (#0000ee) text and the
+   shared navy border (--color-primary, ~1.5-2:1 contrast on #06060f), the
+   same pre-existing gap already found and fixed on /vinted-clone and
+   /turo-clone's identical buttons. Recolor text to this hero's accent and
+   lighten the border to a translucent white. */
+.airbnb-hero .btn-solid,
+.airbnb-hero .btn-default.btn-bordered {
+  color: #fe5337;
+}
+
+.airbnb-hero .btn-bordered {
+  border-color: rgba(255, 255, 255, 0.4);
+}

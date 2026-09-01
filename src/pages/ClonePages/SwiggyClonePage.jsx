@@ -5,6 +5,7 @@ import {
   featurePanels, standardFeatures, addOnFeatures, revenueBenefits,
   pricingPlans, faqs, serverRequirements, mobileScreens, customerReviews,
 } from '../../data/swiggy/swiggyData.js'
+import './SwiggyClonePage.css'
 
 import SwiggyHero from '../../components/swiggy/SwiggyHero.jsx'
 import WhatIsSwiggy from '../../components/swiggy/WhatIsSwiggy.jsx'
@@ -31,7 +32,7 @@ export default function SwiggyClonePage() {
   return (
     <main className="content" id="content">
       <div className="wpb-content-wrapper">
-        <section className="vc_section vc_section-has-fill">
+        <section className="vc_section vc_section-has-fill swiggy-hero-section">
           <SwiggyHero />
 
           <section className="vc_row wpb_row vc_row-fluid liquid-row-shadowbox">

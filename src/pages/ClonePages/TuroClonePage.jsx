@@ -23,6 +23,7 @@ import MoneyBackGuarantee from '../../components/shared/MoneyBackGuarantee.jsx'
 import FaqServerTabs from '../../components/turo/FaqServerTabs.jsx'
 import ReviewCards from '../../components/shared/ReviewCards.jsx'
 import TestimonialRotatorSection from '../../components/footer/TestimonialRotatorSection.jsx'
+import './TuroClonePage.css'
 
 const dashboards = [
   { label: 'Renter Dashboard', email: 'user@yopmail.com', password: '12345678', url: siteContact.cloneDemoUrl },

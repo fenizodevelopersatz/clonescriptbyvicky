@@ -7,12 +7,71 @@
   padding-top: var(--youtube-top-gap);
 }
 
+/* This wrapper's own top padding (theme default, wins over --youtube-top-gap
+   above) showed as a light gap between the black header and .youtube-hero
+   below now that the hero is black too -- .youtube-hero carries its own top
+   padding instead (see below), so there's no loss of breathing room from
+   zeroing it here. */
+.youtube-clone-page__content {
+  padding-top: 0 !important;
+}
+
+/* Same reasoning as above -- this section's own top padding (theme default,
+   44px) sat between the header and .youtube-hero (its only child), showing
+   this section's own light background as a second gap now that the hero
+   itself is black. Its 15px side padding is left alone; the corner-gap that
+   causes is fixed on .youtube-hero itself below instead (full-bleed). */
+.youtube-hero-section {
+  padding-top: 0 !important;
+}
+
 .youtube-clone-page .vc_section:first-child {
   margin-top: 0;
 }
 
 .youtube-clone-page .main-footer {
   margin-top: var(--youtube-bottom-gap);
+}
+
+/* Black fill (same #06060f as the sitewide dark header, see Header.css
+   .header-dark-top) so the hero reads as one continuous black block with
+   the header above it instead of a white seam between the two. Heading/
+   paragraph default to the theme's dark ink/grey (tuned for this page's
+   light sections) so they need their own override here to stay legible
+   on black. The accent word keeps its existing inline red (#ff0022) --
+   already vivid enough to read fine against black.
+   .youtube-hero itself had no top padding of its own -- both ancestors
+   zeroed above (.youtube-clone-page__content 44px + .youtube-hero-section
+   44px) contributed the heading's breathing room instead, so it's moved
+   here as a flat 88px to keep the heading at the same distance from the
+   header as before, just now sitting on the hero's own black fill instead
+   of the ancestors' light one. */
+.youtube-hero {
+  padding-top: 88px;
+  background: #06060f;
+  /* .youtube-hero-section (the parent) carries the theme's default 15px
+     side padding, which isn't visible against light-on-light backgrounds
+     but left the black fill 15px short of each edge, showing the page's
+     light background as thin corner strips. Same full-bleed technique as
+     erp-hero/crypto-wallet's cw-hero: break out to the true viewport width
+     regardless of the parent's padding. */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  /* Same recurring pattern as zillow-clone's .zillow-hero: the CTA buttons
+     sat flush against "Trusted by..." right below with zero gap -- invisible
+     on the old white-on-white boundary, now an obvious seam between the
+     black hero and the light section after it. */
+  padding-bottom: 60px;
+}
+
+.youtube-hero h1 {
+  color: #fff;
+}
+
+.youtube-hero .wpb_text_column p {
+  color: rgba(255, 255, 255, 0.72);
 }
 
 @media (min-width: 768px) and (max-width: 991px) {

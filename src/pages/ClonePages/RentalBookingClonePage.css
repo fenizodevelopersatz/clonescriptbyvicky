@@ -1,0 +1,62 @@
+/* RentalBookingClonePage has no page-specific class on its own .wpb-content-wrapper
+   (unlike erp-software-page), so the header-seam fix below rides the route class
+   Layout.jsx already stamps on #wrap for every route -- same technique as
+   zillow-clone's .clonescript-route-zillow-clone. That wrapper's own top padding
+   showed as a light gap between the black header and the hero below it, now that
+   both are dark instead of blending on white-on-white as before. */
+.clonescript-route-rental-booking-script .wpb-content-wrapper {
+  padding-top: 0 !important;
+}
+
+/* Same reasoning one level further in -- this section's own top padding (theme
+   default) sat between the wrapper and .rental-hero (its first child), showing as a
+   second stacked gap. This section also wraps TrustedByBuyers right after the hero,
+   but zeroing its top padding only affects the gap above the hero, not the spacing
+   below it. */
+.rental-hero-section {
+  padding-top: 0 !important;
+}
+
+/* Black fill (same #06060f as the sitewide dark header, see Header.css
+   .header-dark-top) so the hero reads as one continuous black block with the header
+   above it instead of a white seam between the two. */
+.rental-hero {
+  background: #06060f;
+  /* .rental-hero-section (the parent) carries the theme's default 15px side padding,
+     invisible against the old light-on-light background but left the black fill 15px
+     short of each edge, showing thin white corner strips. Same full-bleed technique
+     as erp's .erp-hero / zillow-clone's .zillow-hero: break out to the true viewport
+     width regardless of the parent's padding. */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  /* The hero's own trailing screenshot image sat flush against "Trusted by Growing
+     Businesses" (the very next section) with zero gap -- invisible on the old
+     white-on-white boundary, now an obvious seam between the black hero and the
+     light section right after it. */
+  padding-bottom: 60px;
+}
+
+.rental-hero h1 {
+  color: #fff;
+}
+
+.rental-hero .wpb_text_column p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Both CTA buttons' text/icon had no color rule reaching them in this page's loaded
+   bundle, so they were silently falling back to the browser's default link blue
+   (#0000ee) -- a pre-existing gap, not something the rules above introduce. Tolerable
+   against the old white background, too dark to read against the new black fill. */
+.rental-hero .btn {
+  color: #fff;
+}
+
+/* Same root cause as the logistics-clone hero's "View Packages" button: this border
+   comes from the page's --color-primary (a dark navy, ~2:1 contrast on #06060f,
+   effectively invisible), so recolor just the border. */
+.rental-hero .btn-default.btn-bordered {
+  border-color: rgba(255, 255, 255, 0.4);
+}

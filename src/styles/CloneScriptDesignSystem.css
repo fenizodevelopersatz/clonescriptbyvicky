@@ -247,8 +247,13 @@ body:not(.clonescript-page-styles-loading) .clonescript-site > .content { animat
   box-shadow: 0 10px 24px rgb(55 43 223 / 20%);
 }
 
-.clonescript-site .btn-bordered-gradient .btn-gradient-bg { background: linear-gradient(110deg, #1239ff 0%, #5241ff 48%, #c05cf1 100%); }
-.clonescript-site .btn-bordered-gradient .btn-gradient-bg-hover { background: linear-gradient(110deg, #0529d8 0%, #4132e8 48%, #a745dc 100%); }
+/* Sitewide default was blue fading into a pink/magenta end-stop (#c05cf1) --
+   replaced with the same violet-to-light-blue gradient already proven on
+   /crypto-wallet and /school-crm's route-scoped override of this same
+   class, now promoted here as the default so every other page (home
+   included) gets it without needing its own copy. */
+.clonescript-site .btn-bordered-gradient .btn-gradient-bg { background: linear-gradient(110deg, #6c3bff 0%, #38bdf8 100%); }
+.clonescript-site .btn-bordered-gradient .btn-gradient-bg-hover { background: linear-gradient(110deg, #5a2fe0 0%, #0284c7 100%); }
 
 /* GradientButton.jsx's SVG (width/height="100%", <rect> with no fill attr)
    relies on the vendored .btn-gradient-border rule for its real sizing and
@@ -281,7 +286,10 @@ body:not(.clonescript-page-styles-loading) .clonescript-site > .content { animat
   padding: 7px 13px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 12px;
-  background: linear-gradient(110deg, var(--clonescript-blue, #4f6ef7), var(--clonescript-violet, #8b7cf6));
+  /* Was blue-to-violet -- matches the .btn-gradient-bg fix above now,
+     violet-to-light-blue, so the two header CTAs read as one consistent
+     accent instead of two different gradients. */
+  background: linear-gradient(110deg, #6c3bff, #38bdf8);
   color: #fff;
   box-shadow: 0 0 0 6px rgba(79, 70, 229, 0.16);
   overflow: hidden;

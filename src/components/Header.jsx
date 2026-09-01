@@ -12,12 +12,14 @@ export default function Header() {
   const isStuck = useStickyHeader()
   const { isOpen: isNavOpen, toggle: toggleNav, close: closeNav } = useMobileNav()
   const location = useLocation()
-  // /crypto-wallet fills the header black (CryptoWalletPage.css) -- the
-  // default dark-navy wordmark disappears on it, so swap in the light variant.
-  // Once scrolled past the trigger offset the header goes back to its
-  // normal white .is-stuck background (that state isn't overridden), so the
-  // light logo only applies while un-stuck; stuck reverts to the normal one.
-  const logoSrc = (location.pathname === '/crypto-wallet' && !isStuck) ? siteBrand.logoDark : siteBrand.logo
+  // Every page except home, contact-us, and schedule-free-demo fills the
+  // header black while un-stuck (see .header-dark-top in Header.css) -- the
+  // default dark-navy wordmark disappears on that fill, so swap in the light
+  // variant. Once scrolled past the trigger offset the header goes back to
+  // its normal white .is-stuck background (that state isn't overridden), so
+  // the light logo only applies while un-stuck; stuck reverts to the normal one.
+  const hasDarkTopHeader = !['/', '/contact-us', '/schedule-free-demo'].includes(location.pathname)
+  const logoSrc = (hasDarkTopHeader && !isStuck) ? siteBrand.logoDark : siteBrand.logo
 
   // Collapse the mobile hamburger menu whenever the route changes (the
   // mega menu already closes itself the same way).
@@ -75,7 +77,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className={`mainbar-wrap custom-header-bg vc_custom_1732278024061${isStuck ? ' is-stuck' : ''}`}>
+      <div className={`mainbar-wrap custom-header-bg vc_custom_1732278024061${isStuck ? ' is-stuck' : ''}${hasDarkTopHeader ? ' header-dark-top' : ''}`}>
         <span className="megamenu-hover-bg"></span>
         <div className="container-fluid mainbar-container">
           <div className="mainbar">

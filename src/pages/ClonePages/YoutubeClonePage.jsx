@@ -34,7 +34,7 @@ export default function YoutubeClonePage() {
   return (
     <main className="content youtube-clone-page" id="content">
       <div className="wpb-content-wrapper youtube-clone-page__content">
-        <section className="vc_section">
+        <section className="vc_section youtube-hero-section">
           <YoutubeHero />
         </section>
 
@@ -88,10 +88,11 @@ export default function YoutubeClonePage() {
         </section>
 
         <LaunchCta
+          variant="dark"
           heading="Launch a Profitable Video-Sharing Business"
           desc="Create a digital media platform where creators can publish original content and viewers can enjoy videos according to their interests. The platform can serve general entertainment audiences or focus on a specific niche such as education, gaming, technology, fitness, business, music, news, or professional training."
-          image="/wp-content/uploads/2025/01/Group-48096911.webp"
-          imageAlt="CloneScript achievement stats: happy clients, years of experience, skilled employees, successful projects"
+          image="/wp-content/uploads/2026/08/youtube.webp"
+          imageAlt="CloneScript revenue growth stats shown on a mobile phone"
         />
 
         <section className="vc_row wpb_row vc_row-fluid">
@@ -125,7 +126,7 @@ export default function YoutubeClonePage() {
           title="Standard Features of the YouTube Clone"
           desc="The platform includes practical features designed to improve content discovery, viewing convenience, international accessibility, and payment processing."
           items={standardFeatures}
-          columns={3}
+          columns={2}
           iconColor="#ff0022"
         />
 
@@ -133,7 +134,7 @@ export default function YoutubeClonePage() {
           heading="Additional YouTube Clone Features"
           subheading=""
           items={addOnFeatures}
-          color="rgb(255, 71, 0)"
+          color="#4f6ef7"
         />
 
         <SimpleIconGrid
@@ -181,6 +182,7 @@ export default function YoutubeClonePage() {
         </section>
 
         <LaunchCta
+          variant="dark"
           heading="Start Your Video-Streaming Business"
           desc="Turn your video-platform concept into a customizable web and mobile product. Begin with essential video-sharing functionality and introduce music, podcasts, live streaming, premium content, and additional revenue options as the audience grows."
           image="/wp-content/uploads/2025/09/all-in-one-media.webp"

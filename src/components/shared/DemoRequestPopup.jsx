@@ -37,7 +37,7 @@ export default function DemoRequestPopup() {
   const lastFocusedRef = useRef(null)
 
   const { values, handleChange, handleSubmit, submitted, status, errorMessage } = useContactForm(
-    { name: '', email: '', phone: '', product: demoProducts[0], consent: true },
+    { name: '', email: '', phone: '', product: demoProducts[0], productOther: '', consent: true },
     {
       enableApiSend: true,
       subject: 'New Demo Request (Site Popup)',
@@ -127,6 +127,10 @@ export default function DemoRequestPopup() {
       setValidationError('Please enter a valid mobile number (7–15 digits).')
       return
     }
+    if (values.product === 'Other' && !values.productOther.trim()) {
+      setValidationError('Please tell us which product you’re interested in.')
+      return
+    }
     setValidationError('')
     handleSubmit(e)
   }
@@ -143,6 +147,7 @@ export default function DemoRequestPopup() {
           <i className="fa-solid fa-xmark" aria-hidden="true" />
         </button>
 
+        <div className="drp-scroll">
         {submitted ? (
           <div className="drp-success">
             <div className="drp-success-icon"><i className="fa-solid fa-check" aria-hidden="true" /></div>
@@ -218,6 +223,22 @@ export default function DemoRequestPopup() {
                 </select>
               </div>
 
+              {values.product === 'Other' && (
+                <div className="drp-field">
+                  <label className="drp-label" htmlFor="drpProductOther">Please specify <span className="drp-req">*</span></label>
+                  <input
+                    id="drpProductOther"
+                    name="productOther"
+                    className="drp-input"
+                    type="text"
+                    placeholder="Tell us what you're looking for"
+                    required
+                    value={values.productOther}
+                    onChange={handleChange}
+                  />
+                </div>
+              )}
+
               <label className="drp-consent" htmlFor="drpConsent">
                 <input id="drpConsent" type="checkbox" name="consent" checked={values.consent} onChange={handleChange} />
                 <span>I&rsquo;m happy to receive email newsletters and updates.</span>
@@ -235,6 +256,7 @@ export default function DemoRequestPopup() {
             </form>
           </>
         )}
+        </div>
       </div>
     </>
   )

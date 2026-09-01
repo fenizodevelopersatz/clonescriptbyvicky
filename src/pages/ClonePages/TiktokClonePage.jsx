@@ -35,7 +35,7 @@ export default function TiktokClonePage() {
       <div className="wpb-content-wrapper">
         <TiktokScene />
 
-        <section className="vc_section">
+        <section className="vc_section tiktok-hero-section">
           <TiktokHero />
         </section>
 

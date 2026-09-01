@@ -4,6 +4,7 @@ import { pageStylesheets } from '../../data/pageStylesheets.js'
 import {
   standardFeatures, addOnFeatures, revenueBenefits, pricingPlans, appScreens, customerReviews,
 } from '../../data/gojek/gojekData.js'
+import './GojekClonePage.css'
 
 import GojekHero from '../../components/gojek/GojekHero.jsx'
 import TrustedByBadges from '../../components/shared/TrustedByBadges.jsx'
@@ -32,7 +33,7 @@ export default function GojekClonePage() {
   return (
     <main className="content" id="content">
       <div className="wpb-content-wrapper">
-        <section className="vc_section">
+        <section className="vc_section gojek-hero-section">
           <GojekHero />
         </section>
 
@@ -107,6 +108,7 @@ export default function GojekClonePage() {
             desc="Turn your super-app concept into a customizable web and mobile platform. Start with essential services and introduce more categories as your users, providers, vendors, and operating locations increase."
             image="/wp-content/uploads/2025/08/gojek-today.webp"
             imageAlt="Gojek clone app preview"
+            variant="dark"
           />
         </section>
 

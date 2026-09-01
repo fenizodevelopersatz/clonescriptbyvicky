@@ -1,0 +1,100 @@
+/* "100% Money Back Guaranteed" -- dark blue glass card, sitewide default.
+   The base theme ships this as a plain light-green banner. Originally built
+   route-scoped for /school-crm (blue) and /crypto-wallet (its own distinct
+   violet/pink variant, kept as-is -- that page's unique branding, and its
+   route-scoped override naturally wins over this default since it's more
+   specific). Promoted the school-crm version here, unscoped, so every other
+   page gets the same dark-blue treatment instead of the default green. */
+.money-back-panel {
+  position: relative;
+  overflow: hidden;
+  gap: 28px !important;
+  padding: 34px 40px !important;
+  border-radius: 22px !important;
+  border: 1px solid rgba(79, 110, 247, 0.38) !important;
+  background:
+    radial-gradient(600px 240px at 10% -10%, rgba(79, 110, 247, 0.32), transparent 60%),
+    radial-gradient(520px 220px at 105% 120%, rgba(56, 189, 248, 0.22), transparent 55%),
+    linear-gradient(135deg, #0a0e2a 0%, #0f1a4a 55%, #142058 100%) !important;
+  box-shadow: 0 30px 70px -28px rgba(79, 110, 247, 0.5) !important;
+}
+
+.money-back-section {
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Content rides above the shine sweep. */
+.money-back-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Diagonal shine that sweeps across the card. */
+.money-back-panel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  z-index: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.12) 45%,
+    rgba(183, 210, 255, 0.32) 50%,
+    rgba(255, 255, 255, 0.12) 55%,
+    transparent
+  );
+  transform: skewX(-18deg);
+  animation: mbg-flash 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes mbg-flash {
+  0%   { left: -60%; }
+  25%  { left: 150%; }
+  100% { left: 150%; }
+}
+
+/* Seal pulses + glows. */
+.money-back-panel img {
+  width: 104px !important;
+  height: 104px !important;
+  animation: mbg-badge 3.6s ease-in-out infinite;
+}
+
+@keyframes mbg-badge {
+  0%, 100% { transform: scale(1) rotate(0); filter: drop-shadow(0 0 14px rgba(79, 110, 247, 0.6)); }
+  50%      { transform: scale(1.06) rotate(-4deg); filter: drop-shadow(0 0 26px rgba(56, 189, 248, 0.85)); }
+}
+
+.money-back-panel h2 {
+  color: #fff !important;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.money-back-panel .st-desc p span {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+@media (max-width: 575px) {
+  .money-back-panel {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 24px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .money-back-panel::after,
+  .money-back-panel img {
+    animation: none;
+  }
+
+  .money-back-panel img {
+    filter: drop-shadow(0 0 16px rgba(79, 110, 247, 0.6));
+  }
+}

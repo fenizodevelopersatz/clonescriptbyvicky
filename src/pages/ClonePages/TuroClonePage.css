@@ -4,8 +4,83 @@
   --turo-footer-bottom-gap: 24px;
 }
 
+/* This wrapper's own top padding used to sit on the wrapper itself, above
+   .turo-hero, which was invisible against the old light-on-light background.
+   Now that .turo-hero is black (see below), that gap would show as a light
+   seam between the black header and the hero -- moved onto .turo-hero's own
+   padding-top instead so the header-to-heading distance is unchanged, just
+   now sitting on the hero's own black fill rather than the wrapper's
+   transparent one. */
 .turo-clone-page .turo-clone-page__content {
+  padding-top: 0 !important;
+}
+
+/* Same reasoning one level further in -- the plain .vc_section wrapping
+   TuroHero picks up the design-system's own clamp(24px, 3vw, 44px)
+   padding-top independently (a second match, since it's also a first-child
+   .vc_section of .wpb-content-wrapper), showing as a second stacked gap. */
+.turo-clone-page__content > section:first-child {
+  padding-top: 0 !important;
+}
+
+/* Black fill (same #06060f as the sitewide dark header, see Header.css
+   .header-dark-top) so the hero reads as one continuous black block with
+   the header above it instead of a white seam between the two. */
+.turo-hero {
+  /* Replaces the wrapper's padding-top zeroed above with the same
+     variable, so the header-to-heading gap stays exactly what it measured
+     before -- it just moved from the (transparent) wrapper onto the
+     (black) hero itself. */
   padding-top: var(--turo-hero-top-gap);
+  background: #06060f;
+  /* .turo-hero's parent .vc_section carries the theme's default 15px side
+     padding, invisible against the old light-on-light background but left
+     the black fill 15px short of each edge, showing thin white corner
+     strips. Same full-bleed technique as erp-hero/zillow-hero: break out to
+     the true viewport width regardless of the parent's padding. */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+}
+
+.turo-hero h1 {
+  color: #fff;
+}
+
+.turo-hero .wpb_text_column p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* The "AI-Powered" eyebrow (icon + label) defaults to the theme's dark
+   navy/blue text, same as the heading and paragraph -- unreadable against
+   the new black fill without the same override (same pattern already
+   applied on /zillow-clone and /logistics-clone). */
+.turo-hero .iconbox-heading-xs h3 {
+  color: #fff;
+}
+
+.turo-hero .iconbox-heading-xs .iconbox-icon-container {
+  color: #38bdf8;
+}
+
+/* Neither "Explore Live Demo" (.btn-solid.btn-gradient) nor "View Packages"
+   (.btn-default.btn-bordered) picks up any themed fill/border/text color
+   here, confirmed via computed style -- both render as a transparent
+   background with the browser's default link blue (#0000ee) text and, for
+   the first button, a matching default-blue border too (~2:1 contrast on
+   #06060f), the same pre-existing gap already found and fixed on
+   /vinted-clone's identical buttons. Recolor text to this page's own
+   established accent (#0077ff, already used for the heading and throughout
+   the rest of this page) rather than the generic site light-blue, and
+   lighten the shared navy border to a translucent white. */
+.turo-hero .btn-solid,
+.turo-hero .btn-default.btn-bordered {
+  color: #0077ff;
+}
+
+.turo-hero .btn-bordered {
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .turo-clone-page .main-footer {

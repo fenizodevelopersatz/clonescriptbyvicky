@@ -20,7 +20,11 @@
   width: 460px;
   max-width: calc(100vw - 40px);
   max-height: 90dvh;
-  overflow-y: auto;
+  /* Content scrolls in .drp-scroll instead of here -- a scrollbar drawn
+     directly on this rounded element ignores border-radius and squares off
+     the top/bottom-right corners. Hidden here just clips everything
+     (including the inner scrollbar's track) to the rounded shape. */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -28,6 +32,35 @@
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 32px 100px rgba(0, 0, 0, 0.22), 0 4px 24px rgba(0, 0, 0, 0.1);
   animation: drp-pop-in 0.5s cubic-bezier(0.34, 1.3, 0.64, 1) both;
+}
+
+.drp-scroll {
+  /* min-height: 0 overrides the flex item's default auto min-height, which
+     would otherwise let this grow past .drp's max-height instead of
+     scrolling internally. */
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(10, 31, 110, 0.25) transparent;
+}
+
+.drp-scroll::-webkit-scrollbar {
+  width: 7px;
+}
+
+.drp-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.drp-scroll::-webkit-scrollbar-thumb {
+  background: rgba(10, 31, 110, 0.25);
+  border-radius: 999px;
+}
+
+.drp-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(10, 31, 110, 0.4);
 }
 
 @keyframes drp-fade-in {
@@ -175,16 +208,18 @@
   padding: 15px;
   border: none;
   border-radius: 12px;
-  background: #6c3bff;
+  background: linear-gradient(120deg, #0a1f6e 0%, #38bdf8 100%);
   color: #fff;
   font-size: 1.02rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 10px 28px -8px rgba(10, 31, 110, 0.55);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .drp-btn-submit:hover {
-  background: #5a2fe0;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px -6px rgba(10, 31, 110, 0.6);
 }
 
 .drp-btn-submit:active {

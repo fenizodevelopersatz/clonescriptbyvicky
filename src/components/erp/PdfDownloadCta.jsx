@@ -17,7 +17,7 @@ export default function PdfDownloadCta() {
                 <div className="wpb_wrapper-inner">
                   <div className="ld-fancy-heading text-center">
                     <h2 className="lqd-highlight-underline lqd-highlight-grow-left">
-                      <span className="ld-fh-txt"> Let&rsquo;s Build Smarter<span style={{ color: '#002692' }}> Business Solutions Together</span></span>
+                      <span className="ld-fh-txt"> Let&rsquo;s Build Smarter<span style={{ color: '#38bdf8' }}> Business Solutions Together</span></span>
                     </h2>
                   </div>
                   <div className="wpb_text_column wpb_content_element">

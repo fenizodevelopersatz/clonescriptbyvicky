@@ -92,25 +92,47 @@ section:has(> .ld-container .vc_toggle) > * {
   transform: rotate(225deg);
 }
 
-/* Smooth expand/collapse instead of the answer just appearing/disappearing:
-   grid-template-rows can be transitioned to/from 0fr->1fr (unlike height,
-   which can't animate to/from "auto"), so the wrapper is always rendered
-   and its row track is what actually collapses. The inner content needs
-   overflow:hidden + min-height:0 for the grid row to actually clip it
-   while collapsed instead of overflowing the 0fr track. */
+/* Smooth expand/collapse instead of the answer just appearing/disappearing.
+   This used to animate grid-template-rows 0fr->1fr (the usual trick for
+   transitioning to/from an "auto" height without JS-measured pixel values),
+   but it turned out unreliable here: transitioning a 1fr row's resolved
+   pixel target depends on this item's natural content height, and in
+   practice the browser locked the animation onto a stale, too-small target
+   instead of the answer's real height -- confirmed by forcing the same
+   class change with transitions disabled, which DID land on the correct
+   height, so the sizing itself was right and only the animated transition
+   was wrong. max-height sidesteps that dependency entirely: it just
+   transitions a plain number to another plain number, no content-height
+   negotiation involved. 2000px is a deliberately generous ceiling (never
+   meant to be reached) -- overflow:hidden below still clips the box to the
+   answer's real height regardless of how large this number is. */
 .vc_toggle_content_wrap {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.35s ease;
+  overflow: hidden;
+  max-height: 0;
+  /* Belt-and-suspenders on top of max-height/overflow: a thin vertical
+     sliver (the collapsed answer's first line, clipped to a near-zero but
+     not always perfectly zero height) was showing through under every
+     closed question. opacity isn't in the transition list, so it snaps
+     instantly with the class change instead of fading -- max-height still
+     handles the smooth part of the animation on its own. */
+  opacity: 0;
+  transition: max-height 0.35s ease;
 }
 
 .vc_toggle_content_wrap--open {
-  grid-template-rows: 1fr;
+  max-height: 2000px;
+  opacity: 1;
 }
 
+/* The vendored litespeed bundle ships its own unconditional
+   `.vc_toggle_content { display: none; }` (the original theme's JS toggled
+   this directly, which was never ported) -- since this component never set
+   `display` on the same class, that rule always won, so the answer stayed
+   invisible regardless of the wrapper's max-height. !important guarantees
+   this wins regardless of stylesheet load order, matching .vc_toggle_icon
+   below. */
 .vc_toggle_content {
-  min-height: 0;
-  overflow: hidden;
+  display: block !important;
   padding: 0 28px 22px;
 }
 

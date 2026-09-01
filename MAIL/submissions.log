@@ -7,3 +7,15 @@ Subject: New Consultation Request (Crypto Wallet popup)
 Name: LAN IP curl test
 Phone: 1234567890
 
+[2026-09-01T14:49:31+02:00] New Demo Request (Site Popup)
+Name: satz
+Email: satz@yopmail.com
+Phone: 23649823469
+Product: Business Software (CRM, ERP & Wallet)
+ProductOther: 
+Consent: 1
+Subject: New Demo Request (Site Popup)
+Cart: [{"id":"youtube-clone:Corporate","productName":"AI-Powered YouTube Clone","productSlug":"youtube-clone","pageUrl":"\/youtube-clone","planName":"Corporate","price":"$3899","features":[["1 Domain license",true],["One-Time Payment",true],["100% Source Code",true],["3 Months Support",true],["Unlimited Updates",true],["Free Installation",true],["Android App",true],["iOS App",true],["Mobile App Submission",true],["Access All Features",true]],"addedAt":1788265461871}]
+CartTotalUsd: 3899
+Currency: USD
+

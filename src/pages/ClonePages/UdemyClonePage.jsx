@@ -4,6 +4,7 @@ import { pageStylesheets } from '../../data/pageStylesheets.js'
 import {
   standardFeatures, revenueBenefits, dashboards, pricingPlans, screenshots, customerReviews,
 } from '../../data/udemy/udemyData.js'
+import './UdemyClonePage.css'
 
 import UdemyHero from '../../components/udemy/UdemyHero.jsx'
 import TrustedByLogosCarousel from '../../components/udemy/TrustedByLogosCarousel.jsx'
@@ -44,7 +45,7 @@ export default function UdemyClonePage() {
   return (
     <main className="content" id="content">
       <div className="wpb-content-wrapper">
-        <section className="vc_section vc_custom_1738736124508 vc_section-has-fill">
+        <section className="vc_section vc_custom_1738736124508 vc_section-has-fill udemy-hero-section">
           <UdemyHero />
           <TrustedByLogosCarousel />
         </section>

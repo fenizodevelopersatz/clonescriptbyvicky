@@ -54,7 +54,7 @@ export function MoneyBackGuarantee() {
                   <header className="fancy-title text-center">
                     <h2>100% Money Back Guaranteed</h2>
                     <div className="st-desc">
-                      <p><span style={{ color: '#222222', fontSize: 14 }}>If our product doesn&rsquo;t work well we&rsquo;ll refund 100% of your money within 7 days.</span></p>
+                      <p><span style={{ fontSize: 14 }}>If our product doesn&rsquo;t work well we&rsquo;ll refund 100% of your money within 7 days.</span></p>
                     </div>
                   </header>
                 </div>

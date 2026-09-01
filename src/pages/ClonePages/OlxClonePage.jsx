@@ -21,6 +21,7 @@ import MobileScreens from '../../components/olx/MobileScreens.jsx'
 import OlxFaqSection from '../../components/olx/OlxFaqSection.jsx'
 import ReviewCards from '../../components/shared/ReviewCards.jsx'
 import TestimonialRotatorSection from '../../components/footer/TestimonialRotatorSection.jsx'
+import './OlxClonePage.css'
 
 export default function OlxClonePage() {
   usePageStylesheets(pageStylesheets.olxClone)
@@ -33,7 +34,7 @@ export default function OlxClonePage() {
   return (
     <main className="content" id="content">
       <div className="wpb-content-wrapper">
-        <section className="vc_section vc_section-has-fill">
+        <section className="vc_section vc_section-has-fill olx-hero-section">
           <OlxHero />
         </section>
 

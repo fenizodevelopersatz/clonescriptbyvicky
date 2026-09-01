@@ -1,7 +1,7 @@
 export default function OlxHero() {
   return (
     <>
-      <section className="vc_row wpb_row vc_row-fluid sv_first_row liquid-row-shadowbox">
+      <section className="vc_row wpb_row vc_row-fluid sv_first_row liquid-row-shadowbox olx-hero">
         <div className="ld-container container">
           <div className="row ld-row">
             <div className="wpb_column vc_column_container vc_col-sm-2 vc_hidden-sm vc_hidden-xs">

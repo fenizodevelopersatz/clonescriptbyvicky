@@ -54,7 +54,7 @@ export default function AlibabaClonePage() {
   return (
     <main className="content" id="content">
       <div className="wpb-content-wrapper">
-        <section className="vc_section">
+        <section className="vc_section alibaba-hero-section">
           <AlibabaHero />
         </section>
 

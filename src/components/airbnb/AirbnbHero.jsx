@@ -1,6 +1,6 @@
 export default function AirbnbHero() {
   return (
-    <section className="vc_row wpb_row vc_row-fluid sv_first_row liquid-row-shadowbox">
+    <section className="vc_row wpb_row vc_row-fluid sv_first_row liquid-row-shadowbox airbnb-hero">
       <div className="ld-container container">
         <div className="row ld-row">
           <div className="wpb_column vc_column_container vc_col-sm-12 text-center">

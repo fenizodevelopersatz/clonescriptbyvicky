@@ -1087,34 +1087,10 @@
 /* FAQ accordion styling promoted to the shared FaqAccordion.css component
    stylesheet (unscoped, applies sitewide) -- see that file. */
 
-/* Route-scoped: the sitewide header ships with a white bar by default --
-   fill it black here so it blends into this page's fully-black hero
-   instead of showing a white strip above it. Only while un-stuck: once
-   scrolled past useStickyHeader's trigger offset, .is-stuck already reverts
-   the header to its normal white background (not overridden here), so all
-   three rules below are scoped to :not(.is-stuck) too -- otherwise the
-   white-for-legibility nav text/logo/toggle-bar treatment below would keep
-   forcing white-on-white once the header goes back to white. */
-.clonescript-route-crypto-wallet .mainbar-wrap:not(.is-stuck) {
-  background: #06060f !important;
-}
-
-/* Nav text and the mobile toggle bars default to a near-black tone made for
-   the white header -- brighten them so they stay legible against the black
-   fill above (while un-stuck only, see note above). */
-.clonescript-route-crypto-wallet .mainbar-wrap:not(.is-stuck) #primary-nav > li > a,
-.clonescript-route-crypto-wallet .mainbar-wrap:not(.is-stuck) #primary-nav .link-txt .txt {
-  color: rgba(255, 255, 255, 0.86) !important;
-}
-
-.clonescript-route-crypto-wallet .mainbar-wrap:not(.is-stuck) #primary-nav > li > a:hover,
-.clonescript-route-crypto-wallet .mainbar-wrap:not(.is-stuck) #primary-nav > li > a:hover .txt {
-  color: #fff !important;
-}
-
-.clonescript-route-crypto-wallet .mainbar-wrap:not(.is-stuck) .navbar-toggle .bar {
-  background-color: rgba(255, 255, 255, 0.86) !important;
-}
+/* The black-header treatment that used to live here (fill .mainbar-wrap
+   black while un-stuck, brighten nav text/toggle bars to match) is now
+   sitewide -- see .header-dark-top in Header.jsx/Header.css. This route no
+   longer needs its own copy. */
 
 /* Header "Schedule Demo Tour" CTA defaults to a blue-to-pink gradient
    (.btn-gradient-bg, sitewide GradientButton) -- swap the pink end-stop for

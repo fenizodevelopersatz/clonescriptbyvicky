@@ -25,6 +25,7 @@ export default function DemoForm() {
       email: '',
       phone: '',
       product: demoProducts[0],
+      productOther: '',
       consent: true,
     },
     {
@@ -213,6 +214,28 @@ export default function DemoForm() {
                                     </span>
                                   </p>
                                 </div>
+                                {values.product === 'Other' && (
+                                  <div className="col-sm-12">
+                                    <p>
+                                      <label htmlFor="demo-product-other" className="wpcf7-inline-field">Please specify*</label>
+                                      <br />
+                                      <span className="wpcf7-form-control-wrap">
+                                        <input
+                                          size="40"
+                                          maxLength="400"
+                                          className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-fluid"
+                                          id="demo-product-other"
+                                          required
+                                          placeholder="Tell us what you're looking for"
+                                          type="text"
+                                          name="productOther"
+                                          value={values.productOther}
+                                          onChange={handleChange}
+                                        />
+                                      </span>
+                                    </p>
+                                  </div>
+                                )}
                               </div>
                               <div className="row">
                                 <div className="col-sm-12">

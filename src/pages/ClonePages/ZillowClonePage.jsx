@@ -9,6 +9,7 @@ import {
 } from '../../data/zillow/zillowData.js'
 import { comparisonLabels } from '../../data/comparisonLabels.js'
 import { placeholderTestimonials } from '../../data/placeholderTestimonials.js'
+import './ZillowClonePage.css'
 
 import ZillowHero from '../../components/zillow/ZillowHero.jsx'
 import TrustedByBadges from '../../components/shared/TrustedByBadges.jsx'
@@ -44,7 +45,7 @@ export default function ZillowClonePage() {
   return (
     <main className="content" id="content">
       <div className="wpb-content-wrapper">
-        <section className="vc_section">
+        <section className="vc_section zillow-hero-section">
           <ZillowHero />
         </section>
 
@@ -129,7 +130,7 @@ export default function ZillowClonePage() {
           </div>
         </section>
 
-        <section className="vc_row wpb_row vc_row-fluid liquid-row-shadowbox clonescript-section-spaced">
+        <section className="vc_row wpb_row vc_row-fluid liquid-row-shadowbox clonescript-section-spaced zillow-why-invest">
           <div className="ld-container container">
             <div className="row ld-row">
               <div className="wpb_column vc_column_container vc_col-sm-10 vc_col-sm-offset-1 text-center">
@@ -176,7 +177,7 @@ export default function ZillowClonePage() {
           items={aiFeatures}
           heading="Cutting-Edge AI Features in the Zillow Clone"
           desc="With AI-driven features, you can enhance property discovery, minimize manual tasks, and empower users to make quicker decisions."
-          columns={3}
+          columns={2}
         />
 
         <section className="vc_row wpb_row vc_row-fluid liquid-row-shadowbox clonescript-section-spaced">
@@ -300,29 +301,7 @@ export default function ZillowClonePage() {
           heading="Create Your Own Zillow Clone with CloneScript"
           desc="Build a scalable platform that allows users to explore properties, while also giving agents and sellers the tools they need to manage listings and leads effectively. Share details about your target audience, the features you need, user roles, integrations, your preferred revenue model, and your expected launch timeline with CloneScript."
         />
-
-        <section className="vc_row wpb_row vc_row-fluid">
-          <div className="ld-container container">
-            <div className="row ld-row">
-              <div className="wpb_column vc_column_container vc_col-sm-10 vc_col-sm-offset-1 text-center">
-                <div className="vc_column-inner">
-                  <div className="wpb_wrapper">
-                    <div className="wpb_wrapper-inner">
-                      <p style={{ fontSize: 12, color: '#888', lineHeight: 1.6 }}>
-                        <strong>Trademark Disclaimer:</strong> Zillow is a registered trademark of Zillow Group, Inc.
-                        CloneScript is not associated with, endorsed by, or sponsored by Zillow Group. The term
-                        &ldquo;Zillow Clone&rdquo; is used here to describe a customizable real estate marketplace
-                        solution that offers similar functionalities. Please refrain from using Zillow branding,
-                        copyrighted materials, proprietary content, or any protected design elements.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
+        
         <TestimonialRotatorSection content={<ReviewCards reviews={customerReviews} />} />
 
         <BlogTeaser />

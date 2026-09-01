@@ -11,7 +11,7 @@ const heroChips = [
 
 export default function TiktokHero() {
   return (
-    <section className="vc_row wpb_row vc_row-fluid sv_first_row liquid-row-shadowbox">
+    <section className="vc_row wpb_row vc_row-fluid sv_first_row liquid-row-shadowbox tiktok-hero">
       <div className="ld-container container">
         <div className="row ld-row">
           <div className="wpb_column vc_column_container vc_col-sm-1"><div className="vc_column-inner"><div className="wpb_wrapper"><div className="wpb_wrapper-inner"></div></div></div></div>
@@ -22,9 +22,9 @@ export default function TiktokHero() {
                   <div className="ld-fancy-heading text-center">
                     <h1 className="lqd-highlight-underline lqd-highlight-grow-left">
                       <span className="ld-fh-txt">
-                        <span style={{ color: '#031833' }}>Build an Engaging</span>
+                        <span style={{ color: '#fff' }}>Build an Engaging</span>
                         <span style={{ color: '#06c7c9' }}> TikTok Clone</span>
-                        <span style={{ color: '#031833' }}> for</span>
+                        <span style={{ color: '#fff' }}> for</span>
                         <span style={{ color: '#fe3b6c' }}> Short-Video Communities</span>
                       </span>
                     </h1>

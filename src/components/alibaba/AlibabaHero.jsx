@@ -9,7 +9,7 @@ const rotatingKeywords = [
 
 export default function AlibabaHero() {
   return (
-    <section className="vc_row wpb_row vc_row-fluid sv_first_row liquid-row-shadowbox">
+    <section className="vc_row wpb_row vc_row-fluid sv_first_row liquid-row-shadowbox alibaba-hero">
       <div className="ld-container container">
         <div className="row ld-row">
           <div className="wpb_column vc_column_container vc_col-sm-1"><div className="vc_column-inner"><div className="wpb_wrapper"><div className="wpb_wrapper-inner"></div></div></div></div>
@@ -28,7 +28,7 @@ export default function AlibabaHero() {
                   <div className="ld-fancy-heading text-center">
                     <h1 className="lqd-highlight-underline lqd-highlight-grow-left">
                       <span className="ld-fh-txt">
-                        <span style={{ color: '#002692' }}>AI-Enabled Alibaba Clone</span>
+                        <span style={{ color: '#38bdf8' }}>AI-Enabled Alibaba Clone</span>
                         <br />
                         <span className="hero-heading">for Global B2B Commerce</span>
                         <br />

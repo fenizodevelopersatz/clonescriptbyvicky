@@ -18,6 +18,23 @@
   min-height: 78px;
 }
 
+/* This wrapper's own top padding (design-system default, clamp(24px, 3vw,
+   44px)) showed as a light gap between the black header and .vinted-hero
+   below now that the hero is black too (see .vinted-hero further down) --
+   same fix already applied on /zillow-clone and /alibaba-clone. .vinted-hero
+   already carries its own top padding (60px/78px below), so there's no loss
+   of breathing room from zeroing it here. */
+.vinted-motion-page {
+  padding-top: 0 !important;
+}
+
+/* Same reasoning one level further in -- the plain .vc_section wrapping
+   VintedHero picks up that same design-system padding-top independently (a
+   second match in the same rule), showing as a second stacked gap. */
+.vinted-motion-page > section:first-child {
+  padding-top: 0 !important;
+}
+
 .vinted-motion-page > section:first-child .sv_first_row {
   padding-top: 60px;
   padding-bottom: 107px;
@@ -33,6 +50,71 @@
 
 .vinted-motion-page .vinted-hero-primary-cta {
   margin-top: 45px;
+}
+
+/* Black fill (same #06060f as the sitewide dark header, see Header.css
+   .header-dark-top) so the hero reads as one continuous black block with
+   the header above it instead of a white seam between the two. Replaces
+   the light lavender-to-white gradient previously set inline on
+   VintedHero.jsx -- moved here since it's now a flat, page-wide color like
+   every other rule in this file. */
+.vinted-hero {
+  background: #06060f;
+}
+
+/* Specificity tie-break: this file's own `.vinted-motion-page > section,
+   .vinted-motion-page > section > section.vc_row` rule (top of file) also
+   matches .vinted-hero and pins margin-left/margin-right to 0 !important at
+   (0,2,2) specificity -- confirmed via a document.styleSheets scan that it
+   was beating a plainer `.vinted-hero { margin-left/right: ... !important }`
+   rule (0,1,0) despite both being !important, so width:100vw took effect but
+   the margins stayed 0 and the hero didn't actually reach the edges. Adding
+   both .vc_row and .vinted-hero here raises this to (0,3,2) to win outright.
+   Same full-bleed technique as erp-hero/zillow-hero otherwise: break out to
+   the true viewport width regardless of the parent .vc_section's theme
+   default 15px side padding. */
+.vinted-motion-page > section > section.vc_row.vinted-hero {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+}
+
+.vinted-hero h1 {
+  color: #fff;
+}
+
+.vinted-hero .wpb_text_column p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* The "AI-Powered" badge's <a> has no color rule reaching it in the loaded
+   stylesheets, so it was silently falling back to the browser's default
+   link blue (#0000ee) -- a pre-existing gap, not something the rules above
+   introduce (same issue already found on /alibaba-clone's identical badge).
+   That default was legible enough against the hero's old white background
+   but is too dark against the new black fill. */
+.vinted-hero .badge-pill-animated {
+  color: #38bdf8;
+}
+
+/* Same root cause as the badge above, confirmed via computed style: neither
+   "Request a Live Demo" (.btn-solid) nor "Get a Custom Quote"
+   (.btn-default.btn-bordered) picks up any themed fill/text color here (both
+   render as a transparent background with the browser's default link blue,
+   #0000ee, ~2:1 contrast on #06060f) -- unlike their equivalents on other
+   already-fixed pages (e.g. /logistics-clone), which do render with a real
+   filled background and white text and were left untouched. Recolor text to
+   the same light-blue accent as the rest of this hero, and lighten the
+   shared navy border (--color-primary, ~1.5-2:1 contrast on black) to a
+   translucent white, same fix already applied on /logistics-clone. */
+.vinted-hero .btn-solid,
+.vinted-hero .btn-default.btn-bordered {
+  color: #38bdf8;
+}
+
+.vinted-hero .btn-bordered {
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .vinted-motion-page > section:nth-child(2) {

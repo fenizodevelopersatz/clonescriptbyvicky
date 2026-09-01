@@ -1,3 +1,5 @@
+import './MoneyBackGuarantee.css'
+
 export default function MoneyBackGuarantee() {
   return (
     <section className="money-back-section vc_row wpb_row vc_row-fluid liquid-row-shadowbox">

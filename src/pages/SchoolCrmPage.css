@@ -14,8 +14,13 @@
   padding-bottom: var(--clonescript-section-y-compact) !important;
 }
 
+/* padding-top zeroed (not -bottom): this first-child section wraps the hero,
+   which is now black (see .cs-schoolcrm-hero below) and carries this same
+   --clonescript-section-y-compact value as its own padding-top instead, so
+   the black fill covers it and no breathing room is lost -- it just moved
+   from the (transparent) section onto the (black) hero itself. */
 .schoolcrm-motion-page > section:first-child {
-  padding-top: var(--clonescript-section-y-compact) !important;
+  padding-top: 0 !important;
   padding-bottom: var(--clonescript-section-y) !important;
 }
 
@@ -26,9 +31,66 @@
   }
 
   .schoolcrm-motion-page > section:first-child {
-    padding-top: var(--clonescript-section-y) !important;
+    padding-top: 0 !important;
     padding-bottom: var(--clonescript-section-y) !important;
   }
+}
+
+/* Hero -- black background to match the sitewide black header (same #06060f
+   as .header-dark-top in Header.css), replacing the previous white
+   background. Same treatment already applied to /crypto-wallet and
+   /erp-software. */
+
+/* A sitewide rule (.clonescript-site > .content > .wpb-content-wrapper, among
+   other selectors in the same group) gives every page's wrapper div a
+   clamp(24px, 3vw, 44px) top padding. That's normally invisible against the
+   page's own light background, but now shows as a light gap above the black
+   hero -- zero it here, scoped to this route only. */
+.schoolcrm-motion-page {
+  padding-top: 0 !important;
+}
+
+.cs-schoolcrm-hero {
+  background: #06060f;
+  /* Replaces the padding-top removed from the wrapping section above -- see
+     the comment on .schoolcrm-motion-page > section:first-child. */
+  padding-top: var(--clonescript-section-y-compact);
+  /* .cs-schoolcrm-hero is a vc_row-fluid, but it's still nested inside a
+     .vc_section (SchoolCrmPage.jsx) that carries the theme's default 15px
+     side padding -- invisible on the old white-on-white background, but it
+     left the black fill 15px short of each edge. Break out full-bleed, same
+     technique already used for .erp-hero / .cw-hero. !important beats the
+     design-system's `.vc_row` width/margin/max-width reset. */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+}
+
+@media (min-width: 992px) {
+  .cs-schoolcrm-hero {
+    padding-top: var(--clonescript-section-y);
+  }
+}
+
+.cs-schoolcrm-hero__heading {
+  color: #fff;
+}
+
+.cs-schoolcrm-hero__desc {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* The "Cloud Hosted" icon-box below the CTA buttons defaults to the theme's
+   dark navy/blue text, same issue as the heading/paragraph above -- unreadable
+   against the black fill without its own override. */
+.cs-schoolcrm-hero .iconbox h3 {
+  color: #fff !important;
+}
+
+.cs-schoolcrm-hero .iconbox-icon-container,
+.cs-schoolcrm-hero .iconbox-icon-container i {
+  color: #fff;
 }
 
 /* Pricing (#prices, 14th section) already gets a correct 100px bottom padding from an
@@ -105,110 +167,125 @@
   background: linear-gradient(110deg, #6c3bff 0%, #38bdf8 100%) !important;
 }
 
-/* "Technology Stack" (TechStackRow, a shared component with no background
-   fill of its own) sat on plain white directly above "Technology for a
-   Scalable School CRM" (SimpleListSection, tinted light-blue) -- filling
-   this one too makes the two read as one continuous section instead of an
-   abrupt white-to-blue seam. Route-scoped since TechStackRow is also used
-   un-tinted on /crypto-wallet. */
+/* StandOutFeaturesGrid (Core Modules, Admission/Student/Parent/Teacher/Fee
+   feature lists, Benefits) defaults to 3 columns on desktop -- narrow it to
+   2 on this page too (same override already applied on /crypto-wallet), so
+   each card gets more room for its longer education-specific copy. */
+@media (min-width: 576px) {
+  .clonescript-route-school-crm .stand-out-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* "Technology Stack" -- dark glass band, same treatment already built for
+   /crypto-wallet (dark gradient section, glass coin cards glowing in each
+   technology's own brand colour via --tech-color, staggered pulse), re-
+   toned from violet/pink to this page's blue accent. Route-scoped since
+   TechStackRow is also used with light tiles on ~6 other pages. Replaces
+   the earlier plain light-blue tint that used to sit here. */
 .clonescript-route-school-crm .cs-techstack-section {
-  background: #f0f9ff;
-}
-
-/* ===== "100% Money Back Guaranteed" -- dark blue glass card (school only) =====
-   Same treatment already built for /crypto-wallet (dark glass card, shine
-   sweep, pulsing seal), re-toned from violet/pink to this page's blue
-   accent instead of just leaving the default green banner. */
-.clonescript-route-school-crm .money-back-panel {
-  position: relative;
-  overflow: hidden;
-  gap: 28px !important;
-  padding: 34px 40px !important;
-  border-radius: 22px !important;
-  border: 1px solid rgba(79, 110, 247, 0.38) !important;
+  margin-top: clamp(40px, 5vw, 64px);
+  padding: clamp(56px, 6vw, 90px) 0 clamp(56px, 6vw, 86px);
   background:
-    radial-gradient(600px 240px at 10% -10%, rgba(79, 110, 247, 0.32), transparent 60%),
-    radial-gradient(520px 220px at 105% 120%, rgba(56, 189, 248, 0.22), transparent 55%),
-    linear-gradient(135deg, #0a0e2a 0%, #0f1a4a 55%, #142058 100%) !important;
-  box-shadow: 0 30px 70px -28px rgba(79, 110, 247, 0.5) !important;
+    radial-gradient(920px 500px at 12% -6%, rgba(79, 110, 247, 0.26), transparent 60%),
+    radial-gradient(820px 460px at 104% 106%, rgba(56, 189, 248, 0.18), transparent 55%),
+    linear-gradient(160deg, #0a0e2a 0%, #0f1a4a 55%, #0c1130 100%);
+  overflow: hidden;
 }
 
-.clonescript-route-school-crm .money-back-section {
+.clonescript-route-school-crm .cs-techstack-section .ld-fancy-heading h2,
+.clonescript-route-school-crm .cs-techstack-section .ld-fh-txt {
+  color: #fff;
+}
+
+.clonescript-route-school-crm .tech-stack-grid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.clonescript-route-school-crm .tech-stack-grid__card {
+  border-radius: 18px !important;
+  background: rgba(255, 255, 255, 0.045) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   box-shadow: none !important;
-  background: transparent !important;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-.clonescript-route-school-crm .money-back-panel > * {
-  position: relative;
-  z-index: 1;
+.clonescript-route-school-crm .tech-stack-grid__card:hover {
+  transform: translateY(-8px);
+  border-color: color-mix(in srgb, var(--tech-color) 65%, transparent) !important;
+  box-shadow: 0 24px 46px -20px color-mix(in srgb, var(--tech-color) 55%, transparent) !important;
 }
 
-.clonescript-route-school-crm .money-back-panel::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -60%;
-  z-index: 0;
-  width: 40%;
-  height: 100%;
-  background: linear-gradient(
-    100deg,
-    transparent,
-    rgba(255, 255, 255, 0.12) 45%,
-    rgba(183, 210, 255, 0.32) 50%,
-    rgba(255, 255, 255, 0.12) 55%,
-    transparent
-  );
-  transform: skewX(-18deg);
-  animation: scrm-mb-flash 6s ease-in-out infinite;
-  pointer-events: none;
+/* Neon coin chip -- glows in the technology's own brand colour (--tech-color,
+   set per-item from techStack data), gently pulsing. */
+.clonescript-route-school-crm .tech-stack-grid__icon {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--tech-color) 20%, #0e1230);
+  border: 1px solid color-mix(in srgb, var(--tech-color) 48%, transparent);
+  box-shadow: 0 0 16px -3px color-mix(in srgb, var(--tech-color) 55%, transparent);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+  animation: scrm-coin-pulse 3.6s ease-in-out infinite;
 }
 
-@keyframes scrm-mb-flash {
-  0%   { left: -60%; }
-  25%  { left: 150%; }
-  100% { left: 150%; }
+.clonescript-route-school-crm .tech-stack-grid__icon i {
+  font-size: 30px;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--tech-color) 60%, transparent));
 }
 
-.clonescript-route-school-crm .money-back-panel img {
-  width: 104px !important;
-  height: 104px !important;
-  animation: scrm-mb-badge 3.6s ease-in-out infinite;
+.clonescript-route-school-crm .tech-stack-grid__card:hover .tech-stack-grid__icon {
+  transform: scale(1.12);
+  box-shadow: 0 0 30px 0 color-mix(in srgb, var(--tech-color) 70%, transparent);
 }
 
-@keyframes scrm-mb-badge {
-  0%, 100% { transform: scale(1) rotate(0); filter: drop-shadow(0 0 14px rgba(79, 110, 247, 0.6)); }
-  50%      { transform: scale(1.06) rotate(-4deg); filter: drop-shadow(0 0 26px rgba(56, 189, 248, 0.85)); }
+@keyframes scrm-coin-pulse {
+  0%, 100% { box-shadow: 0 0 14px -4px color-mix(in srgb, var(--tech-color) 42%, transparent); }
+  50%      { box-shadow: 0 0 24px 0 color-mix(in srgb, var(--tech-color) 66%, transparent); }
 }
 
-.clonescript-route-school-crm .money-back-panel h2 {
+/* Desynced pulse so the grid shimmers organically. */
+.clonescript-route-school-crm .tech-stack-grid__cell:nth-child(3n) .tech-stack-grid__icon { animation-delay: -1.2s; }
+.clonescript-route-school-crm .tech-stack-grid__cell:nth-child(3n + 1) .tech-stack-grid__icon { animation-delay: -2.4s; }
+.clonescript-route-school-crm .tech-stack-grid__cell:nth-child(4n) .tech-stack-grid__icon { animation-delay: -0.6s; }
+
+.clonescript-route-school-crm .tech-stack-grid__card h3 {
   color: #fff !important;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.01em;
 }
 
-.clonescript-route-school-crm .money-back-panel .st-desc p span {
-  color: rgba(255, 255, 255, 0.76) !important;
+@media (max-width: 991px) {
+  .clonescript-route-school-crm .tech-stack-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 575px) {
-  .clonescript-route-school-crm .money-back-panel {
-    flex-direction: column;
-    text-align: center;
-    padding: 30px 24px !important;
+  .clonescript-route-school-crm .tech-stack-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .clonescript-route-school-crm .money-back-panel::after,
-  .clonescript-route-school-crm .money-back-panel img {
+  .clonescript-route-school-crm .tech-stack-grid__card,
+  .clonescript-route-school-crm .tech-stack-grid__icon {
+    transition: none;
     animation: none;
   }
 
-  .clonescript-route-school-crm .money-back-panel img {
-    filter: drop-shadow(0 0 16px rgba(79, 110, 247, 0.6));
+  .clonescript-route-school-crm .tech-stack-grid__card:hover,
+  .clonescript-route-school-crm .tech-stack-grid__card:hover .tech-stack-grid__icon {
+    transform: none;
   }
 }
+
+/* "100% Money Back Guaranteed" dark-blue glass card is now the sitewide
+   default -- see MoneyBackGuarantee.css. This route no longer needs its
+   own copy. */
 
 /* Admission-management dashboard mockup (CryptoDashMock, reused as-is --
    it's a generic component despite living in components/cryptoWallet/).

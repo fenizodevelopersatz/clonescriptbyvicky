@@ -21,7 +21,7 @@ export default function SchoolCrmHero() {
                   <div className="ld-fancy-heading text-left">
                     <h1 className="cs-schoolcrm-hero__heading lqd-highlight-underline lqd-highlight-grow-left">
                       <span className="ld-fh-txt">
-                        <span style={{ color: '#3157f5' }}>School CRM Software</span>{' '}
+                        <span style={{ color: '#38bdf8' }}>School CRM Software</span>{' '}
                         <br />
                         <span className="hero-heading">for Smarter Education Management</span>
                       </span>

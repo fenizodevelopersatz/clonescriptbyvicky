@@ -270,6 +270,7 @@ export default function VintedClonePage() {
         <FaqServerTabs />
 
         <LaunchCta
+          variant="dark"
           heading="Create Your Own Vinted Clone with CloneScript"
           desc="Build a platform where users can find stylish, budget-friendly fashion, list their gently used items, chat securely, make transactions, and foster a trustworthy resale community. Share details about your target audience, the product categories you want, the features you need, any integrations you have in mind, your preferred revenue model, and your anticipated launch timeline with CloneScript."
         />

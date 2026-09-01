@@ -1,0 +1,78 @@
+/* LogisticsClonePage is a brand-new page with no original WPBakery export
+   (same situation as SchoolCrmPage/CryptoWalletPage) -- this file only
+   covers the hero, which breaks from the sitewide light look to match the
+   black header above it (see .header-dark-top in Header.css). */
+
+/* .wpb-content-wrapper's own top padding (theme default, from
+   CloneScriptDesignSystem.css's `clamp(24px, 3vw, 44px)` rule) showed as a
+   light gap between the black header and the hero below now that the hero
+   itself is black too -- same fix as CryptoWalletPage.css's
+   .clonescript-route-crypto-wallet rule. Scoped to this route only
+   (Layout.jsx's auto `clonescript-route-<slug>` class) so other pages keep
+   their normal spacing under the header. */
+.clonescript-route-logistics-clone .wpb-content-wrapper {
+  padding-top: 0 !important;
+}
+
+/* The wrapper's first-child .vc_section picks up that same theme top
+   padding independently (a second match in the same design-system rule) --
+   .logistics-hero below now carries its own top padding instead, so there's
+   no loss of breathing room from zeroing it here too. */
+.logistics-hero-section {
+  padding-top: 0 !important;
+}
+
+/* Black fill (same #06060f as the sitewide dark header / ERP's .erp-hero /
+   crypto's .cw-hero) so the hero reads as one continuous black block with
+   the header above it instead of a white seam between the two. */
+.logistics-hero {
+  position: relative;
+  /* Replaces the ~88px of ancestor padding zeroed above with the design
+     system's own section-spacing token, rather than a one-off number, so
+     the header-to-heading gap stays close to what it measured before. */
+  padding-top: var(--clonescript-section-y);
+  background: #06060f;
+  /* Full-bleed: .logistics-hero-section (the parent, a .vc_section) carries
+     the theme's default 15px side padding -- invisible against light-on-
+     light backgrounds but leaves the black fill 15px short of each edge,
+     showing the page's own light background as thin corner strips. Same
+     technique as .erp-hero / .cw-hero: break out to the true viewport width
+     regardless of the parent's padding. !important beats the design
+     system's own .vc_row width/margin/max-width reset. */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+}
+
+.logistics-hero h1 {
+  color: #fff;
+}
+
+.logistics-hero .wpb_text_column p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* The trailing "Built for Couriers & Fleets" iconbox inherits the sitewide
+   body/icon defaults (slate-grey text, navy icon) tuned for a light
+   background -- confirmed via computed style both read as low-contrast on
+   #06060f, so give them the same white/light-blue treatment as the rest of
+   the hero. */
+.logistics-hero .iconbox-heading-xs h3 {
+  color: #fff;
+}
+
+.logistics-hero .iconbox-heading-xs .iconbox-icon-container {
+  color: #38bdf8;
+}
+
+/* Narrow, verified fix: "Explore Live Demo" (.btn-solid) already renders
+   correctly untouched (white text on its own filled dark-blue background,
+   confirmed via computed style with this stylesheet disabled) so it's left
+   alone. "View Packages" (.btn-default.btn-bordered) already has white text
+   too -- only its border comes from this page's --color-primary (a dark
+   navy, ~1.5-2:1 contrast on #06060f, effectively invisible), so recolor
+   just that border. */
+.logistics-hero .btn-default.btn-bordered {
+  border-color: rgba(255, 255, 255, 0.4);
+}

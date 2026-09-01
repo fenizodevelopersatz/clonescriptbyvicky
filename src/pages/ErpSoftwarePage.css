@@ -6,6 +6,11 @@
   --erp-border: rgba(0, 38, 146, 0.18);
   color: var(--erp-ink);
   overflow: clip;
+  /* This wrapper's own top padding (theme default) showed as a light gap
+     between the black header and the hero below now that .erp-hero is
+     black too -- .erp-hero already carries its own 100px top padding
+     (see below), so there's no loss of breathing room from zeroing it here. */
+  padding-top: 0 !important;
 }
 
 .erp-software-page > section,
@@ -57,15 +62,49 @@
 
 .erp-hero-section {
   background: linear-gradient(180deg, #f5f7ff 0%, #fff 100%);
+  /* Same reasoning as .erp-software-page's padding-top above -- this
+     section's own top padding (theme default) sat between the header and
+     .erp-hero (its first child), showing this section's own light gradient
+     as a second gap now that the hero itself is black. */
+  padding-top: 0 !important;
 }
 
+/* Black fill (same #06060f as the sitewide dark header, see Header.css
+   .header-dark-top) so the hero reads as one continuous black block with
+   the header above it instead of a white seam between the two. Was a light
+   lavender-to-white gradient set inline on ErpHero.jsx; moved here since
+   it's now a flat, page-wide color like every other section rule below.
+   Headings/paragraphs default to --erp-ink / --erp-muted (dark navy / mid
+   grey, tuned for the rest of this page's light sections) so they need
+   their own override here to stay legible on black. */
 .erp-hero {
   padding: 100px 0 36px;
+  background: #06060f;
+  /* .erp-hero-section (the parent) carries the theme's default 15px side
+     padding, which isn't visible against light-on-light backgrounds but
+     left the black fill 15px short of each edge, showing the page's own
+     light background as thin corner strips. Same full-bleed technique as
+     crypto-wallet's .cw-hero: break out to the true viewport width
+     regardless of the parent's padding. .erp-software-page's own
+     `overflow: clip` (see top of file) absorbs the sub-pixel excess from
+     100vw counting the scrollbar that clientWidth doesn't. */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+}
+
+.erp-hero h1 {
+  color: #fff;
 }
 
 .erp-hero .wpb_text_column {
   max-width: 950px;
   margin: 26px auto 0;
+}
+
+.erp-hero .wpb_text_column p {
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .erp-hero-actions {
@@ -336,13 +375,27 @@
   height: auto;
 }
 
+/* Black fill (same #06060f as .erp-hero / the sitewide dark header) --
+   the light-blue .erp-guide-panel card stays as-is, popping against the
+   new dark backdrop the same way it already pops against white; only the
+   section's own background and the intro heading/paragraph above the card
+   (which default to --erp-ink / --erp-muted, tuned for light sections)
+   need a legibility override here. */
 .erp-guide-section {
   padding: 85px 0 105px;
-  background: #fff;
+  background: #06060f;
+}
+
+.erp-guide-section h2 {
+  color: #fff;
 }
 
 .erp-guide-section > .container:first-child {
   margin-bottom: 65px;
+}
+
+.erp-guide-section > .container:first-child p {
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .erp-guide-panel {
@@ -1022,21 +1075,32 @@
   box-sizing: border-box;
   margin: 0;
   padding: 35px 64px;
-  border: 1px solid #aedba7;
+  border: 1px solid rgba(79, 110, 247, 0.38);
   border-radius: 14px;
-  background: #f2fff0;
+  background:
+    radial-gradient(600px 240px at 10% -10%, rgba(79, 110, 247, 0.32), transparent 60%),
+    radial-gradient(520px 220px at 105% 120%, rgba(56, 189, 248, 0.22), transparent 55%),
+    linear-gradient(135deg, #0a0e2a 0%, #0f1a4a 55%, #142058 100%);
   transform: rotate(-2deg);
-  box-shadow: 0 18px 30px -12px rgba(46, 125, 50, 0.35);
+  box-shadow: 0 30px 70px -28px rgba(79, 110, 247, 0.5);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .erp-moneyback-panel:hover {
   transform: rotate(0deg);
-  box-shadow: 0 12px 20px -10px rgba(46, 125, 50, 0.25);
+  box-shadow: 0 22px 50px -22px rgba(79, 110, 247, 0.55);
 }
 
 .erp-moneyback-panel > div {
   width: auto !important;
+}
+
+.erp-moneyback-panel h2 {
+  color: #fff !important;
+}
+
+.erp-moneyback-panel .st-desc p span {
+  color: rgba(255, 255, 255, 0.76) !important;
 }
 
 .erp-moneyback-visual img {
@@ -1044,6 +1108,17 @@
   width: 100%;
   height: auto;
   object-fit: contain;
+  /* mbg-badge is defined in the shared MoneyBackGuarantee.css, already
+     loaded sitewide (Vite bundles all component CSS together, not
+     route-split) -- reused here instead of duplicating the keyframes. */
+  animation: mbg-badge 3.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .erp-moneyback-visual img {
+    animation: none;
+    filter: drop-shadow(0 0 16px rgba(79, 110, 247, 0.6));
+  }
 }
 
 .erp-faq-section {

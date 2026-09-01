@@ -11,6 +11,7 @@ import {
 } from '../../data/logistics/logisticsData.js'
 
 import LogisticsHero from '../../components/logistics/LogisticsHero.jsx'
+import './LogisticsClonePage.css'
 import WhatIsLogistics from '../../components/logistics/WhatIsLogistics.jsx'
 import TrustedByBadges from '../../components/shared/TrustedByBadges.jsx'
 import WhyChooseChecklist from '../../components/shared/WhyChooseChecklist.jsx'
@@ -48,7 +49,7 @@ export default function LogisticsClonePage() {
   return (
     <main className="content" id="content">
       <div className="wpb-content-wrapper">
-        <section className="vc_section">
+        <section className="vc_section logistics-hero-section">
           <LogisticsHero />
         </section>
 

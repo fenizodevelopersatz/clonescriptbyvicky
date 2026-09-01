@@ -19,13 +19,7 @@ const heroHighlights = [
 
 export default function VintedHero() {
   return (
-    <section
-      style={{
-        background:
-          'linear-gradient(180deg, rgb(245,247,255) 0.990099%, rgb(245,247,255) 1.65017%, rgb(238,242,255) 19.802%, rgb(224,231,255) 39.3399%, rgb(241,245,249) 60%, rgb(248,250,252) 85%, rgb(255,255,255) 99.67%)',
-      }}
-      className="vc_row wpb_row vc_row-fluid sv_first_row liquid-row-shadowbox"
-    >
+    <section className="vc_row wpb_row vc_row-fluid sv_first_row liquid-row-shadowbox vinted-hero">
       <div className="ld-container container">
         <div className="row ld-row">
           <div className="wpb_column vc_column_container vc_col-sm-1"><div className="vc_column-inner"><div className="wpb_wrapper"><div className="wpb_wrapper-inner"></div></div></div></div>
@@ -43,7 +37,7 @@ export default function VintedHero() {
                   <div className="ld-empty-space"><span className="liquid_empty_space_inner"></span></div>
                   <div className="ld-fancy-heading text-center">
                     <h1 className="lqd-highlight-underline lqd-highlight-grow-left">
-                      <span className="ld-fh-txt"> <span style={{ color: '#002692' }}>Vinted Clone Script</span> for a Scalable Fashion Resale Marketplace</span>
+                      <span className="ld-fh-txt"> <span style={{ color: '#38bdf8' }}>Vinted Clone Script</span> for a Scalable Fashion Resale Marketplace</span>
                     </h1>
                   </div>
                   <div className="wpb_text_column wpb_content_element">

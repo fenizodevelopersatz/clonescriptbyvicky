@@ -23,6 +23,33 @@
   clip-path: inset(0);
 }
 
+/* Every page except home, contact-us, and schedule-free-demo fills the
+   header black while un-stuck (Header.jsx sets .header-dark-top on the
+   mainbar-wrap for those routes) -- originally built for /crypto-wallet
+   alone, now applied sitewide. Once scrolled past useStickyHeader's trigger
+   offset, .is-stuck already reverts the header to its normal white
+   background (not overridden here), so all four rules below are scoped to
+   :not(.is-stuck) too -- otherwise the white-for-legibility nav text/toggle-
+   bar treatment would keep forcing white-on-white once the header goes back
+   to white. */
+.mainbar-wrap.header-dark-top:not(.is-stuck) {
+  background: #06060f !important;
+}
+
+.mainbar-wrap.header-dark-top:not(.is-stuck) #primary-nav > li > a,
+.mainbar-wrap.header-dark-top:not(.is-stuck) #primary-nav .link-txt .txt {
+  color: rgba(255, 255, 255, 0.86) !important;
+}
+
+.mainbar-wrap.header-dark-top:not(.is-stuck) #primary-nav > li > a:hover,
+.mainbar-wrap.header-dark-top:not(.is-stuck) #primary-nav > li > a:hover .txt {
+  color: #fff !important;
+}
+
+.mainbar-wrap.header-dark-top:not(.is-stuck) .navbar-toggle .bar {
+  background-color: rgba(255, 255, 255, 0.86) !important;
+}
+
 /* Menu items with no built page in this app yet. Rendered as a non-anchor
    so they can't be clicked or jump the page to "#", just a visible
    affordance that they're inactive. */
@@ -64,6 +91,12 @@ html.overflow-hidden {
 .megamenu-column .iconbox-filled-hover:hover p {
   color: #fff !important;
 }
+
+/* The mega-menu dropdown panel intentionally stays its own white card with
+   the items' original alternating pastel colors, separate from the black
+   header it drops down from -- tried a matching dark panel here briefly,
+   but that wasn't the ask; "black effect" was about the header bar itself
+   across pages, not the dropdown. */
 
 /* The mega-menu item icon was sized for a wider desktop card than this
    4-column layout gives each item, crowding longer titles (e.g. "Fashion

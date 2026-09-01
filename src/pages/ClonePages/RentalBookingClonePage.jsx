@@ -4,6 +4,7 @@ import { pageStylesheets } from '../../data/pageStylesheets.js'
 import {
   standOutFeatures, addOnFeatures, revenueBenefits, pricingPlans, faqs, customerReviews, serverRequirements,
 } from '../../data/rentalBooking/rentalBookingData.js'
+import './RentalBookingClonePage.css'
 
 import RentalBookingHero from '../../components/rentalBooking/RentalBookingHero.jsx'
 import TrustedByBuyers from '../../components/rentalBooking/TrustedByBuyers.jsx'
@@ -37,7 +38,7 @@ export default function RentalBookingClonePage() {
   return (
     <main className="content" id="content">
       <div className="wpb-content-wrapper">
-        <section className="vc_section vc_section-has-fill">
+        <section className="vc_section vc_section-has-fill rental-hero-section">
           <RentalBookingHero />
           <TrustedByBuyers />
         </section>

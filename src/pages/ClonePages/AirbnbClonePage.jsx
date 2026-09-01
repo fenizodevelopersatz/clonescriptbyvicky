@@ -21,6 +21,7 @@ import FaqServerTabs from '../../components/airbnb/FaqServerTabs.jsx'
 import BlogTeaser from '../../components/shared/BlogTeaser.jsx'
 import ReviewCards from '../../components/shared/ReviewCards.jsx'
 import TestimonialRotatorSection from '../../components/footer/TestimonialRotatorSection.jsx'
+import './AirbnbClonePage.css'
 
 export default function AirbnbClonePage() {
   usePageStylesheets(pageStylesheets.airbnbClone)
@@ -33,7 +34,7 @@ export default function AirbnbClonePage() {
   return (
     <main className="content" id="content">
       <div className="wpb-content-wrapper">
-        <section className="vc_section">
+        <section className="vc_section airbnb-hero-section">
           <AirbnbHero />
         </section>
 
