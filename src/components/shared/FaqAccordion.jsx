@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './FaqAccordion.css'
 
 export default function FaqAccordion({ heading, subheading, faqs }) {
   const [openIndex, setOpenIndex] = useState(null)
@@ -11,8 +12,14 @@ export default function FaqAccordion({ heading, subheading, faqs }) {
             <div className="vc_column-inner">
               <div className="wpb_wrapper">
                 <div className="wpb_wrapper-inner">
-                  <h3 className="">{heading}</h3>
-                  <h3 className="">{subheading}</h3>
+                  <header className="fancy-title text-center">
+                    <h2>{heading}</h2>
+                    {subheading && (
+                      <div className="st-desc">
+                        <p style={{ textAlign: 'center' }}>{subheading}</p>
+                      </div>
+                    )}
+                  </header>
                 </div>
               </div>
             </div>
@@ -30,11 +37,11 @@ export default function FaqAccordion({ heading, subheading, faqs }) {
                         <h5 style={{ fontSize: 18, color: '#111111', textAlign: 'left' }} className="vc_custom_heading">{faq.q}</h5>
                         <i className="vc_toggle_icon"></i>
                       </div>
-                      {openIndex === i && (
+                      <div className={`vc_toggle_content_wrap${openIndex === i ? ' vc_toggle_content_wrap--open' : ''}`}>
                         <div className="vc_toggle_content">
                           <p><span style={{ fontWeight: 400 }}>{faq.a}</span></p>
                         </div>
-                      )}
+                      </div>
                     </div>
                   ))}
                 </div>

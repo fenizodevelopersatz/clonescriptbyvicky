@@ -3,6 +3,13 @@
   padding-bottom: var(--clonescript-section-y-compact);
 }
 
+/* Opt-in light-blue fill for a single caller (not the component default,
+   since SimpleListSection is reused for several unrelated sections both on
+   this page and others). */
+.clonescript-simple-list-section--tinted {
+  background: #f0f9ff;
+}
+
 .clonescript-simple-list {
   display: grid;
   grid-template-columns: repeat(var(--clonescript-list-columns), minmax(0, 1fr));
@@ -15,20 +22,45 @@
 
 .clonescript-simple-list li {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  align-items: center;
+  gap: 12px;
   min-width: 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #fff;
   color: #333;
   font-size: 15px;
+  font-weight: 600;
   line-height: 1.5;
   overflow-wrap: anywhere;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.25s, border-color 0.25s, background 0.25s;
+}
+
+.clonescript-simple-list li:hover {
+  transform: translateY(-3px);
+  border-color: rgba(79, 110, 247, 0.35);
+  box-shadow: 0 14px 30px -10px rgba(79, 110, 247, 0.25);
 }
 
 .clonescript-simple-list li i {
   flex: 0 0 auto;
-  margin-top: 3px;
-  color: #002692;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #0f172a;
+  color: #fff;
   font-size: 13px;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.clonescript-simple-list li:hover i {
+  transform: scale(1.08) rotate(-4deg);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.35);
 }
 
 @media (max-width: 991px) {
@@ -41,5 +73,20 @@
   .clonescript-simple-list {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clonescript-simple-list li,
+  .clonescript-simple-list li i {
+    transition: none;
+  }
+
+  .clonescript-simple-list li:hover {
+    transform: none;
+  }
+
+  .clonescript-simple-list li:hover i {
+    transform: none;
   }
 }

@@ -97,3 +97,20 @@
     filter: blur(18px);
   }
 }
+
+/* Header "Schedule Demo Tour" CTA defaults to a blue-to-pink gradient
+   (.btn-gradient-bg, sitewide GradientButton) -- swap the pink end-stop for
+   light blue on this page too (same fix already applied on /crypto-wallet). */
+.clonescript-route-school-crm .btn-gradient-bg {
+  background: linear-gradient(110deg, #6c3bff 0%, #38bdf8 100%) !important;
+}
+
+/* "Technology Stack" (TechStackRow, a shared component with no background
+   fill of its own) sat on plain white directly above "Technology for a
+   Scalable School CRM" (SimpleListSection, tinted light-blue) -- filling
+   this one too makes the two read as one continuous section instead of an
+   abrupt white-to-blue seam. Route-scoped since TechStackRow is also used
+   un-tinted on /crypto-wallet. */
+.clonescript-route-school-crm .cs-techstack-section {
+  background: #f0f9ff;
+}

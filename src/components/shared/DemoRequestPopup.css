@@ -90,12 +90,6 @@
   padding: 18px 28px 24px;
 }
 
-.drp-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
 .drp-field {
   margin-bottom: 14px;
 }
@@ -249,10 +243,6 @@
 }
 
 @media (max-width: 480px) {
-  .drp-row {
-    grid-template-columns: 1fr;
-  }
-
   .drp-header {
     padding: 28px 22px 6px;
   }

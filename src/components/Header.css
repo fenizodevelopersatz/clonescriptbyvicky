@@ -53,9 +53,10 @@ html.overflow-hidden {
    card on hover, so the title/subtitle must go WHITE to stay legible (dark text
    on the blue fill was invisible -- the bug reported on the crypto page).
    The icon keeps its own gradient chip. !important is required to beat a plain
-   litespeed rule that otherwise forces these colours. */
+   litespeed rule that otherwise forces these colours. Recolored from the
+   original dark blue/violet to the site's light-blue accent. */
 .megamenu-column .iconbox-filled-hover:hover:before {
-  background: linear-gradient(135deg, #0030b8, #6c3bff) !important;
+  background: linear-gradient(135deg, #0284c7, #38bdf8) !important;
   opacity: 1;
 }
 .megamenu-column .iconbox-filled-hover:hover,

@@ -3,12 +3,12 @@ import { usePageStylesheets } from '../hooks/usePageStylesheets.js'
 import { pageStylesheets } from '../data/pageStylesheets.js'
 import { siteContact } from '../data/siteContact.js'
 import {
-  coreModules, standardFeatures, addOnFeatures, techStack, launchSteps,
+  coreModules, techStack, launchSteps,
   pricingPlans, comparisonOurs, comparisonOthers, faqs, customerReviews,
   whyChooseUsPoints, admissionManagementFeatures, studentManagementFeatures,
   parentCommunicationFeatures, teacherStaffFeatures, feePaymentFeatures,
-  adminFeatures, dataPrivacyFeatures, schoolCrmBenefits, scalableTechnologyCapabilities,
-  schoolCrmPackageFeatures, applicationScreens, serverRequirements,
+  schoolCrmBenefits, scalableTechnologyCapabilities,
+  schoolCrmPackageFeatures, applicationScreens,
 } from '../data/schoolCrm/schoolCrmData.js'
 import { comparisonLabels } from '../data/comparisonLabels.js'
 
@@ -32,7 +32,6 @@ import MoneyBackGuarantee from '../components/shared/MoneyBackGuarantee.jsx'
 import FaqAccordion from '../components/shared/FaqAccordion.jsx'
 import TestimonialRotatorSection from '../components/footer/TestimonialRotatorSection.jsx'
 import BlogTeaser from '../components/shared/BlogTeaser.jsx'
-import PremiumCta from '../components/shared/PremiumCta.jsx'
 import './SchoolCrmPage.css'
 
 const dashboards = [
@@ -89,7 +88,8 @@ export default function SchoolCrmPage() {
           heading="Why Choose CloneScript for Your School CRM?"
           intro="Our School CRM can be customized according to your institution's academic structure, admission process, departments, communication methods, and reporting requirements. Key benefits include:"
           items={whyChooseUsPoints}
-          columns={3}
+          columns={2}
+          tinted
         />
 
         <section className="vc_row wpb_row vc_row-fluid liquid-row-shadowbox">
@@ -184,30 +184,6 @@ export default function SchoolCrmPage() {
         />
 
         <StandOutFeaturesGrid
-          heading="Admin Features"
-          subheading="Give administrators full visibility and control over the entire institution."
-          items={adminFeatures}
-        />
-
-        <StandOutFeaturesGrid
-          heading="Standard Features of the School CRM"
-          subheading="Core platform capabilities included with every School CRM deployment."
-          items={standardFeatures}
-        />
-
-        <StandOutFeaturesGrid
-          heading="Data Privacy and Student Protection"
-          subheading="Protect student and institutional data with role-based, auditable access controls."
-          items={dataPrivacyFeatures}
-        />
-
-        <StandOutFeaturesGrid
-          heading="Optional Add-On Features"
-          subheading="Extend the School CRM with modules for transport, library, hostel, and more."
-          items={addOnFeatures}
-        />
-
-        <StandOutFeaturesGrid
           heading="Benefits of School CRM Software"
           subheading="What a connected School CRM means for your institution's day-to-day operations."
           items={schoolCrmBenefits}
@@ -220,6 +196,7 @@ export default function SchoolCrmPage() {
           intro="The platform can be developed using modern technologies that support:"
           items={scalableTechnologyCapabilities}
           columns={3}
+          tinted
         />
 
         <section className="vc_row wpb_row vc_row-fluid liquid-row-shadowbox">
@@ -276,24 +253,9 @@ export default function SchoolCrmPage() {
           faqs={faqs}
         />
 
-        <SimpleListSection
-          heading="Recommended Server Requirements"
-          intro="Typical requirements may include:"
-          items={serverRequirements}
-          closing="Final requirements depend on the selected technology, number of users, and volume of stored information."
-          columns={2}
-        />
-
         <TestimonialRotatorSection content={<ReviewCards reviews={customerReviews} />} />
 
         <BlogTeaser />
-
-        <PremiumCta
-          heading="Ready to Transform Your School?"
-          subheading="Manage your entire school from one powerful platform."
-          buttonText="Start Your Free Demo"
-          icon="fa-graduation-cap"
-        />
       </div>
     </main>
   )

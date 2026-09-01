@@ -120,6 +120,7 @@ export default function CryptoWalletPage() {
         <CryptoWalletWhyChoose />
 
         <FaqAccordion
+          heading="Frequently Asked Questions"
           subheading="Answers to what founders and product teams ask most before starting a wallet build."
           faqs={faqs}
         />

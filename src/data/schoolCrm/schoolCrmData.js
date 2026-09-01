@@ -10,30 +10,6 @@ export const coreModules = [
   { icon: 'fa fa-solid fa-comments', title: 'Notices & Communication', desc: 'Send announcements, circulars, and homework updates to parents by app, SMS, or email.' },
 ]
 
-export const standardFeatures = [
-  { icon: 'fa fa-solid fa-display', title: 'Responsive Dashboard', desc: 'Users can access permitted features through desktops, tablets, and mobile devices.' },
-  { icon: 'fa fa-solid fa-magnifying-glass', title: 'Search and Filters', desc: 'Quickly locate students, parents, applications, payments, or staff records.' },
-  { icon: 'fa fa-solid fa-bell', title: 'Automated Notifications', desc: 'Send reminders for admissions, payments, attendance, events, meetings, and examinations.' },
-  { icon: 'fa fa-solid fa-language', title: 'Multilingual Support', desc: 'The interface and selected communication templates can support multiple languages.' },
-  { icon: 'fa fa-solid fa-file-circle-check', title: 'Custom Reports', desc: 'Create reports based on classes, dates, admission stages, fee status, attendance, or other available fields.' },
-  { icon: 'fa fa-solid fa-file-export', title: 'Data Export', desc: 'Authorized users can export selected reports in supported formats.' },
-  { icon: 'fa fa-solid fa-clock-rotate-left', title: 'Activity Logs', desc: 'Maintain records of important account and data-management activities for accountability.' },
-  { icon: 'fa fa-solid fa-cloud', title: 'Cloud Access', desc: 'Authorized users can access the system securely from supported locations and devices.' },
-  { icon: 'fa fa-solid fa-database', title: 'Data Backup', desc: 'Scheduled backups can help protect important institutional records.' },
-  { icon: 'fa fa-solid fa-palette', title: 'Custom Branding', desc: 'Add the school’s logo, colours, contact information, and visual identity.' },
-]
-
-export const addOnFeatures = [
-  { icon: 'fa fa-solid fa-book-open', title: 'Learning Management Integration', desc: 'Connect the School CRM with an LMS for lessons, assignments, assessments, and digital learning materials.' },
-  { icon: 'fa fa-solid fa-bus', title: 'Transport Management', desc: 'Manage routes, vehicles, stops, drivers, and student transport assignments.' },
-  { icon: 'fa fa-solid fa-book', title: 'Library Management', desc: 'Track books, memberships, issue dates, returns, and overdue records.' },
-  { icon: 'fa fa-solid fa-bed', title: 'Hostel Management', desc: 'Manage rooms, student allocations, fees, visitor records, and hostel-related information.' },
-  { icon: 'fa fa-solid fa-fingerprint', title: 'Biometric Attendance', desc: 'Integrate supported biometric or smart-card devices for attendance recording.' },
-  { icon: 'fa fa-solid fa-mobile-screen-button', title: 'Mobile Applications', desc: 'Provide separate mobile access for administrators, teachers, parents, and students.' },
-  { icon: 'fa fa-brands fa-whatsapp', title: 'WhatsApp Integration', desc: 'Send approved admission, payment, meeting, and announcement messages through an authorized WhatsApp integration.' },
-  { icon: 'fa fa-solid fa-robot', title: 'AI-Powered Assistance', desc: 'AI can help draft communication, summarize permitted reports, organize enquiries, and assist staff with routine administrative tasks. Human review should remain part of important decisions.' },
-]
-
 export const techStack = [
   { type: 'icon', icon: 'fa fa-brands fa-html5', color: 'rgb(227, 79, 38)', title: 'Html' },
   { type: 'image', image: '/wp-content/uploads/2026/04/express.webp', color: 'rgb(239, 216, 29)', title: 'Express Js' },
@@ -212,25 +188,6 @@ export const feePaymentFeatures = [
   { icon: 'fa fa-solid fa-chart-pie', title: 'Payment Reports', desc: 'Review collected fees, pending balances, refunds, discounts, and payment-method summaries.' },
 ]
 
-export const adminFeatures = [
-  { icon: 'fa fa-solid fa-gauge', title: 'Centralized Dashboard', desc: 'View enquiries, admissions, students, attendance, fees, staff activity, and important updates from a single dashboard.' },
-  { icon: 'fa fa-solid fa-user-gear', title: 'User Management', desc: 'Create and manage accounts for administrators, admission teams, teachers, finance staff, parents, and students.' },
-  { icon: 'fa fa-solid fa-user-shield', title: 'Roles and Permissions', desc: 'Control which information and features each user role can access.' },
-  { icon: 'fa fa-solid fa-calendar', title: 'Academic Year Management', desc: 'Configure academic years, terms, classes, sections, subjects, and examination periods.' },
-  { icon: 'fa fa-solid fa-building', title: 'Branch Management', desc: 'Manage multiple school branches from one platform while maintaining separate data and reports where required.' },
-  { icon: 'fa fa-solid fa-chart-line', title: 'Reports and Analytics', desc: 'Generate reports for admissions, attendance, fees, academic performance, enquiries, communication, and staff activity.' },
-  { icon: 'fa fa-solid fa-gear', title: 'System Settings', desc: 'Manage school branding, languages, notification templates, payment options, and general platform settings.' },
-]
-
-export const dataPrivacyFeatures = [
-  { icon: 'fa fa-solid fa-user-lock', title: 'Role-Based Access', desc: 'Users receive access only to the information required for their responsibilities.' },
-  { icon: 'fa fa-solid fa-key', title: 'Secure Authentication', desc: 'Strong passwords, OTP verification, and optional multi-factor authentication can protect user accounts.' },
-  { icon: 'fa fa-solid fa-shield-halved', title: 'Student Data Privacy', desc: 'Student information should be collected, stored, and used only for legitimate educational and administrative purposes.' },
-  { icon: 'fa fa-solid fa-people-roof', title: 'Parent and Guardian Access', desc: 'Parents or guardians should only be able to view records connected to their authorized student accounts.' },
-  { icon: 'fa fa-solid fa-file-signature', title: 'Consent Management', desc: 'Schools can record appropriate guardian consent for communication, photographs, activities, and other permitted uses.' },
-  { icon: 'fa fa-solid fa-list-check', title: 'Audit Logs', desc: 'Important changes to student, payment, attendance, and administrative records can be logged for review.' },
-]
-
 export const schoolCrmBenefits = [
   { icon: 'fa fa-solid fa-list-ol', title: 'Organized Admissions', desc: 'Manage enquiries and applications through a clear admission pipeline.' },
   { icon: 'fa fa-solid fa-comments', title: 'Better Parent Communication', desc: 'Keep parents informed through timely and consistent updates.' },
@@ -294,19 +251,4 @@ export const applicationScreens = [
   'Reports',
   'User roles',
   'System settings',
-]
-
-export const serverRequirements = [
-  'Domain name',
-  'VPS or cloud hosting',
-  'SSL certificate',
-  'Scalable database',
-  'Email or SMS service',
-  'Push-notification provider',
-  'Payment gateway',
-  'Secure document storage',
-  'Automated backups',
-  'Performance monitoring',
-  'Android publishing account',
-  'Apple Developer Program account',
 ]

@@ -157,35 +157,34 @@ export default function DemoRequestPopup() {
             </div>
 
             <form onSubmit={onSubmit} noValidate>
-              <div className="drp-row">
-                <div className="drp-field">
-                  <label className="drp-label" htmlFor="drpName">Name <span className="drp-req">*</span></label>
-                  <input
-                    id="drpName"
-                    name="name"
-                    className="drp-input"
-                    type="text"
-                    placeholder="Enter Full Name"
-                    autoComplete="name"
-                    required
-                    value={values.name}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="drp-field">
-                  <label className="drp-label" htmlFor="drpEmail">Email <span className="drp-req">*</span></label>
-                  <input
-                    id="drpEmail"
-                    name="email"
-                    className="drp-input"
-                    type="email"
-                    placeholder="Enter Valid Email Id"
-                    autoComplete="email"
-                    required
-                    value={values.email}
-                    onChange={handleChange}
-                  />
-                </div>
+              <div className="drp-field">
+                <label className="drp-label" htmlFor="drpName">Name <span className="drp-req">*</span></label>
+                <input
+                  id="drpName"
+                  name="name"
+                  className="drp-input"
+                  type="text"
+                  placeholder="Enter Full Name"
+                  autoComplete="name"
+                  required
+                  value={values.name}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="drp-field">
+                <label className="drp-label" htmlFor="drpEmail">Email <span className="drp-req">*</span></label>
+                <input
+                  id="drpEmail"
+                  name="email"
+                  className="drp-input"
+                  type="email"
+                  placeholder="Enter Valid Email Id"
+                  autoComplete="email"
+                  required
+                  value={values.email}
+                  onChange={handleChange}
+                />
               </div>
 
               <div className="drp-field">
