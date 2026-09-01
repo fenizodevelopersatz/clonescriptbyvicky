@@ -28,7 +28,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
-  align-items: center;
+  align-items: start;
 }
 
 /* ---- left: eyebrow / title / body ---- */
@@ -63,7 +63,7 @@
 }
 
 .cwov-title-grad {
-  background: linear-gradient(135deg, #6c3bff 0%, #e83ebc 100%);
+  background: linear-gradient(135deg, #6c3bff 0%, #38bdf8 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -244,18 +244,23 @@
     0 0 130px rgba(108, 59, 255, 0.3);
 }
 
+.cwov-card:hover .cwov-ring {
+  opacity: 1;
+}
+
 .cwov-ring {
   position: absolute;
   inset: 0;
   border-radius: 28px;
   padding: 1px;
-  background: linear-gradient(135deg, #6c3bff, #e83ebc, transparent 60%);
+  background: linear-gradient(135deg, #6c3bff, #38bdf8, transparent 60%);
   opacity: 0.7;
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: destination-out;
   mask-composite: exclude;
   pointer-events: none;
+  transition: opacity 0.35s;
 }
 
 .cwov-card > *:not(.cwov-ring) {

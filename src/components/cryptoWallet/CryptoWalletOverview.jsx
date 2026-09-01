@@ -69,7 +69,7 @@ export default function CryptoWalletOverview() {
                 <div className="cwov-avatars">
                   <span className="cwov-avatar" style={{ background: '#6c3bff' }}>S</span>
                   <span className="cwov-avatar" style={{ background: '#10b981' }}>R</span>
-                  <span className="cwov-avatar" style={{ background: '#e83ebc' }}>M</span>
+                  <span className="cwov-avatar" style={{ background: '#38bdf8' }}>M</span>
                   <span className="cwov-avatar cwov-avatar--more">+62</span>
                 </div>
                 <div className="cwov-header-text">

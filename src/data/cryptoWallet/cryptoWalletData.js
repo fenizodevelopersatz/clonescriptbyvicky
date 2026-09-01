@@ -42,15 +42,6 @@ export const secureWalletFeatures = [
   { icon: 'fa-solid fa-desktop', title: 'Cross-Platform Compatibility', desc: 'Works across web, mobile, and desktop.' },
 ]
 
-export const walletFeatures = [
-  { icon: 'fa fa-solid fa-coins', title: 'Multi-Currency Support', desc: 'Store, send, and receive Bitcoin, Ethereum, stablecoins, and dozens of other assets from a single wallet.' },
-  { icon: 'fa fa-solid fa-shield-halved', title: 'Bank-Grade Security', desc: 'Advanced encryption, key-management, and authentication protocols keep client funds and data protected around the clock.' },
-  { icon: 'fa fa-solid fa-mobile-screen-button', title: 'Cross-Platform Access', desc: 'Give users the same seamless wallet experience on the web, iOS, and Android from one connected backend.' },
-  { icon: 'fa fa-solid fa-chart-line', title: 'Staking & Exchange', desc: 'Let users grow their holdings with built-in staking options and direct access to exchange liquidity.' },
-  { icon: 'fa fa-solid fa-right-left', title: 'Built-In Swap', desc: 'Users can buy, sell, and swap crypto assets directly inside the wallet without switching to another app.' },
-  { icon: 'fa fa-solid fa-clock-rotate-left', title: 'Transaction History', desc: 'Every transaction is recorded in a complete, searchable, and exportable history for users and administrators.' },
-]
-
 // The three core wallet concepts, rendered as concept cards in
 // WhatIsCryptoWallet.jsx (icon + term + description).
 export const walletConcepts = [
@@ -133,8 +124,22 @@ export const servicePanels = [
   {
     title: 'Crypto Wallet Integration',
     desc: 'Add wallet functionality into your existing app or platform without rebuilding it from scratch.',
-    image: '/wp-content/uploads/2026/08/crypto-wallet-integration-graphic.webp',
-    imageAlt: 'Crypto coins in motion with percentage rate icons, representing wallet integration and exchange rates',
+    mock: {
+      variant: 'stats',
+      title: 'Integration hub',
+      titleIcon: 'fa-plug',
+      live: true,
+      cornerIcon: 'fa-code',
+      footIcon: 'fa-link',
+      tiles: [
+        { label: 'API CALLS/DAY', value: '18.4K' },
+        { label: 'UPTIME', value: '99.95%' },
+        { label: 'ENDPOINTS', value: '24' },
+        { label: 'AVG LATENCY', value: '86ms' },
+      ],
+      bars: [42, 64, 48, 74, 56, 68, 50, 82],
+      status: ['SDK connected', 'Webhooks active'],
+    },
   },
   {
     title: 'Wallet Maintenance & Support',

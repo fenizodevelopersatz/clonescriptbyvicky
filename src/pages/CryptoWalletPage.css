@@ -201,7 +201,7 @@
    heading's animated white sheen for just this word (same gradient as
    .cw-whatis__accent / .cw-concept-card__icon elsewhere on this page). */
 .cw-hero__accent-word {
-  background: linear-gradient(120deg, #6c3bff, #e83ebc);
+  background: linear-gradient(120deg, #6c3bff, #38bdf8);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -486,7 +486,7 @@
   height: 46px;
   margin-bottom: 14px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #6c3bff, #e83ebc);
+  background: linear-gradient(135deg, #6c3bff, #38bdf8);
   color: #fff;
   font-size: 19px;
   box-shadow: 0 8px 20px -6px rgba(108, 59, 255, 0.6);
@@ -785,7 +785,7 @@
   font-size: 46px;
   line-height: 1;
   letter-spacing: 0.02em;
-  background: linear-gradient(120deg, #6c3bff, #e83ebc);
+  background: linear-gradient(120deg, #6c3bff, #38bdf8);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -795,7 +795,7 @@
 .clonescript-route-crypto-wallet .cs-process-steps .ld-pb-icon-wrap {
   width: 118px !important;
   height: 118px !important;
-  background: linear-gradient(150deg, #6c3bff 0%, #a855f7 50%, #e83ebc 100%) !important;
+  background: linear-gradient(150deg, #6c3bff 0%, #a855f7 50%, #38bdf8 100%) !important;
   color: #fff !important;
   font-size: 46px !important;
   box-shadow: 0 20px 40px -14px rgba(108, 59, 255, 0.6);
@@ -831,37 +831,6 @@
   }
 }
 
-/* ===== "Features of Every CloneScript Wallet" -- light premium (crypto only)
-   A clean light band so it contrasts the dark hero above it: soft lavender
-   background, white cards with a gentle purple border, and gradient purple->
-   pink icon chips. */
-.clonescript-route-crypto-wallet .stand-out-features-section {
-  background: linear-gradient(180deg, #ffffff 0%, #f6f5ff 55%, #f0eefe 100%);
-  padding-top: clamp(48px, 5vw, 76px);
-}
-
-.clonescript-route-crypto-wallet .stand-out-features-grid__card {
-  border-color: rgba(139, 92, 246, 0.18) !important;
-  box-shadow: 0 14px 34px -22px rgba(108, 59, 255, 0.28) !important;
-}
-
-.clonescript-route-crypto-wallet .stand-out-features-grid__card .premium-icon-box .iconbox-icon-container {
-  background: linear-gradient(135deg, #7c5cff, #e83ebc) !important;
-  box-shadow: 0 10px 22px -8px rgba(108, 59, 255, 0.5);
-}
-
-.clonescript-route-crypto-wallet .stand-out-features-grid__card .premium-icon-box .iconbox-icon-container i {
-  color: #fff !important;
-}
-
-.clonescript-route-crypto-wallet .stand-out-features-grid__card:hover .premium-icon-box .iconbox-icon-container {
-  background: linear-gradient(135deg, #8b6bff, #f455cc) !important;
-}
-
-.clonescript-route-crypto-wallet .stand-out-features-grid__card h3 {
-  font-family: 'Space Grotesk', 'Poppins', sans-serif;
-}
-
 /* ===== "Five Layers" checklist -- advanced card UI (crypto only) =====
    Scoped under the crypto route so the ~6 other pages using WhyChooseChecklist
    keep their plain underline-row style. */
@@ -878,7 +847,7 @@
 
 .clonescript-route-crypto-wallet .wcc-section .sv_border_why_choose_us:hover {
   transform: translateX(6px);
-  border-left-color: #e83ebc;
+  border-left-color: #38bdf8;
   border-color: rgba(108, 59, 255, 0.28);
   box-shadow: 0 16px 32px -18px rgba(108, 59, 255, 0.45);
 }
@@ -941,7 +910,7 @@
 
 /* ===== "What Is a Crypto Wallet?" -- restructured concept cards ===== */
 .cw-whatis__accent {
-  background: linear-gradient(120deg, #6c3bff, #e83ebc);
+  background: linear-gradient(120deg, #6c3bff, #38bdf8);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -999,7 +968,7 @@
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, #6c3bff, #e83ebc);
+  background: linear-gradient(90deg, #6c3bff, #38bdf8);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
@@ -1023,7 +992,7 @@
   height: 54px;
   margin-bottom: 16px;
   border-radius: 14px;
-  background: linear-gradient(135deg, #6c3bff, #e83ebc);
+  background: linear-gradient(135deg, #6c3bff, #38bdf8);
   color: #fff;
   font-size: 22px;
   box-shadow: 0 10px 24px -8px rgba(108, 59, 255, 0.5);
@@ -1226,4 +1195,28 @@
   .clonescript-route-crypto-wallet .vc_toggle_title::after {
     transition: none;
   }
+}
+
+/* Route-scoped: the sitewide header ships with a white bar by default --
+   fill it black here so it blends into this page's fully-black hero
+   instead of showing a white strip above it. */
+.clonescript-route-crypto-wallet .mainbar-wrap {
+  background: #06060f !important;
+}
+
+/* Nav text and the mobile toggle bars default to a near-black tone made for
+   the white header -- brighten them so they stay legible against the black
+   fill above. */
+.clonescript-route-crypto-wallet #primary-nav > li > a,
+.clonescript-route-crypto-wallet #primary-nav .link-txt .txt {
+  color: rgba(255, 255, 255, 0.86) !important;
+}
+
+.clonescript-route-crypto-wallet #primary-nav > li > a:hover,
+.clonescript-route-crypto-wallet #primary-nav > li > a:hover .txt {
+  color: #fff !important;
+}
+
+.clonescript-route-crypto-wallet .navbar-toggle .bar {
+  background-color: rgba(255, 255, 255, 0.86) !important;
 }

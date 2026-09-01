@@ -3,7 +3,7 @@ import { useJsonLd } from '../hooks/useJsonLd.js'
 import { usePageStylesheets } from '../hooks/usePageStylesheets.js'
 import { pageStylesheets } from '../data/pageStylesheets.js'
 import {
-  walletFeatures, comprehensiveServices, walletBenefits, secureWalletFeatures, techStackItems, faqs, customerReviews,
+  comprehensiveServices, walletBenefits, secureWalletFeatures, techStackItems, faqs, customerReviews,
 } from '../data/cryptoWallet/cryptoWalletData.js'
 
 // Structured data for this landing page (module-level = stable reference for
@@ -92,13 +92,6 @@ export default function CryptoWalletPage() {
           color="#8b5cf6"
         />
 
-        <StandOutFeaturesGrid
-          heading="Features of Every CloneScript Wallet"
-          subheading="Everything you need to manage, move, and grow digital assets, built into one connected wallet."
-          items={walletFeatures}
-          color="#8b5cf6"
-        />
-
         <section className="vc_section">
           <WhatIsCryptoWallet />
         </section>
@@ -107,7 +100,7 @@ export default function CryptoWalletPage() {
           heading="Core Features of Secure Crypto Wallet Software"
           subheading="Secure crypto wallet software combines strong protection with a smooth, dependable experience."
           items={secureWalletFeatures}
-          color="#e83ebc"
+          color="#38bdf8"
         />
 
         <section className="vc_section">
