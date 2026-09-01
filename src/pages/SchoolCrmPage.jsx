@@ -151,23 +151,7 @@ export default function SchoolCrmPage() {
           )}
         />
 
-        <section className="vc_row wpb_row vc_row-fluid liquid-row-shadowbox">
-          <div className="ld-container container">
-            <div className="row ld-row">
-              <div className="wpb_column vc_column_container vc_col-sm-12">
-                <div className="vc_column-inner">
-                  <div className="wpb_wrapper">
-                    <div className="wpb_wrapper-inner">
-                      <header className="fancy-title text-center">
-                        <h2>Main Features of the School CRM</h2>
-                      </header>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+
 
         <StandOutFeaturesGrid
           heading="Admission Management Features"
@@ -299,27 +283,6 @@ export default function SchoolCrmPage() {
           closing="Final requirements depend on the selected technology, number of users, and volume of stored information."
           columns={2}
         />
-
-        <section className="vc_row wpb_row vc_row-fluid liquid-row-shadowbox">
-          <div className="ld-container container">
-            <div className="row ld-row">
-              <div className="wpb_column vc_column_container vc_col-sm-10 vc_col-sm-offset-1 text-center">
-                <div className="vc_column-inner">
-                  <div className="wpb_wrapper">
-                    <div className="wpb_wrapper-inner">
-                      <h6 style={{ fontWeight: 600 }}>Data and Implementation Disclaimer</h6>
-                      <p style={{ color: '#666', fontSize: 14 }}>
-                        The School CRM should be configured according to the institution&rsquo;s policies and
-                        applicable student-data, privacy, payment, and education regulations. Available features,
-                        integrations, costs, and implementation timelines depend on the final project requirements.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         <TestimonialRotatorSection content={<ReviewCards reviews={customerReviews} />} />
 

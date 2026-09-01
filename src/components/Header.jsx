@@ -14,7 +14,10 @@ export default function Header() {
   const location = useLocation()
   // /crypto-wallet fills the header black (CryptoWalletPage.css) -- the
   // default dark-navy wordmark disappears on it, so swap in the light variant.
-  const logoSrc = location.pathname === '/crypto-wallet' ? siteBrand.logoDark : siteBrand.logo
+  // Once scrolled past the trigger offset the header goes back to its
+  // normal white .is-stuck background (that state isn't overridden), so the
+  // light logo only applies while un-stuck; stuck reverts to the normal one.
+  const logoSrc = (location.pathname === '/crypto-wallet' && !isStuck) ? siteBrand.logoDark : siteBrand.logo
 
   // Collapse the mobile hamburger menu whenever the route changes (the
   // mega menu already closes itself the same way).

@@ -1199,26 +1199,40 @@
 
 /* Route-scoped: the sitewide header ships with a white bar by default --
    fill it black here so it blends into this page's fully-black hero
-   instead of showing a white strip above it. */
-.clonescript-route-crypto-wallet .mainbar-wrap {
+   instead of showing a white strip above it. Only while un-stuck: once
+   scrolled past useStickyHeader's trigger offset, .is-stuck already reverts
+   the header to its normal white background (not overridden here), so all
+   three rules below are scoped to :not(.is-stuck) too -- otherwise the
+   white-for-legibility nav text/logo/toggle-bar treatment below would keep
+   forcing white-on-white once the header goes back to white. */
+.clonescript-route-crypto-wallet .mainbar-wrap:not(.is-stuck) {
   background: #06060f !important;
 }
 
 /* Nav text and the mobile toggle bars default to a near-black tone made for
    the white header -- brighten them so they stay legible against the black
-   fill above. */
-.clonescript-route-crypto-wallet #primary-nav > li > a,
-.clonescript-route-crypto-wallet #primary-nav .link-txt .txt {
+   fill above (while un-stuck only, see note above). */
+.clonescript-route-crypto-wallet .mainbar-wrap:not(.is-stuck) #primary-nav > li > a,
+.clonescript-route-crypto-wallet .mainbar-wrap:not(.is-stuck) #primary-nav .link-txt .txt {
   color: rgba(255, 255, 255, 0.86) !important;
 }
 
-.clonescript-route-crypto-wallet #primary-nav > li > a:hover,
-.clonescript-route-crypto-wallet #primary-nav > li > a:hover .txt {
+.clonescript-route-crypto-wallet .mainbar-wrap:not(.is-stuck) #primary-nav > li > a:hover,
+.clonescript-route-crypto-wallet .mainbar-wrap:not(.is-stuck) #primary-nav > li > a:hover .txt {
   color: #fff !important;
 }
 
-.clonescript-route-crypto-wallet .navbar-toggle .bar {
+.clonescript-route-crypto-wallet .mainbar-wrap:not(.is-stuck) .navbar-toggle .bar {
   background-color: rgba(255, 255, 255, 0.86) !important;
+}
+
+/* Header "Schedule Demo Tour" CTA defaults to a blue-to-pink gradient
+   (.btn-gradient-bg, sitewide GradientButton) -- swap the pink end-stop for
+   this page's light-blue accent. Not stuck-scoped: the button carries its
+   own background regardless of the header's, so it stays consistent in
+   both states. */
+.clonescript-route-crypto-wallet .btn-gradient-bg {
+  background: linear-gradient(110deg, #6c3bff 0%, #38bdf8 100%) !important;
 }
 
 /* Route-scoped: the shared StandOutFeaturesGrid defaults to 3 columns on

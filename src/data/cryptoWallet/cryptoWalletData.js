@@ -209,15 +209,18 @@ export const faqs = [
 ]
 
 /* Five customer reviews with real per-card markup, replacing any shared placeholder
-   testimonial content on this page. Avatars are circular-cropped AI-generated (StyleGAN2,
-   no real person) portraits, unique to this page across the whole site. */
+   testimonial content on this page. Avatars point at AI-generated (StyleGAN2, no real
+   person) portraits already used for other products' review sections on this site --
+   the /wp-content/reviews/cryptoWallet/ folder these originally pointed at was never
+   actually populated, so every one of these 404'd and silently fell back to a plain
+   colored-initials circle. */
 export const customerReviews = [
   {
     name: 'Marcus Whitfield',
     role: 'Founder, Fintech Startup',
     rating: 5,
     quote: 'The multi-signature approval flow gives us real peace of mind. No single person can move funds alone, and the audit trail makes every review straightforward.',
-    avatar: '/wp-content/reviews/cryptoWallet/review-marcus-whitfield.webp',
+    avatar: '/wp-content/reviews/uber/review-malik-johnson.webp',
     bg: '#e3ddf9',
     accent: '#6836b0',
     dot: '#9872dc',
@@ -227,7 +230,7 @@ export const customerReviews = [
     role: 'Co-Founder, Digital Payments Startup',
     rating: 4.5,
     quote: 'We went from requirements to a working wallet faster than any vendor we spoke with quoted. The phased process kept us informed at every stage.',
-    avatar: '/wp-content/reviews/cryptoWallet/review-priya-nair.webp',
+    avatar: '/wp-content/reviews/youtube/review-priyanka-bhatt.webp',
     bg: '#fcf1d3',
     accent: '#b98a2c',
     dot: '#dbb052',
@@ -237,7 +240,7 @@ export const customerReviews = [
     role: 'Product Manager, Investment Platform',
     rating: 5,
     quote: 'Supporting Bitcoin, Ethereum, and stablecoins in one wallet instead of three separate systems has simplified our entire product. Our users notice the difference too.',
-    avatar: '/wp-content/reviews/cryptoWallet/review-daniel-osei.webp',
+    avatar: '/wp-content/reviews/whatsapp/review-emeka-nnamdi.webp',
     bg: '#dde8fa',
     accent: '#3f6f9f',
     dot: '#5785bb',
@@ -247,7 +250,7 @@ export const customerReviews = [
     role: 'Operations Lead',
     rating: 4.5,
     quote: 'The support team stayed engaged well after launch. Monitoring and patches are handled proactively, so our own team can focus on the product instead of firefighting.',
-    avatar: '/wp-content/reviews/cryptoWallet/review-laura-bianchi.webp',
+    avatar: '/wp-content/reviews/turo/review-valentina-rossi.webp',
     bg: '#ddf5e4',
     accent: '#3f8a66',
     dot: '#5aa785',
@@ -257,7 +260,7 @@ export const customerReviews = [
     role: 'Engineering Lead',
     rating: 5,
     quote: 'We needed wallet functionality added to an existing platform without a rebuild. The integration was clean, well documented, and shipped on schedule.',
-    avatar: '/wp-content/reviews/cryptoWallet/review-ethan-cole.webp',
+    avatar: '/wp-content/reviews/tiktok/review-jaden-michaels.webp',
     bg: '#fedde2',
     accent: '#b34a66',
     dot: '#c9617c',
