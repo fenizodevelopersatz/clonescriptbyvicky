@@ -1,0 +1,14 @@
+/* The blue wordmark (siteBrand.logoBlue) renders "clone" in white -- it was
+   drawn for the black header fill, so on this panel's white card the first
+   half of the name would disappear. Give it its own dark chip to sit on. */
+.sfd-logo-chip {
+  display: inline-block;
+  padding: 18px 26px;
+  border-radius: 18px;
+  background: #06060f;
+  box-shadow: 0 14px 34px -14px rgba(16, 27, 72, 0.45);
+}
+
+.sfd-logo-chip img {
+  display: block;
+}

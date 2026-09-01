@@ -1177,6 +1177,49 @@
   margin: 0;
 }
 
+/* Same fix as the shared FaqAccordion.css: the theme's own toggle icon
+   (.vc_toggle_icon) is unstyled here -- no background-sprite/icon-font
+   rule ever targeted it in this file, so it rendered as a bare 16x16
+   inline box, showing as a thin vertical mark under every question. Hide
+   it and draw a chevron on ::after instead, same as FaqAccordion.css. */
+/* !important: the vendored litespeed bundle ships
+   `.vc_toggle_simple .vc_toggle_icon { display: inline-block }`, which ties
+   this rule on specificity (0,2,0) and wins purely on load order -- that
+   bundle is imported after this file, so without !important the icon stayed
+   visible (blockified to `display: block` by its own position:absolute) and
+   sat over the left edge of every question. Same equal-specificity load-order
+   tie that FaqAccordion.css documents on .vc_toggle_title / .vc_toggle_icon;
+   this page has its own FAQ markup and never imports that file, so it needs
+   its own copy of the guard. */
+.erp-faq-content .vc_toggle_icon {
+  display: none !important;
+}
+
+.erp-faq-content .vc_toggle_title::after {
+  content: '';
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--erp-primary);
+  border-bottom: 2px solid var(--erp-primary);
+  transform: rotate(45deg);
+  transition: transform 0.3s;
+}
+
+.erp-faq-content .vc_toggle_active .vc_toggle_title::after {
+  transform: rotate(225deg);
+}
+
+.erp-faq-content .vc_toggle_content {
+  padding: 0 0 20px;
+}
+
+.erp-faq-content .vc_toggle_content p {
+  margin: 0;
+  color: #52525b;
+  line-height: 1.75;
+}
+
 .erp-server-panel {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);

@@ -86,4 +86,12 @@
     --youtube-top-gap: 22px;
     --youtube-bottom-gap: 20px;
   }
+
+  /* The two hero CTAs are inline-flex siblings carrying only horizontal
+     margins, so once they wrap onto separate lines here they end up
+     touching exactly -- "View Packages" starts on the same pixel row where
+     "Explore Live Demo" ends. Give the wrapped rows their own separation. */
+  .youtube-hero a.btn {
+    margin-bottom: 12px;
+  }
 }

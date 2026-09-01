@@ -3,6 +3,7 @@ import TestimonialCarousel from '../home/TestimonialCarousel.jsx'
 import { trustCategories } from '../../data/trustedByLogos.js'
 import { siteBrand } from '../../data/siteBrand.js'
 import { videoTestimonials } from '../../data/videoTestimonials.js'
+import './SocialProofPanel.css'
 
 export default function SocialProofPanel() {
   return (
@@ -14,8 +15,8 @@ export default function SocialProofPanel() {
               <span className="liquid_empty_space_inner"></span>
             </div>
             <div className="wpb_single_image wpb_content_element vc_align_center vc_custom_1726564743253">
-              <Link to="/">
-                <img src={siteBrand.logo} width={siteBrand.logoWidth} height={siteBrand.logoHeight} alt={siteBrand.name} style={{ width: 210, height: 'auto' }} />
+              <Link to="/" className="sfd-logo-chip">
+                <img src={siteBrand.logoBlue} width={siteBrand.logoWidth} height={siteBrand.logoHeight} alt={siteBrand.name} style={{ width: 210, height: 'auto' }} />
               </Link>
             </div>
             <div className="wpb_text_column wpb_content_element">

@@ -77,15 +77,16 @@ export default function MegaMenu() {
           </span>
         </span>
       </a>
+      {/* Sizing/centering lives in Header.css behind the theme's own
+          min-width:1191px breakpoint -- below that the theme switches
+          .nav-item-children to position:static for the collapsed mobile
+          nav, where a translateX(-50%) shifts the panel half its width
+          off the left edge instead of centering it. */}
       <div
         className="nav-item-children mega-dropdown-panel"
         style={{
           display: isOpen ? 'block' : 'none',
           visibility: isOpen ? 'visible' : 'hidden',
-          left: '50%',
-          right: 'auto',
-          transform: 'translateX(-50%)',
-          width: 'min(1170px, calc(100vw - 40px))',
         }}
       >
         <div className="lqd-megamenu-rows-wrap megamenu-container container">

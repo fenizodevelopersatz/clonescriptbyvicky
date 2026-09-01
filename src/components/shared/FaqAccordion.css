@@ -48,7 +48,13 @@ section:has(> .ld-container .vc_toggle) > * {
 }
 
 .vc_toggle_title {
-  display: flex;
+  /* !important: the vendored litespeed bundle has its own unscoped
+     .vc_toggle_title { display: block } at equal (single-class) specificity
+     -- whichever stylesheet loads later normally wins that tie, which broke
+     this on pages where the vendored rule happened to land after this one
+     (e.g. FaqServerTabs.jsx's per-product pages, which only pull this file
+     in via a plain CSS import rather than always loading before it). */
+  display: flex !important;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
@@ -107,21 +113,28 @@ section:has(> .ld-container .vc_toggle) > * {
    meant to be reached) -- overflow:hidden below still clips the box to the
    answer's real height regardless of how large this number is. */
 .vc_toggle_content_wrap {
-  overflow: hidden;
-  max-height: 0;
+  /* !important on overflow/max-height/opacity: same equal-specificity
+     load-order tie as .vc_toggle_title's display above -- this class isn't
+     in the vendored bundle today, but .vc_toggle_content right below it
+     is (that one shipped its own unconditional `display: none`), so this
+     collapse mechanism gets the same defensive treatment rather than
+     waiting for it to break on the next page that loads the vendored CSS
+     after this file. */
+  overflow: hidden !important;
+  max-height: 0 !important;
   /* Belt-and-suspenders on top of max-height/overflow: a thin vertical
      sliver (the collapsed answer's first line, clipped to a near-zero but
      not always perfectly zero height) was showing through under every
      closed question. opacity isn't in the transition list, so it snaps
      instantly with the class change instead of fading -- max-height still
      handles the smooth part of the animation on its own. */
-  opacity: 0;
+  opacity: 0 !important;
   transition: max-height 0.35s ease;
 }
 
 .vc_toggle_content_wrap--open {
-  max-height: 2000px;
-  opacity: 1;
+  max-height: 2000px !important;
+  opacity: 1 !important;
 }
 
 /* The vendored litespeed bundle ships its own unconditional

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import '../shared/FaqAccordion.css'
 import { faqs, serverRequirements, folderPermissions, changeLog } from '../../data/airbnb/airbnbData.js'
 
 function FaqPanel() {

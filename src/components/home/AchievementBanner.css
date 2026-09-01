@@ -108,6 +108,15 @@
     width: 100% !important;
     margin-left: 0 !important;
   }
+
+  /* Side by side these two columns never needed vertical separation, so the
+     text column carries none -- once stacked that puts the "Schedule now"
+     button's bottom edge exactly on the photo column's top edge, with the
+     absolutely-positioned "13+ Year Experience" badge (inset top:0 of the
+     frame) landing 17px under the button and reading as overlapping it. */
+  .liquid-row-shadowbox-6a665a40a6e93 .wpb_column:first-child {
+    margin-bottom: 48px;
+  }
 }
 
 @media (max-width: 575px) {

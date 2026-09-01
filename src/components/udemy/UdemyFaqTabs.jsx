@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import '../shared/FaqAccordion.css'
 import { faqs, serverRequirements } from '../../data/udemy/udemyData.js'
 
 export default function UdemyFaqTabs() {

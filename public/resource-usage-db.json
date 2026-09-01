@@ -1,13 +1,13 @@
 {
   "summary": {
-    "generatedAt": "2026-09-01T14:02:21.307Z",
+    "generatedAt": "2026-09-01T14:53:55.060Z",
     "routesDiscovered": 30,
     "jsxFilesScanned": 268,
     "dataFilesScanned": 41,
     "wpContentImagesOnDisk": 549,
     "uniqueAssetsTracked": 557,
     "staticImageRefs": 143,
-    "dataDrivenImageRefs": 432,
+    "dataDrivenImageRefs": 433,
     "dynamicUnresolvedRefs": 62,
     "usedCount": 446,
     "unusedCount": 86,
@@ -8998,9 +8998,39 @@
           "sourceFile": "src/data/siteBrand.js",
           "topic": "Site Brand",
           "alt": null
+        },
+        {
+          "page": "/crypto-wallet",
+          "sourceFile": "src/data/siteBrand.js",
+          "topic": "Site Brand",
+          "alt": null
+        },
+        {
+          "page": "/schedule-free-demo",
+          "sourceFile": "src/data/siteBrand.js",
+          "topic": "Site Brand",
+          "alt": null
+        },
+        {
+          "page": "/privacy-policy",
+          "sourceFile": "src/data/siteBrand.js",
+          "topic": "Site Brand",
+          "alt": null
+        },
+        {
+          "page": "/refund-policy",
+          "sourceFile": "src/data/siteBrand.js",
+          "topic": "Site Brand",
+          "alt": null
+        },
+        {
+          "page": "/terms-of-service",
+          "sourceFile": "src/data/siteBrand.js",
+          "topic": "Site Brand",
+          "alt": null
         }
       ],
-      "usageCount": 5,
+      "usageCount": 10,
       "width": 2172,
       "height": 724,
       "aspectRatio": 3,
@@ -14819,7 +14849,7 @@
       "note": "dynamic JS expression -- not statically resolvable; check the matching src/data/*.js export above"
     },
     {
-      "expr": "siteBrand.logo",
+      "expr": "siteBrand.logoBlue",
       "alt": null,
       "topic": "Social Proof Panel",
       "sourceFile": "src/components/schedule/SocialProofPanel.jsx",

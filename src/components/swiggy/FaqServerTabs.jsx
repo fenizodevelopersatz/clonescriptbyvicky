@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import '../shared/FaqAccordion.css'
 
 function FaqPanel({ faqs }) {
   const [openIndex, setOpenIndex] = useState(null)

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import '../shared/FaqAccordion.css'
 import { faqs, serverRequirements, folderPermissions } from '../../data/fiverr/fiverrData.js'
 
 function FaqPanel() {

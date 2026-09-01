@@ -92,6 +92,54 @@ html.overflow-hidden {
   color: #fff !important;
 }
 
+/* Centering + sizing for the mega-menu panel, previously inline in
+   MegaMenu.jsx. 1191px matches the theme's own breakpoint for switching
+   .nav-item-children between position:absolute (desktop dropdown, where
+   left+transform centers it under the nav) and position:static (the
+   collapsed mobile nav, where the same transform just pushed the panel
+   half its width off the left edge). */
+@media (min-width: 1191px) {
+  .mega-dropdown-panel {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: min(1170px, calc(100vw - 40px));
+  }
+}
+
+/* Stacked inside the mobile nav the four columns are full-width rows, so
+   the panel's desktop card padding/shadow just wastes horizontal space. */
+@media (max-width: 1190px) {
+  .mega-dropdown-panel .megamenu-column {
+    width: 100%;
+  }
+
+  /* .navbar-header is a space-between flex row (logo | toggle), but the
+     toggle button has no intrinsic width of its own and stretched to fill
+     everything left over -- 223px wide at a 720px viewport, with its 20px
+     of visible bars pinned to the button's LEFT edge. That put the burger
+     floating mid-row with a wide dead strip after it instead of sitting
+     opposite the logo. Shrink-wrap it so space-between can do its job. */
+  .clonescript-site .navbar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .clonescript-site .navbar-header .navbar-brand {
+    flex: 0 0 auto;
+    margin-right: auto;
+  }
+
+  .clonescript-site .navbar-header .navbar-toggle {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 0;
+    justify-content: flex-end;
+  }
+}
+
 /* The mega-menu dropdown panel intentionally stays its own white card with
    the items' original alternating pastel colors, separate from the black
    header it drops down from -- tried a matching dark panel here briefly,

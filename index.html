@@ -47,10 +47,20 @@
         display: none;
         position: fixed;
         inset: 0;
+        /* Explicit viewport height on top of inset:0 -- dvh tracks Chrome
+           Android's collapsing URL bar, so the centred content stays on the
+           optical centre of what the user actually sees during load rather
+           than the centre of the taller large-viewport box. */
+        height: 100dvh;
         z-index: 2147483646;
         background: #fff;
         align-items: center;
         justify-content: center;
+        /* The exit animation below scales the inner block several times its
+           own size. Without clipping, the enlarged rings and label spill out
+           as stray fragments scattered around the screen -- on a narrow phone
+           that reads as a broken, off-centre loader rather than a zoom-out. */
+        overflow: hidden;
       }
 
       body.clonescript-page-styles-loading #cs-shell-loader,
@@ -258,6 +268,20 @@
         .cs-shell-ring--inner { inset: 12px; }
         .cs-shell-core { inset: 23px; }
         .cs-shell-glow { width: 190px; height: 190px; }
+
+        /* The desktop zoom is sized against a viewport many times wider than
+           a phone's -- at 7x the mark alone is wider than the screen, so the
+           reveal lands as a wall of colour instead of an opening. Scale the
+           whole move down to match the smaller canvas. */
+        .cs-shell-loader--exiting .cs-shell-loader-inner {
+          animation-name: cs-shell-exit-zoom-sm;
+        }
+      }
+
+      @keyframes cs-shell-exit-zoom-sm {
+        0%   { transform: scale(1); opacity: 1; }
+        45%  { transform: scale(1.5); opacity: 1; }
+        100% { transform: scale(2.6); opacity: 0; }
       }
 
       @media (prefers-reduced-motion: reduce) {
