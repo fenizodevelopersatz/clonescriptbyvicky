@@ -76,24 +76,28 @@ export default function CryptoWalletPage() {
 
         <CryptoWalletStats />
 
+        <section className="vc_section">
+          <WhatIsCryptoWallet />
+        </section>
+
         <CryptoWalletOverview />
 
         <StandOutFeaturesGrid
           heading="Our Comprehensive Crypto Wallet Development Services"
           subheading="Our cryptocurrency wallet development process covers everything from custom wallet creation to advanced blockchain integration."
           items={comprehensiveServices}
-          color="#6c3bff"
+          color="#38bdf8"
         />
 
         <StandOutFeaturesGrid
           heading="Benefits of Cryptocurrency Wallet Development"
           subheading="What a wallet built right actually gets your business."
           items={walletBenefits}
-          color="#8b5cf6"
+          color="#38bdf8"
         />
 
         <section className="vc_section">
-          <WhatIsCryptoWallet />
+          <WalletTypesShowcase />
         </section>
 
         <StandOutFeaturesGrid
@@ -102,10 +106,6 @@ export default function CryptoWalletPage() {
           items={secureWalletFeatures}
           color="#38bdf8"
         />
-
-        <section className="vc_section">
-          <WalletTypesShowcase />
-        </section>
 
         <CryptoWalletIndustries />
 

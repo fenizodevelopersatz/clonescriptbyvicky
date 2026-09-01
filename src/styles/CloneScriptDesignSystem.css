@@ -380,8 +380,53 @@ body:not(.clonescript-page-styles-loading) .clonescript-site > .content { animat
    CSS bundle -- the same two rules duplicated identically in all 21 original pages'
    bundles. Pages with no original WPBakery export (schoolCrm, logisticsClone) load none
    of those bundles, so the panel rendered with no background at all. Promoted here once,
-   globally, instead of re-duplicating it into a 22nd/23rd page-specific bundle. */
-.schedule-bg { background: #ee609c4d !important; }
+   globally, instead of re-duplicating it into a 22nd/23rd page-specific bundle.
+   Recolored from the original pink to the site's light-blue accent (#38bdf8) -- the
+   #schedule_form id is added to beat the *other* 21 pages' own still-pink .schedule-bg
+   rule, which has equal (0,1,0) specificity and loads after this file, so it would
+   otherwise win the cascade tie and silently keep showing pink everywhere but the
+   handful of pages with no legacy bundle at all. */
+#schedule_form.schedule-bg { background: #38bdf84d !important; }
+
+/* Header "Products" mega-menu item hover fill (.iconbox-filled-hover:before,
+   litespeed bundle) reads the theme's --color-primary variable, currently
+   the sitewide dark blue and used 140+ times across unrelated elements in
+   that bundle -- redefining it at :root would recolor far more than just
+   this hover state. Redefining it only within the mega-menu dropdown's own
+   container cascades to just this hover fill via var(--color-primary). */
+.mega-dropdown-panel {
+  --color-primary: #38bdf8;
+}
+
+/* The static #cs-shell-loader (index.html) is deliberately one-shot -- it
+   covers first paint, then never returns for later in-app navigation, by
+   design (see its script comment). That's correct, but the "lighter
+   treatment" that was supposed to replace it for route changes was never
+   actually wired up anywhere: usePageStylesheets already toggles
+   body.clonescript-page-styles-loading correctly on every pathname change
+   (Layout.jsx's expectPageStyles), but no component ever consumed the
+   isReady value it returns, so nothing masked the page while the new
+   route's CSS bundle was still loading. That gap is what let a route
+   change render fully unstyled for a moment -- overlapping nav text, a
+   blank hero -- with nothing covering it. Fading #wrap (header + routed
+   content + footer, the one element every route shares) off this same,
+   already-correct body class covers first load AND every later
+   navigation with one rule, no per-page changes needed. */
+#wrap {
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+body.clonescript-page-styles-loading #wrap {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #wrap {
+    transition: none;
+  }
+}
 
 .vc_custom_1740027174021 {
   margin-right: 20px !important;

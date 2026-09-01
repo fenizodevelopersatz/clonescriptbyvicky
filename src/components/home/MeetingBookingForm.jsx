@@ -1,6 +1,22 @@
+import { useState } from 'react'
 import { useContactForm } from '../../hooks/useContactForm.js'
+import './MeetingBookingForm.css'
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
+}
+
+// Phone isn't marked required in this form's own label, so it's validated
+// as optional-but-must-be-valid-if-filled-in, not required outright.
+function isValidPhone(phone) {
+  if (!phone.trim()) return true
+  const digits = phone.replace(/\D/g, '')
+  return digits.length >= 7 && digits.length <= 15
+}
 
 export default function MeetingBookingForm() {
+  const [validationError, setValidationError] = useState('')
+
   const { values, handleChange, handleSubmit, submitted, status, errorMessage } = useContactForm(
     {
       fullname: '',
@@ -12,6 +28,26 @@ export default function MeetingBookingForm() {
     { enableApiSend: true, subject: 'New Meeting Booking Request (Home page)' }
   )
 
+  function onSubmit(e) {
+    e.preventDefault()
+    if (!values.fullname.trim()) {
+      setValidationError('Please enter your name.')
+      return
+    }
+    if (!isValidEmail(values.email)) {
+      setValidationError('Please enter a valid email address.')
+      return
+    }
+    if (!isValidPhone(values.phone)) {
+      setValidationError('Please enter a valid WhatsApp number (7–15 digits).')
+      return
+    }
+    setValidationError('')
+    handleSubmit(e)
+  }
+
+  const displayedError = validationError || (status === 'failed' ? errorMessage : '')
+
   return (
     <div className="lqd-contact-form">
       <div className="wpcf7">
@@ -20,18 +56,21 @@ export default function MeetingBookingForm() {
             Thanks! We&rsquo;ve received your request and will get back to you shortly.
           </div>
         ) : (
-          <form className={`wpcf7-form ${status}`} onSubmit={handleSubmit}>
-            <div className="wpcf7-response-output" role="status">{errorMessage}</div>
+          <form className={`wpcf7-form ${status}`} onSubmit={onSubmit} noValidate>
+            {displayedError && (
+              <div className="mbf-error" role="alert">{displayedError}</div>
+            )}
             <div className="row">
               <div className="col-sm-6">
                 <p>
-                  <label htmlFor="your-fullname" className="wpcf7-inline-field">Name *</label>
+                  <label htmlFor="your-fullname" className="wpcf7-inline-field">
+                    Name <span className="mbf-required">*</span>
+                  </label>
                   <br />
                   <span className="wpcf7-form-control-wrap">
                     <input
-                      className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-fluid rounded"
+                      className="wpcf7-form-control wpcf7-text form-fluid rounded"
                       id="your-fullname"
-                      required
                       placeholder="Enter Full Name"
                       type="text"
                       name="fullname"
@@ -43,13 +82,14 @@ export default function MeetingBookingForm() {
               </div>
               <div className="col-sm-6">
                 <p>
-                  <label htmlFor="your-email" className="wpcf7-inline-field">Email *</label>
+                  <label htmlFor="your-email" className="wpcf7-inline-field">
+                    Email <span className="mbf-required">*</span>
+                  </label>
                   <br />
                   <span className="wpcf7-form-control-wrap">
                     <input
-                      className="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email form-fluid rounded"
+                      className="wpcf7-form-control wpcf7-email wpcf7-text form-fluid rounded"
                       id="your-email"
-                      required
                       placeholder="Enter Valid Email Id*"
                       type="email"
                       name="email"
@@ -67,15 +107,12 @@ export default function MeetingBookingForm() {
                   <br />
                   <span className="wpcf7-form-control-wrap">
                     <input
-                      className="wpcf7-form-control wpcf7-number wpcf7-validates-as-required wpcf7-validates-as-number form-fluid rounded"
+                      className="wpcf7-form-control wpcf7-number form-fluid rounded"
                       id="phone-number"
-                      required
                       placeholder="(eg: +91-9876543210)"
                       type="tel"
                       name="phone"
                       inputMode="tel"
-                      pattern="[0-9+() -]{7,20}"
-                      title="Enter a valid WhatsApp number (7 to 20 digits or common phone symbols)."
                       value={values.phone}
                       onChange={handleChange}
                     />

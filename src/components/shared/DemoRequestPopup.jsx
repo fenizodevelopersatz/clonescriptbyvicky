@@ -16,7 +16,7 @@ import './DemoRequestPopup.css'
 // CryptoWalletLeadPopup pair so only one popup policy exists sitewide.
 const SKIP_KEY = 'clonescript_demo_popup_skip'
 const SKIP_MS = 30 * 60 * 1000
-const SHOW_DELAY_MS = 8000
+const SHOW_DELAY_MS = 30000
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
 

@@ -12,6 +12,9 @@ export default function Header() {
   const isStuck = useStickyHeader()
   const { isOpen: isNavOpen, toggle: toggleNav, close: closeNav } = useMobileNav()
   const location = useLocation()
+  // /crypto-wallet fills the header black (CryptoWalletPage.css) -- the
+  // default dark-navy wordmark disappears on it, so swap in the light variant.
+  const logoSrc = location.pathname === '/crypto-wallet' ? siteBrand.logoDark : siteBrand.logo
 
   // Collapse the mobile hamburger menu whenever the route changes (the
   // mega menu already closes itself the same way).
@@ -79,7 +82,7 @@ export default function Header() {
                   <Link className="navbar-brand" to="/">
                     <span className="navbar-brand-inner">
                       <img
-                        src={siteBrand.logo}
+                        src={logoSrc}
                         alt={siteBrand.name}
                         className="logo-default"
                         width={siteBrand.logoWidth}

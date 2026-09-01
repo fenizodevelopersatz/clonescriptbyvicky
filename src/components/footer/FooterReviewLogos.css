@@ -1,0 +1,115 @@
+/* Review-platform badges: pure CSS/markup cards (badge chip + proportional
+   star rating + score text), replacing raster logo images so each score is
+   an accurate, accessible star fill instead of a static picture. */
+
+.frl-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.frl-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 12px;
+  border-radius: 14px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.frl-card:hover {
+  transform: translateY(-3px);
+  background: #fff;
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.1);
+}
+
+.frl-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--frl-color) 12%, #fff);
+  border: 1.5px solid color-mix(in srgb, var(--frl-color) 32%, transparent);
+  color: var(--frl-color);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.frl-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.frl-stars {
+  position: relative;
+  display: inline-flex;
+  font-size: 0.76rem;
+  line-height: 1;
+}
+
+.frl-stars-track,
+.frl-stars-fill {
+  display: flex;
+  gap: 2px;
+}
+
+.frl-stars-track {
+  color: #e2e8f0;
+}
+
+.frl-stars-fill {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #f5a623;
+}
+
+.frl-score {
+  color: #1e293b;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.frl-score strong {
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.frl-on {
+  color: #64748b;
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .frl-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575px) {
+  .frl-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .frl-card {
+    padding: 12px 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frl-card {
+    transition: none;
+  }
+}

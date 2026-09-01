@@ -1,27 +1,15 @@
 import { Link } from 'react-router-dom'
 import { footerSitemap } from '../../data/footerSitemap.js'
 
-const sitemapTitleStyles = [
-  ['rgba(27, 221, 69, 0.3)', '#000000'],
-  ['rgba(221, 120, 27, 0.3)', '#000000'],
-  ['rgba(92, 177, 255, 0.3)', '#101b48'],
-  ['rgba(173, 134, 255, 0.3)', '#101b48'],
-  ['rgba(255, 152, 189, 0.3)', '#101b48'],
-  ['rgba(0, 26, 255, 0.3)', '#101b48'],
-  ['rgba(199, 255, 0, 0.49)', '#000000'],
-  ['rgba(182, 221, 27, 0.3)', '#000000'],
-  ['rgba(83, 221, 27, 0.3)', '#101b48'],
-  ['rgba(206, 67, 255, 0.3)', '#101b48'],
-  ['rgba(221, 62, 27, 0.3)', '#000000'],
-  ['rgba(221, 159, 27, 0.3)', '#000000'],
-  ['rgba(206, 67, 255, 0.3)', '#101b48'],
-  ['rgba(74, 212, 255, 0.3)', '#101b48'],
-]
+// Every category heading uses the same sky-blue treatment now (previously
+// a different hardcoded color per array index).
+const SITEMAP_TITLE_BG = 'rgba(56, 189, 248, 0.22)'
+const SITEMAP_TITLE_COLOR = '#0c4a6e'
 
-const styledSitemap = footerSitemap.map((category, index) => ({
+const styledSitemap = footerSitemap.map((category) => ({
   ...category,
-  titleBackground: sitemapTitleStyles[index]?.[0] ?? 'transparent',
-  titleColor: sitemapTitleStyles[index]?.[1] ?? '#101b48',
+  titleBackground: SITEMAP_TITLE_BG,
+  titleColor: SITEMAP_TITLE_COLOR,
 }))
 
 const styledSitemapByTitle = new Map(styledSitemap.map((category) => [category.title, category]))

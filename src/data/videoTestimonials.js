@@ -1,42 +1,44 @@
-// The "Book a Meeting" section's video-testimonial carousel from the original site, brand
-// references updated to CloneScript. Real client photos, same content across every page since
-// the section is global. Video links point to the inert https://youtu.be/# placeholder rather
-// than the original real testimonial videos, per explicit instruction.
+// The "Book a Meeting" section's video-testimonial carousel. Original
+// copy (not reused from the source template), one client per major
+// product line, using AI-generated portraits already in this repo's
+// review-photo library (no real person -- same convention as the other
+// per-product review sections). Video links point to the inert
+// https://youtu.be/# placeholder rather than a real testimonial video.
 export const videoTestimonials = [
   {
-    name: 'Ms. Luclecia',
-    image: '/wp-content/uploads/2024/11/Untitled-design8.webp',
-    text: 'I highly recommend them, they do fantastic work, im giving them 5 start for their good service.',
+    name: 'Emma Caldwell',
+    image: '/wp-content/reviews/airbnb/review-emma-caldwell.webp',
+    text: 'We had a vacation rental idea and no engineering team. CloneScript’s Airbnb clone got us a working booking flow, host dashboard, and payments in weeks, not months.',
     video: 'https://youtu.be/#',
   },
   {
-    name: 'Mr. Razab',
-    image: '/wp-content/uploads/2024/07/razeb-clonescript.webp',
-    text: 'I would like to thankyou for your support and the product they gave this website. 5 out 5 from me guys!',
+    name: 'Ben Whitaker',
+    image: '/wp-content/reviews/amazon/review-ben-whitaker.webp',
+    text: 'The multi-vendor marketplace script handled seller onboarding and commissions right out of the box. Support actually answered when we hit edge cases during launch week.',
     video: 'https://youtu.be/#',
   },
   {
-    name: 'Mr. Jaxon',
-    image: '/wp-content/uploads/2024/04/6.webp',
-    text: 'Their vacation rental script, like Airbnb, was a user-friendly, feature-packed script that helped me create a successful platform for travelers at an affordable cost.',
+    name: 'Devika Menon',
+    image: '/wp-content/reviews/swiggy/review-devika-menon.webp',
+    text: 'Live order tracking and driver assignment were the two things I was most nervous about. Both worked correctly on day one, which is more than I can say for our last vendor.',
     video: 'https://youtu.be/#',
   },
   {
-    name: 'Mr. Henry',
-    image: '/wp-content/uploads/2024/04/5.webp',
-    text: 'Launching my online rental business was a breeze with CloneScript’s Airbnb clone script. Now, I’m effortlessly linking property owners and travelers, and my business is thriving.',
+    name: 'Grant Sullivan',
+    image: '/wp-content/reviews/turo/review-grant-sullivan.webp',
+    text: 'We needed a car rental platform with real availability calendars, not a static booking form. CloneScript delivered that plus owner payouts, so we could launch with actual inventory.',
     video: 'https://youtu.be/#',
   },
   {
-    name: 'Ms. Zemira',
-    image: '/wp-content/uploads/2024/04/3.webp',
-    text: 'Starting my online store was tough, but then I discovered Marty by CloneScript. It’s been a lifesaver, from setting up my shop to handling inventory, and now I’m seeing sales!',
+    name: 'Fahad Khan',
+    image: '/wp-content/reviews/school/review-fahad-khan.webp',
+    text: 'Our school was still tracking fees and attendance on spreadsheets. The School CRM replaced three separate tools, and our admin staff picked it up in a single afternoon.',
     video: 'https://youtu.be/#',
   },
   {
-    name: 'Mr. Dylan',
-    image: '/wp-content/uploads/2024/04/4.webp',
-    text: 'Dropshipping is easy with CloneScript’s AliExpress clone script, saving me time. Now, I focus on growing my business and reaching more customers. With CloneScript, I control my store and margins, perfect for starting a successful dropshipping biz!',
+    name: 'Nadia Kusuma',
+    image: '/wp-content/reviews/gojek/review-nadia-kusuma.webp',
+    text: 'Running rides, deliveries, and services out of one super-app sounded ambitious for our budget. CloneScript’s Gojek clone made it realistic, and our drivers only need one app now.',
     video: 'https://youtu.be/#',
   },
 ]
