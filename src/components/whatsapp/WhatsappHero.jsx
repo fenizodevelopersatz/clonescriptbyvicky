@@ -2,7 +2,7 @@ import Reveal from '../shared/Reveal.jsx'
 
 export default function WhatsappHero() {
   return (
-    <section className="vc_row wpb_row vc_row-fluid sv_first_row liquid-row-shadowbox">
+    <section className="vc_row wpb_row vc_row-fluid sv_first_row liquid-row-shadowbox whatsapp-hero">
       <div className="ld-container container">
         <div className="row ld-row">
           <div className="wpb_column vc_column_container vc_col-sm-12 vc_hidden-sm vc_hidden-xs text-left">
@@ -24,7 +24,7 @@ export default function WhatsappHero() {
             <div className="vc_column-inner">
               <div className="wpb_wrapper">
                 <Reveal as="div" className="wpb_wrapper-inner" direction="left">
-                  <h1 style={{ fontSize: 60, color: '#000000', textAlign: 'left' }} className="vc_custom_heading">WhatsApp Clone for Building an Instant Messaging App</h1>
+                  <h1 style={{ fontSize: 60, color: '#fff', textAlign: 'left' }} className="vc_custom_heading">WhatsApp Clone for Building an Instant Messaging App</h1>
                   <div className="wpb_text_column wpb_content_element text_align">
                     <div className="wpb_wrapper">
                       <p style={{ textAlign: 'left' }}>Build a branded real-time communication platform with CloneScript. Allow users to exchange messages, create groups, follow channels, share media, make voice and video calls, and stay connected through web and mobile applications. The WhatsApp Clone can be customized around your target audience, visual identity, supported languages, privacy policies, communication features, business model, and regional requirements.</p>

@@ -4,7 +4,7 @@ import { trustCategories } from '../../data/trustedByLogos.js'
 
 export default function TinderHero() {
   return (
-    <section className="vc_section vc_custom_1737697649562 vc_section-has-fill">
+    <section className="vc_section vc_custom_1737697649562 vc_section-has-fill tinder-hero">
       <div className="ld-container container">
         <div className="row ld-row">
           <div className="wpb_column vc_column_container vc_col-sm-10 vc_col-md-offset-1 vc_col-xs-offset-1 vc_col-xs-10 text-center">

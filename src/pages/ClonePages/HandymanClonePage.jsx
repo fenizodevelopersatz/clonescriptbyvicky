@@ -6,6 +6,7 @@ import {
   standOutFeatures, addOnFeatures, revenueBenefits, pricingPlans, customerReviews,
   processSteps, technicalArchitectureItems,
 } from '../../data/handyman/handymanData.js'
+import './HandymanClonePage.css'
 
 import HandymanHero from '../../components/handyman/HandymanHero.jsx'
 import TrustedByBadges from '../../components/shared/TrustedByBadges.jsx'
@@ -75,7 +76,7 @@ export default function HandymanClonePage() {
   return (
     <main className="content" id="content">
       <div className="wpb-content-wrapper">
-        <section className="vc_section vc_custom_1738736124508 vc_section-has-fill">
+        <section className="vc_section vc_custom_1738736124508 vc_section-has-fill handyman-hero-section">
           <HandymanHero />
           <TrustedByBadges heading="by Service Entrepreneurs" />
         </section>

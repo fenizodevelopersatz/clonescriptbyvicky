@@ -3,7 +3,7 @@ import Reveal from '../shared/Reveal.jsx'
 export default function FiverrHero() {
   return (
     <>
-      <section className="vc_row wpb_row vc_row-fluid sv_first_row liquid-row-shadowbox">
+      <section className="vc_row wpb_row vc_row-fluid sv_first_row liquid-row-shadowbox fiverr-hero">
         <div className="ld-container container">
           <div className="row ld-row">
             <div className="wpb_column vc_column_container vc_col-sm-2 vc_hidden-sm vc_hidden-xs"><div className="vc_column-inner"><div className="wpb_wrapper"><div className="wpb_wrapper-inner"></div></div></div></div>
@@ -51,7 +51,7 @@ export default function FiverrHero() {
         </div>
       </section>
 
-      <section className="vc_row wpb_row vc_row-fluid liquid-row-shadowbox">
+      <section className="vc_row wpb_row vc_row-fluid liquid-row-shadowbox fiverr-hero-media">
         <div className="ld-container container">
           <div className="row ld-row">
             <div className="wpb_column vc_column_container vc_col-sm-12">

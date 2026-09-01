@@ -2,6 +2,7 @@ import { useSeo } from '../../hooks/useSeo.js'
 import { usePageStylesheets } from '../../hooks/usePageStylesheets.js'
 import { pageStylesheets } from '../../data/pageStylesheets.js'
 import { standardFeatures, revenueBenefits, pricingPlans, customerReviews } from '../../data/fiverr/fiverrData.js'
+import './FiverrClonePage.css'
 
 import FiverrHero from '../../components/fiverr/FiverrHero.jsx'
 import TrustedByBuyers from '../../components/fiverr/TrustedByBuyers.jsx'
@@ -33,7 +34,7 @@ export default function FiverrClonePage() {
   return (
     <main className="content" id="content">
       <div className="wpb-content-wrapper">
-        <section className="vc_section vc_section-has-fill">
+        <section className="vc_section vc_section-has-fill fiverr-hero-section">
           <FiverrHero />
         </section>
 

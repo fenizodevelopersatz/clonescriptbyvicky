@@ -1,0 +1,62 @@
+/* FiverrClonePage has no page-specific class on its own .wpb-content-wrapper
+   (unlike erp-software-page), so the header-seam fix below rides the route
+   class Layout.jsx already stamps on #wrap for every route -- same technique
+   as crypto-wallet's .clonescript-route-crypto-wallet. That wrapper's own
+   top padding showed as a light gap between the black header and the black
+   hero below it, now that both are dark instead of blending on
+   white-on-white as before. */
+.clonescript-route-fiverr-clone .wpb-content-wrapper {
+  padding-top: 0 !important;
+}
+
+/* Same reasoning as above, one level further in -- this section's own top
+   padding (theme default) sat between the wrapper and .fiverr-hero (its
+   first child, .fiverr-hero-media is its second), showing as a second
+   stacked gap. */
+.fiverr-hero-section {
+  padding-top: 0 !important;
+}
+
+/* FiverrHero.jsx renders two sibling <section> rows (text+CTA, then the
+   screenshot below it) instead of one -- both need the same black fill so
+   the hero reads as one continuous black block instead of a black band,
+   a white seam, then a second black band. Same #06060f as the sitewide dark
+   header, see Header.css .header-dark-top. */
+.fiverr-hero,
+.fiverr-hero-media {
+  background: #06060f;
+  /* .fiverr-hero-section (the parent) carries the theme's default 15px side
+     padding, invisible against the old light-on-light background but left
+     the black fill 15px short of each edge, showing thin white corner
+     strips. Same full-bleed technique as erp's .erp-hero / crypto-wallet's
+     .cw-hero: break out to the true viewport width regardless of the
+     parent's padding. */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+}
+
+.fiverr-hero h1 {
+  color: #fff;
+}
+
+.fiverr-hero .wpb_text_column p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* "View Packages" (.btn-default.btn-bordered) only has a border (no fill) --
+   that border reads this page's --color-primary (a dark navy, effectively
+   invisible on #06060f), same defect already fixed on /logistics-clone,
+   /gojek-clone and /swiggy-clone (see LogisticsClonePage.css /
+   GojekClonePage.css / SwiggyClonePage.css). */
+.fiverr-hero .btn-default.btn-bordered {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* This is the LAST piece of hero content (the screenshot) before
+   TrustedByBuyers right below it -- give the black fill some room to
+   breathe rather than cutting straight to the next section's heading. */
+.fiverr-hero-media {
+  padding-bottom: 60px;
+}

@@ -4,6 +4,7 @@ import { pageStylesheets } from '../../data/pageStylesheets.js'
 import {
   featureGroups, standardFeatures, addOnFeatures, revenueBenefits, pricingPlans, screenshots, customerReviews,
 } from '../../data/tinder/tinderData.js'
+import './TinderClonePage.css'
 
 import TinderHero from '../../components/tinder/TinderHero.jsx'
 import WhatIsTinder from '../../components/tinder/WhatIsTinder.jsx'
@@ -127,6 +128,7 @@ export default function TinderClonePage() {
           desc="Launch a branded adults-only matchmaking platform with profile discovery, mutual matching, real-time communication, subscriptions, privacy tools, and admin management. The platform can be expanded with new features, languages, communities, payment methods, and membership plans as your business grows."
           image="/wp-content/uploads/2025/09/best-dating-script.webp"
           imageAlt="Dating clone app preview showing post creation and profile screens"
+          variant="dark"
         />
 
         <PricingPlans plans={pricingPlans} heading="Choose a Development Plan" />

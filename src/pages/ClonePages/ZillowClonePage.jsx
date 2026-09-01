@@ -296,11 +296,6 @@ export default function ZillowClonePage() {
         </section>
 
         <FaqServerTabs />
-
-        <LaunchCta
-          heading="Create Your Own Zillow Clone with CloneScript"
-          desc="Build a scalable platform that allows users to explore properties, while also giving agents and sellers the tools they need to manage listings and leads effectively. Share details about your target audience, the features you need, user roles, integrations, your preferred revenue model, and your expected launch timeline with CloneScript."
-        />
         
         <TestimonialRotatorSection content={<ReviewCards reviews={customerReviews} />} />
 

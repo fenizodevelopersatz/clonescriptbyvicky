@@ -97,6 +97,19 @@
   background: #f1e7ff;
 }
 
+@media (max-width: 991px) {
+  /* Both columns inherit the builder's vc_col-xs-10 (+ offset-1) grid classes,
+     which cap them at 83.3% width even once they've stacked (below the
+     vc_col-md-6 992px breakpoint). Harmless for the photo column, but it
+     squeezes the "Achievements Built on Trust" paragraph into a ~249px-wide
+     column, wrapping it to 11 lines and roughly doubling this section's
+     height with mostly empty space -- go full width once stacked instead. */
+  .liquid-row-shadowbox-6a665a40a6e93 .wpb_column {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+}
+
 @media (max-width: 575px) {
   .achievement-photo-frame {
     max-width: 340px;

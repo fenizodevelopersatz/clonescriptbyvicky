@@ -6,6 +6,7 @@ import {
   privacySecurityFeatures, addOnFeatures, revenueBenefits, technologyList, packagePlanIntro,
   packageInclusions, pricingPlans, customerReviews,
 } from '../../data/whatsapp/whatsappData.js'
+import './WhatsappClonePage.css'
 
 import WhatsappHero from '../../components/whatsapp/WhatsappHero.jsx'
 import WhatIsWhatsapp from '../../components/whatsapp/WhatIsWhatsapp.jsx'
@@ -33,7 +34,7 @@ export default function WhatsappClonePage() {
   return (
     <main className="content" id="content">
       <div className="wpb-content-wrapper">
-        <section className="vc_section section1 vc_custom_1710218341756 vc_section-has-fill">
+        <section className="vc_section section1 vc_custom_1710218341756 vc_section-has-fill whatsapp-hero-section">
           <WhatsappHero />
         </section>
 
@@ -49,6 +50,7 @@ export default function WhatsappClonePage() {
         <LaunchCta
           heading="Connect with a Messaging App Expert"
           desc="Discuss your messaging-platform requirements, preferred applications, communication features, integrations, branding, security expectations, and deployment environment. A consultation can help identify the standard features available and any additional customization required for your project."
+          variant="dark"
         />
 
         <WhatWeOffer />
@@ -129,6 +131,7 @@ export default function WhatsappClonePage() {
         <LaunchCta
           heading="Start Your Instant Messaging Business"
           desc="Turn your communication-platform idea into a customizable web and mobile product. Begin with essential private messaging, group communication, media sharing, calling, and privacy features. Add channels, communities, business tools, subscriptions, and other advanced functionality as the platform grows."
+          variant="dark"
         />
 
         <SimpleListSection

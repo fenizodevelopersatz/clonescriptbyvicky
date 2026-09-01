@@ -1,0 +1,75 @@
+/* WhatsappClonePage has no page-specific class on its own .wpb-content-wrapper
+   (unlike erp-software-page), so the header-seam fix below rides the route
+   class Layout.jsx already stamps on #wrap for every route -- same technique
+   as zillow-clone's .clonescript-route-zillow-clone. That wrapper's own top
+   padding showed as a light gap between the black header and the black hero
+   below it, now that both are dark instead of blending on white-on-white
+   as before. */
+.clonescript-route-whatsapp-clone .wpb-content-wrapper {
+  padding-top: 0 !important;
+}
+
+/* Same reasoning as above, one level further in -- this section's own top
+   padding (theme default .vc_section rule) sat between the wrapper and
+   .whatsapp-hero (its only child), showing as a second stacked gap. */
+.whatsapp-hero-section {
+  padding-top: 0 !important;
+}
+
+/* Black fill (same #06060f as the sitewide dark header, see Header.css
+   .header-dark-top) so the hero reads as one continuous black block with
+   the header above it instead of a white seam between the two. The
+   heading's color is fixed directly in WhatsappHero.jsx (it was a fully
+   hardcoded inline style={{color:'#000000'}} on the whole <h1>, not a
+   sub-span accent -- a plain CSS override here couldn't beat that inline
+   value anyway, so it had to change at the source). The paragraph defaults
+   to the theme's dark grey (tuned for the rest of this page's light
+   sections) so it needs its own override here to stay legible on black. */
+.whatsapp-hero {
+  background: #06060f;
+  /* .whatsapp-hero-section (the parent) carries the theme's default 15px
+     side padding, invisible against the old light-on-light background but
+     left the black fill 15px short of each edge, showing thin white corner
+     strips. Same full-bleed technique as erp's .erp-hero / zillow-clone's
+     .zillow-hero: break out to the true viewport width regardless of the
+     parent's padding. */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  /* This hero never had its own bottom padding (theme default is 0), so the
+     rating-badge image sat flush against WhatIsWhatsapp's small "What ?"
+     eyebrow label right below with zero gap -- confirmed via
+     getBoundingClientRect (hero bottom === eyebrow top). Invisible on the
+     old white-on-white boundary, now an abrupt cut where the black block
+     ends. Same issue zillow-clone/youtube-clone/udemy-clone hit. */
+  padding-bottom: 60px;
+}
+
+/* The small "WhatsApp Clone" label above the heading defaults to the
+   theme's --clonescript-text body grey (~#475569) despite its
+   "ld-gradient-heading" class -- confirmed via computed style it isn't
+   actually rendering a gradient fill here (backgroundImage: none), just
+   plain grey text tuned for a light background, too low-contrast to read
+   against the new black fill. */
+.whatsapp-hero .ld-gradient-heading {
+  color: #fff;
+}
+
+.whatsapp-hero .wpb_text_column p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* "Explore Live Demo" / "View Packages" -- confirmed via computed style
+   (also present on the already-shipped /logistics-clone and the new
+   /udemy-clone and /tinder-clone, so this is a pre-existing sitewide gap in
+   the .btn-bordered variant, not something the black fill introduces) that
+   neither button actually gets the "solid" theme fill: both render with a
+   transparent background, a dark navy border (--color-primary, #0030b8),
+   and the browser's bare default link-blue text (#0000ee) -- roughly 2:1
+   contrast on #06060f, i.e. genuinely hard to read, not just stylistically
+   dim. */
+.whatsapp-hero .btn.btn-bordered {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+}

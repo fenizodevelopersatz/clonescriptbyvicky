@@ -4,6 +4,7 @@ import { pageStylesheets } from '../../data/pageStylesheets.js'
 import {
   standOutFeatures, addOnFeatures, revenueBenefits, pricingPlans, screenshots, customerReviews,
 } from '../../data/uber/uberData.js'
+import './UberClonePage.css'
 
 import UberHero from '../../components/uber/UberHero.jsx'
 import TrustedByBadges from '../../components/shared/TrustedByBadges.jsx'
@@ -46,7 +47,7 @@ export default function UberClonePage() {
   return (
     <main className="content" id="content">
       <div className="wpb-content-wrapper">
-        <section className="vc_section vc_custom_1738736124508 vc_section-has-fill">
+        <section className="vc_section vc_custom_1738736124508 vc_section-has-fill uber-hero-section">
           <UberHero />
           <TrustedByBadges heading="by Mobility Entrepreneurs" />
         </section>
