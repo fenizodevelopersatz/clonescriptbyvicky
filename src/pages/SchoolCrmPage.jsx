@@ -8,7 +8,7 @@ import {
   whyChooseUsPoints, admissionManagementFeatures, studentManagementFeatures,
   parentCommunicationFeatures, teacherStaffFeatures, feePaymentFeatures,
   schoolCrmBenefits, scalableTechnologyCapabilities,
-  schoolCrmPackageFeatures, applicationScreens,
+  applicationScreens,
 } from '../data/schoolCrm/schoolCrmData.js'
 import { comparisonLabels } from '../data/comparisonLabels.js'
 
@@ -20,6 +20,7 @@ import ComparisonTable from '../components/shared/ComparisonTable.jsx'
 import PdfDownloadCta from '../components/shared/PdfDownloadCta.jsx'
 import GuideCoverArt from '../components/shared/GuideCoverArt.jsx'
 import DashboardMockup from '../components/shared/DashboardMockup.jsx'
+import CryptoDashMock from '../components/cryptoWallet/CryptoDashMock.jsx'
 import ReviewCards from '../components/shared/ReviewCards.jsx'
 import StandOutFeaturesGrid from '../components/shared/StandOutFeaturesGrid.jsx'
 import SimpleListSection from '../components/shared/SimpleListSection.jsx'
@@ -60,6 +61,26 @@ const dashboards = [
   },
 ]
 
+// Pure-CSS dashboard preview (CryptoDashMock, generic despite the folder
+// name) for the Admission Management Features section -- gives it a live
+// preview to look at instead of just the feature-card grid on its own.
+const admissionDashboardMock = {
+  variant: 'stats',
+  title: 'Admission pipeline',
+  titleIcon: 'fa-user-graduate',
+  live: true,
+  cornerIcon: 'fa-clipboard-list',
+  footIcon: 'fa-check-double',
+  tiles: [
+    { label: 'NEW ENQUIRIES', value: '186' },
+    { label: 'APPLICATIONS', value: '92' },
+    { label: 'SEATS FILLED', value: '64%' },
+    { label: 'AVG. RESPONSE', value: '4h' },
+  ],
+  bars: [40, 60, 52, 78, 58, 70, 48, 84],
+  status: ['Documents verified', 'Seat confirmed'],
+}
+
 export default function SchoolCrmPage() {
   usePageStylesheets(pageStylesheets.schoolCrm)
 
@@ -89,37 +110,9 @@ export default function SchoolCrmPage() {
           intro="Our School CRM can be customized according to your institution's academic structure, admission process, departments, communication methods, and reporting requirements. Key benefits include:"
           items={whyChooseUsPoints}
           columns={2}
-          tinted
+          dark
         />
 
-        <section className="vc_row wpb_row vc_row-fluid liquid-row-shadowbox">
-          <div className="ld-container container">
-            <div className="row ld-row">
-              <div className="wpb_column vc_column_container vc_col-sm-10 vc_col-sm-offset-1 text-center">
-                <div className="vc_column-inner">
-                  <div className="wpb_wrapper">
-                    <div className="wpb_wrapper-inner">
-                      <header className="fancy-title text-center">
-                        <h2>Simplify Your School&rsquo;s Daily Operations</h2>
-                        <div className="st-desc">
-                          <p style={{ textAlign: 'center' }}>
-                            Manage enquiries, admissions, enrolled students, parents, teachers, payments, and
-                            communication without switching between multiple systems.
-                          </p>
-                          <p style={{ textAlign: 'center' }}>
-                            The School CRM can support private schools, public schools, international schools,
-                            tuition centres, coaching institutes, training academies, and multi-branch education
-                            groups.
-                          </p>
-                        </div>
-                      </header>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         <StandOutFeaturesGrid
           heading="Core Modules of School CRM"
@@ -158,6 +151,12 @@ export default function SchoolCrmPage() {
           subheading="Turn every enquiry into an enrolled student with a clear, trackable admission workflow."
           items={admissionManagementFeatures}
         />
+
+        <section className="vc_section" style={{ padding: '4px 0 64px' }}>
+          <div className="ld-container container admission-dash-mock" style={{ maxWidth: 440 }}>
+            <CryptoDashMock mock={admissionDashboardMock} />
+          </div>
+        </section>
 
         <StandOutFeaturesGrid
           heading="Student Management Features"
@@ -228,14 +227,6 @@ export default function SchoolCrmPage() {
         />
 
         <LiveDemoTabs dashboards={dashboards} />
-
-        <SimpleListSection
-          heading="Choose a Development Plan"
-          intro="School CRM Package — the development package may include:"
-          items={schoolCrmPackageFeatures}
-          closing="Final pricing depends on the required modules, number of users, branches, integrations, applications, and customization."
-          columns={2}
-        />
 
         <PricingPlans plans={pricingPlans} />
         <MoneyBackGuarantee />

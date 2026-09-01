@@ -114,3 +114,123 @@
 .clonescript-route-school-crm .cs-techstack-section {
   background: #f0f9ff;
 }
+
+/* ===== "100% Money Back Guaranteed" -- dark blue glass card (school only) =====
+   Same treatment already built for /crypto-wallet (dark glass card, shine
+   sweep, pulsing seal), re-toned from violet/pink to this page's blue
+   accent instead of just leaving the default green banner. */
+.clonescript-route-school-crm .money-back-panel {
+  position: relative;
+  overflow: hidden;
+  gap: 28px !important;
+  padding: 34px 40px !important;
+  border-radius: 22px !important;
+  border: 1px solid rgba(79, 110, 247, 0.38) !important;
+  background:
+    radial-gradient(600px 240px at 10% -10%, rgba(79, 110, 247, 0.32), transparent 60%),
+    radial-gradient(520px 220px at 105% 120%, rgba(56, 189, 248, 0.22), transparent 55%),
+    linear-gradient(135deg, #0a0e2a 0%, #0f1a4a 55%, #142058 100%) !important;
+  box-shadow: 0 30px 70px -28px rgba(79, 110, 247, 0.5) !important;
+}
+
+.clonescript-route-school-crm .money-back-section {
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.clonescript-route-school-crm .money-back-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.clonescript-route-school-crm .money-back-panel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  z-index: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.12) 45%,
+    rgba(183, 210, 255, 0.32) 50%,
+    rgba(255, 255, 255, 0.12) 55%,
+    transparent
+  );
+  transform: skewX(-18deg);
+  animation: scrm-mb-flash 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes scrm-mb-flash {
+  0%   { left: -60%; }
+  25%  { left: 150%; }
+  100% { left: 150%; }
+}
+
+.clonescript-route-school-crm .money-back-panel img {
+  width: 104px !important;
+  height: 104px !important;
+  animation: scrm-mb-badge 3.6s ease-in-out infinite;
+}
+
+@keyframes scrm-mb-badge {
+  0%, 100% { transform: scale(1) rotate(0); filter: drop-shadow(0 0 14px rgba(79, 110, 247, 0.6)); }
+  50%      { transform: scale(1.06) rotate(-4deg); filter: drop-shadow(0 0 26px rgba(56, 189, 248, 0.85)); }
+}
+
+.clonescript-route-school-crm .money-back-panel h2 {
+  color: #fff !important;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.clonescript-route-school-crm .money-back-panel .st-desc p span {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+@media (max-width: 575px) {
+  .clonescript-route-school-crm .money-back-panel {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 24px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clonescript-route-school-crm .money-back-panel::after,
+  .clonescript-route-school-crm .money-back-panel img {
+    animation: none;
+  }
+
+  .clonescript-route-school-crm .money-back-panel img {
+    filter: drop-shadow(0 0 16px rgba(79, 110, 247, 0.6));
+  }
+}
+
+/* Admission-management dashboard mockup (CryptoDashMock, reused as-is --
+   it's a generic component despite living in components/cryptoWallet/).
+   Its own CSS hardcodes violet/pink accents; nudge just the accent colors
+   toward this page's blue instead of duplicating the whole stylesheet. */
+.clonescript-route-school-crm .admission-dash-mock .cdm__title i {
+  color: #60a5fa;
+}
+
+.clonescript-route-school-crm .admission-dash-mock .cdm__float--corner {
+  background: linear-gradient(150deg, #16204f, #0a0e2a);
+  border-color: rgba(79, 110, 247, 0.4);
+  color: #bcd0ff;
+}
+
+.clonescript-route-school-crm .admission-dash-mock .cdm__float--foot {
+  background: linear-gradient(150deg, #0f2a4a, #081428);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: #7dd3fc;
+}
+
+.clonescript-route-school-crm .admission-dash-mock .cdm__chart span:last-child {
+  background: linear-gradient(180deg, #7dd3fc 0%, #38bdf8 100%);
+  box-shadow: 0 0 12px -2px rgba(56, 189, 248, 0.7);
+}

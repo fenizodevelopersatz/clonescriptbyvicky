@@ -213,23 +213,6 @@ export const scalableTechnologyCapabilities = [
   'Third-party integrations',
 ]
 
-export const schoolCrmPackageFeatures = [
-  'Responsive web platform',
-  'Admission CRM',
-  'Student management',
-  'Parent portal',
-  'Teacher portal',
-  'Attendance management',
-  'Fee management',
-  'Communication tools',
-  'Admin dashboard',
-  'Reports and analytics',
-  'Role-based permissions',
-  'Custom branding',
-  'Installation assistance',
-  'Initial technical support',
-]
-
 export const applicationScreens = [
   'Login',
   'Admin dashboard',

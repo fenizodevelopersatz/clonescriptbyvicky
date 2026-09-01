@@ -10,6 +10,44 @@
   background: #f0f9ff;
 }
 
+/* Opt-in dark variant: dark section background, white heading/body text,
+   glass-style cards with a blue accent instead of the default white
+   card + dark icon badge. Same reasoning as --tinted -- a per-caller
+   choice, not the component default. */
+.clonescript-simple-list-section--dark {
+  background: #0a0a14;
+}
+
+.clonescript-simple-list-section--dark .fancy-title h2 {
+  color: #fff;
+}
+
+.clonescript-simple-list-section--dark .st-desc p {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.clonescript-simple-list-section--dark .clonescript-simple-list li {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.88);
+  box-shadow: none;
+}
+
+.clonescript-simple-list-section--dark .clonescript-simple-list li:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(79, 110, 247, 0.5);
+  box-shadow: 0 14px 30px -10px rgba(79, 110, 247, 0.35);
+}
+
+.clonescript-simple-list-section--dark .clonescript-simple-list li i {
+  background: #4f6ef7;
+  color: #fff;
+}
+
+.clonescript-simple-list-section--dark .clonescript-simple-list li:hover i {
+  box-shadow: 0 6px 18px rgba(79, 110, 247, 0.55);
+}
+
 .clonescript-simple-list {
   display: grid;
   grid-template-columns: repeat(var(--clonescript-list-columns), minmax(0, 1fr));

@@ -52,8 +52,7 @@ export default function PdfDownloadCta({ heading, desc, image, imageAlt = '', me
             </button>
 
             <header className="pdf-modal-head">
-              <h6 id="pdfModalTitle">Fill the Form to Get the Features Document</h6>
-              <p>Your Document Will Be Sent Directly to Your Email</p>
+              <h6 id="pdfModalTitle">Fill the Form to Get the Features Document</h6>              
             </header>
 
             {submitted ? (

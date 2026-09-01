@@ -1,8 +1,9 @@
 import './SimpleListSection.css'
 
-export default function SimpleListSection({ heading, intro, items, closing, columns = 2, tinted = false }) {
+export default function SimpleListSection({ heading, intro, items, closing, columns = 2, tinted = false, dark = false }) {
+  const variant = dark ? ' clonescript-simple-list-section--dark' : (tinted ? ' clonescript-simple-list-section--tinted' : '')
   return (
-    <section className={`vc_row wpb_row vc_row-fluid liquid-row-shadowbox clonescript-simple-list-section${tinted ? ' clonescript-simple-list-section--tinted' : ''}`}>
+    <section className={`vc_row wpb_row vc_row-fluid liquid-row-shadowbox clonescript-simple-list-section${variant}`}>
       <div className="ld-container container">
         <div className="row ld-row">
           <div className="wpb_column vc_column_container vc_col-sm-10 vc_col-sm-offset-1 text-center">
