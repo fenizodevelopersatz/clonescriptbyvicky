@@ -1220,3 +1220,13 @@
 .clonescript-route-crypto-wallet .navbar-toggle .bar {
   background-color: rgba(255, 255, 255, 0.86) !important;
 }
+
+/* Route-scoped: the shared StandOutFeaturesGrid defaults to 3 columns on
+   desktop, but the reference layout for these sections (Comprehensive
+   Services, Benefits, Core Features) uses 2 -- guarded to min-width so it
+   doesn't fight the shared component's own 575px 1-column mobile collapse. */
+@media (min-width: 576px) {
+  .clonescript-route-crypto-wallet .stand-out-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

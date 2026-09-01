@@ -28,7 +28,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
-  align-items: start;
+  align-items: center;
 }
 
 /* ---- left: eyebrow / title / body ---- */
@@ -263,7 +263,7 @@
   transition: opacity 0.35s;
 }
 
-.cwov-card > *:not(.cwov-ring) {
+.cwov-card > *:not(.cwov-ring):not(.cwov-blob) {
   position: relative;
   z-index: 1;
 }
