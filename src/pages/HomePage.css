@@ -62,19 +62,15 @@
    bundle (.vc_custom_1745486374572 / ...388430) -- a soft wash that runs
    pale pink on the left into pale cyan on the right. Everything else in the
    palette moved off pink to the light-blue accent, leaving these two the
-   only pink surfaces left on the page. Same wash, lavender-blue in place of
-   the pink end. Both the vendored rule and this one are !important, so the
-   route class is what actually wins it -- at equal specificity the vendored
-   bundle loads later and would otherwise take the tie. */
+   only pink surfaces left on the page. A gradient replacement still read as
+   two different colours across the band's width, so this is one flat light
+   blue edge to edge instead. Both the vendored rule and this one are
+   !important, so the route class is what actually wins it -- at equal
+   specificity the vendored bundle loads later and would otherwise take
+   the tie. */
 .clonescript-route-home .clonescript-showcase-section,
 .clonescript-route-home .clonescript-connect-section {
-  background: linear-gradient(
-    100deg,
-    #eef4ff 0%,
-    #f2f8ff 26%,
-    #f6fdff 55%,
-    #e6f9fd 100%
-  ) !important;
+  background: #e3f2fd !important;
 }
 
 .clonescript-showcase-content > .wpb_wrapper-inner {
@@ -92,12 +88,20 @@
   align-self: center;
 }
 
-/* Mirrored horizontally: the photo is a hand entering from the left
-   reaching right, which pointed back out of the layout now that it sits in
-   the right-hand column. Flipped so the gesture reads inward, toward the
-   copy. The artwork carries no text, so a mirror is safe. */
-.clonescript-connect-section .vc_single_image-img {
-  transform: scaleX(-1);
+/* The hand in this photo enters from the left and reaches right, so sitting
+   in the right-hand column it gestured out of the layout rather than toward
+   the copy. Mirroring it fixes the direction but reverses the "CloneScript"
+   wordmark rendered inside the artwork, so instead swap the two columns:
+   image on the left, copy on the right, and the gesture points inward with
+   the wordmark untouched. Order (not DOM changes) keeps the copy first in
+   reading order for screen readers and keeps the image column -- which is
+   vc_hidden-sm/xs -- from affecting the stacked mobile layout at all. */
+.clonescript-connect-section .ld-row > .wpb_column:nth-child(1) {
+  order: 2;
+}
+
+.clonescript-connect-section .ld-row > .wpb_column:nth-child(2) {
+  order: 1;
 }
 
 .clonescript-connect-section .iconbox-icon-container {
@@ -597,6 +601,27 @@
      hero's height and pushing its button row down toward (sometimes under)
      StickyMobileCta's fixed bar. Go full width once stacked. */
   .clonescript-hero .wpb_column {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  /* Same builder grid-column bug, same fix, across the rest of the home
+     page: every one of these rows uses vc_col-xs-10/vc_col-xs-offset-1 (or
+     vc_col-sm-10 at the tablet tier), capping a column at ~83% width even
+     once it has already stacked full-width below its vc_col-md-* desktop
+     breakpoint. Harmless for short headings, but the description
+     paragraphs and the stacked icon-box lists below wrap far more than
+     they need to in that squeezed width -- DevProcess's two step columns
+     in particular were ballooning past 1600px tall each. Scoped to each
+     row's own stable/unique class (not a blanket .wpb_column rule
+     sitewide) since plenty of other narrow columns elsewhere on this page
+     -- trust-badge rows, the mega-menu -- are narrow by design. */
+  .clonescript-why-row .wpb_column,
+  .liquid-row-shadowbox-6a665a40a963b .wpb_column,
+  .liquid-row-shadowbox-6a665a40aa6b7 .wpb_column,
+  .liquid-row-shadowbox-6a665a40be25f .wpb_column,
+  .liquid-row-shadowbox-6a665a40beff7 .wpb_column,
+  .cs-category-cards .wpb_column {
     width: 100% !important;
     margin-left: 0 !important;
   }

@@ -1,0 +1,19 @@
+# Enable rewrite engine
+RewriteEngine On
+
+# This is a static React (Vite) single-page app -- there is no index.php.
+# React Router handles paths like /schedule-free-demo client-side, so any
+# request that isn't a real file or directory on disk must fall through to
+# index.html (not index.php) so the app can boot and read the URL itself.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.html [L]
+
+# Disable directory browsing
+Options -Indexes
+
+# Deny access to hidden files (files that start with a dot)
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

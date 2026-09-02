@@ -51,7 +51,7 @@ function TextBlock({ item }) {
 
 export default function WhyWeStandOutRow({ item }) {
   return (
-    <section className={`clonescript-reveal-x-row vc_row wpb_row vc_row-fluid vc_row-o-content-middle vc_row-flex${item.imageFirst ? '' : ' reverse-column'}`}>
+    <section className={`clonescript-why-row clonescript-reveal-x-row vc_row wpb_row vc_row-fluid vc_row-o-content-middle vc_row-flex${item.imageFirst ? '' : ' reverse-column'}`}>
       <div className="ld-container container">
         <div className="row ld-row">
           {item.imageFirst ? (
