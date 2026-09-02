@@ -24,29 +24,32 @@
 }
 
 /* Every page except home, contact-us, and schedule-free-demo fills the
-   header black while un-stuck (Header.jsx sets .header-dark-top on the
-   mainbar-wrap for those routes) -- originally built for /crypto-wallet
-   alone, now applied sitewide. Once scrolled past useStickyHeader's trigger
-   offset, .is-stuck already reverts the header to its normal white
-   background (not overridden here), so all four rules below are scoped to
-   :not(.is-stuck) too -- otherwise the white-for-legibility nav text/toggle-
-   bar treatment would keep forcing white-on-white once the header goes back
-   to white. */
-.mainbar-wrap.header-dark-top:not(.is-stuck) {
+   header black (Header.jsx sets .header-dark-top on the mainbar-wrap for
+   those routes) -- originally built for /crypto-wallet alone, now applied
+   sitewide. This used to be scoped :not(.is-stuck) so useStickyHeader's
+   scrolled/stuck state could revert to the theme's normal white header --
+   but on mobile that reversion was firing near the top of the page (the
+   stuck trigger offset is small relative to a phone viewport), so the
+   header flashed white right under the black hero on first scroll instead
+   of staying consistently black. Dropped the :not(.is-stuck) qualifier
+   from all four rules together (background + text + hover + toggle-bar)
+   so the header now stays black at every scroll position instead of only
+   before the first scroll. */
+.mainbar-wrap.header-dark-top {
   background: #06060f !important;
 }
 
-.mainbar-wrap.header-dark-top:not(.is-stuck) #primary-nav > li > a,
-.mainbar-wrap.header-dark-top:not(.is-stuck) #primary-nav .link-txt .txt {
+.mainbar-wrap.header-dark-top #primary-nav > li > a,
+.mainbar-wrap.header-dark-top #primary-nav .link-txt .txt {
   color: rgba(255, 255, 255, 0.86) !important;
 }
 
-.mainbar-wrap.header-dark-top:not(.is-stuck) #primary-nav > li > a:hover,
-.mainbar-wrap.header-dark-top:not(.is-stuck) #primary-nav > li > a:hover .txt {
+.mainbar-wrap.header-dark-top #primary-nav > li > a:hover,
+.mainbar-wrap.header-dark-top #primary-nav > li > a:hover .txt {
   color: #fff !important;
 }
 
-.mainbar-wrap.header-dark-top:not(.is-stuck) .navbar-toggle .bar {
+.mainbar-wrap.header-dark-top .navbar-toggle .bar {
   background-color: rgba(255, 255, 255, 0.86) !important;
 }
 

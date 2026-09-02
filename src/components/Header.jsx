@@ -13,19 +13,39 @@ export default function Header() {
   const { isOpen: isNavOpen, toggle: toggleNav, close: closeNav } = useMobileNav()
   const location = useLocation()
   // Every page except home, contact-us, and schedule-free-demo fills the
-  // header black while un-stuck (see .header-dark-top in Header.css) -- the
-  // default dark-navy wordmark disappears on that fill, so swap in the light
-  // variant. Once scrolled past the trigger offset the header goes back to
-  // its normal white .is-stuck background (that state isn't overridden), so
-  // the light logo only applies while un-stuck; stuck reverts to the normal one.
+  // header black at every scroll position (see .header-dark-top in
+  // Header.css, no longer scoped :not(.is-stuck) -- it used to revert to
+  // white once stuck, but that read as a bug on mobile where the stuck
+  // trigger fires almost immediately). The default dark-navy wordmark
+  // disappears on that fill, so swap in the light variant -- unconditionally
+  // now too, since the black fill itself is no longer conditional on !isStuck.
   const hasDarkTopHeader = !['/', '/contact-us', '/schedule-free-demo'].includes(location.pathname)
-  const logoSrc = (hasDarkTopHeader && !isStuck) ? siteBrand.logoDark : siteBrand.logo
+  const logoSrc = hasDarkTopHeader ? siteBrand.logoDark : siteBrand.logo
 
   // Collapse the mobile hamburger menu whenever the route changes (the
   // mega menu already closes itself the same way).
   useEffect(() => {
     closeNav()
   }, [closeNav, location.pathname])
+
+  // Keeps html.cs-dark-header-route (see index.html's inline script + CSS,
+  // which stamp it before any bundle loads so the very first paint is
+  // already correct) in sync on every client-side navigation afterwards --
+  // that inline script only ever runs once, on the initial hard load, so
+  // without this a route change alone (no full reload) would leave it
+  // stuck at whatever the first page happened to be. The cleanup covers
+  // navigating straight to a route that renders MinimalLayout instead of
+  // this Header (e.g. /schedule-free-demo) -- currently a no-op there
+  // since that layout never renders .mainbar-wrap for the class to affect,
+  // but harmless-and-correct beats stale-but-invisible (same reasoning as
+  // useMobileNav's cleanup, which guards the same unmount-mid-navigation
+  // gap for overflow-hidden).
+  useEffect(() => {
+    document.documentElement.classList.toggle('cs-dark-header-route', hasDarkTopHeader)
+    return () => {
+      document.documentElement.classList.remove('cs-dark-header-route')
+    }
+  }, [hasDarkTopHeader])
 
   return (
     <header

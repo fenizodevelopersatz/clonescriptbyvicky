@@ -2,7 +2,7 @@ import { siteContact } from '../../data/siteContact.js'
 
 export default function GetInTouch() {
   return (
-    <section className="vc_row wpb_row vc_row-fluid liquid-row-shadowbox-6a665a49532ef vc_row-o-equal-height vc_row-o-content-middle vc_row-flex">
+    <section className="vc_row wpb_row vc_row-fluid liquid-row-shadowbox-6a665a49532ef vc_row-o-equal-height vc_row-o-content-middle vc_row-flex clonescript-contact-info-section">
       <div className="ld-container container">
         <div className="row ld-row">
           <div className="wpb_column vc_column_container vc_col-sm-6">
@@ -15,7 +15,7 @@ export default function GetInTouch() {
                     </h2>
                   </div>
 
-                  <div className="iconbox iconbox-side iconbox-square iconbox-heading-md" data-plugin-options='{"color":"rgb(255, 255, 255)"}' data-shape-border="1">
+                  <div className="iconbox iconbox-side iconbox-square iconbox-heading-md clonescript-contact-info-card" data-plugin-options='{"color":"rgb(255, 255, 255)"}' data-shape-border="1">
                     <div className="iconbox-icon-wrap">
                       <span className="iconbox-icon-container">
                         <span className="iconbox-icon-hover-bg"></span>
@@ -30,7 +30,7 @@ export default function GetInTouch() {
                     </div>
                   </div>
 
-                  <div className="iconbox iconbox-side iconbox-square iconbox-sm iconbox-heading-md" data-plugin-options='{"color":"rgb(255, 255, 255)"}' data-shape-border="1">
+                  <div className="iconbox iconbox-side iconbox-square iconbox-sm iconbox-heading-md clonescript-contact-info-card" data-plugin-options='{"color":"rgb(255, 255, 255)"}' data-shape-border="1">
                     <div className="iconbox-icon-wrap">
                       <span className="iconbox-icon-container">
                         <span className="iconbox-icon-hover-bg"></span>
@@ -50,7 +50,7 @@ export default function GetInTouch() {
                     </div>
                   </div>
 
-                  <div className="iconbox iconbox-side iconbox-square iconbox-heading-md skypelink" data-plugin-options='{"color":"rgb(255, 255, 255)"}' data-shape-border="1">
+                  <div className="iconbox iconbox-side iconbox-square iconbox-heading-md skypelink clonescript-contact-info-card" data-plugin-options='{"color":"rgb(255, 255, 255)"}' data-shape-border="1">
                     <div className="iconbox-icon-wrap">
                       <span className="iconbox-icon-container">
                         <span className="iconbox-icon-hover-bg"></span>
@@ -102,7 +102,7 @@ export default function GetInTouch() {
                           }}
                         >
                           <i className="fas fa-map-marked-alt" style={{ fontSize: 40 }}></i>
-                          <span>Map embed pending — add CloneScript&rsquo;s office location</span>
+                          <span>Map embed pending - add CloneScript's office location</span>
                         </div>
                       )}
                     </div>

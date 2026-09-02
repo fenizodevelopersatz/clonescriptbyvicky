@@ -474,14 +474,31 @@
   }
 }
 
-/* "Let's Turn Your Business Idea Into Reality" (ConnectWithUs.jsx): mirror
-   the icons-and-hand illustration left-to-right in place -- text stays on
-   the left, image stays on the right (not swapping which side holds which,
-   just flipping the graphic itself). Everything on the image's own vertical
-   centerline (the hand touching the CloneScript mark) stays put under a
-   pure horizontal flip; only the icons ringing it swap sides. */
-.vc_custom_1761559243227 img {
-  transform: scaleX(-1) !important;
+/* "Let's Turn Your Business Idea Into Reality" (ConnectWithUs.jsx): hover
+   to 3D-flip the icons-and-hand illustration around its own vertical
+   centerline, back to normal on mouse-out -- text and image positions
+   never swap, only the picture itself turns. The centerline (the hand
+   touching the CloneScript mark) is the rotation axis, so it's the one
+   part that never visibly moves; everything ringing it swings between
+   facing normal and mirrored. perspective lives on the wrapper (not the
+   img) so the turn has real 3D depth instead of a flat horizontal squash. */
+.cs-connect-flip {
+  perspective: 1400px;
+}
+
+.cs-connect-flip img {
+  transform: rotateY(0deg);
+  transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.cs-connect-flip:hover img {
+  transform: rotateY(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-connect-flip img {
+    transition: none;
+  }
 }
 
 .clonescript-meeting-visual img {

@@ -15,7 +15,7 @@ export default function ContactUsPage() {
   )
 
   return (
-    <main className="content" id="content">
+    <main className="content clonescript-contact-page" id="content">
       <div className="wpb-content-wrapper">
         <section className="vc_section">
           <ContactHero />

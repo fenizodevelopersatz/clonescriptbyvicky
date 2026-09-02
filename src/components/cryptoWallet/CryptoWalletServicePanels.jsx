@@ -64,7 +64,7 @@ export default function CryptoWalletServicePanels() {
         )
 
         return (
-          <section className="vc_row wpb_row vc_row-fluid liquid-row-shadowbox vc_row-o-content-middle vc_row-flex" key={panel.title}>
+          <section className="cw-service-panel-row vc_row wpb_row vc_row-fluid liquid-row-shadowbox vc_row-o-content-middle vc_row-flex" key={panel.title}>
             <div className="ld-container container">
               <div className="row ld-row">
                 {imageFirst ? [visualColumn, textColumn] : [textColumn, visualColumn]}

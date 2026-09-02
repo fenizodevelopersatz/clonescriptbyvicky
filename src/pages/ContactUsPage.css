@@ -1,21 +1,169 @@
-/* .vc_custom_1726577788907 (ContactTabs.jsx) is a WPBakery-generated
-   full-bleed white card treatment: margin:-100px + padding:50px on all
-   sides, meant to let the card overflow past its column on desktop where
-   the surrounding page has room to absorb it. Below 768px that column is
-   nowhere near 200px wider than the card, so the negative margin pushes
-   the entire tabs/form block (tab labels included) off the left edge of
-   the viewport -- confirmed via getBoundingClientRect (left:-80,
-   width:505 on the wrapper, cascading to left:-30 on every input/tab
-   link inside it). body's sitewide `overflow-x:hidden` (index.css) hides
-   the resulting scrollbar but not the real symptom: form fields render
-   flush against the screen edge with almost no left padding. */
+/* Contact page-specific polish:
+   - make the hero read as a darker blue-to-black band
+   - turn the "Get In Touch" block into a single shadowed card
+   - keep the form card and info card aligned on the same rhythm
+   - preserve the mobile padding fix that prevents the tabs card from
+     colliding with the viewport edge */
+
+.clonescript-contact-page .liquid-row-shadowbox-6a665a494fd84 {
+  margin-top: 0;
+  border-radius: 0 0 28px 28px;
+  overflow: hidden;
+}
+
+.clonescript-contact-info-section {
+  padding: clamp(56px, 6vw, 88px) 0;
+}
+
+.clonescript-contact-info-section .ld-row {
+  align-items: stretch;
+}
+
+.clonescript-contact-info-section .wpb_column {
+  display: flex;
+}
+
+.clonescript-contact-info-section .vc_column-inner,
+.clonescript-contact-info-section .wpb_wrapper,
+.clonescript-contact-info-section .wpb_wrapper-inner {
+  width: 100%;
+}
+
+.clonescript-contact-info-section .wpb_wrapper-inner {
+  padding: 0;
+}
+
+.clonescript-contact-info-section .wpb_column:first-child .wpb_wrapper-inner {
+  padding: 34px 28px 34px 0;
+}
+
+.clonescript-contact-info-section .wpb_column:last-child .wpb_wrapper-inner {
+  min-height: 100%;
+}
+
+/* Doubled selectors below (.clonescript-contact-info-card.clonescript-contact-info-card,
+   etc.): this element also carries the vendored .iconbox/.iconbox-side
+   classes, which set their own align-items and icon-box sizing at the same
+   single-class specificity -- that tie was going to the vendored rule,
+   stretching the icon square to match each card's own content height
+   (tall for the two-line address, short for the one-line phone number)
+   instead of holding a uniform size. Repeating the class bumps specificity
+   past the tie (same underlying issue as SocialProofPanel.css's
+   .sfd-top-strip, Header.css's .mega-dropdown-panel, etc.). */
+.clonescript-contact-info-card.clonescript-contact-info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 18px 0 22px;
+}
+
+.clonescript-contact-info-card + .clonescript-contact-info-card {
+  border-top: 1px solid rgb(15 23 42 / 8%);
+}
+
+.clonescript-contact-info-card .iconbox-icon-wrap.iconbox-icon-wrap {
+  flex: 0 0 86px;
+  width: 86px !important;
+  height: 86px !important;
+  margin: 0;
+  align-self: flex-start;
+}
+
+.clonescript-contact-info-card .iconbox-icon-container.iconbox-icon-container {
+  width: 86px !important;
+  height: 86px !important;
+  border-radius: 10px;
+  background: linear-gradient(160deg, #0b34d0 0%, #0826a8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 14px 30px rgb(11 52 208 / 18%);
+}
+
+.clonescript-contact-info-card .iconbox-icon-container i {
+  color: #fff;
+  font-size: 31px;
+  line-height: 1;
+}
+
+.clonescript-contact-info-card .contents {
+  padding-top: 2px;
+}
+
+.clonescript-contact-info-card .contents h3 {
+  margin-bottom: 12px;
+  color: #172554;
+}
+
+.clonescript-contact-info-card .contents p,
+.clonescript-contact-info-card .contents a {
+  color: #64748b;
+}
+
+.clonescript-contact-info-card .contents a:hover {
+  color: #0b34d0;
+}
+
+.clonescript-contact-page .vc_custom_1726577788907 {
+  padding: 42px 46px 46px !important;
+  background: #fff;
+  border-radius: 28px;
+  box-shadow: 0 24px 60px rgb(15 23 42 / 12%);
+}
+
+.clonescript-contact-page .vc_custom_1726570011140 {
+  background: #fff !important;
+}
+
+.clonescript-contact-page .vc_custom_1726570011140 .ld-empty-space {
+  display: none;
+}
+
+.clonescript-contact-page .tabs-nav {
+  margin-bottom: 34px;
+}
+
+.clonescript-contact-page .tabs-nav > li > a {
+  padding-bottom: 14px;
+}
+
+.clonescript-contact-page .tabs-content {
+  overflow: visible;
+}
+
+@media (max-width: 991px) {
+  .clonescript-contact-info-section .wpb_column:first-child .wpb_wrapper-inner {
+    padding: 0 0 28px;
+  }
+
+  .clonescript-contact-info-card .iconbox-icon-wrap.iconbox-icon-wrap,
+  .clonescript-contact-info-card .iconbox-icon-container.iconbox-icon-container {
+    width: 72px !important;
+    height: 72px !important;
+  }
+}
+
 @media (max-width: 767px) {
-  /* `body` ancestor bumps specificity above the vendored rule (both are
-     otherwise a single class + !important, so it's a coin flip on load
-     order otherwise -- confirmed the vendored contact-us-11-*.css link
-     was winning that tie via a document.styleSheets scan). */
-  body .vc_custom_1726577788907 {
+  .clonescript-contact-page .vc_custom_1726577788907 {
     margin: 0 !important;
     padding: 24px 20px !important;
+  }
+
+  .clonescript-contact-info-section {
+    padding: 40px 0 56px;
+  }
+
+  .clonescript-contact-info-card.clonescript-contact-info-card {
+    padding: 16px 0 18px;
+  }
+
+  .clonescript-contact-info-card .iconbox-icon-wrap.iconbox-icon-wrap,
+  .clonescript-contact-info-card .iconbox-icon-container.iconbox-icon-container {
+    width: 64px !important;
+    height: 64px !important;
+  }
+
+  .clonescript-contact-info-card .iconbox-icon-container i {
+    font-size: 24px;
   }
 }

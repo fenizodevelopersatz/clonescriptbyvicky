@@ -277,6 +277,21 @@
   50%      { transform: translateY(-6px) rotate(-4deg); }
 }
 
+@media (max-width: 767px) {
+  /* .cdm__float--corner/--foot protrude ~14px past the card's own box on
+     opposite corners (see their -14px top/bottom offsets above) -- with no
+     document-flow height of their own (position: absolute), nothing
+     reserves room for that overflow. Side-by-side on desktop that's fine
+     (nothing sits directly above/below), but once the text/visual columns
+     stack to full width below 768px, one panel's foot icon and the next
+     panel's corner icon land close enough to collide/overlap. Reserve
+     enough vertical margin to clear both. */
+  .cdm-wrap {
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cdm__chart span,
   .cdm__live-dot,

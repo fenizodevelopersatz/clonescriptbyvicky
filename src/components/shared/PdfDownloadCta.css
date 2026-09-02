@@ -11,6 +11,28 @@
   .clonescript-pdf-cta {
     padding: 32px 0;
   }
+
+  /* Same builder grid-column bug fixed sitewide, just via vc_col-sm-8/
+     vc_col-sm-4 here (this vendored theme applies those widths
+     unconditionally rather than only at the sm breakpoint and up) --
+     capped the text column at ~66% width even once stacked full-width
+     below the media column, squeezing the heading/description into a
+     narrower column than they need. Shared across every page that uses
+     this component. */
+  .clonescript-pdf-cta .wpb_column {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* .row's own left/right margin (meant to be a small negative gutter-
+     compensation bleed, per the theme's usual Bootstrap-style row/column
+     pattern) computes positive here instead, eating another ~30px of the
+     panel's already-narrow mobile width on top of the column fix above. */
+  .clonescript-pdf-cta__panel {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
 }
 
 /* Card wrapper: this whole section used to float directly on the page

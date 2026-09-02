@@ -1,12 +1,25 @@
-/* The blue wordmark (siteBrand.logoBlue) renders "clone" in white -- it was
-   drawn for the black header fill, so on this panel's white card the first
-   half of the name would disappear. Give it its own dark chip to sit on. */
 .sfd-logo-chip {
   display: inline-block;
-  padding: 18px 26px;
-  border-radius: 18px;
-  background: #06060f;
-  box-shadow: 0 14px 34px -14px rgba(16, 27, 72, 0.45);
+}
+
+/* Doubled selector (not just !important): this element also carries the
+   vendored .vc_custom_1726564743253 class, which sets its own
+   `padding: 20px !important` at the same single-class specificity as a
+   plain `.sfd-top-strip` rule -- two `!important` declarations of equal
+   specificity fall back to source order, and the vendored one (loaded
+   later) was winning, insetting the fill 20px from the column's true
+   left/right edges and leaving pale gaps down each side. Repeating the
+   class bumps specificity past that tie instead of gambling on load order
+   (same underlying issue as FaqAccordion.css's .vc_toggle_title and
+   Header.css's .mega-dropdown-panel, fixed there with !important alone
+   because there was no competing !important on the other side). No
+   background here now -- reverted to the panel's own white/lavender card
+   background, with the standard siteBrand.logo (not the white-on-dark
+   logoBlue variant, which needs a dark chip like this used to be) swapped
+   back in on the JSX side so the wordmark stays legible either way. */
+.sfd-top-strip.sfd-top-strip {
+  width: 100%;
+  padding: 18px 0 !important;
 }
 
 .sfd-logo-chip img {

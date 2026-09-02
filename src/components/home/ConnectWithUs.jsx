@@ -72,7 +72,7 @@ export default function ConnectWithUs() {
                 <div className="wpb_wrapper-inner">
                   <div className="wpb_single_image wpb_content_element vc_align_left vc_custom_1761559243227">
                     <figure className="wpb_wrapper vc_figure">
-                      <div className="vc_single_image-wrapper vc_box_border_grey">
+                      <div className="vc_single_image-wrapper vc_box_border_grey cs-connect-flip">
                         <img
                           src="/wp-content/reviews/home-page-connect-with-us-transparent.webp"
                           width="680"

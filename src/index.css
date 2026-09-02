@@ -250,12 +250,23 @@ button.btn-naked {
   }
 }
 
+/* position:fixed + inset:0 (not normal document flow) so centering is
+   always relative to the actual viewport, matching index.html's own
+   pre-React shell loader this hands off to/from. In flow, place-content:center
+   only centers within this element's OWN box -- if anything elsewhere on
+   the outgoing page had left the document momentarily wider than the
+   viewport (horizontal overflow), that box would inherit the extra width
+   and the loader would visibly center off to one side instead of the
+   screen's true center, which is what was happening on mobile. */
 .route-loading {
-  min-height: 55vh;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
   display: grid;
   place-content: center;
   justify-items: center;
   gap: 14px;
+  background: #fff;
   color: #101b48;
   font-weight: 600;
 }

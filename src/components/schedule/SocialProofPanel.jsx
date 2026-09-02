@@ -14,9 +14,9 @@ export default function SocialProofPanel() {
             <div className="ld-empty-space">
               <span className="liquid_empty_space_inner"></span>
             </div>
-            <div className="wpb_single_image wpb_content_element vc_align_center vc_custom_1726564743253">
+            <div className="wpb_single_image wpb_content_element vc_align_center vc_custom_1726564743253 sfd-top-strip">
               <Link to="/" className="sfd-logo-chip">
-                <img src={siteBrand.logoBlue} width={siteBrand.logoWidth} height={siteBrand.logoHeight} alt={siteBrand.name} style={{ width: 210, height: 'auto' }} />
+                <img src={siteBrand.logo} width={siteBrand.logoWidth} height={siteBrand.logoHeight} alt={siteBrand.name} style={{ width: 210, height: 'auto' }} />
               </Link>
             </div>
             <div className="wpb_text_column wpb_content_element">

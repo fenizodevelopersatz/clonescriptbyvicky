@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { socialLinks, footerNavColumns, trustBadges } from '../../data/socialLinks.js'
+import { footerNavColumns } from '../../data/socialLinks.js'
 import { siteContact } from '../../data/siteContact.js'
 import { siteBrand } from '../../data/siteBrand.js'
 import CurrencySelector from './CurrencySelector.jsx'
@@ -93,21 +93,6 @@ export default function FooterBottom() {
                         </div>
                       </div>
                     </div>
-                    {/* <div className="iconbox text-left vc_custom_1726230443525">
-                      <div className="iconbox-icon-wrap">
-                        <span className="iconbox-icon-container"></span>
-                      </div>
-                      <h3 className="font-weight-semibold">Follow US On:</h3>
-                    </div>
-                    <ul className="social-icon branded-text square social-icon-sm custom-social-icon-shadow">
-                      {socialLinks.map((s, i) => (
-                        <li key={i}>
-                          <a href={s.href} target="_blank" rel="noreferrer nofollow">
-                            <i className={s.icon}></i>
-                          </a>
-                        </li>
-                      ))}
-                    </ul> */}
                     <div className="ld-empty-space" style={{ height: 10 }}>
                       <span className="liquid_empty_space_inner"></span>
                     </div>
@@ -157,13 +142,6 @@ export default function FooterBottom() {
                                   </span>
                                 </p>
                               </div>
-                              <div className="wpb_single_image wpb_content_element vc_align_center vc_custom_1726211991731">
-                                <figure className="wpb_wrapper vc_figure">
-                                  <div className="vc_single_image-wrapper vc_box_border_grey">
-                                    <img src="/wp-content/uploads/2023/03/Group-726.webp" width="598" height="238" className="vc_single_image-img attachment-full" alt="accepted payment methods" title="accepted payment methods" loading="lazy" decoding="async" />
-                                  </div>
-                                </figure>
-                              </div>
                             </div>
                           </div>
                         </div>
@@ -202,42 +180,6 @@ export default function FooterBottom() {
         </div>
       </section>
 
-      <section className="vc_row wpb_row vc_row-fluid liquid-row-shadowbox-6a665a4109e0b">
-        <div className="ld-container container">
-          <div className="row ld-row">
-            <div className="wpb_column vc_column_container vc_col-sm-4"><div className="vc_column-inner"><div className="wpb_wrapper"><div className="wpb_wrapper-inner"></div></div></div></div>
-            <div className="wpb_column vc_column_container vc_col-sm-4">
-              <div className="vc_column-inner">
-                <div className="wpb_wrapper">
-                  <div className="wpb_wrapper-inner">
-                    <div className="vc_row wpb_row vc_inner vc_row-fluid vc_row-o-equal-height vc_row-o-content-middle vc_row-flex">
-                      {trustBadges.map((badge, i) => (
-                        <div className="wpb_column vc_column_container vc_col-sm-4 vc_col-xs-4" key={i}>
-                          <div className="vc_column-inner">
-                            <div className="wpb_wrapper">
-                              <div className="wpb_wrapper-inner">
-                                <div className="wpb_single_image wpb_content_element vc_align_center">
-                                  <figure className="wpb_wrapper vc_figure">
-                                    <a href={badge.href} target="_blank" rel="noreferrer" className="vc_single_image-wrapper vc_box_border_grey">
-                                      <img src={badge.image} width={badge.width} height={badge.height} className="vc_single_image-img attachment-full" alt={badge.alt} title={badge.alt} />
-                                    </a>
-                                  </figure>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="wpb_column vc_column_container vc_col-sm-4"><div className="vc_column-inner"><div className="wpb_wrapper"><div className="wpb_wrapper-inner"></div></div></div></div>
-          </div>
-        </div>
-      </section>
-
       <section className="vc_row wpb_row vc_row-fluid vc_custom_1718194534933 liquid-row-shadowbox-6a665a410b8e9 vc_row-has-fill">
         <div className="ld-container container">
           <div className="row ld-row">
@@ -259,8 +201,7 @@ export default function FooterBottom() {
                       <div className="wpb_wrapper">
                         <p style={{ textAlign: 'left' }}>
                           <span style={{ color: '#3d3d3d', fontSize: 14 }}>
-                            <strong>Disclaimer:</strong> &quot;Airbnb, Alibaba, Amazon, Fiverr, Gojek, OLX, Swiggy, TikTok,
-                            Tinder, Turo, Uber, Udemy, Vinted, WhatsApp, YouTube, Zillow&quot; and other brand names referenced
+                            <strong>Disclaimer:</strong> &quot;Alibaba, Amazon, YouTube, Zillow&quot; and other brand names referenced
                             on this site are trademarks of their respective owners, used only for descriptive purposes to
                             explain the type of platform each script replicates. {siteBrand.name} is not affiliated with,
                             sponsored by, or endorsed by any of these companies. All source code, design, and branding of{' '}

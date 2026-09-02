@@ -41,6 +41,34 @@
   margin-left: auto;
 }
 
+@media (max-width: 991px) {
+  /* Same builder grid-column bug fixed sitewide: vc_col-xs-10 +
+     vc_col-xs-offset-1 (light variant) caps the content column at ~83%
+     width even after the image column has hidden and it's the only thing
+     left in the row -- shared by every page that uses this component, so
+     fixing it once here instead of per-page. */
+  .clonescript-launch-cta .wpb_column {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  /* Dark variant additionally caps the content to max-width:56% on top of
+     that (sized to sit beside the absolutely-positioned image column) --
+     .clonescript-launch-cta__image-col is vc_hidden-sm + vc_hidden-xs, i.e.
+     gone below 992px, so nothing justifies still reserving the other 44%
+     for it once that happens. This is what was actually squeezing text
+     into ~200px on every dark-variant page (youtube-clone, whatsapp-clone,
+     tinder-clone, gojek-clone, tiktok-clone, school-crm, vinted-clone). */
+  .clonescript-launch-cta--dark .clonescript-launch-cta__content {
+    /* !important: this override sits earlier in the file (source order)
+       than the unconditional max-width:56% rule below it, which normally
+       decides equal-specificity ties -- media-query nesting doesn't change
+       that, so without !important the later, unconditional rule kept
+       winning even inside this max-width:991px block. */
+    max-width: 100% !important;
+  }
+}
+
 @media (max-width: 767px) {
   .clonescript-launch-cta {
     padding: 24px 0;

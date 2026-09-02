@@ -6,6 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="google-site-verification" content="Wcgjcs9RTiPT8ytFxkqlH8JDtFPr95hLqY6N5V5vVP0" />
 
+    <!-- Stamps html.cs-dark-header-route synchronously, before any CSS/JS
+         bundle loads, so the header-black-fill styling a few lines down
+         can apply the instant .mainbar-wrap first appears in the DOM.
+         Without this, the fill only existed in Header.jsx's own component
+         CSS, which (Vite dev-mode component styles are injected by the JS
+         module that imports them, not present in this static shell) isn't
+         in the document until the React/Header bundle has downloaded,
+         parsed, and run -- on a slow connection that gap was long enough
+         for the header to visibly paint white first, then snap to black.
+         Mirrors Header.jsx's own hasDarkTopHeader route list exactly; keep
+         both in sync if that list ever changes. -->
+    <script>
+      (function () {
+        var path = window.location.pathname
+        if (path !== '/' && path !== '/contact-us' && path !== '/schedule-free-demo') {
+          document.documentElement.classList.add('cs-dark-header-route')
+        }
+      })()
+    </script>
+
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -296,6 +316,25 @@
         .cs-shell-dots span {
           animation: none !important;
         }
+      }
+
+      /* Mirrors Header.css's .mainbar-wrap.header-dark-top rules exactly
+         (background + nav text/toggle-bar colors) so there is nothing left
+         for that stylesheet to visibly change once it loads -- this class
+         is present before either bundle exists (see the inline script
+         above), so .mainbar-wrap gets it the instant React first renders
+         the header, closing the white-flash gap described there. */
+      html.cs-dark-header-route .mainbar-wrap {
+        background: #06060f !important;
+      }
+
+      html.cs-dark-header-route .mainbar-wrap #primary-nav > li > a,
+      html.cs-dark-header-route .mainbar-wrap #primary-nav .link-txt .txt {
+        color: rgba(255, 255, 255, 0.86) !important;
+      }
+
+      html.cs-dark-header-route .mainbar-wrap .navbar-toggle .bar {
+        background-color: rgba(255, 255, 255, 0.86) !important;
       }
     </style>
     <title>CloneScript | Web, Mobile App &amp; Software Development Company</title>
