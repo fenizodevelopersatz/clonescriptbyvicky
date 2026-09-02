@@ -22,7 +22,7 @@ export default function AmazonHero() {
                     </div>
                     <div className="ld-fancy-heading text-center">
                       <h1 className="lqd-highlight-underline lqd-highlight-grow-left">
-                        <span className="ld-fh-txt"> <b>Build a Scalable Amazon Clone Marketplace</b></span>
+                        <span className="ld-fh-txt" > <b style={{ color: '#ffffff' }}>Build a Scalable <span style={{ color: '#38bdf8' }}>Amazon Clone </span> Marketplace</b></span>
                       </h1>
                     </div>
                     <div className="wpb_text_column wpb_content_element">
