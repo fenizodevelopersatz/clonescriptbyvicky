@@ -99,11 +99,18 @@ html.overflow-hidden {
    collapsed mobile nav, where the same transform just pushed the panel
    half its width off the left edge). */
 @media (min-width: 1191px) {
+  /* !important: the vendored litespeed bundle has its own unconditional
+     .nav-item-children rule (left: 0, transform: translateZ(2px)) at the
+     same single-class specificity as .mega-dropdown-panel -- this element
+     carries both classes, and that vendored rule loads later in the
+     document than this one, so it was winning the tie and pinning the
+     panel to the left edge instead of centering it (same class of bug as
+     FaqAccordion.css's .vc_toggle_title). */
   .mega-dropdown-panel {
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    width: min(1170px, calc(100vw - 40px));
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    width: min(1170px, calc(100vw - 40px)) !important;
   }
 }
 

@@ -474,6 +474,16 @@
   }
 }
 
+/* "Let's Turn Your Business Idea Into Reality" (ConnectWithUs.jsx): mirror
+   the icons-and-hand illustration left-to-right in place -- text stays on
+   the left, image stays on the right (not swapping which side holds which,
+   just flipping the graphic itself). Everything on the image's own vertical
+   centerline (the hand touching the CloneScript mark) stays put under a
+   pure horizontal flip; only the icons ringing it swap sides. */
+.vc_custom_1761559243227 img {
+  transform: scaleX(-1) !important;
+}
+
 .clonescript-meeting-visual img {
   display: block;
   width: min(400px, 100%);
