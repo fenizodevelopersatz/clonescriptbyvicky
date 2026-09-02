@@ -44,8 +44,12 @@
      with zero breathing room inside the black fill itself. Invisible on the
      old white-on-white boundary, would otherwise be an abrupt cut where the
      black block ends right at the last line of text. Same issue zillow-clone
-     hit (fixed there with .zillow-hero's own padding-bottom: 60px). */
-  padding-bottom: 60px;
+     hit (fixed there with .zillow-hero's own padding-bottom: 60px). Smaller
+     here (20px, not 60px) than that pattern usually gets -- .amazon-hero-cta
+     right below picks up the rest of the paragraph-to-buttons gap with its
+     own padding-top, since (unlike zillow-clone) black continues straight
+     through into that next section instead of handing off to a light one. */
+  padding-bottom: 20px;
 }
 
 .amazon-hero h1 {
@@ -60,6 +64,21 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
+/* CTA button row (AmazonHero.jsx's second section, split out from the
+   illustration below it): black fill continues straight through from
+   .amazon-hero above with no visible seam, so the buttons read as still
+   part of the hero rather than a separate light band -- the illustration
+   right after this stays out of scope, on its own still-light section. */
+.amazon-hero-cta {
+  background: #06060f;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  padding-top: 20px;
+  padding-bottom: 44px;
+}
+
 /* "Why Choose CloneScript for Your Amazon Clone?" (StandOutFeaturesGrid)
    defaults to 3 columns on desktop with no columns prop to override --
    narrow it to 2 here, same override already applied on /crypto-wallet and
@@ -67,5 +86,28 @@
 @media (min-width: 576px) {
   .clonescript-route-amazon-clone .stand-out-features-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 991px) {
+  /* Same builder grid-column bug fixed sitewide: vc_col-xs-10 +
+     vc_col-xs-offset-1 caps this column at ~83% width even once it's
+     stacked full-width (the image column is vc_hidden-sm/-xs, so nothing
+     shares the row on mobile to begin with). */
+  .amazon-whatis .wpb_column {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  /* This section never had its own bottom padding (0 by theme default) --
+     invisible while its "Schedule Demo" button and the next section's
+     heading below sat far apart on desktop (image column still in the
+     row), but once the image column hides on mobile, "Schedule Demo" sits
+     as this section's very last line, right up against "Why Choose
+     CloneScript..." with no breathing room between them. Same class of
+     issue as every hero's own mandatory hero-to-next-section spacing
+     check, just on a body section instead of a hero. */
+  .amazon-whatis {
+    padding-bottom: 40px;
   }
 }

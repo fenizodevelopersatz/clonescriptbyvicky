@@ -2,7 +2,7 @@ import Reveal from '../shared/Reveal.jsx'
 
 export default function WhatIsAmazon() {
   return (
-    <section className="vc_row wpb_row vc_row-fluid liquid-row-shadowbox vc_row-o-content-middle vc_row-flex">
+    <section className="amazon-whatis vc_row wpb_row vc_row-fluid liquid-row-shadowbox vc_row-o-content-middle vc_row-flex">
       <div className="ld-container container">
         <div className="row ld-row">
           <div className="wpb_column vc_column_container vc_col-sm-10 vc_col-md-offset-0 vc_col-md-6 vc_col-xs-offset-1 vc_col-xs-10">

@@ -53,6 +53,18 @@
   background-color: rgba(255, 255, 255, 0.86) !important;
 }
 
+/* Below 1190px (collapsed/hamburger nav) the vendored shared-713aa8f4.css
+   gives .navbar-header (the logo+toggle flex row) its own unconditional
+   white background -- built only ever having the theme's default light
+   header in mind, it has no idea a route can want a dark one. That white
+   fill sat on top of (visually, not literally under -- it's a nested
+   descendant of .mainbar-wrap, not a separate layer) the black fill,
+   covering the full header width/height and leaving only the toggle
+   icon's own bars visible against it instead of one solid black bar. */
+.mainbar-wrap.header-dark-top .navbar-header {
+  background: transparent !important;
+}
+
 /* Menu items with no built page in this app yet. Rendered as a non-anchor
    so they can't be clicked or jump the page to "#", just a visible
    affordance that they're inactive. */

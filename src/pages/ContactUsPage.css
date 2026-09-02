@@ -62,16 +62,22 @@
 }
 
 .clonescript-contact-info-card .iconbox-icon-wrap.iconbox-icon-wrap {
+  /* No !important here (unlike the mobile-tier overrides below): this
+     selector's specificity is identical at every breakpoint, so an
+     !important here would tie with their !important and fall back to
+     source order -- which happened to pick this desktop rule instead of
+     the narrower mobile one it was supposed to lose to, undoing the fix
+     below on every screen size. */
   flex: 0 0 86px;
-  width: 86px !important;
-  height: 86px !important;
+  width: 86px;
+  height: 86px;
   margin: 0;
   align-self: flex-start;
 }
 
 .clonescript-contact-info-card .iconbox-icon-container.iconbox-icon-container {
-  width: 86px !important;
-  height: 86px !important;
+  width: 86px;
+  height: 86px;
   border-radius: 10px;
   background: linear-gradient(160deg, #0b34d0 0%, #0826a8 100%);
   display: flex;
@@ -136,7 +142,20 @@
     padding: 0 0 28px;
   }
 
-  .clonescript-contact-info-card .iconbox-icon-wrap.iconbox-icon-wrap,
+  .clonescript-contact-info-card .iconbox-icon-wrap.iconbox-icon-wrap {
+    /* flex-basis (set via the flex shorthand on the base rule), not width,
+       is what actually sizes this element -- it's a flex child of
+       .clonescript-contact-info-card with flex-shrink:0, so flex-basis
+       wins the sizing regardless of what width says at any specificity or
+       !important level. Overriding width alone (as this rule originally
+       did) was a complete no-op; confirmed by the fact that even setting
+       width directly via inline style + !important -- the single highest-
+       priority way to set a CSS property there is -- still didn't move it. */
+    flex-basis: 72px;
+    width: 72px !important;
+    height: 72px !important;
+  }
+
   .clonescript-contact-info-card .iconbox-icon-container.iconbox-icon-container {
     width: 72px !important;
     height: 72px !important;
@@ -157,7 +176,12 @@
     padding: 16px 0 18px;
   }
 
-  .clonescript-contact-info-card .iconbox-icon-wrap.iconbox-icon-wrap,
+  .clonescript-contact-info-card .iconbox-icon-wrap.iconbox-icon-wrap {
+    flex-basis: 64px;
+    width: 64px !important;
+    height: 64px !important;
+  }
+
   .clonescript-contact-info-card .iconbox-icon-container.iconbox-icon-container {
     width: 64px !important;
     height: 64px !important;

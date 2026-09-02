@@ -1,0 +1,87 @@
+/* Fixed bottom-right, mirroring FloatingWhatsAppButton's bottom-left
+   .float_social -- kept as its own component/file since there's no
+   existing vendored equivalent to hook into (unlike most of this site's
+   widgets, which reskin a theme default). Hidden (not just transparent)
+   below the scroll threshold via visibility, so it's never a stray
+   tab-stop or click target sitting invisibly over page content. */
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  /* The vendored <footer class="main-footer..."> carries z-index: 999999
+     (unrelated to this button -- presumably to sit above some other
+     decorative/background layer within the theme's own design), which
+     silently buried every fixed-position element on the page with a more
+     ordinary z-index underneath it once scrolled to the footer, this
+     button included. Needs to clear that specific number, not just be
+     "high". */
+  z-index: 1000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(120deg, #6c3bff 0%, #38bdf8 100%);
+  color: #fff;
+  font-size: 17px;
+  box-shadow: 0 10px 28px -8px rgba(79, 110, 247, 0.55);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s, box-shadow 0.2s ease;
+}
+
+.back-to-top--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  box-shadow: 0 14px 34px -6px rgba(79, 110, 247, 0.65);
+  transform: translateY(-2px);
+}
+
+.back-to-top:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Clears StickyMobileCta's fixed bottom bar (home page, mobile only) --
+   same 78px bottom offset FloatingWhatsAppButton's own .float_social
+   already uses for the identical reason (see Layout.jsx / StickyMobileCta.css). */
+.clonescript-route-home .back-to-top {
+  bottom: 24px;
+}
+
+@media (max-width: 767px) {
+  .clonescript-route-home .back-to-top {
+    bottom: 78px;
+  }
+}
+
+@media (max-width: 767px) {
+  .back-to-top {
+    right: 16px;
+    bottom: 16px;
+    width: 42px;
+    height: 42px;
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top {
+    transition: opacity 0.25s ease, visibility 0.25s;
+    transform: none;
+  }
+
+  .back-to-top:hover,
+  .back-to-top:focus-visible {
+    transform: none;
+  }
+}

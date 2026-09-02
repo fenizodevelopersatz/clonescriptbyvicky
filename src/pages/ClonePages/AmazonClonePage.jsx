@@ -210,18 +210,20 @@ export default function AmazonClonePage() {
                           <p><span style={{ color: '#8181ac' }}>As the business grows, the platform can support additional vendors, product categories, payment options, shipping providers, languages, and service locations.</span></p>
                         </div>
                       </header>
-                      <a href="/schedule-free-demo" className="btn btn-solid btn-sm circle btn-bordered border-thin btn-bordered-gradient">
-                        <span>
-                          <span className="btn-txt">Schedule Demo</span>
-                          <span className="btn-icon"><i className="fas fa-calendar-alt"></i></span>
-                        </span>
-                      </a>{' '}
-                      <a href="#prices" data-localscroll="true" className="btn btn-solid btn-sm circle btn-bordered border-thin btn-bordered-gradient btn-gradient">
-                        <span>
-                          <span className="btn-txt">Explore Packages</span>
-                          <span className="btn-icon"><i className="fas fa-dollar-sign"></i></span>
-                        </span>
-                      </a>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 12 }}>
+                        <a href="/schedule-free-demo" className="btn btn-solid btn-sm circle btn-bordered border-thin btn-bordered-gradient" style={{ margin: 0 }}>
+                          <span>
+                            <span className="btn-txt">Schedule Demo</span>
+                            <span className="btn-icon"><i className="fas fa-calendar-alt"></i></span>
+                          </span>
+                        </a>
+                        <a href="#prices" data-localscroll="true" className="btn btn-solid btn-sm circle btn-bordered border-thin btn-bordered-gradient btn-gradient" style={{ margin: 0 }}>
+                          <span>
+                            <span className="btn-txt">Explore Packages</span>
+                            <span className="btn-icon"><i className="fas fa-dollar-sign"></i></span>
+                          </span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>

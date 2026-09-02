@@ -7,7 +7,7 @@ import './SocialProofPanel.css'
 
 export default function SocialProofPanel() {
   return (
-    <div className="wpb_column vc_column_container vc_col-sm-10 vc_col-md-offset-0 vc_col-md-6 vc_col-xs-offset-1 vc_col-xs-10 vc_hidden-xs vc_col-has-fill">
+    <div className="sfd-social-proof-col wpb_column vc_column_container vc_col-sm-10 vc_col-md-offset-0 vc_col-md-6 vc_col-xs-offset-1 vc_col-xs-10 vc_col-has-fill">
       <div className="vc_column-inner">
         <div className="wpb_wrapper vc_custom_1738575156836">
           <div className="wpb_wrapper-inner">

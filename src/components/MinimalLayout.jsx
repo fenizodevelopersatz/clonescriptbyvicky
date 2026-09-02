@@ -2,6 +2,7 @@ import { Suspense, useInsertionEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import RouteFallback from './RouteFallback.jsx'
 import DecorativeBackground from './DecorativeBackground.jsx'
+import BackToTop from './BackToTop.jsx'
 import { expectPageStyles } from '../hooks/usePageStylesheets.js'
 
 // For pages that ship with no header/footer in source (e.g. schedule-free-demo.html) —
@@ -20,6 +21,7 @@ export default function MinimalLayout() {
       <Suspense fallback={<RouteFallback />}>
         <Outlet />
       </Suspense>
+      <BackToTop />
     </div>
   )
 }

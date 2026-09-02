@@ -4,6 +4,7 @@ import Header from './Header.jsx'
 import Footer from './footer/Footer.jsx'
 import ScrollProgressBar from './ScrollProgressBar.jsx'
 import FloatingWhatsAppButton from './FloatingWhatsAppButton.jsx'
+import BackToTop from './BackToTop.jsx'
 import DemoRequestPopup from './shared/DemoRequestPopup.jsx'
 import RouteFallback from './RouteFallback.jsx'
 import DecorativeBackground from './DecorativeBackground.jsx'
@@ -35,6 +36,7 @@ export default function Layout() {
       </Suspense>
       <Footer />
       <FloatingWhatsAppButton />
+      <BackToTop />
       <DemoRequestPopup />
       {pathname === '/' && <StickyMobileCta />}
     </div>
