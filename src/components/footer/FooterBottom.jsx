@@ -93,7 +93,7 @@ export default function FooterBottom() {
                         </div>
                       </div>
                     </div>
-                    <div className="iconbox text-left vc_custom_1726230443525">
+                    {/* <div className="iconbox text-left vc_custom_1726230443525">
                       <div className="iconbox-icon-wrap">
                         <span className="iconbox-icon-container"></span>
                       </div>
@@ -107,7 +107,7 @@ export default function FooterBottom() {
                           </a>
                         </li>
                       ))}
-                    </ul>
+                    </ul> */}
                     <div className="ld-empty-space" style={{ height: 10 }}>
                       <span className="liquid_empty_space_inner"></span>
                     </div>
