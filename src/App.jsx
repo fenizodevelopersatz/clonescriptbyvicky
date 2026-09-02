@@ -1,5 +1,5 @@
-import { lazy, Suspense } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { lazy, Suspense, useEffect } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
 import MinimalLayout from './components/MinimalLayout.jsx'
 import RouteFallback from './components/RouteFallback.jsx'
@@ -34,9 +34,20 @@ const OlxClonePage = lazy(() => import('./pages/ClonePages/OlxClonePage.jsx'))
 const LogisticsClonePage = lazy(() => import('./pages/ClonePages/LogisticsClonePage.jsx'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage.jsx'))
 
+function ScrollToTop() {
+  const { pathname, hash } = useLocation()
+
+  useEffect(() => {
+    if (!hash) window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  }, [pathname, hash])
+
+  return null
+}
+
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Suspense fallback={<RouteFallback />}>
         <Routes>
           <Route element={<Layout />}>
