@@ -5,12 +5,12 @@ import './FooterReviewLogos.css'
 // assets -- a letter or a generic icon in each brand's real color, same
 // "no screenshots" approach used everywhere else on this site.
 const reviewPlatforms = [
-  { name: 'Google', rating: 4.3, href: 'https://bit.ly/clonescript-reviews', badge: 'letter', value: 'G', color: '#4285f4' },
+  { name: 'Google', rating: 4.3, href: 'https://bit.ly/theclonescript-reviews', badge: 'letter', value: 'G', color: '#4285f4' },
   { name: 'Glassdoor', rating: 4.0, href: 'https://www.glassdoor.co.in/Overview/Working-at-CloneScript-EI_IE2904552.11,32.htm', badge: 'icon', value: 'fa-solid fa-door-open', color: '#0caa41' },
-  { name: 'Trustpilot', rating: 4.0, href: 'https://www.trustpilot.com/review/clonescript.com', badge: 'icon', value: 'fa-solid fa-star', color: '#00b67a' },
-  { name: 'AmbitionBox', rating: 4.9, href: 'https://www.clonescript.com', badge: 'letter', value: 'A', color: '#0768ae' },
-  { name: 'Sitejabber', rating: 5, href: 'https://www.clonescript.com', badge: 'icon', value: 'fa-solid fa-rocket', color: '#7c3aed' },
-  { name: 'Justdial', rating: 4.2, href: 'https://bit.ly/clonescript', badge: 'letter', value: 'Jd', color: '#e8710a' },
+  { name: 'Trustpilot', rating: 4.0, href: 'https://www.trustpilot.com/review/theclonescript.com', badge: 'icon', value: 'fa-solid fa-star', color: '#00b67a' },
+  { name: 'AmbitionBox', rating: 4.9, href: 'https://www.theclonescript.com', badge: 'letter', value: 'A', color: '#0768ae' },
+  { name: 'Sitejabber', rating: 5, href: 'https://www.theclonescript.com', badge: 'icon', value: 'fa-solid fa-rocket', color: '#7c3aed' },
+  { name: 'Justdial', rating: 4.2, href: 'https://bit.ly/theclonescript', badge: 'letter', value: 'Jd', color: '#e8710a' },
 ]
 
 // Proportional star fill: a gray track of 5 stars with a gold copy laid on

@@ -31,7 +31,7 @@ export default function WhatIsLogistics() {
                     </span>
                   </Link>
                   <div className="ld-empty-space"><span className="liquid_empty_space_inner"></span></div>
-                  <div className="row ld-row what-is-logistics-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px 20px' }}>
+                  <div className="row ld-row what-is-logistics-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '10px 20px' }}>
                     <div className="iconbox iconbox-inline iconbox-square text-center">
                       <div className="iconbox-icon-wrap"><span className="iconbox-icon-container" style={{ color: '#f59e0b' }}><i className="fa-solid fa-route"></i></span></div>
                       <h3 className="font-weight-normal">Optimized Routes</h3>
